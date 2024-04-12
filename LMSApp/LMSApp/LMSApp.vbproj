@@ -95,7 +95,7 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Announcements.aspx" />
+    <Content Include="Student\Announcements.aspx" />
     <Content Include="bootstrap\dist\css\bootstrap-grid.css" />
     <Content Include="bootstrap\dist\css\bootstrap-grid.min.css" />
     <Content Include="bootstrap\dist\css\bootstrap-grid.rtl.css" />
@@ -118,10 +118,10 @@
     <Content Include="bootstrap\dist\js\bootstrap.esm.min.js" />
     <Content Include="bootstrap\dist\js\bootstrap.js" />
     <Content Include="bootstrap\dist\js\bootstrap.min.js" />
-    <Content Include="CourseContent.aspx" />
-    <Content Include="CoursePage.aspx" />
-    <Content Include="CourseResults.aspx" />
-    <Content Include="Courses.aspx" />
+    <Content Include="Student\CourseContent.aspx" />
+    <Content Include="Student\CoursePage.aspx" />
+    <Content Include="Student\CourseResults.aspx" />
+    <Content Include="Student\Courses.aspx" />
     <Content Include="css\icons\font-awesome\css\fa-brands.css" />
     <Content Include="css\icons\font-awesome\css\fa-brands.min.css" />
     <Content Include="css\icons\font-awesome\css\fa-regular.css" />
@@ -258,19 +258,19 @@
     <Content Include="plugins\images\users\sonu.jpg" />
     <Content Include="plugins\images\users\ulogo.png" />
     <Content Include="plugins\images\users\varun.jpg" />
-    <Content Include="Results.aspx" />
+    <Content Include="Student\Results.aspx" />
     <Content Include="Student\Dashboard.aspx" />
-    <Content Include="SubmisssionLinks.aspx" />
-    <Content Include="SubmitForm.aspx" />
-    <Content Include="TestContent.aspx" />
-    <Content Include="Tests.aspx" />
+    <Content Include="Student\SubmisssionLinks.aspx" />
+    <Content Include="Student\SubmitForm.aspx" />
+    <Content Include="Student\TestContent.aspx" />
+    <Content Include="Student\Tests.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Announcements.aspx.designer.vb">
+    <Compile Include="Student\Announcements.aspx.designer.vb">
       <DependentUpon>Announcements.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Announcements.aspx.vb">
+    <Compile Include="Student\Announcements.aspx.vb">
       <DependentUpon>Announcements.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
@@ -281,31 +281,31 @@
       <DependentUpon>LMSBoard.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CourseContent.aspx.designer.vb">
+    <Compile Include="Student\CourseContent.aspx.designer.vb">
       <DependentUpon>CourseContent.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CourseContent.aspx.vb">
+    <Compile Include="Student\CourseContent.aspx.vb">
       <DependentUpon>CourseContent.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="CoursePage.aspx.designer.vb">
+    <Compile Include="Student\CoursePage.aspx.designer.vb">
       <DependentUpon>CoursePage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CoursePage.aspx.vb">
+    <Compile Include="Student\CoursePage.aspx.vb">
       <DependentUpon>CoursePage.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="CourseResults.aspx.designer.vb">
+    <Compile Include="Student\CourseResults.aspx.designer.vb">
       <DependentUpon>CourseResults.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CourseResults.aspx.vb">
+    <Compile Include="Student\CourseResults.aspx.vb">
       <DependentUpon>CourseResults.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Courses.aspx.designer.vb">
+    <Compile Include="Student\Courses.aspx.designer.vb">
       <DependentUpon>Courses.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Courses.aspx.vb">
+    <Compile Include="Student\Courses.aspx.vb">
       <DependentUpon>Courses.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
@@ -336,10 +336,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Results.aspx.designer.vb">
+    <Compile Include="Student\Results.aspx.designer.vb">
       <DependentUpon>Results.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Results.aspx.vb">
+    <Compile Include="Student\Results.aspx.vb">
       <DependentUpon>Results.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
@@ -350,31 +350,31 @@
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="SubmisssionLinks.aspx.designer.vb">
+    <Compile Include="Student\SubmisssionLinks.aspx.designer.vb">
       <DependentUpon>SubmisssionLinks.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SubmisssionLinks.aspx.vb">
+    <Compile Include="Student\SubmisssionLinks.aspx.vb">
       <DependentUpon>SubmisssionLinks.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="SubmitForm.aspx.designer.vb">
+    <Compile Include="Student\SubmitForm.aspx.designer.vb">
       <DependentUpon>SubmitForm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SubmitForm.aspx.vb">
+    <Compile Include="Student\SubmitForm.aspx.vb">
       <DependentUpon>SubmitForm.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="TestContent.aspx.designer.vb">
+    <Compile Include="Student\TestContent.aspx.designer.vb">
       <DependentUpon>TestContent.aspx</DependentUpon>
     </Compile>
-    <Compile Include="TestContent.aspx.vb">
+    <Compile Include="Student\TestContent.aspx.vb">
       <DependentUpon>TestContent.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Tests.aspx.designer.vb">
+    <Compile Include="Student\Tests.aspx.designer.vb">
       <DependentUpon>Tests.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Tests.aspx.vb">
+    <Compile Include="Student\Tests.aspx.vb">
       <DependentUpon>Tests.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>

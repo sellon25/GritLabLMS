@@ -8,7 +8,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
    <div class="row">
         <a class="col-md-3" href="CoursePage.aspx">
-           <div class="white-box boxShadow coursebox" style="background-image: url(plugins/images/sldr.jpg)">
+           <div class="white-box boxShadow coursebox" style="background-image: url(../plugins/images/sldr.jpg)">
                <div class="description">
                 <label class="box-title">Chapter 0</label>
                 <p class="text-muted">CHPTR0</p>
@@ -16,7 +16,7 @@
             </div>
         </a>
         <a class="col-md-3" href="CoursePage.aspx">
-              <div class="white-box boxShadow coursebox" style="background-image: url(plugins/images/calculus.png)">
+              <div class="white-box boxShadow coursebox" style="background-image: url(../plugins/images/calculus.png)">
                <div class="description">
                 <label class="box-title">Tutorials 1</label>
                 <p class="text-muted">TUT1</p>
@@ -24,7 +24,7 @@
             </div>
             </a>
         <a class="col-md-3" href="CoursePage.aspx">
-              <div class="white-box boxShadow coursebox" style="background-image: url(plugins/images/code.png)">
+              <div class="white-box boxShadow coursebox" style="background-image: url(../plugins/images/code.png)">
                <div class="description">
                 <label class="box-title">Tutorials 2</label>
                 <p class="text-muted">TUT2</p>
@@ -32,7 +32,7 @@
             </div>
             </a>
         <a class="col-md-3" href="CoursePage.aspx">
-              <div class="white-box boxShadow coursebox" style="background-image: url(plugins/images/laptops.png)">
+              <div class="white-box boxShadow coursebox" style="background-image: url(../plugins/images/laptops.png)">
                <div class="description">
                 <label class="box-title">Labs</label>
                 <p class="text-muted">LABS</p>
@@ -40,7 +40,7 @@
             </div>
             </a>
         <a class="col-md-3" href="CoursePage.aspx">
-              <div class="white-box boxShadow coursebox" style="background-image: url(plugins/images/Squid-Game-1.jpg)">
+              <div class="white-box boxShadow coursebox" style="background-image: url(../plugins/images/Squid-Game-1.jpg)">
                <div class="description">
                 <label class="box-title">Squidgame</label>
                 <p class="text-muted">SQDG</p>
