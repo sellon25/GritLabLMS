@@ -162,7 +162,6 @@
     <Content Include="css\icons\weather-icons\less\css\variables-wind-names.css" />
     <Content Include="css\style.css" />
     <Content Include="css\style.min.css" />
-    <Content Include="dashboard.aspx" />
     <Content Include="fontawesome.html" />
     <Content Include="js\app-style-switcher.js" />
     <Content Include="js\custom.js" />
@@ -260,6 +259,7 @@
     <Content Include="plugins\images\users\ulogo.png" />
     <Content Include="plugins\images\users\varun.jpg" />
     <Content Include="Results.aspx" />
+    <Content Include="Student\Dashboard.aspx" />
     <Content Include="SubmisssionLinks.aspx" />
     <Content Include="SubmitForm.aspx" />
     <Content Include="TestContent.aspx" />
@@ -309,13 +309,6 @@
       <DependentUpon>Courses.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="dashboard.aspx.designer.vb">
-      <DependentUpon>dashboard.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="dashboard.aspx.vb">
-      <DependentUpon>dashboard.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
     <Compile Include="Login.aspx.designer.vb">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
@@ -348,6 +341,13 @@
     </Compile>
     <Compile Include="Results.aspx.vb">
       <DependentUpon>Results.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Student\Dashboard.aspx.designer.vb">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\Dashboard.aspx.vb">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="SubmisssionLinks.aspx.designer.vb">
@@ -656,8 +656,6 @@
     <Content Include="scss\widgets\profile.scss" />
     <Content Include="scss\widgets\steamline.scss" />
     <Content Include="scss\widgets\widgets.scss" />
-    <Content Include="plugins\images\users\university-icon-logo-element-illustration-university-symbol-design-from-2-colored-collection-simple-university-concept-can-be-used-web-mobile_159242-5088.avif" />
-    <Content Include="plugins\images\university-icon-logo-element-illustration-university-symbol-design-from-2-colored-collection-simple-university-concept-can-be-used-web-mobile_159242-5088.avif" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

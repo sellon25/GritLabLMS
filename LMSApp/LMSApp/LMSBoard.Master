@@ -21,12 +21,12 @@
     </title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/glogo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/glogo.png">
     <!-- Custom CSS -->
-    <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
+    <link href="../plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
     <!-- Custom CSS -->
-    <link href="css/style.min.css" rel="stylesheet">
+    <link href="../css/style.min.css" rel="stylesheet" />
     <!--link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
   rel="stylesheet"  type='text/css'--->
 </head>
@@ -49,28 +49,9 @@
       
         <!-- Topbar header - style you can find in pages.scss -->
       
-          <header class="" data-navbarbg="skin5">
+        <header class="" data-navbarbg="skin5">
             <nav class="navbar topbar top-navbar navbar-expand-md navbar-dark">
-              <%--  <div class="navbar-header" data-logobg="skin6">
-                    <!-- ============================================================== -->
-                    <!-- Logo -->
-                    <!-- ============================================================== -->
-                    <a class="navbar-brand" href="dashboard.html">
-                        <!-- Logo icon -->
-                        
-                            <img src="plugins/images/ulogo.png" class="logo-icon" alt="homepage" />
-                             <span>Learnboard</span>
-                        <!--End Logo icon -->
-                    </a>
-                    <!-- ============================================================== -->
-                    <!-- End Logo -->
-                    <!-- ============================================================== -->
-                    <!-- ============================================================== -->
-                    <!-- toggle and nav items -->
-                    <!-- ============================================================== -->
-                    <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none"
-                        href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
-                </div>--%>
+            
                 <!-- ============================================================== -->
                 <!-- End Logo -->
                 <!-- ============================================================== -->
@@ -78,13 +59,12 @@
                      <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
            
-                <h4 class=" fw-bold" style="margin-left:26vh">
+                <h4 class="pageTitle fw-bold">
                         <asp:ContentPlaceHolder ID="Change_Breadcrumb_PageTitle" runat="server">
                             Page title
                 </asp:ContentPlaceHolder>
                        </h4>
-                           
-                  
+                    
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
        
@@ -98,20 +78,20 @@
                         <!-- ============================================================== -->
                         <!-- Search -->
                         <!-- ============================================================== -->
-                        <li class=" in">
+                        <%--<li class=" in">
                             <form role="search" class="app-search d-none d-md-block me-3">
                                 <input type="text" placeholder="Search..." class="form-control mt-0">
                                 <a href="" class="active">
                                     <i class="fa fa-search"></i>
                                 </a>
                             </form>
-                        </li>
+                        </li>--%>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li>
                             <a class="profile-pic" href="#">
-                                <img src="plugins/images/users/varun.jpg" alt="user-img" width="36"
+                                <img src="../plugins/images/users/varun.jpg" alt="user-img" width="36"
                                     class="img-circle"><span class="text-dark font-medium">Steave</span></a>
                         </li>
                         <!-- ============================================================== -->
@@ -121,16 +101,15 @@
                 </div>
             </nav>
         </header>
+      
         <!-- End Topbar header -->
      
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
-      <aside class="left-sidebar" data-sidebarbg="">
-
-    <a class="navbar-brand" href="dashboard.html">
-                        <!-- Logo icon -->
-                        
-                            <img src="plugins/images/glogo.png" class="logo-icon" alt="homepage">
+        <aside class="left-sidebar">
+             <a class="navbar-brand" href="../Student/Dashboard.aspx">
+                        <!-- Logo icon -->                
+                            <img src="../plugins/images/glogo.png" class="logo-icon" alt="homepage">
                              <span class="text-white">Learnboard</span>
                         <!--End Logo icon -->
                     </a>
@@ -141,41 +120,47 @@
                     <ul id="sidebarnav">
                         <!-- User Profile-->
                         <li class="sidebar-item pt-2">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.aspx" aria-expanded="false">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Student/dashboard.aspx"
+                                aria-expanded="false">
                                 <i class="far fa-clock" aria-hidden="true"></i>
-                                <span class="hide-menu">Dashboard</span>
+                                <span class="">Dashboard</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="Courses.aspx" aria-expanded="false">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Courses.aspx"
+                                aria-expanded="false">
                                 <i class="far fa-clone" aria-hidden="true"></i>
-                                <span class="hide-menu">Courses</span>
+                                <span class="">Courses</span>
                             </a>
                         </li>
                          <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="Results.aspx" aria-expanded="false">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Results.aspx"
+                                aria-expanded="false">
                                 <i class="far fa-check-square" aria-hidden="true"></i>
-                                <span class="hide-menu">Results</span>
+                                <span class="">Results</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+                                aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
-                                <span class="hide-menu">Calender</span>
+                                <span class="">Calender</span>
                             </a>
                         </li>
                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+                                aria-expanded="false">
                                 <i class="fas fa-newspaper" aria-hidden="true"></i>
-                                <span class="hide-menu">News and Events</span>
+                                <span class="">News and Events</span>
                             </a>
                         </li>
-                      <%--  <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link active" href="fontawesome.html" target="_blank" aria-expanded="false">
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../fontawesome.html" target=”_blank”
+                                aria-expanded="false">
                                 <i class="fa fa-font" aria-hidden="true"></i>
-                                <span class="hide-menu">Icons</span>
+                                <span class="">Icons</span>
                             </a>
-                        </li>    --%>                    
+                        </li>                        
                       
                     </ul>
 
@@ -214,22 +199,22 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../plugins/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/app-style-switcher.js"></script>
-    <script src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <script src="../bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/app-style-switcher.js"></script>
+    <script src="../plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
     <!--Wave Effects -->
-    <script src="js/waves.js"></script>
+    <script src="../js/waves.js"></script>
     <!--Menu sidebar -->
-    <script src="js/sidebarmenu.js"></script>
+    <script src="../js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
-    <script src="js/custom.js"></script>
+    <script src="../js/custom.js"></script>
     <!--This page JavaScript -->
     <!--chartis chart-->
-    <script src="plugins/bower_components/chartist/dist/chartist.min.js"></script>
-    <script src="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-    <script src="js/pages/dashboards/dashboard1.js"></script>
+    <script src="../plugins/bower_components/chartist/dist/chartist.min.js"></script>
+    <script src="../plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="../js/pages/dashboards/dashboard1.js"></script>
 </body>
 
 </html>

@@ -4197,10 +4197,10 @@ textarea.form-control-lg {
     opacity: 0
 }
 
-.collapse:not(.show) {
-    display: none
+/*.collapse:not(.show) {
+    display: flex;
 }
-
+*/
 .collapsing {
     height: 0;
     overflow: hidden;
@@ -4892,7 +4892,7 @@ textarea.form-control-lg {
         }
 }
 
-@media (min-width: 768px) {
+
     .navbar-expand-md {
         -ms-flex-wrap: nowrap;
         flex-wrap: nowrap;
@@ -4926,7 +4926,7 @@ textarea.form-control-lg {
         .navbar-expand-md .navbar-toggler {
             display: none
         }
-}
+
 
 @media (min-width: 992px) {
     .navbar-expand-lg {
@@ -13126,7 +13126,8 @@ html[dir=ltr] body .p-l-0 {
 .page-wrapper {
     background: #edf1f5;
     position: relative;
-    padding-top: 70px;
+    padding: 70px 0 0 24vh;
+    
 }
 
     .page-wrapper > .container-fluid, .page-wrapper > .container-lg, .page-wrapper > .container-md, .page-wrapper > .container-sm, .page-wrapper > .container-xl, .page-wrapper > .container-xxl {
@@ -13149,9 +13150,6 @@ html[dir=ltr] body .p-l-0 {
 #main-wrapper[data-layout=vertical] {
 }
 
-    #main-wrapper[data-layout=vertical][data-sidebartype=full] .page-wrapper {
-        margin-left: 240px
-    }
 
 .white-box {
     background-color: #fff;
@@ -13225,9 +13223,6 @@ html[dir=ltr] body .p-l-0 {
         margin-left: 65px
     }
 
-    #main-wrapper[data-layout=vertical][data-sidebartype=mini-sidebar] .page-wrapper {
-        margin-left: 65px
-    }
 
     #main-wrapper[data-layout=vertical][data-sidebartype=mini-sidebar] .sidebar-nav .has-arrow:after, #main-wrapper[data-layout=vertical][data-sidebartype=mini-sidebar] .sidebar-nav .hide-menu {
         display: none
@@ -13239,10 +13234,15 @@ html[dir=ltr] body .p-l-0 {
         justify-content: center
     }
 
-    #main-wrapper[data-layout=vertical][data-sidebartype=mini-sidebar] .left-sidebar {
+   /* #main-wrapper[data-layout=vertical][data-sidebartype=mini-sidebar] .left-sidebar {
         width: 65px
-    }
+    }*/
 }
+
+.pageTitle {
+    padding-left: 26vh;
+}
+
 
 @media (max-width: 767px) {
     #main-wrapper {
@@ -13255,7 +13255,16 @@ html[dir=ltr] body .p-l-0 {
         #main-wrapper.show-sidebar .left-sidebar {
             left: 0
         }
+        .page-wrapper {
+            background: #edf1f5;
+            position: relative;
+            padding: 70px 0 0 0;
+            
+        }
 
+        .pageTitle {
+            padding-left: 2vh;
+        }
         #main-wrapper[data-layout=vertical][data-sidebar-position=fixed] .topbar .top-navbar .navbar-collapse {
             position: relative;
             top: 60px
@@ -13267,11 +13276,7 @@ html[dir=ltr] body .p-l-0 {
         }
 }
 
-@media (min-width: 768px) and (max-width:991.98px) {
-    #main-wrapper[data-sidebartype=mini-sidebar] .sidebar-nav ul .sidebar-item {
-        width: 65px
-    }
-}
+
 
 * {
     outline: none
@@ -14170,9 +14175,7 @@ select.form-select.form-control-line {
 .sidebar-nav ul {
 }
 
-    .sidebar-nav ul .sidebar-item {
-        width: 240px
-    }
+    
 
         .sidebar-nav ul .sidebar-item .sidebar-link {
             color: #fff;
@@ -14194,7 +14197,7 @@ select.form-select.form-control-line {
                 width: 35px;
                 line-height: 20px;
                 font-size: 23px;
-                color: black;
+                color: #bfbfbf;
                 text-align: center;
                 font-size: 14px
             }
@@ -14205,7 +14208,7 @@ select.form-select.form-control-line {
 
             .sidebar-nav ul .sidebar-item .sidebar-link.active {
                 font-weight: 500;
-                border-left: 3px solid #41b3f9
+                border-left: 3px solid #fff;
             }
 
         .sidebar-nav ul .sidebar-item.selected > .sidebar-link {
@@ -15369,25 +15372,25 @@ html body .waves-notransition {
 
 
 .bbg-danger {
-    background-color: #dfc6c66b;
+   /* background-color: #dfc6c66b;*/
     border: 2px inset #ff000040;
 }
 
 .bbg-good {
-    background-color: #bcbcbd;
+    /*background-color: #bcbcbd;*/
     border: 2px inset green;
 }
 
 
 .bbg-mid {
-    background-color: #a1720047;
+   /* background-color: #a1720047;*/
     border: 2px inset orange;
 }
 
 
 .left-sidebar {
     position: fixed;
-    width: 25.5vh;
+    width: 25vh;
     height: 100%;
     top: 0px;
     z-index: 55;
@@ -15395,9 +15398,10 @@ html body .waves-notransition {
     background: #fff;
     -webkit-box-shadow: 1px 0px 20px rgba(0,0,0,0.08);
     box-shadow: 1px 0px 20px rgba(0,0,0,0.08);
-    background-image: linear-gradient(to bottom, #93761e 60%, transparent);
+    background-image: linear-gradient(to bottom, #93761e 60%, black);
 }
 
 body{
     background: dimgray;
 }
+

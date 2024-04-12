@@ -19,7 +19,7 @@
               <div class="white-box boxShadow coursebox" style="background-image: url(plugins/images/calculus.png)">
                <div class="description">
                 <label class="box-title">Tutorials 1</label>
-                <p class="text-muted">TUTS1</p>
+                <p class="text-muted">TUT1</p>
                </div>
             </div>
             </a>
@@ -27,7 +27,7 @@
               <div class="white-box boxShadow coursebox" style="background-image: url(plugins/images/code.png)">
                <div class="description">
                 <label class="box-title">Tutorials 2</label>
-                <p class="text-muted">TUTS2</p>
+                <p class="text-muted">TUT2</p>
                </div>
             </div>
             </a>
