@@ -95,7 +95,6 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="demoMaster.aspx" />
     <Content Include="Student\Announcements.aspx" />
     <Content Include="bootstrap\dist\css\bootstrap-grid.css" />
     <Content Include="bootstrap\dist\css\bootstrap-grid.min.css" />
@@ -268,12 +267,26 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="demoMaster.aspx.designer.vb">
-      <DependentUpon>demoMaster.aspx</DependentUpon>
+    <Compile Include="LMSBoardAdmin.Master.designer.vb">
+      <DependentUpon>LMSBoardAdmin.Master</DependentUpon>
     </Compile>
-    <Compile Include="demoMaster.aspx.vb">
-      <DependentUpon>demoMaster.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+    <Compile Include="LMSBoardAdmin.Master.vb">
+      <DependentUpon>LMSBoardAdmin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LMSBoardFacilitator.Master.designer.vb">
+      <DependentUpon>LMSBoardFacilitator.Master</DependentUpon>
+    </Compile>
+    <Compile Include="LMSBoardFacilitator.Master.vb">
+      <DependentUpon>LMSBoardFacilitator.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LMSBoardManager.Master.designer.vb">
+      <DependentUpon>LMSBoardManager.Master</DependentUpon>
+    </Compile>
+    <Compile Include="LMSBoardManager.Master.vb">
+      <DependentUpon>LMSBoardManager.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Student\Announcements.aspx.designer.vb">
       <DependentUpon>Announcements.aspx</DependentUpon>
@@ -545,6 +558,9 @@
     <Content Include="css\icons\weather-icons\sass\weather-icons.min.scss" />
     <Content Include="css\icons\weather-icons\sass\weather-icons.scss" />
     <Content Include="LMSBoard.Master" />
+    <Content Include="LMSBoardManager.Master" />
+    <Content Include="LMSBoardAdmin.Master" />
+    <Content Include="LMSBoardFacilitator.Master" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

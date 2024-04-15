@@ -6,7 +6,7 @@
       Courses
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
-   <div class="row">
+   <div class="row courses-container">
         <a class="col-md-3" href="CoursePage.aspx">
            <div class="white-box boxShadow coursebox" style="background-image: url(../plugins/images/sldr.jpg)">
                <div class="description">
