@@ -53,6 +53,87 @@ LMSApp
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="F:LMSApp.LMSBoardAdmin._Type_pageTitle">
+<summary>
+Type_pageTitle control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LMSApp.LMSBoardAdmin._Change_Breadcrumb_PageTitle">
+<summary>
+Change_Breadcrumb_PageTitle control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LMSApp.LMSBoardAdmin._Main_ContentPlaceHolder">
+<summary>
+Main_ContentPlaceHolder control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LMSApp.LMSBoardFacilitator._Type_pageTitle">
+<summary>
+Type_pageTitle control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LMSApp.LMSBoardFacilitator._Change_Breadcrumb_PageTitle">
+<summary>
+Change_Breadcrumb_PageTitle control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LMSApp.LMSBoardFacilitator._Main_ContentPlaceHolder">
+<summary>
+Main_ContentPlaceHolder control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LMSApp.LMSBoardManager._Type_pageTitle">
+<summary>
+Type_pageTitle control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LMSApp.LMSBoardManager._Change_Breadcrumb_PageTitle">
+<summary>
+Change_Breadcrumb_PageTitle control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:LMSApp.LMSBoardManager._Main_ContentPlaceHolder">
+<summary>
+Main_ContentPlaceHolder control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
 <member name="F:LMSApp.LMSBoard._Type_pageTitle">
 <summary>
 Type_pageTitle control.
