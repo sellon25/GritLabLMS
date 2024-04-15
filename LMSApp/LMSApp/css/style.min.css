@@ -15251,6 +15251,8 @@ html body .waves-notransition {
 
 .coursebox {
     height: 20vh;
+    min-width: 32vh;
+    margin: 0.8rem;
     background-size: cover;
     display: flex;
     flex-direction: column;

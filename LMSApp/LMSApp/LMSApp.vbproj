@@ -95,6 +95,7 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="demoMaster.aspx" />
     <Content Include="Student\Announcements.aspx" />
     <Content Include="bootstrap\dist\css\bootstrap-grid.css" />
     <Content Include="bootstrap\dist\css\bootstrap-grid.min.css" />
@@ -267,6 +268,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="demoMaster.aspx.designer.vb">
+      <DependentUpon>demoMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="demoMaster.aspx.vb">
+      <DependentUpon>demoMaster.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Student\Announcements.aspx.designer.vb">
       <DependentUpon>Announcements.aspx</DependentUpon>
     </Compile>
