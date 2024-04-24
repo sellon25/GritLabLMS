@@ -107,7 +107,7 @@
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
         <aside class="left-sidebar">
-             <a class="navbar-brand" href="../Student/Dashboard.aspx">
+             <a class="navbar-brand" href="../Facilitator/Dashboard.aspx">
                         <!-- Logo icon -->                
                             <img src="../plugins/images/glogo.png" class="logo-icon" alt="homepage">
                              <span class="text-white">Learnboard</span>
@@ -120,15 +120,18 @@
                     <ul id="sidebarnav">
                         <!-- User Profile-->
                         <li class="sidebar-item pt-2">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Student/dashboard.aspx"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Facilitator/dashboard.aspx"
                                 aria-expanded="false">
+                                &nbsp
                                 <i class="far fa-clock" aria-hidden="true"></i>
+                                
                                 <span class="">Dashboard</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Student/Courses.aspx"
                                 aria-expanded="false">
+                                &nbsp
                                 <i class="far fa-clone" aria-hidden="true"></i>
                                 <span class="">Courses & Projects</span>
                             </a>
@@ -136,6 +139,7 @@
                          <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Student/Results.aspx"
                                 aria-expanded="false">
+                                &nbsp
                                 <i class="far fa-check-square" aria-hidden="true"></i>
                                 <span class="">Results</span>
                             </a>
@@ -144,6 +148,7 @@
                        <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
                                 aria-expanded="false">
+                                &nbsp
                                 <i class="fas fa-newspaper" aria-hidden="true"></i>
                                 <span class="">News and Events</span>
                             </a>
