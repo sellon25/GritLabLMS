@@ -27,8 +27,12 @@
     <link rel="stylesheet" href="../plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
     <!-- Custom CSS -->
     <link href="../css/style.min.css" rel="stylesheet" />
+    <!--Side Bar Custom CSS-->
+    
     <!--link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
   rel="stylesheet"  type='text/css'--->
+    <link href="../Admin/admincss/style.css" rel="stylesheet" />
+    <!--table css-->
 </head>
 
 <body>
@@ -89,11 +93,11 @@
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
-                        <li>
+                       <!-- <li>
                             <a class="profile-pic" href="#">
                                 <img src="../plugins/images/users/varun.jpg" alt="user-img" width="36"
                                     class="img-circle"><span class="text-dark font-medium">Steave</span></a>
-                        </li>
+                        </li>-->
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
@@ -107,10 +111,10 @@
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
         <aside class="left-sidebar">
-             <a class="navbar-brand" href="../Student/Dashboard.aspx">
+             <a class="navbar-brand" href="../Admin/Dashboard.aspx">
                         <!-- Logo icon -->                
                             <img src="../plugins/images/glogo.png" class="logo-icon" alt="homepage">
-                             <span class="text-white">Learnboard</span>
+                             <span class="text-white">Admin Board</span>
                         <!--End Logo icon -->
                     </a>
             <!-- Sidebar scroll-->
@@ -120,12 +124,40 @@
                     <ul id="sidebarnav">
                         <!-- User Profile-->
                         <li class="sidebar-item pt-2">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Student/dashboard.aspx"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Admin/Dashboard.aspx"
                                 aria-expanded="false">
                                 <i class="far fa-clock" aria-hidden="true"></i>
-                                <span class="">Dashboard</span>
+                                <span class=""> Dashboard </span>
                             </a>
                         </li>
+                       <!-- <li class="sidebar-item pt-2">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Admin/Notifications.aspx"
+                                aria-expanded="false">
+                                <i class="fas fa-bell" aria-hidden="true"></i>
+                                <span class=""> Notifications </span>
+                            </a>
+                        </li>-->
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Admin/Manage_Griters_and_Kingsmen.aspx"
+                                aria-expanded="false">
+                                <i class="fas fa-user-circle" aria-hidden="true"></i>
+                                <p class="text-white"  style="font-size: 13.5px;">Manage Students <br/> & Kingsmen </p>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Admin/Set_Projects_and_Course.aspx"
+                                aria-expanded="false">
+                                <i class=" fas fa-tasks" aria-hidden="true"></i>
+                                <p class="text-white"  style="font-size: 13.5px;">Set Projects & <br/> Courses</p>
+                            </a>
+                        </li>
+                       <!-- <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+                                aria-expanded="false">
+                                <i class="fas fa-user-circle" aria-hidden="true"></i>
+                                <span class=""> </span>
+                            </a>
+                        </li>-->
                       
                        <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
@@ -134,13 +166,13 @@
                                 <span class="">News and Events</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
+                        <!--<li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../fontawesome.html" target=”_blank”
                                 aria-expanded="false">
                                 <i class="fa fa-font" aria-hidden="true"></i>
                                 <span class="">Icons</span>
                             </a>
-                        </li>                        
+                        </li> -->                       
                       
                     </ul>
 
