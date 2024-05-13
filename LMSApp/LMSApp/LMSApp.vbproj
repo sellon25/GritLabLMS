@@ -95,9 +95,55 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\addkingsmen.aspx" />
+    <Content Include="Admin\AddProject.aspx" />
+    <Content Include="Admin\admincss\style.css" />
+    <Content Include="Admin\Announcements.aspx" />
+    <Content Include="Admin\AnnouncementsKingsmen.aspx" />
+    <Content Include="Admin\Courses.aspx" />
+    <Content Include="Admin\Dashboard.aspx" />
+    <Content Include="Admin\demo.aspx" />
+    <Content Include="Admin\Events_and_News.aspx" />
+    <Content Include="Admin\gritermanagement.aspx" />
+    <Content Include="Admin\kingsmenmanagement.aspx" />
+    <Content Include="Admin\lablist.aspx" />
+    <Content Include="Admin\labresults.aspx" />
+    <Content Include="Admin\Labs.aspx" />
+    <Content Include="Admin\ManageUsers.aspx" />
+    <Content Include="Admin\Manage_Griters.aspx" />
+    <Content Include="Admin\Manage_Griters_and_Kingsmen.aspx" />
+    <Content Include="Admin\Manage_Kingsmen.aspx" />
+    <Content Include="Admin\MBKA.aspx" />
+    <Content Include="Admin\MBKAAnnoucements.aspx" />
+    <Content Include="Admin\MBKAOverview.aspx" />
+    <Content Include="Admin\MBKASubmission.aspx" />
+    <Content Include="Admin\Notifications.aspx" />
+    <Content Include="Admin\Progress.aspx" />
+    <Content Include="Admin\ProjectList.aspx" />
+    <Content Include="Admin\Projects.aspx" />
+    <Content Include="Admin\setlab.aspx" />
+    <Content Include="Admin\Set_Announcements.aspx" />
+    <Content Include="Admin\Set_Projects_and_Course.aspx" />
+    <Content Include="Admin\SQDG.aspx" />
+    <Content Include="Admin\SQDGAnnoucements.aspx" />
+    <Content Include="Admin\SQDGOverview.aspx" />
+    <Content Include="Admin\SQDGSubmission.aspx" />
+    <Content Include="Admin\table.aspx" />
+    <Content Include="Admin\UploadPDF.aspx" />
+    <Content Include="Facilitator\AssessmentStudentList.aspx" />
+    <Content Include="Facilitator\CourseContent.aspx" />
+    <Content Include="Facilitator\CourseResults.aspx" />
+    <Content Include="Facilitator\demo.aspx" />
+    <Content Include="Facilitator\MarkAssessment.aspx" />
+    <Content Include="Facilitator\NewAssessment.aspx" />
+    <Content Include="Facilitator\ProgressAndFeedback.aspx" />
+    <Content Include="Facilitator\ProjectParticipants.aspx" />
+    <Content Include="Facilitator\SubmissionLinks.aspx" />
+    <Content Include="Facilitator\TestsAndAssignments.aspx" />
     <Content Include="Manager\Dashboard.aspx" />
     <Content Include="Manager\ExtractedandGritters.aspx" />
     <Content Include="Manager\Kingsman.aspx" />
+    <Content Include="Manager\KingsmanProjects.aspx" />
     <Content Include="Manager\Labs.aspx" />
     <Content Include="Manager\Manager Files\Bootstrap\css\bootstrap.min.css" />
     <Content Include="Manager\Manager Files\Bootstrap\js\bootstrap.min.js" />
@@ -2378,6 +2424,314 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\addkingsmen.aspx.designer.vb">
+      <DependentUpon>addkingsmen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\addkingsmen.aspx.vb">
+      <DependentUpon>addkingsmen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddProject.aspx.designer.vb">
+      <DependentUpon>AddProject.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddProject.aspx.vb">
+      <DependentUpon>AddProject.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Announcements.aspx.designer.vb">
+      <DependentUpon>Announcements.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Announcements.aspx.vb">
+      <DependentUpon>Announcements.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AnnouncementsKingsmen.aspx.designer.vb">
+      <DependentUpon>AnnouncementsKingsmen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AnnouncementsKingsmen.aspx.vb">
+      <DependentUpon>AnnouncementsKingsmen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Courses.aspx.designer.vb">
+      <DependentUpon>Courses.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Courses.aspx.vb">
+      <DependentUpon>Courses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Dashboard.aspx.designer.vb">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Dashboard.aspx.vb">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\demo.aspx.designer.vb">
+      <DependentUpon>demo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\demo.aspx.vb">
+      <DependentUpon>demo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Events_and_News.aspx.designer.vb">
+      <DependentUpon>Events_and_News.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Events_and_News.aspx.vb">
+      <DependentUpon>Events_and_News.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\gritermanagement.aspx.designer.vb">
+      <DependentUpon>gritermanagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\gritermanagement.aspx.vb">
+      <DependentUpon>gritermanagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\kingsmenmanagement.aspx.designer.vb">
+      <DependentUpon>kingsmenmanagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\kingsmenmanagement.aspx.vb">
+      <DependentUpon>kingsmenmanagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\lablist.aspx.designer.vb">
+      <DependentUpon>lablist.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\lablist.aspx.vb">
+      <DependentUpon>lablist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\labresults.aspx.designer.vb">
+      <DependentUpon>labresults.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\labresults.aspx.vb">
+      <DependentUpon>labresults.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Labs.aspx.designer.vb">
+      <DependentUpon>Labs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Labs.aspx.vb">
+      <DependentUpon>Labs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ManageUsers.aspx.designer.vb">
+      <DependentUpon>ManageUsers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ManageUsers.aspx.vb">
+      <DependentUpon>ManageUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Manage_Griters.aspx.designer.vb">
+      <DependentUpon>Manage_Griters.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Manage_Griters.aspx.vb">
+      <DependentUpon>Manage_Griters.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Manage_Griters_and_Kingsmen.aspx.designer.vb">
+      <DependentUpon>Manage_Griters_and_Kingsmen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Manage_Griters_and_Kingsmen.aspx.vb">
+      <DependentUpon>Manage_Griters_and_Kingsmen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Manage_Kingsmen.aspx.designer.vb">
+      <DependentUpon>Manage_Kingsmen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Manage_Kingsmen.aspx.vb">
+      <DependentUpon>Manage_Kingsmen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\MBKA.aspx.designer.vb">
+      <DependentUpon>MBKA.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\MBKA.aspx.vb">
+      <DependentUpon>MBKA.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\MBKAAnnoucements.aspx.designer.vb">
+      <DependentUpon>MBKAAnnoucements.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\MBKAAnnoucements.aspx.vb">
+      <DependentUpon>MBKAAnnoucements.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\MBKAOverview.aspx.designer.vb">
+      <DependentUpon>MBKAOverview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\MBKAOverview.aspx.vb">
+      <DependentUpon>MBKAOverview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\MBKASubmission.aspx.designer.vb">
+      <DependentUpon>MBKASubmission.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\MBKASubmission.aspx.vb">
+      <DependentUpon>MBKASubmission.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Notifications.aspx.designer.vb">
+      <DependentUpon>Notifications.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Notifications.aspx.vb">
+      <DependentUpon>Notifications.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Progress.aspx.designer.vb">
+      <DependentUpon>Progress.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Progress.aspx.vb">
+      <DependentUpon>Progress.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ProjectList.aspx.designer.vb">
+      <DependentUpon>ProjectList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ProjectList.aspx.vb">
+      <DependentUpon>ProjectList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Projects.aspx.designer.vb">
+      <DependentUpon>Projects.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Projects.aspx.vb">
+      <DependentUpon>Projects.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\setlab.aspx.designer.vb">
+      <DependentUpon>setlab.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\setlab.aspx.vb">
+      <DependentUpon>setlab.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Set_Announcements.aspx.designer.vb">
+      <DependentUpon>Set_Announcements.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Set_Announcements.aspx.vb">
+      <DependentUpon>Set_Announcements.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Set_Projects_and_Course.aspx.designer.vb">
+      <DependentUpon>Set_Projects_and_Course.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Set_Projects_and_Course.aspx.vb">
+      <DependentUpon>Set_Projects_and_Course.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\SQDG.aspx.designer.vb">
+      <DependentUpon>SQDG.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\SQDG.aspx.vb">
+      <DependentUpon>SQDG.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\SQDGAnnoucements.aspx.designer.vb">
+      <DependentUpon>SQDGAnnoucements.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\SQDGAnnoucements.aspx.vb">
+      <DependentUpon>SQDGAnnoucements.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\SQDGOverview.aspx.designer.vb">
+      <DependentUpon>SQDGOverview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\SQDGOverview.aspx.vb">
+      <DependentUpon>SQDGOverview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\SQDGSubmission.aspx.designer.vb">
+      <DependentUpon>SQDGSubmission.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\SQDGSubmission.aspx.vb">
+      <DependentUpon>SQDGSubmission.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\table.aspx.designer.vb">
+      <DependentUpon>table.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\table.aspx.vb">
+      <DependentUpon>table.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UploadPDF.aspx.designer.vb">
+      <DependentUpon>UploadPDF.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UploadPDF.aspx.vb">
+      <DependentUpon>UploadPDF.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Facilitator\AssessmentStudentList.aspx.designer.vb">
+      <DependentUpon>AssessmentStudentList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Facilitator\AssessmentStudentList.aspx.vb">
+      <DependentUpon>AssessmentStudentList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Facilitator\CourseContent.aspx.designer.vb">
+      <DependentUpon>CourseContent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Facilitator\CourseContent.aspx.vb">
+      <DependentUpon>CourseContent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Facilitator\CourseResults.aspx.designer.vb">
+      <DependentUpon>CourseResults.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Facilitator\CourseResults.aspx.vb">
+      <DependentUpon>CourseResults.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Facilitator\demo.aspx.designer.vb">
+      <DependentUpon>demo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Facilitator\demo.aspx.vb">
+      <DependentUpon>demo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Facilitator\MarkAssessment.aspx.designer.vb">
+      <DependentUpon>MarkAssessment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Facilitator\MarkAssessment.aspx.vb">
+      <DependentUpon>MarkAssessment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Facilitator\NewAssessment.aspx.designer.vb">
+      <DependentUpon>NewAssessment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Facilitator\NewAssessment.aspx.vb">
+      <DependentUpon>NewAssessment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Facilitator\ProgressAndFeedback.aspx.designer.vb">
+      <DependentUpon>ProgressAndFeedback.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Facilitator\ProgressAndFeedback.aspx.vb">
+      <DependentUpon>ProgressAndFeedback.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Facilitator\ProjectParticipants.aspx.designer.vb">
+      <DependentUpon>ProjectParticipants.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Facilitator\ProjectParticipants.aspx.vb">
+      <DependentUpon>ProjectParticipants.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Facilitator\SubmissionLinks.aspx.designer.vb">
+      <DependentUpon>SubmissionLinks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Facilitator\SubmissionLinks.aspx.vb">
+      <DependentUpon>SubmissionLinks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Facilitator\TestsAndAssignments.aspx.designer.vb">
+      <DependentUpon>TestsAndAssignments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Facilitator\TestsAndAssignments.aspx.vb">
+      <DependentUpon>TestsAndAssignments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="LMSBoardAdmin.Master.designer.vb">
       <DependentUpon>LMSBoardAdmin.Master</DependentUpon>
     </Compile>
@@ -2461,6 +2815,13 @@
     <Compile Include="Manager\Kingsman.aspx.vb">
       <DependentUpon>Kingsman.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Manager\KingsmanProjects.aspx.designer.vb">
+      <DependentUpon>KingsmanProjects.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\KingsmanProjects.aspx.vb">
+      <DependentUpon>KingsmanProjects.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Manager\Labs.aspx.designer.vb">
       <DependentUpon>Labs.aspx</DependentUpon>
@@ -2949,10 +3310,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Admin\" />
-    <Folder Include="Facilitator\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
