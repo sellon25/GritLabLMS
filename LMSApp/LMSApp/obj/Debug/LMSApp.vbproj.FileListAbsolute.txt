@@ -195,3 +195,7 @@ C:\Users\RUSSELL\Documents\GitHub\GritLabLMS\LMSApp\LMSApp\obj\Debug\LMSApp.vbpr
 C:\Users\RUSSELL\Documents\GitHub\GritLabLMS\LMSApp\LMSApp\obj\Debug\LMSApp.Resources.resources
 C:\Users\RUSSELL\Documents\GitHub\GritLabLMS\LMSApp\LMSApp\obj\Debug\LMSApp.vbproj.GenerateResource.cache
 C:\Users\RUSSELL\Documents\GitHub\GritLabLMS\LMSApp\LMSApp\obj\Debug\LMSApp.vbproj.CoreCompileInputs.cache
+C:\JBS_Stuff\GritLabLMS\LMSApp\LMSApp\obj\Debug\LMSApp.vbproj.AssemblyReference.cache
+C:\JBS_Stuff\GritLabLMS\LMSApp\LMSApp\obj\Debug\LMSApp.Resources.resources
+C:\JBS_Stuff\GritLabLMS\LMSApp\LMSApp\obj\Debug\LMSApp.vbproj.GenerateResource.cache
+C:\JBS_Stuff\GritLabLMS\LMSApp\LMSApp\obj\Debug\LMSApp.vbproj.CoreCompileInputs.cache
