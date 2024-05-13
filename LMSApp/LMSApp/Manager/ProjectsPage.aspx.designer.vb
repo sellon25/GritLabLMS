@@ -11,7 +11,7 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class ProjectsPage
+Partial Public Class ProjectsPage1
 
     '''<summary>
     '''HyperLink1 control.
@@ -21,22 +21,4 @@ Partial Public Class ProjectsPage
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents HyperLink1 As Global.System.Web.UI.WebControls.HyperLink
-
-    '''<summary>
-    '''HyperLink2 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents HyperLink2 As Global.System.Web.UI.WebControls.HyperLink
-
-    '''<summary>
-    '''HyperLink3 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents HyperLink3 As Global.System.Web.UI.WebControls.HyperLink
 End Class
