@@ -12,5 +12,5 @@ Option Explicit On
 
 
 
-Partial Public Class Announcements1
+Partial Public Class Manage_Students_and_Employees
 End Class

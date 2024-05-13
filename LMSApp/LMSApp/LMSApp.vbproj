@@ -112,6 +112,7 @@
     <Content Include="Admin\ManageUsers.aspx" />
     <Content Include="Admin\Manage_Griters.aspx" />
     <Content Include="Admin\Manage_Griters_and_Kingsmen.aspx" />
+    <Content Include="Admin\Manage_Griters_and_Kingsmen1.aspx" />
     <Content Include="Admin\Manage_Kingsmen.aspx" />
     <Content Include="Admin\MBKA.aspx" />
     <Content Include="Admin\MBKAAnnoucements.aspx" />
@@ -2546,6 +2547,13 @@
     </Compile>
     <Compile Include="Admin\Manage_Griters_and_Kingsmen.aspx.vb">
       <DependentUpon>Manage_Griters_and_Kingsmen.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Manage_Griters_and_Kingsmen1.aspx.designer.vb">
+      <DependentUpon>Manage_Griters_and_Kingsmen1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Manage_Griters_and_Kingsmen1.aspx.vb">
+      <DependentUpon>Manage_Griters_and_Kingsmen1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Manage_Kingsmen.aspx.designer.vb">
@@ -2784,6 +2792,7 @@
     </Compile>
     <Compile Include="LMSBoardAdmin.Master.vb">
       <DependentUpon>LMSBoardAdmin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="LMSBoardFacilitator.Master.designer.vb">
       <DependentUpon>LMSBoardFacilitator.Master</DependentUpon>

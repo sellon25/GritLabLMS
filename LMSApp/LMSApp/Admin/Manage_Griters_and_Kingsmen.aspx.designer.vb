@@ -12,5 +12,5 @@ Option Explicit On
 
 
 
-Partial Public Class Manage_Students_and_Employees
+Partial Public Class Manage_Griters_and_Kingsmen
 End Class

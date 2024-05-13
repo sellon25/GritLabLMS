@@ -11,7 +11,7 @@
                 <h3 class="box-title" >Griter Management</h3>
             </div>
         </a>
-        <a class="col-md-12 text-black" href="Announcements.aspx">
+        <a class="col-md-12 text-black" href="AdminAnnouncement.aspx">
             <div class="white-box boxShadow">            
                 <h3 class="box-title" >Set Announcements</h3>
             </div>
