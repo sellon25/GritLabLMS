@@ -12,5 +12,5 @@ Option Explicit On
 
 
 
-Partial Public Class Manage_Students_and_Employees
+Partial Public Class WebForm1
 End Class
