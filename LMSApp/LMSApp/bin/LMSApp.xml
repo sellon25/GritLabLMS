@@ -287,6 +287,15 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
+<member name="F:LMSApp.Manager.Labs._HyperLink1">
+<summary>
+HyperLink1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
 <member name="F:LMSApp.Kingsman._HyperLink2">
 <summary>
 HyperLink2 control.
@@ -353,15 +362,6 @@ To modify move field declaration from designer file to code-behind file.
 <member name="F:LMSApp.Kingsman._HyperLink8">
 <summary>
 HyperLink8 control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:LMSApp.Labs._HyperLink1">
-<summary>
-HyperLink1 control.
 </summary>
 <remarks>
 Auto-generated field.
