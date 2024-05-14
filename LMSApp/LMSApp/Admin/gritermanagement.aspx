@@ -12,8 +12,8 @@
             <h3 class="box-title">GRITER PROFILE</h3>
             <form>
                 <div class="form-group">
-                    <label for="Load_student">Enter Student Number To Load</label> <button type="button" class=" btn-success">GO</button>
-                    <input type="text" class="form-control" id="Load_student" placeholder="Enter Student Number">
+                    <label for="Load_student">Enter Student Number To Load</label> 
+                    <input type="text" class="form-control" id="Load_student" placeholder="Enter Student Number"><button type="button" class=" btn-success">GO</button>
                 </div>
                 
                 <div class="form-group">
@@ -66,7 +66,7 @@
                  
                         </div>
                     </div>
-                        <%--<div class="table-responsive">--%>
+                       <div class="table-responsive">
                             <table class="table no-wrap">
                                 <thead>
                                     <tr>
@@ -144,6 +144,7 @@
                                      </tr>
                                 </tbody>
                             </table>
+                        </div>
                         </div>
                     </div>
                 </div>

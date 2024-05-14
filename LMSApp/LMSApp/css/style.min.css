@@ -15407,8 +15407,8 @@ body{
     background: dimgray;
 }
 
-.courses-container a{
+.courses-container a {
     min-width: 32vh;
-    
+    margin: 0.2rem;
 }
 

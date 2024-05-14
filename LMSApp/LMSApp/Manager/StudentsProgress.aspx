@@ -135,7 +135,7 @@
                     <button type="button" class="btn btn-secondary" onclick="resetFilter()">Reset</button>
                 </div>
             </div>
-                <%--<div class="table-responsive">--%>
+                <div class="table-responsive">
                     <table class="table no-wrap">
                         <thead>
                             <tr>

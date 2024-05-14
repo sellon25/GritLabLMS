@@ -110,7 +110,7 @@
              <a class="navbar-brand" href="../Facilitator/Dashboard.aspx">
                         <!-- Logo icon -->                
                             <img src="../plugins/images/glogo.png" class="logo-icon" alt="homepage">
-                             <span class="text-white">Learnboard</span>
+                             <span class="text-white">Leader board</span>
                         <!--End Logo icon -->
                     </a>
             <!-- Sidebar scroll-->
