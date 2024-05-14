@@ -97,7 +97,7 @@
   <ItemGroup>
     <Content Include="Admin\addkingsmen.aspx" />
     <Content Include="Admin\AddProject.aspx" />
-    <Content Include="Admin\AdminAnnouncement.aspx" />
+    <Content Include="Admin\admincss\style.css" />
     <Content Include="Admin\Announcements.aspx" />
     <Content Include="Admin\AnnouncementsKingsmen.aspx" />
     <Content Include="Admin\Courses.aspx" />
@@ -130,7 +130,6 @@
     <Content Include="Admin\SQDGSubmission.aspx" />
     <Content Include="Admin\table.aspx" />
     <Content Include="Admin\UploadPDF.aspx" />
-    <Content Include="Admin\WebForm1.aspx" />
     <Content Include="Facilitator\AnnouncementsPage.aspx" />
     <Content Include="Facilitator\AssessmentStudentList.aspx" />
     <Content Include="Facilitator\CourseContent.aspx" />
@@ -146,11 +145,18 @@
     <Content Include="Facilitator\ProjectParticipants.aspx" />
     <Content Include="Facilitator\SubmissionLinks.aspx" />
     <Content Include="Facilitator\TestsAndAssignments.aspx" />
+    <Content Include="Manager\Announcements.aspx" />
+    <Content Include="Manager\ApproveCourses.aspx" />
+    <Content Include="Manager\ApproveProjects.aspx" />
+    <Content Include="Manager\ApproveProjectsCourses.aspx" />
+    <Content Include="Manager\CoursePage.aspx" />
     <Content Include="Manager\Dashboard.aspx" />
+    <Content Include="Manager\demo.aspx" />
     <Content Include="Manager\ExtractedandGritters.aspx" />
     <Content Include="Manager\Kingsman.aspx" />
     <Content Include="Manager\KingsmanProjects.aspx" />
     <Content Include="Manager\Labs.aspx" />
+    <Content Include="Manager\ManageAdmins.aspx" />
     <Content Include="Manager\Manager Files\Bootstrap\css\bootstrap.min.css" />
     <Content Include="Manager\Manager Files\Bootstrap\js\bootstrap.min.js" />
     <Content Include="Manager\Manager Files\Bootstrap\js\jquery-3.3.1.slim.min.js" />
@@ -2248,13 +2254,6 @@
     <Content Include="Manager\Manager Files\imgs\search-online.png" />
     <Content Include="Manager\Manager Files\imgs\sign-up.png" />
     <Content Include="Manager\Manager Files\imgs\writer.png" />
-    <Content Include="Manager\Announcements.aspx" />
-    <Content Include="Manager\ApproveCourses.aspx" />
-    <Content Include="Manager\ApproveProjects.aspx" />
-    <Content Include="Manager\ApproveProjectsCourses.aspx" />
-    <Content Include="Manager\CoursePage.aspx" />
-    <Content Include="Manager\demo.aspx" />
-    <Content Include="Manager\ManageAdmins.aspx" />
     <Content Include="Manager\ProjectsPage.aspx" />
     <Content Include="Manager\SQWID.aspx" />
     <Content Include="Manager\StudentsProgress.aspx" />
@@ -2428,6 +2427,7 @@
     <Content Include="Student\TestContent.aspx" />
     <Content Include="Student\Tests.aspx" />
     <Content Include="Web.config" />
+    <Content Include="WebForm2.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\addkingsmen.aspx.designer.vb">
@@ -2443,13 +2443,6 @@
     <Compile Include="Admin\AddProject.aspx.vb">
       <DependentUpon>AddProject.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\AdminAnnouncement.aspx.designer.vb">
-      <DependentUpon>AdminAnnouncement.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\AdminAnnouncement.aspx.vb">
-      <DependentUpon>AdminAnnouncement.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Admin\Announcements.aspx.designer.vb">
       <DependentUpon>Announcements.aspx</DependentUpon>
@@ -2547,7 +2540,7 @@
     </Compile>
     <Compile Include="Admin\Manage_Griters_and_Kingsmen.aspx.vb">
       <DependentUpon>Manage_Griters_and_Kingsmen.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Manage_Kingsmen.aspx.designer.vb">
       <DependentUpon>Manage_Kingsmen.aspx</DependentUpon>
@@ -2674,13 +2667,6 @@
     <Compile Include="Admin\UploadPDF.aspx.vb">
       <DependentUpon>UploadPDF.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\WebForm1.aspx.designer.vb">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\WebForm1.aspx.vb">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Facilitator\AnnouncementsPage.aspx.designer.vb">
       <DependentUpon>AnnouncementsPage.aspx</DependentUpon>
@@ -2813,42 +2799,42 @@
     </Compile>
     <Compile Include="Manager\Announcements.aspx.vb">
       <DependentUpon>Announcements.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Manager\ApproveCourses.aspx.designer.vb">
       <DependentUpon>ApproveCourses.aspx</DependentUpon>
     </Compile>
     <Compile Include="Manager\ApproveCourses.aspx.vb">
       <DependentUpon>ApproveCourses.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Manager\ApproveProjects.aspx.designer.vb">
       <DependentUpon>ApproveProjects.aspx</DependentUpon>
     </Compile>
     <Compile Include="Manager\ApproveProjects.aspx.vb">
       <DependentUpon>ApproveProjects.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Manager\ApproveProjectsCourses.aspx.designer.vb">
       <DependentUpon>ApproveProjectsCourses.aspx</DependentUpon>
     </Compile>
     <Compile Include="Manager\ApproveProjectsCourses.aspx.vb">
       <DependentUpon>ApproveProjectsCourses.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Manager\CoursePage.aspx.designer.vb">
       <DependentUpon>CoursePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Manager\CoursePage.aspx.vb">
       <DependentUpon>CoursePage.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Manager\Dashboard.aspx.designer.vb">
       <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
     <Compile Include="Manager\Dashboard.aspx.vb">
       <DependentUpon>Dashboard.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Manager\demo.aspx.designer.vb">
       <DependentUpon>demo.aspx</DependentUpon>
@@ -2862,14 +2848,14 @@
     </Compile>
     <Compile Include="Manager\ExtractedandGritters.aspx.vb">
       <DependentUpon>ExtractedandGritters.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Manager\Kingsman.aspx.designer.vb">
       <DependentUpon>Kingsman.aspx</DependentUpon>
     </Compile>
     <Compile Include="Manager\Kingsman.aspx.vb">
       <DependentUpon>Kingsman.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Manager\KingsmanProjects.aspx.designer.vb">
       <DependentUpon>KingsmanProjects.aspx</DependentUpon>
@@ -2883,35 +2869,35 @@
     </Compile>
     <Compile Include="Manager\Labs.aspx.vb">
       <DependentUpon>Labs.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Manager\ManageAdmins.aspx.designer.vb">
       <DependentUpon>ManageAdmins.aspx</DependentUpon>
     </Compile>
     <Compile Include="Manager\ManageAdmins.aspx.vb">
       <DependentUpon>ManageAdmins.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Manager\ProjectsPage.aspx.designer.vb">
       <DependentUpon>ProjectsPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Manager\ProjectsPage.aspx.vb">
-      <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>ProjectsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Manager\SQWID.aspx.designer.vb">
       <DependentUpon>SQWID.aspx</DependentUpon>
     </Compile>
     <Compile Include="Manager\SQWID.aspx.vb">
       <DependentUpon>SQWID.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Manager\StudentsProgress.aspx.designer.vb">
       <DependentUpon>StudentsProgress.aspx</DependentUpon>
     </Compile>
     <Compile Include="Manager\StudentsProgress.aspx.vb">
       <DependentUpon>StudentsProgress.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Student\Announcements.aspx.designer.vb">
       <DependentUpon>Announcements.aspx</DependentUpon>
@@ -3022,6 +3008,13 @@
     </Compile>
     <Compile Include="Student\Tests.aspx.vb">
       <DependentUpon>Tests.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="WebForm2.aspx.designer.vb">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm2.aspx.vb">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
   </ItemGroup>
@@ -3185,6 +3178,7 @@
     <Content Include="LMSBoard.Master" />
     <Content Include="LMSBoardManager.Master" />
     <Content Include="LMSBoardFacilitator.Master" />
+    <Content Include="LMSBoardAdmin.Master" />
     <Content Include="Manager\Manager Files\fontawesome\less\brands.less" />
     <Content Include="Manager\Manager Files\fontawesome\less\fontawesome.less" />
     <Content Include="Manager\Manager Files\fontawesome\less\regular.less" />
@@ -3238,7 +3232,6 @@
     <Content Include="Manager\Manager Files\fontawesome\webfonts\fa-solid-900.woff2" />
     <Content Include="Manager\Manager Files\fontawesome\webfonts\fa-v4compatibility.ttf" />
     <Content Include="Manager\Manager Files\fontawesome\webfonts\fa-v4compatibility.woff2" />
-    <Content Include="LMSBoardAdmin.Master" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
