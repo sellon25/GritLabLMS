@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/LMSBoard.Master" CodeBehind="Dashboard.aspx.vb" Inherits="LMSApp.Dashboard1" %>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/LMSBoard.Master" CodeBehind="Dashboard.aspx.vb" Inherits="LMSApp.Student.Dashboard1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Type_pageTitle" runat="server">
     Dashboard
 </asp:Content>

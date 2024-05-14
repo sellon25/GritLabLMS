@@ -1,8 +1,11 @@
-﻿Public Class CoursePage1
-    Inherits System.Web.UI.Page
+﻿Namespace Facilitator
 
-    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    Public Class CoursePage1
+        Inherits System.Web.UI.Page
 
-    End Sub
+        Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
-End Class
+        End Sub
+
+    End Class
+End Namespace

@@ -1,8 +1,12 @@
-﻿Public Class Announcements1
-    Inherits System.Web.UI.Page
+﻿Namespace Admin
 
-    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
-    End Sub
+    Public Class Announcements1
+        Inherits System.Web.UI.Page
 
-End Class
+        Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+
+        End Sub
+
+    End Class
+End Namespace

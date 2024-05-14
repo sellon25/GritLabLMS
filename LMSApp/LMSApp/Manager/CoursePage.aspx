@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/LMSBoardManager.Master" CodeBehind="CoursePage.aspx.vb" Inherits="LMSApp.CoursePage1" %>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/LMSBoardManager.Master" CodeBehind="CoursePage.aspx.vb" Inherits="LMSApp.Manager.CoursePage1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Type_pageTitle" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Change_Breadcrumb_PageTitle" runat="server">
