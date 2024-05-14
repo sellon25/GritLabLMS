@@ -9,7 +9,7 @@
    <div class="row">
        <a class="d-md-flex white-box boxShadow" href="#">
             <div class="textboookarea">
-                <img src="plugins/images/chemtextbook.jpg" class="textbook">
+                <img src="~/plugins/images/chemtextbook.jpg" class="textbook">
                  <div>
                      <h3 class="text-black">General Chemistry</h3>
                      <p class="text-dark">Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book</p>
