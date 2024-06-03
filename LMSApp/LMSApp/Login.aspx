@@ -60,14 +60,20 @@
             <img style="margin-left:10vh; margin-bottom:5px;" src="plugins/images/chieta-logo.png" />
         </div>
         
-        <div  class="login-form">
-            <input type="text" placeholder="Username"/>
-            <input type="password" placeholder="Password"/>
-            <a href="dashboard.aspx">
-                <asp:Button ID="Button1" class="login-btn" runat="server" Text="Log In" OnClick="Button1_Click" />
-            
-             </a>
+        <div class="login-form">
+
+                               
+
+            <asp:TextBox ID="txtUsername" runat="server" required="required" placeholder="Student/Staff ID"></asp:TextBox>
+
+            <%--<input type="text" id="txtUsername" runat="server" required="required" placeholder="Student/Staff ID" />--%>
+
+            <asp:TextBox ID="txtPwd" runat="server" required="required" placeholder="Password"></asp:TextBox>
+            <%--<input type="password" id="txtPwd" runat="server" required="required" placeholder="Password" />--%>
+
+            <asp:Button ID="loginBtn" class="login-btn" runat="server" Text="Log In" OnClick="loginBtn_Click" />
         </div>
+        <asp:Label ID="lblError" runat="server" Text="Error..."></asp:Label>
     </form>
 </body>
 </html>
