@@ -1,38 +1,8 @@
-/LMSApp/.vs
-/LMSApp/.vs/LMSApp/FileContentIndex
-/LMSApp/.vs
-/LMSApp/.vs/LMSApp/config
-/LMSApp/LMSApp/obj/Debug
-/LMSApp/LMSApp/obj
-LMSApp/LMSApp/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-LMSApp/LMSApp/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-LMSApp/.vs/LMSApp/config/applicationhost.config
-LMSApp/.vs/LMSApp/config/applicationhost.config
-LMSApp/LMSApp/LMSApp.vbproj
-LMSApp/LMSApp/My Project/Resources.Designer.vb
-LMSApp/LMSApp/My Project/Settings.Designer.vb
-LMSApp/LMSApp/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-LMSApp/LMSApp/obj/Debug/LMSApp.vbproj.AssemblyReference.cache
-LMSApp/LMSApp/obj/Debug/TempPE/My Project.Application.Designer.vb.dll
-LMSApp/LMSApp/obj/Debug/TempPE/My Project.Resources.Designer.vb.dll
-LMSApp/LMSApp/Web.config
-LMSApp/.vs/LMSApp/config/applicationhost.config
-LMSApp/LMSApp/obj/Debug/LMSApp.vbproj.AssemblyReference.cache
-LMSApp/LMSApp/LMSApp.vbproj
-LMSApp/.vs/LMSApp/config/applicationhost.config
-LMSApp/LMSApp/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-LMSApp/.vs/LMSApp/v17/.suo
-LMSApp/.vs/LMSApp/v17/fileList.bin
-LMSApp/LMSApp/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-LMSApp/LMSApp/obj/Debug/LMSApp.vbproj.AssemblyReference.cache
+# Ignore the entire .vs directory
+LMSApp/.vs/
 
-LMSApp/.vs/LMSApp/v17/.suo
-LMSApp/.vs/LMSApp/v17/fileList.bin
-LMSApp/.vs/LMSApp/v17/.suo
-LMSApp/.vs/LMSApp/v17/fileList.bin
-LMSApp/LMSApp/bin/LMSApp.dll
-LMSApp/LMSApp/bin/LMSApp.pdb
-LMSApp/LMSApp/bin/LMSApp.dll
-LMSApp/LMSApp/bin/LMSApp.dll.config
-LMSApp/LMSApp/bin/LMSApp.pdb
-LMSApp/LMSApp/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+# Ignore everything in the obj directory
+LMSApp/LMSApp/obj/
+
+# Ignore everything in the bin directory
+LMSApp/LMSApp/bin/
