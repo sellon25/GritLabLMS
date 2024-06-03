@@ -156,11 +156,12 @@
     <Content Include="Manager\Kingsman.aspx" />
     <Content Include="Manager\KingsmanProjects.aspx" />
     <Content Include="Manager\Labs.aspx" />
-    <Content Include="Manager\ListKingsManProject.aspx" />
     <Content Include="Manager\ManageAdmins.aspx" />
+    <Content Include="Manager\Manager Files\Bootstrap\css\bootstrap.min.css" />
     <Content Include="Manager\Manager Files\Bootstrap\js\bootstrap.min.js" />
     <Content Include="Manager\Manager Files\Bootstrap\js\jquery-3.3.1.slim.min.js" />
     <Content Include="Manager\Manager Files\Bootstrap\js\popper.min.js" />
+    <Content Include="Manager\Manager Files\cs\style12.css" />
     <Content Include="Manager\Manager Files\dataTables\css\dataTables.dataTables.css" />
     <Content Include="Manager\Manager Files\dataTables\css\jquery.dataTables.min.css" />
     <Content Include="Manager\Manager Files\dataTables\js\jquery-3.7.1.js" />
@@ -2869,13 +2870,6 @@
     <Compile Include="Manager\Labs.aspx.vb">
       <DependentUpon>Labs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Manager\ListKingsManProject.aspx.designer.vb">
-      <DependentUpon>ListKingsManProject.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Manager\ListKingsManProject.aspx.vb">
-      <DependentUpon>ListKingsManProject.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Manager\ManageAdmins.aspx.designer.vb">
       <DependentUpon>ManageAdmins.aspx</DependentUpon>
