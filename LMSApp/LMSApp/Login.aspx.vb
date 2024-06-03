@@ -20,19 +20,19 @@ Public Class Login
         Dim this_user As User = this_user.load(user_ID)
         If this_user IsNot Nothing Then
             If this_user.role = 0 Then
-                CheckUserAndGotoPage("../Admin/Dashboard.aspx", this_user, user_ID, user_password)
+                CheckUserAndGotoPage("Admin/Dashboard.aspx", this_user, user_ID, user_password)
 
             ElseIf this_user.role = 1 Then
                 '--Student backend code--
-                CheckUserAndGotoPage("../Manager/Dashboard.aspx", this_user, user_ID, user_password)
+                CheckUserAndGotoPage("Manager/Dashboard.aspx", this_user, user_ID, user_password)
 
             ElseIf this_user.role = 2 Then
                 '--Marker backend code--
-                CheckUserAndGotoPage("../Facilitator/Dashboard.aspx", this_user, user_ID, user_password)
+                CheckUserAndGotoPage("Facilitator/Dashboard.aspx", this_user, user_ID, user_password)
 
             ElseIf this_user.role = 3 Then
                 '--Moderator backend code--
-                CheckUserAndGotoPage("../Student/Dashboard.aspx", this_user, user_ID, user_password)
+                CheckUserAndGotoPage("Student/Dashboard.aspx", this_user, user_ID, user_password)
             Else
                 lblError.ForeColor = Color.Red
                 lblError.Text = "Unknown User type. Please contact IT support or admin!"
@@ -46,14 +46,14 @@ Public Class Login
 
     End Sub
 
-    Sub CheckUserAndGotoPage(pageurl As String, obj As Object, userID As String, pwd As String)
+    Sub CheckUserAndGotoPage(pageurl As String, obj As User, userID As String, pwd As String)
 
         With obj
             Dim encrptedPassword As String = CipherGate.EncryptString(pwd, "toom9")
 
-            If ((obj.ID = userID) And (encrptedPassword = obj.Password)) Then
-                Session("User_name") = obj.FName + " " + obj.Lname
-                Session("Type") = obj.Type
+            If ((obj.emailID = userID) And (encrptedPassword = obj.password)) Then
+                Session("User_name") = obj.FName + " " + obj.LName
+                Session("Type") = obj.role
                 Session("ID") = userID
                 Session("LoggedIn") = True
 
