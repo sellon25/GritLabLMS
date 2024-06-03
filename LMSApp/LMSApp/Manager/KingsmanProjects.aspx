@@ -9,7 +9,7 @@
     Kingsman Projects
 
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
+<asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server"><asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="../Manager/Kingsman.aspx" Text="Back" CssClass="breadcrumb-link" Font-Bold="True"></asp:HyperLink>
 
     <center><h3>Projects</h3></center>
 
@@ -24,27 +24,27 @@
      <div class="row courses-container">
      <!-- Course Card Template -->
 
-    <a class="col-md-3" href="ProjectsPage.aspx">
+    <a class="col-md-3" href="ListKingsManProject.aspx">
         <div class="white-box boxShadow coursebox">
         <div class="description">
         <label class="box-title">Mini Banking App</label>
-        <p class="text-muted">TUT1</p>
+        <p class="text-muted">MINIBANKINGAPP</p>
         </div>
     </div>
     </a>
-<a class="col-md-3" href="ProjectsPage.aspx">
+<a class="col-md-3" href="ListKingsManProject.aspx">
         <div class="white-box boxShadow coursebox">
         <div class="description">
         <label class="box-title">Fish Feeding 3D</label>
-        <p class="text-muted">TUT2</p>
+        <p class="text-muted">FISHFEEDING3D</p>
         </div>
     </div>
     </a>
-<a class="col-md-3" href="ProjectsPage.aspx">
+<a class="col-md-3" href="ListKingsManProject.aspx">
         <div class="white-box boxShadow coursebox">
         <div class="description">
         <label class="box-title">VR Courtroom</label>
-        <p class="text-muted">TUT3</p>
+        <p class="text-muted">VRCOURTROOM</p>
         </div>
     </div>
     </a>  

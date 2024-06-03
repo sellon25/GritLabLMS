@@ -6,11 +6,6 @@
 <head >
     <title></title>
 
-        <%--My Additional Links--%>
-
-    <link href="Manager%20Files/Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="Manager%20Files/dataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
-
 
     <%--My Additional scripts--%>
 
@@ -192,6 +187,15 @@
                             </a>
                         </li>
                         <li class="sidebar-item pt-2">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="Kingsman.aspx"
+                                aria-expanded="false">
+                                    <i style="text-align: left;" class="fas fa-crown"></i>
+                                                                &nbsp &nbsp &nbsp
+
+                                <span style="margin-right: 65x;" class="">Kingsman</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item pt-2">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="Announcements.aspx"
                                 aria-expanded="false">
                                 <i style="text-align: left;" class="fas fa-paper-plane" aria-hidden="true"></i>
@@ -209,6 +213,7 @@
                                 <span style="margin-right: 65x;" class="">Sign Out</span>
                             </a>
                         </li>
+                        
 
                         <li class="sidebar-item pt-2">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../fontawesome.html" target=”_blank”

@@ -11,7 +11,7 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class KingsmanProjects
+Partial Public Class ListKingsManProject
 
     '''<summary>
     '''HyperLink1 control.
