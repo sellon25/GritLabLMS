@@ -2917,9 +2917,7 @@
     <Compile Include="Models\Question_Bank.vb" />
     <Compile Include="Models\StudentAnswer.vb" />
     <Compile Include="Models\StudentResults.vb" />
-    <Compile Include="Models\Submission.vb">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
+    <Compile Include="Models\Submission.vb" />
     <Compile Include="Models\Test.vb" />
     <Compile Include="Models\TrackProjectProgress.vb" />
     <Compile Include="Models\User.vb" />
