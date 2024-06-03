@@ -13,7 +13,7 @@
     <meta name="robots" content="noindex,nofollow">    
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/glogo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/chieta-logo.png">
     <!-- Custom CSS -->
     <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
     <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
@@ -22,7 +22,7 @@
     <!--link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet" type='text/css'--->
     <style>
         .login-form {
-            max-width: 42vh;
+            max-width: 450px;
            
 
         }
@@ -41,7 +41,7 @@
 
         .login-btn  {
             width: 100%;
-            background-color: #93761e;
+            background-color: #8a2be2;
             color: #fff;
             padding: 14px 20px;
             margin: 8px 0;
@@ -56,8 +56,8 @@
 </head>
 <body style="display: flex;" >
     <form id="form1" style="margin: 25vh auto;" runat="server">
-        <div class="col-lg-4 col-md-12 text-center">
-            <img style="" src="plugins/images/glogo.png" />
+        <div class="col-lg-4 col-md-12">
+            <img style="margin-left:10vh; margin-bottom:5px;" src="plugins/images/chieta-logo.png" />
         </div>
         
         <div  class="login-form">

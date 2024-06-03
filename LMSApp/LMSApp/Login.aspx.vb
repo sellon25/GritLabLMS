@@ -6,6 +6,6 @@
     End Sub
 
     Protected Sub Button1_Click(sender As Object, e As EventArgs)
-        Response.Redirect("~/Student/dashboard.aspx")
+        Response.Redirect("dashboard.aspx")
     End Sub
 End Class
