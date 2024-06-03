@@ -6,3 +6,6 @@ LMSApp/LMSApp/obj/
 
 # Ignore everything in the bin directory
 LMSApp/LMSApp/bin/
+LMSApp/.vs/LMSApp/config/applicationhost.config
+LMSApp/LMSApp/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+LMSApp/LMSApp/obj/Debug/LMSApp.vbproj.AssemblyReference.cache
