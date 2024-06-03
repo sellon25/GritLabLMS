@@ -1,0 +1,10 @@
+Dear <username>
+
+Welcome to ABECED <username>. We hope that you enjoy your time with us.
+Your credentials are as follows:
+Username: <username>
+Password: <password>
+
+warm regards,
+
+The ABECED Team.
