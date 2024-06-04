@@ -13,7 +13,7 @@
     <meta name="robots" content="noindex,nofollow">    
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/chieta-logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/glogo.png">
     <!-- Custom CSS -->
     <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
     <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
@@ -56,15 +56,15 @@
 </head>
 <body style="display: flex;" >
     <form id="form1" style="margin: 25vh auto;" runat="server">
-        <div class="col-lg-4 col-md-12">
-            <img style="margin-left:10vh; margin-bottom:5px;" src="plugins/images/chieta-logo.png" />
+        <div class="text-center col-lg-4 col-md-12">
+            <img style="" src="plugins/images/glogo.png" />
         </div>
         
         <div class="login-form">
 
                                
 
-            <asp:TextBox ID="txtUsername" runat="server" required="required" placeholder="Student/Staff ID"></asp:TextBox>
+            <asp:TextBox ID="txtUsername" runat="server" required="required" placeholder="Email"></asp:TextBox>
 
             <%--<input type="text" id="txtUsername" runat="server" required="required" placeholder="Student/Staff ID" />--%>
 

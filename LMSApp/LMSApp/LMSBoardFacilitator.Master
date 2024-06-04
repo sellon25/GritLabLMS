@@ -58,13 +58,17 @@
 
                      <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
-           
+           <div class="d-flex align-items-center">
+                <button id="toggle-bar" class="p-0 bg-none border-0" onclick='toggleSidebar()'>
+                    <i  class="fas fa-bars"></i>
+                </button>
                 <h4 class="pageTitle fw-bold">
                         <asp:ContentPlaceHolder ID="Change_Breadcrumb_PageTitle" runat="server">
                             Page title
                 </asp:ContentPlaceHolder>
                        </h4>
-                    
+
+            </div>
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
        
@@ -106,13 +110,14 @@
      
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
-        <aside class="left-sidebar">
+        <aside id="NavSideBar" class="left-sidebar hide">
              <a class="navbar-brand" href="../Facilitator/Dashboard.aspx">
                         <!-- Logo icon -->                
                             <img src="../plugins/images/glogo.png" class="logo-icon" alt="homepage">
                              <span class="text-white">Leader board</span>
                         <!--End Logo icon -->
                     </a>
+            <i id="close-icon" class="far fa-window-close" onclick="toggleSidebar()"></i>
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
                 <!-- Sidebar navigation-->
@@ -198,6 +203,8 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
+    <script src="../js/mainscript.js"></script>
+
     <script src="../plugins/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="../bootstrap/dist/js/bootstrap.bundle.min.js"></script>
