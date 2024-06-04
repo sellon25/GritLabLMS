@@ -13264,6 +13264,11 @@ html[dir=ltr] body .p-l-0 {
     margin: 1vh;
 }
 
+.form-group i.delete.fas.fa-trash-alt {
+    color: red;
+    float: right;
+}
+
 @media (min-width: 767px) {
     #close-icon {
         display: none;
