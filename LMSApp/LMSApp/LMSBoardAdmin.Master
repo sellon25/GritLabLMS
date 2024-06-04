@@ -77,7 +77,7 @@
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
        
-                <div class="navbar-collapse collapse" id="navbarSupportedContent" >
+                <div class="navbar-collapse  collapse" id="navbarSupportedContent" >
                    
                     <!-- ============================================================== -->
                     <!-- Right side toggle and nav items -->
