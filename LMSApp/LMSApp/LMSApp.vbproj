@@ -145,6 +145,7 @@
     <Content Include="Facilitator\ProjectParticipants.aspx" />
     <Content Include="Facilitator\SubmissionLinks.aspx" />
     <Content Include="Facilitator\TestsAndAssignments.aspx" />
+    <Content Include="js\mainscript.js" />
     <Content Include="Manager\Announcements.aspx" />
     <Content Include="Manager\ApproveCourses.aspx" />
     <Content Include="Manager\ApproveProjects.aspx" />
