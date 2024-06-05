@@ -111,11 +111,40 @@
     </script>
 
     <div class="row">
-        <div class="col-md-12 col-lg-12 col-sm-12">
-            <div class="white-box bg-transparent">
-                <div class="d-md-flex mb-3">
-                    <h3 class="box-title mb-0">GRITER TRACKER</h3>
+
+            <div class="row">
+
+        <div Class="col-md-4">
+            <div Class="white-box">
+                <h3 Class="box-title">Send Feedback</h3>
+                <form>
+                 <div Class="form-group">
+                        <Label for="announcementTitle">Email</label>
+                        <input type = "text" Class="form-control" id="announcementTitle" placeholder="Enter title">
+                    </div>
+                    <div Class="form-group">
+                        <Label for="announcementType">Type</label>
+                        <input type = "text" Class="form-control" id="announcementType" placeholder="Enter type">
+                    </div>
+                    <div Class="form-group">
+                        <Label for="announcementBody">Body</label>
+                        <textarea Class="form-control" id="announcementBody" rows="3"></textarea>
+                    </div>
+                    <Button type = "button" Class="btn btn-primary" style="background-color:#000000">Add Announcement</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+         <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    <center>
+                        <h3> Kingmans List </h3>
+                    </center>
                 </div>
+            </div>
             <div class="row mb-3">
                 <div class="col-md-4">
                     <label for="txtSearch">Search:</label>

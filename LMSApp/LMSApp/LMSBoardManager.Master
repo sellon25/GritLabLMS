@@ -189,13 +189,21 @@
                                 <span style="margin-right: 65x;" class="">Manage Admins</span>
                             </a>
                         </li>
-                       <li class="sidebar-item">
+                       <li class="sidebar-item pt-2">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Manager/StudentsProgress.aspx"
                                 aria-expanded="false">
                                     <i style="text-align: left;" class="fas fa-check-circle progress-icon"></i>
                                                                 &nbsp &nbsp &nbsp
 
                                 <span style="margin-right: 65x;" class="">Students Progress</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item pt-2">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="Kingsman.aspx"
+                                aria-expanded="false">
+                                <i style="text-align: left;" class="fas fa-crown" aria-hidden="true"></i>
+                                &nbsp &nbsp &nbsp
+                                <span style="text-align: left;" class="">Kingsman</span>
                             </a>
                         </li>
                         <li class="sidebar-item pt-2">

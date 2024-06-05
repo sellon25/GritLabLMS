@@ -2,10 +2,7 @@ Imports System.Data.SqlClient
 
 Public Class DBInterface
     'Apps Connection String
-    Public Shared connectstring As String = "Data Source=.;Initial Catalog=GritsLabDB;Integrated Security=True"
-
-
-
+    Public Shared connectstring As String = "Data Source=.;Initial Catalog=GritLabLMS;Integrated Security=True;Encrypt=False"
 
     Public Shared Sub SetUpConnection()
         If IsNothing(HttpContext.Current.Session("conn")) Then
