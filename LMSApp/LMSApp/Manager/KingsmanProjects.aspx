@@ -24,27 +24,27 @@
      <div class="row courses-container">
      <!-- Course Card Template -->
 
-    <a class="col-md-3" href="ProjectsPage.aspx">
+    <a class="col-md-3" href="#">
         <div class="white-box boxShadow coursebox">
         <div class="description">
         <label class="box-title">Mini Banking App</label>
-        <p class="text-muted">TUT1</p>
+        <p class="text-muted">MINIBANKINGAPP</p>
         </div>
     </div>
     </a>
-<a class="col-md-3" href="ProjectsPage.aspx">
+<a class="col-md-3" href="#">
         <div class="white-box boxShadow coursebox">
         <div class="description">
         <label class="box-title">Fish Feeding 3D</label>
-        <p class="text-muted">TUT2</p>
+        <p class="text-muted">FISHFEEDING</p>
         </div>
     </div>
     </a>
-<a class="col-md-3" href="ProjectsPage.aspx">
+<a class="col-md-3" href="#">
         <div class="white-box boxShadow coursebox">
         <div class="description">
         <label class="box-title">VR Courtroom</label>
-        <p class="text-muted">TUT3</p>
+        <p class="text-muted">VRCOURTEOOM</p>
         </div>
     </div>
     </a>  
