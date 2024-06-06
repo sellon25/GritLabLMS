@@ -6,67 +6,7 @@
     Manage Application form
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
-    <div class="card hide">
-        <div class="card-body">
-            <form class="form-horizontal form-material">
-                <div class="form-group mb-4">
-                    <label class="col-md-12 p-0">First Name</label>
-                    <div class="col-md-12 border-bottom p-0">
-                        <input type="text" placeholder="Type here..." class="form-control p-0 border-0"> </div>
-                </div>
-                <div class="form-group mb-4">
-                    <label class="col-md-12 p-0">Last Name</label>
-                    <div class="col-md-12 border-bottom p-0">
-                        <input type="text" placeholder="Type here..." class="form-control p-0 border-0"> </div>
-                </div>
-                
-               
-                <div class="form-group mb-4">
-                    <label class="col-sm-12">Title</label>
-
-                    <div class="col-sm-12 border-bottom">
-                        <select class="form-select shadow-none p-0 border-0 form-control-line">
-                            <option>Dr</option>
-                            <option>Mr</option>
-                            <option>Mrs</option>
-                            <option>Mx</option>
-                            <option>Prof</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="form-group mb-4">
-                    <label for="example-email" class="col-md-12 p-0">Email</label>
-                    <div class="col-md-12 border-bottom p-0">
-                        <input type="email" required placeholder="Type here..." class="form-control p-0 border-0" name="example-email" id="example-email">
-                    </div>
-                </div>
-                <div class="form-group mb-4">
-                    <label class="col-md-12 p-0">Create a Password</label>
-                    <div class="col-md-12 border-bottom p-0">
-                        <input type="password" required placeholder="Type here..." class="form-control p-0 border-0"> </div>
-                </div>
-                 <div class="form-group mb-4">
-                    <label class="col-md-12 p-0">Confirm Password</label>
-                    <div class="col-md-12 border-bottom p-0">
-                        <input type="password" required placeholder="Type here..." class="form-control p-0 border-0"> </div>
-                </div>
-                <div class="form-group mb-4">
-                    <label class="col-md-12 p-0">WhatsApp number</label>
-                    <div class="col-md-12 border-bottom p-0">
-                        <input type="number" required placeholder="Type here..." class="form-control p-0 border-0"> </div>
-                </div>
-
-                <div class="form-group mb-4">
-                    <div class="col-sm-12">
-                        <button type="submit" class="btn btn-orange">Submit</button>
-                    </div>
-                </div>
-
-                
-            </form>
-           </div>
-       </div>
+    
 
 
 

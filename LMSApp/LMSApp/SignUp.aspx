@@ -54,12 +54,77 @@
         }
         body{
            background-image: linear-gradient(to bottom, #93761e 60%, black);
+           display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
         }
     </style>
 </head>
-<body style="display: flex;" >
-    <form id="form1" style="margin: 25vh auto;" runat="server">
-       
+<body style="" >
+    <form id="form1" style="width: 85%;" runat="server">
+        <h3 class="fw-bold">Sign Up</h3>
+       <div class="card">
+        <div class="card-body">
+            <form class="form-horizontal form-material">
+                <div class="form-group mb-4">
+                    <label class="col-md-12 p-0">First Name</label>
+                    <div class="col-md-12 border-bottom p-0">
+                        <input type="text" placeholder="Type here..." class="form-control p-0 border-0"> </div>
+                </div>
+                <div class="form-group mb-4">
+                    <label class="col-md-12 p-0">Last Name</label>
+                    <div class="col-md-12 border-bottom p-0">
+                        <input type="text" placeholder="Type here..." class="form-control p-0 border-0"> </div>
+                </div>
+                
+               
+                <div class="form-group mb-4">
+                    <label class="col-sm-12">Title</label>
+
+                    <div class="col-sm-12 border-bottom">
+                        <select class="form-select shadow-none p-0 border-0 form-control-line">
+                            <option>Dr</option>
+                            <option>Mr</option>
+                            <option>Mrs</option>
+                            <option>Mx</option>
+                            <option>Prof</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group mb-4">
+                    <label for="example-email" class="col-md-12 p-0">Email</label>
+                    <div class="col-md-12 border-bottom p-0">
+                        <input type="email" required placeholder="Type here..." class="form-control p-0 border-0" name="example-email" id="example-email">
+                    </div>
+                </div>
+                <div class="form-group mb-4">
+                    <label class="col-md-12 p-0">Create a Password</label>
+                    <div class="col-md-12 border-bottom p-0">
+                        <input type="password" required placeholder="Type here..." class="form-control p-0 border-0"> </div>
+                </div>
+                 <div class="form-group mb-4">
+                    <label class="col-md-12 p-0">Confirm Password</label>
+                    <div class="col-md-12 border-bottom p-0">
+                        <input type="password" required placeholder="Type here..." class="form-control p-0 border-0"> </div>
+                </div>
+                <div class="form-group mb-4">
+                    <label class="col-md-12 p-0">WhatsApp number</label>
+                    <div class="col-md-12 border-bottom p-0">
+                        <input type="number" required placeholder="Type here..." class="form-control p-0 border-0"> </div>
+                </div>
+
+                <div class="form-group mb-4">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-orange">Submit</button>
+                    </div>
+                </div>
+
+                
+            </form>
+           </div>
+       </div>
     </form>
 </body>
 </html>
