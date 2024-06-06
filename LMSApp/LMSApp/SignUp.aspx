@@ -1,4 +1,4 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="Login.aspx.vb" Inherits="LMSApp.Login" %>
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="SignUp.aspx.vb" Inherits="LMSApp.SignUp" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -59,25 +59,7 @@
 </head>
 <body style="display: flex;" >
     <form id="form1" style="margin: 25vh auto;" runat="server">
-        <div class="text-center col-md-12">
-            <img style="" src="plugins/images/glogo.png" />
-        </div>
-        
-        <div class="login-form text-center">
-
-                               
-
-            <asp:TextBox ID="txtUsername" runat="server" required="required" placeholder="Email"></asp:TextBox>
-
-            <%--<input type="text" id="txtUsername" runat="server" required="required" placeholder="Student/Staff ID" />--%>
-
-            <asp:TextBox ID="txtPwd" runat="server" required="required" placeholder="Password"></asp:TextBox>
-            <%--<input type="password" id="txtPwd" runat="server" required="required" placeholder="Password" />--%>
-
-            <asp:Button ID="loginBtn" class="login-btn" runat="server" Text="Log In" OnClick="loginBtn_Click" />
-            <a href="SignUp.aspx">Apply to join GritLabs</a>
-        </div>
-        <asp:Label ID="lblError" runat="server" Text="Error..."></asp:Label>
+       
     </form>
 </body>
 </html>
