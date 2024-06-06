@@ -113,6 +113,7 @@
                     <label class="col-md-12 p-0">WhatsApp number</label>
                     <div class="col-md-12 border-bottom p-0">
                         <input type="number" required placeholder="Type here..." class="form-control p-0 border-0"> </div>
+                         <p class="small">eg. +276123456789, '+27' would be your country code. please include your country code in your phone number. </p>
                 </div>
 
                 <div class="form-group mb-4">
