@@ -109,6 +109,7 @@
     <Content Include="Admin\lablist.aspx" />
     <Content Include="Admin\labresults.aspx" />
     <Content Include="Admin\Labs.aspx" />
+    <Content Include="Admin\ManageApplicationForm.aspx" />
     <Content Include="Admin\ManageUsers.aspx" />
     <Content Include="Admin\Manage_Griters.aspx" />
     <Content Include="Admin\Manage_Griters_and_Kingsmen.aspx" />
@@ -2259,6 +2260,7 @@
     <Content Include="Manager\SQWID.aspx" />
     <Content Include="Manager\StudentsProgress.aspx" />
     <Content Include="plugins\images\miniBanking.jpg" />
+    <Content Include="SignUp.aspx" />
     <Content Include="Student\Announcements.aspx" />
     <Content Include="bootstrap\dist\css\bootstrap-grid.css" />
     <Content Include="bootstrap\dist\css\bootstrap-grid.min.css" />
@@ -2524,6 +2526,13 @@
     <Compile Include="Admin\Labs.aspx.vb">
       <DependentUpon>Labs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ManageApplicationForm.aspx.designer.vb">
+      <DependentUpon>ManageApplicationForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ManageApplicationForm.aspx.vb">
+      <DependentUpon>ManageApplicationForm.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Admin\ManageUsers.aspx.designer.vb">
       <DependentUpon>ManageUsers.aspx</DependentUpon>
@@ -2922,6 +2931,13 @@
     <Compile Include="Models\Test.vb" />
     <Compile Include="Models\TrackProjectProgress.vb" />
     <Compile Include="Models\User.vb" />
+    <Compile Include="SignUp.aspx.designer.vb">
+      <DependentUpon>SignUp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SignUp.aspx.vb">
+      <DependentUpon>SignUp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Student\Announcements.aspx.designer.vb">
       <DependentUpon>Announcements.aspx</DependentUpon>
     </Compile>
