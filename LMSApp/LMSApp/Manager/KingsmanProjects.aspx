@@ -13,7 +13,6 @@
 
     <center><h3>Projects</h3></center>
 
-
     <script>
         function resetFilter() {
             document.getElementById('txtSearch').value = '';

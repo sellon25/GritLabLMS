@@ -163,10 +163,6 @@
     <Content Include="Manager\Manager Files\Bootstrap\js\jquery-3.3.1.slim.min.js" />
     <Content Include="Manager\Manager Files\Bootstrap\js\popper.min.js" />
     <Content Include="Manager\Manager Files\cs\style12.css" />
-    <Content Include="Manager\Manager Files\dataTables\css\dataTables.dataTables.css" />
-    <Content Include="Manager\Manager Files\dataTables\css\jquery.dataTables.min.css" />
-    <Content Include="Manager\Manager Files\dataTables\js\jquery-3.7.1.js" />
-    <Content Include="Manager\Manager Files\dataTables\js\jquery.dataTables.min.js" />
     <Content Include="Manager\Manager Files\fontawesome\css\all.css" />
     <Content Include="Manager\Manager Files\fontawesome\css\all.min.css" />
     <Content Include="Manager\Manager Files\fontawesome\css\brands.css" />

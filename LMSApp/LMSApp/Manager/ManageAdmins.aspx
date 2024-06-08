@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="col-md-4">
                 <div class="card">
-                    <div class="card-body">
+                    < class="card-body">
                         <div class="row">
                             <div class="col">
                                 <center>
@@ -34,10 +34,10 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Admin ID</label>
+                                    <label>ID Number</label>
                                     <div class="input-group">
                                         <asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" placeholder="ID" MaxLength="10"></asp:TextBox>
-                                        <asp:LinkButton class="btn btn-primary mr-1 btn-outline-dark" ID="btn_Go" runat="server">Go</asp:LinkButton>
+                                        <asp:LinkButton class="btn btn-secondary mr-1 btn-outline-dark" ID="btn_Go" runat="server">Go</asp:LinkButton>
                                     </div>
                                 </div>
                             </div>
@@ -117,21 +117,20 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="col-4 mx-auto">
                                 <div class="form-group">
-                                    <asp:Button CssClass="btn btn-danger btn-block btn-outline-dark text-white" ID="btn_delete" runat="server" Text="Remove Admin" />
+                                    <asp:Button CssClass="btn btn-secondary btn-block btn-outline-dark text-white" ID="btn_delete" runat="server" Text="Remove" />
                                 </div>
                             </div>
                             <div class="col-4 mx-auto">
                                 <div class="form-group">
-                                    <asp:Button CssClass="btn btn-primary btn-block btn-outline-dark text-white" ID="btn_update" runat="server" Text="update Admin" />
+                                    <asp:Button CssClass="btn btn-secondary btn-block btn-outline-dark text-white" ID="btn_update" runat="server" Text="Update" />
                                 </div>
                             </div>
                             <div class="col-4 mx-auto">
                                 <div class="form-group">
-                                    <asp:Button CssClass="btn btn-success btn-block btn-outline-dark text-white" ID="btn_AddNewAdmin" runat="server" Text="Add Admin" />
+                                    <asp:Button CssClass="btn btn-secondary btn-block btn-outline-dark text-white" ID="btn_AddNewAdmin" runat="server" Text="Add" />
                                 </div>
                             </div>
                         </div>
@@ -154,7 +153,7 @@
                             <div class="row">
                                 <div class="col">
                                     <center>
-                                        <h3> Members List </h3>
+                                        <h3> Admins List </h3>
                                     </center>
                                 </div>
                             </div>

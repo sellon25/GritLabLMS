@@ -14,6 +14,42 @@ Option Explicit On
 Partial Public Class Kingsman
 
     '''<summary>
+    '''feedbackForm control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents feedbackForm As Global.System.Web.UI.HtmlControls.HtmlForm
+
+    '''<summary>
+    '''email control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents email As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''type control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents type As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''body control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents body As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''HyperLink2 control.
     '''</summary>
     '''<remarks>
