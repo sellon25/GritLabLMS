@@ -10,62 +10,53 @@
         <div class="col-md-4">
             <div class="white-box">
                 <h3 class="box-title">Add Announcement</h3>
-                <form>
+                <form runat="server">
                     <div class="form-group">
                         <label for="announcementTitle">Title</label>
-                        <input type="text" class="form-control" id="announcementTitle" placeholder="Enter title">
+                        <input type="text" class="form-control" id="announcementTitle" placeholder="Enter title" runat="server">
                     </div>
                     <div class="form-group">
                         <label for="announcementType">Type</label>
-                        <input type="text" class="form-control" id="announcementType" placeholder="Enter type">
+                        <select class="form-control" id="announcementType" runat="server">
+                            <option value="0">--Select--</option>
+                            <option value="0">Information</option>
+                            <option value="1">Query</option>
+                            <option value="2">Alert</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="announcementBody">Body</label>
-                        <textarea class="form-control" id="announcementBody" rows="3"></textarea>
+                        <textarea class="form-control" id="announcementBody" rows="3" runat="server"></textarea>
                     </div>
-                    <button type="button" class="btn btn-primary" style="background-color:#93761E">Add Announcement</button>
+                    <asp:Button ID="AddAnnouncementButton" runat="server" Text="Add Announcement" CssClass="btn btn-primary" OnClick="AddAnnouncement_Click" style="background-color:#93761E" />
                 </form>
             </div>
         </div>
         <!-- Existing Announcements Section -->
         <div class="col-md-8">
-            <div class="white-box">
+            <div class="white-box" style="border: 1px solid #ddd; border-radius: 5px; padding: 10px;">
                 <div class="card p-0">
                     <div class="card-body">
                         <h3 class="box-title mb-0">Announcements</h3>
                     </div>
                     <div style="height:500px; overflow-y: scroll;">
                         <!-- Existing Announcements -->
-                        <div class="d-flex flex-row comment-row p-3 mt-0">
-                            <div class="p-2"><i class="far fa-file-alt" style="font-size: 26px;"></i></div>
-                            <div class="comment-text ps-2 ps-md-3 w-100">
-                                <h5 class="font-medium">Rogue Santa</h5>
-                                <span class="mb-3 d-block">Project Update</span>
-                                <span class="mb-3 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry.It has survived not only </span>
-                                <div class="text-muted fs-2 ms-auto mt-2 mt-md-0">April 14, 2021</div>
-                            </div>
-                        </div>
-                        <!-- Comment Row -->
-                        <div class="d-flex flex-row comment-row p-3 mt-0">
-                            <div class="p-2"><i class="far fa-question-circle" style="font-size: 26px;"></i></div>
-                            <div class="comment-text ps-2 ps-md-3 w-100">
-                                <h5 class="font-medium">GritLab LMS</h5>
-                                <span class="mb-3 d-block">Project Query</span>
-                                <span class="mb-3 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry.It has survived not only </span>
-                                    <div class="text-muted fs-2 ms-auto mt-2 mt-md-0">April 14, 2021</div>
+                        <asp:Repeater ID="AnnouncementsRepeater" runat="server">
+                            <ItemTemplate>
+                                <div class="d-flex flex-row comment-row p-3 mt-0" style="border-bottom: 1px solid #ddd;">
+                                    <div class="p-2">
+                                        <%# GetIcon(Container.DataItem("type")) %>
+                                    </div>
+                                    <div class="comment-text ps-2 ps-md-3 w-100">
+                                        <h5 class="font-medium"><%# Eval("title") %></h5>
+                                        <span class="mb-3 d-block"><%# Eval("sentby") %></span>
+                                        <span class="mb-3 d-block"><%# Eval("text") %></span>
+                                        <div class="text-muted fs-2 ms-auto mt-2 mt-md-0"><%# Eval("datetime", "{0:MMM dd, yyyy}") %></div>
+                                    </div>
                                 </div>
-                            </div>
-                               
-                        <!-- Comment Row -->
-                        <div class="d-flex flex-row comment-row p-3 mt-0">
-                            <div class="p-2"><i class="far fa-bell" style="font-size: 26px;"></i></div>
-                            <div class="comment-text ps-2 ps-md-3 w-100">
-                                <h5 class="font-medium">Assignment 1</h5>
-                                <span class="mb-3 d-block">Deadline passed</span>
-                                <span class="mb-3 d-block">Student Solutions now ready Lorem Ipsum is simply dummy text of the printing and type setting industry.It has survived not only </span>
-                                    <div class="text-muted fs-2 ms-auto mt-2 mt-md-0">April 14, 2021</div>
-                                </div>
-                        </div>
+                            </ItemTemplate>
+                        </asp:Repeater>
+
                     </div>
                 </div>
             </div>
