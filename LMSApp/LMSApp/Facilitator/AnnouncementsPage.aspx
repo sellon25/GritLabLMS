@@ -49,7 +49,7 @@
                                     </div>
                                     <div class="comment-text ps-2 ps-md-3 w-100">
                                         <h5 class="font-medium"><%# Eval("title") %></h5>
-                                        <span class="mb-3 d-block"><%# Eval("sentby") %></span>
+                                        <!-- <span class="mb-3 d-block">%# Eval("sentby") </span> -->
                                         <span class="mb-3 d-block"><%# Eval("text") %></span>
                                         <div class="text-muted fs-2 ms-auto mt-2 mt-md-0"><%# Eval("datetime", "{0:MMM dd, yyyy}") %></div>
                                     </div>

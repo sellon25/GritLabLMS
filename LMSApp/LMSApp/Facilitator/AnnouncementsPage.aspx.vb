@@ -3,12 +3,15 @@
 Public Class AnnouncementsPage
     Inherits System.Web.UI.Page
 
+    Private courseId As String
+    Private facilitatorId As String
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not IsPostBack Then
             ' Check if the courseId query string parameter exists
             If Request.QueryString("courseId") IsNot Nothing Then
-                Dim courseId As String = Request.QueryString("courseId").ToString()
-
+                courseId = Request.QueryString("courseId").ToString()
+                facilitatorId = Session("ID").ToString()
             Else
                 ' Redirect to an appropriate page if the courseId parameter is missing
                 Response.Redirect("~/ErrorPage.aspx")
@@ -16,6 +19,7 @@ Public Class AnnouncementsPage
             BindAnnouncements()
         End If
     End Sub
+
     Private Sub BindAnnouncements()
         ' Fetch announcements from the database
         Dim announcements As DataTable = GetAnnouncements()
@@ -27,9 +31,13 @@ Public Class AnnouncementsPage
     Private Function GetAnnouncements() As DataTable
         ' Retrieve announcements from the database
         Dim dt As New DataTable()
+        courseId = Request.QueryString("courseId").ToString()
+        facilitatorId = Session("ID").ToString()
         Dim conn As SqlConnection = DirectCast(HttpContext.Current.Session("conn"), SqlConnection)
-        Dim query As String = "SELECT * FROM Announcement"
+        Dim query As String = "SELECT * FROM Announcement WHERE courseId = @courseId AND sentby = @facilitatorId ORDER BY datetime DESC"
         Using cmd As New SqlCommand(query, conn)
+            cmd.Parameters.AddWithValue("@courseId", courseId)
+            cmd.Parameters.AddWithValue("@facilitatorId", facilitatorId)
             Dim da As New SqlDataAdapter(cmd)
             da.Fill(dt)
         End Using
@@ -69,10 +77,12 @@ Public Class AnnouncementsPage
 
     Private Sub AddAnnouncementToDatabase(ByVal title As String, ByVal type As Integer, ByVal body As String)
         ' Retrieve the SQL connection from the session
+        courseId = Request.QueryString("courseId").ToString()
+        facilitatorId = Session("ID").ToString()
         Dim conn As SqlConnection = DirectCast(HttpContext.Current.Session("conn"), SqlConnection)
         conn.Close()
         ' SQL query to insert an announcement
-        Dim query As String = "INSERT INTO Announcement (title, type, text, datetime) VALUES (@title, @type, @text, @datetime)"
+        Dim query As String = "INSERT INTO Announcement (title, type, text, datetime, sentby, courseId, status) VALUES (@title, @type, @text, @datetime, @sentby, @courseId, @status)"
 
         ' Current timestamp
         Dim dateTime As DateTime = DateTime.Now
@@ -84,6 +94,9 @@ Public Class AnnouncementsPage
             command.Parameters.AddWithValue("@type", type)
             command.Parameters.AddWithValue("@text", body)
             command.Parameters.AddWithValue("@datetime", dateTime)
+            command.Parameters.AddWithValue("@sentby", facilitatorId)
+            command.Parameters.AddWithValue("@courseId", courseId)
+            command.Parameters.AddWithValue("@status", 1) ' Assuming 1 means active
 
             Try
                 ' Open the connection if it's not already open
@@ -98,18 +111,17 @@ Public Class AnnouncementsPage
         End Using
     End Sub
 
-
     Protected Sub EditButton_Click(ByVal sender As Object, ByVal e As EventArgs)
         Dim editButton As Button = DirectCast(sender, Button)
         Dim announcementId As Integer = Convert.ToInt32(editButton.CommandArgument)
 
         ' Retrieve announcement details by ID and populate the input fields for editing
-        'Dim announcement As Announcement = GetAnnouncementById(announcementId)
+        Dim announcement As Announcement = GetAnnouncementById(announcementId)
 
         ' Populate the input fields
-        'announcementTitle.Value = announcement.title
-        'announcementType.Value = announcement.type.ToString()
-        'announcementBody.Value = announcement.text
+        announcementTitle.Value = announcement.title
+        announcementType.Value = announcement.type.ToString()
+        announcementBody.Value = announcement.text
 
         ' Store the announcement ID in a hidden field or session variable for later use
         ' (e.g., to identify the announcement being edited when saving changes)
@@ -164,6 +176,57 @@ Public Class AnnouncementsPage
         End Using
     End Sub
 
+    Private Function GetAnnouncementById(ByVal announcementId As Integer) As Announcement
+        ' Initialize an empty Announcement object
+        Dim announcement As New Announcement()
 
+        ' Retrieve the SQL connection from the session
+        Dim conn As SqlConnection = DirectCast(HttpContext.Current.Session("conn"), SqlConnection)
+
+        ' SQL query to select an announcement by its ID
+        Dim query As String = "SELECT id AS announcement_id, title AS announcement_title, type AS announcement_type, text AS announcement_text FROM Announcement WHERE id = @id"
+
+        ' Create a SqlCommand object with the query and connection
+        Using cmd As New SqlCommand(query, conn)
+            ' Add the announcement ID as a parameter to the query
+            cmd.Parameters.AddWithValue("@id", announcementId)
+
+            Try
+                ' Open the connection if it's not already open
+                If conn.State <> ConnectionState.Open Then
+                    conn.Open()
+                End If
+
+                ' Execute the query and retrieve the result
+                Dim reader As SqlDataReader = cmd.ExecuteReader()
+
+                ' Check if the query returned any rows
+                If reader.Read() Then
+                    ' Populate the Announcement object with data from the database
+                    announcement.id = Convert.ToInt32(reader("announcement_id"))
+                    announcement.title = Convert.ToString(reader("announcement_title"))
+                    announcement.type = Convert.ToInt32(reader("announcement_type"))
+                    announcement.text = Convert.ToString(reader("announcement_text"))
+                    ' Add more properties if needed
+                End If
+
+                ' Close the SqlDataReader
+                reader.Close()
+            Catch ex As Exception
+                ' Handle any exceptions (e.g., log error, display error message)
+            End Try
+        End Using
+
+        ' Return the populated Announcement object
+        Return announcement
+    End Function
+
+    ' Define the Announcement class (if not already defined elsewhere)
+    Private Class Announcement
+        Public Property id As Integer
+        Public Property title As String
+        Public Property type As Integer
+        Public Property text As String
+    End Class
 
 End Class
