@@ -62,7 +62,8 @@ Public Class ManageAdmins
         End If
     End Sub
 
-    Private Sub deleteadmin()
+
+    Private Sub DeleteAdmin()
 
         Try
 
@@ -70,22 +71,29 @@ Public Class ManageAdmins
 
                 lmsDBconstring.Open()
 
-                Dim cmd As New SqlCommand("Delete from [Admin_Signup] where admin_id=@admin_id", lmsDBconstring)
+                Dim cmd As New SqlCommand("Delete From [Admin_SignUp] Where ID Number=@ID Number")
+
+                cmd.Parameters.AddWithValue("@ID Number", TextBox1.Text.Trim())
 
                 cmd.ExecuteNonQuery()
 
-                Response.Write("<script>alert('Admin Deleted Successfully.');</script>")
-
+                Response.Write("<script>alert('Admin Deletes Successfully.');</script>")
 
             End Using
 
         Catch ex As Exception
 
-            Response.Write("<Script>alert('" & ex.Message & "');</Script>")
+            Response.Write("<script>alert('" & ex.Message & "');</script>")
 
         End Try
 
+
     End Sub
 
+    Protected Sub DeleteButton_Click(ByVal sender As Object, ByVal e As EventArgs)
+
+        DeleteAdmin()
+
+    End Sub
 
 End Class

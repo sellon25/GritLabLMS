@@ -104,13 +104,13 @@ Partial Public Class ManageAdmins
     Protected WithEvents DropDownList1 As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''btn_delete control.
+    '''DeleteButton control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btn_delete As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents DeleteButton As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''btn_update control.

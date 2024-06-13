@@ -83,8 +83,8 @@
                 <!-- End Logo -->
                 <!-- ============================================================== -->
 
-                     <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
            
                 <div class="d-flex align-items-center">
                 <button id="toggle-bar" class="p-0 bg-none border-0" onclick='toggleSidebar()'>
