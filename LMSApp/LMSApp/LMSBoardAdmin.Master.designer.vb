@@ -23,6 +23,24 @@ Partial Public Class LMSBoardAdmin
     Protected WithEvents Type_pageTitle As Global.System.Web.UI.WebControls.ContentPlaceHolder
 
     '''<summary>
+    '''ContentHeadStyles control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ContentHeadStyles As Global.System.Web.UI.WebControls.ContentPlaceHolder
+
+    '''<summary>
+    '''adminForm control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents adminForm As Global.System.Web.UI.HtmlControls.HtmlForm
+
+    '''<summary>
     '''Change_Breadcrumb_PageTitle control.
     '''</summary>
     '''<remarks>

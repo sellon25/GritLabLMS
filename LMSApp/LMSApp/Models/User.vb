@@ -56,19 +56,19 @@ Dim cmd As New sqlCommand
 cmd.Connection = HttpContext.Current.Session("conn")
 If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = HttpContext.Current.Session("trans")
 cmd.CommandType = CommandType.Text
-        cmd.CommandText = "insert into User (emailID,Username,FName,LName,password,role,join_date,end_date,status)"
+        cmd.CommandText = "insert into [User] (emailID,Username,FName,LName,password,role,join_date,end_date,status)"
         cmd.CommandText = cmd.CommandText & "values(@emailID,@Username,@FName,@LName,@password,@role ,@join_date ,@end_date,@status)"
 
         cmd.Parameters.Add("@emailID" , 22 , 255 , "emailID")
-cmd.Parameters("@emailID").Value = SetNull(emailID)
+        cmd.Parameters("@emailID").Value = setNull(emailID)
         cmd.Parameters.Add("@Username", 22, 255, "Username")
         cmd.Parameters("@Username").Value = setNull(Username)
         cmd.Parameters.Add("@FName" , 22 , 255 , "FName")
-cmd.Parameters("@FName").Value = SetNull(FName)
-cmd.Parameters.Add("@LName" , 22 , 255 , "LName")
-cmd.Parameters("@LName").Value = SetNull(LName)
-cmd.Parameters.Add("@password" , 22 , 500 , "password")
-cmd.Parameters("@password").Value = SetNull(password)
+        cmd.Parameters("@FName").Value = setNull(FName)
+        cmd.Parameters.Add("@LName" , 22 , 255 , "LName")
+        cmd.Parameters("@LName").Value = setNull(LName)
+        cmd.Parameters.Add("@password", 22, 500, "password")
+        cmd.Parameters("@password").Value = setNull(password)
         cmd.Parameters.Add("@role ", 8, 0, "role")
         cmd.Parameters("@role ").Value = setNull(role)
         cmd.Parameters.Add("@join_date ", 31, 0, "join_date")

@@ -1,36 +1,9 @@
-﻿Imports System.IO
-Imports System.Runtime.InteropServices
-Imports System.Security.Cryptography
-Imports System.Web.Services
-Imports System.Windows
-
-Public Class ManageApplicationForm
+﻿Public Class WebForm1
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         LoadQuestions()
 
-    End Sub
-
-    Protected Sub AddQuestionButton_Click(sender As Object, e As EventArgs)
-        Dim questionType As String = questionTypeList.SelectedValue
-        Dim questionNum = inputQuestionNum.Value
-        Dim questionText As String = inputQuestionText.Value.Trim()
-        Dim guid As Guid = Guid.NewGuid()
-        Dim newQuestion As New Question_Bank()
-        With newQuestion
-            .id = guid.ToString()
-            .QuestionType = questionType
-            .Text = questionText.Trim()
-            .Category_ID = "Application Form"
-        End With
-        Dim validnum = Double.TryParse(questionNum, 0.01)
-        If validnum And questionNum IsNot Nothing And questionNum IsNot "" Then
-            newQuestion.QuestionNumber = Double.Parse(questionNum, 0.01)
-        End If
-
-        newQuestion.update()
-        LoadQuestions()
     End Sub
 
     Private Sub LoadQuestions()
@@ -199,9 +172,4 @@ Public Class ManageApplicationForm
         Dim questionId = btn.ID.Replace("btnAdd_", "")
 
     End Sub
-
-
-
-
-
 End Class
