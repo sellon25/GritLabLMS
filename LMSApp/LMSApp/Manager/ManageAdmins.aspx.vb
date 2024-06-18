@@ -96,7 +96,4 @@ Public Class ManageAdmins
 
     End Sub
 
-    Protected Sub DeleteButton_Click1(sender As Object, e As EventArgs)
-
-    End Sub
 End Class

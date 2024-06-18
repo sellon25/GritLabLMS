@@ -147,6 +147,7 @@
     <Content Include="Facilitator\SubmissionLinks.aspx" />
     <Content Include="Facilitator\TestsAndAssignments.aspx" />
     <Content Include="js\mainscript.js" />
+    <Content Include="Manager\AnnouncementPage.aspx" />
     <Content Include="Manager\Announcements.aspx" />
     <Content Include="Manager\ApproveCourses.aspx" />
     <Content Include="Manager\ApproveProjects.aspx" />
@@ -2803,6 +2804,13 @@
     </Compile>
     <Compile Include="LMSBoardManager.Master.vb">
       <DependentUpon>LMSBoardManager.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manager\AnnouncementPage.aspx.designer.vb">
+      <DependentUpon>AnnouncementPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\AnnouncementPage.aspx.vb">
+      <DependentUpon>AnnouncementPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Manager\Announcements.aspx.designer.vb">

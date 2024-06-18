@@ -1,15 +1,14 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/LMSBoardManager.Master" CodeBehind="Announcements.aspx.vb" Inherits="LMSApp.Announcements1" %>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/LMSBoardManager.Master" CodeBehind="AnnouncementPage.aspx.vb" Inherits="LMSApp.AnnouncementPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Type_pageTitle" runat="server">
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Change_Breadcrumb_PageTitle" runat="server">
 
-    Announcements 
+    Announcement
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
 
-        <%--<th Class="border-top-0">Announcements</th>
+            <%--<th Class="border-top-0">Announcements</th>
                 <th class="border-top-0">Status</th>
                 <th class="border-top-0">Viewers</th>
             </tr>
@@ -37,20 +36,20 @@
             <form id="addAnnouncementForm">
                 <div class="form-group">
                     <label for="announcementTitle">Title</label>
-                    <input type="text" class="form-control" id="announcementTitle" placeholder="Enter title">
+                    <input type="text" class="form-control" id="announcementTitle" runat="server" placeholder="Enter title">
                 </div>
                 <div class="form-group">
                     <label for="announcementType">Type</label>
-                    <input type="text" class="form-control" id="announcementType" placeholder="Enter type">
+                    <input type="text" class="form-control" id="announcementType" runat="server" placeholder="Enter type">
                 </div>
                 <div class="form-group">
                     <label for="announcementLink">Link</label>
-                    <input type="text" class="form-control" id="announcementLink" placeholder="Enter link">
+                    <input type="text" class="form-control" id="announcementLink" runat="server" placeholder="Enter link">
                 </div>
-                <div class="form-group">
+                <%--<div class="form-group">
                     <label for="announcementDateTime">Datetime</label>
                     <input type="datetime-local" min="2024-06-06" oninput="checkYear(this)" class="form-control" id="announcementDateTime">
-                    <script>
+                    --<script>
                         function checkYear(input) {
                             var enteredDate = new Date(input.value);
                             var maxDate = new Date("2024-06-01");
@@ -76,24 +75,27 @@
 
                         setInterval(updateDateTime, 1000); // Update every second
                  </script>
-                </div>
+
+                </div>--%>
                <div class="form-group">
-                    <label for="announcementBody">Body</label>
-                    <textarea class="form-control" id="announcementBody" rows="3"></textarea>
+                    <label for="announcementBody">Text</label>
+                    <textarea class="form-control" id="announcementText" runat="server" rows="3"></textarea>
                 </div>
-                <div class="form-group">
+                <%--<div class="form-group">
                     <label for="announcementStatus">Status</label>
                     <select class="form-control" id="announcementStatus">
                         <option value="draft">Draft</option>
                         <option value="published">Published</option>
                     </select>
-                </div>
+                </div>--%>
                 <div class="form-group">
                     <label for="announcementSentBy">Sent By</label>
-                    <input type="text" class="form-control" id="announcementSentBy" placeholder="Enter sender">
+                    <input type="text" class="form-control" id="announcementSentBy" runat="server" placeholder="Enter sender">
                 </div>
-                <button type="button" class="btn btn-primary" style="background-color:#93761E" onclick="addAnnouncement()">Add Announcement</button>
-            </form>
+                <div class="form-group">
+                    <asp:Button class="btn btn-primary" style="background-color:#93761E" OnClick="addAnnouncement_Click" ID="addAnnouncement" runat="server" Text="Add Announcement" />
+                </div>
+           </form>
         </div>
     </div>
 
@@ -172,4 +174,3 @@
 </div>
 
 </asp:Content>
-

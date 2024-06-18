@@ -223,7 +223,7 @@
                         </li>
 
                         <li class="sidebar-item pt-2">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="Login.aspx"
                                 aria-expanded="false">
                                     <i style="text-align: left;" class="fas fa-sign-out-alt sign-out-icon"></i>
                                                                 &nbsp &nbsp &nbsp
