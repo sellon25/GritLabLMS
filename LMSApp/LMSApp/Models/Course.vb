@@ -52,20 +52,20 @@ Dim cmd As New sqlCommand
 cmd.Connection = HttpContext.Current.Session("conn")
 If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = HttpContext.Current.Session("trans")
 cmd.CommandType = CommandType.Text
-cmd.CommandText = "insert into Course (id,name ,thumbnail,description,overview ,status,date_started,end_date)"
-cmd.CommandText = cmd.CommandText & "values(@id,@name ,@thumbnail,@description,@overview ,@status,@date_started,@end_date)"
+        cmd.CommandText = "insert into Course (id,name,thumbnail,description,overview,status,date_started,end_date)"
+        cmd.CommandText = cmd.CommandText & "values(@id,@name,@thumbnail,@description,@overview,@status,@date_started,@end_date)"
 
-cmd.Parameters.Add("@id" , 22 , 255 , "id")
+        cmd.Parameters.Add("@id" , 22 , 255 , "id")
 cmd.Parameters("@id").Value = SetNull(id)
-cmd.Parameters.Add("@name " , 22 , 255 , "name ")
-cmd.Parameters("@name ").Value = SetNull(name )
-cmd.Parameters.Add("@thumbnail" , 21 , -1 , "thumbnail")
-cmd.Parameters("@thumbnail").Value = SetNull(thumbnail)
-cmd.Parameters.Add("@description" , 22 , 150 , "description")
+        cmd.Parameters.Add("@name", 22, 255, "name")
+        cmd.Parameters("@name").Value = setNull(name)
+        cmd.Parameters.Add("@thumbnail", 21, -1, "thumbnail")
+        cmd.Parameters("@thumbnail").Value = setNull(thumbnail)
+        cmd.Parameters.Add("@description" , 22 , 150 , "description")
 cmd.Parameters("@description").Value = SetNull(description)
-cmd.Parameters.Add("@overview " , 18 , 2147483647 , "overview ")
-cmd.Parameters("@overview ").Value = SetNull(overview )
-cmd.Parameters.Add("@status" , 8 , 0 , "status")
+        cmd.Parameters.Add("@overview", 18, 2147483647, "overview")
+        cmd.Parameters("@overview").Value = setNull(overview)
+        cmd.Parameters.Add("@status" , 8 , 0 , "status")
 cmd.Parameters("@status").Value = SetNull(status)
 cmd.Parameters.Add("@date_started" , 31 , 0 , "date_started")
 cmd.Parameters("@date_started").Value = SetNull(date_started)
@@ -117,14 +117,14 @@ Dim p As New Course
 For i = 0 To dt.Rows.Count - 1
 p.id=checknull(dt.Rows(i)("id"))
 p.I_Display_id=Display_id
-if Display_name =true then p.name =checknull(dt.Rows(i)("name "))
-p.I_Display_name =Display_name 
+            If Display_name = True Then p.name = checkNull(dt.Rows(i)("name"))
+            p.I_Display_name =Display_name 
 if Display_thumbnail=true then p.thumbnail=checknull(dt.Rows(i)("thumbnail"))
 p.I_Display_thumbnail=Display_thumbnail
 if Display_description=true then p.description=checknull(dt.Rows(i)("description"))
 p.I_Display_description=Display_description
-if Display_overview =true then p.overview =checknull(dt.Rows(i)("overview "))
-p.I_Display_overview =Display_overview 
+            If Display_overview = True Then p.overview = checkNull(dt.Rows(i)("overview"))
+            p.I_Display_overview =Display_overview 
 if Display_status=true then p.status=checknull(dt.Rows(i)("status"))
 p.I_Display_status=Display_status
 if Display_date_started=true then p.date_started=checknull(dt.Rows(i)("date_started"))
@@ -151,11 +151,11 @@ If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = Ht
 cmd.CommandType = CommandType.Text
 cmd.CommandText = "update Course set "
 cmd.CommandText =cmd.CommandText & " id=@id,"
-if I_Display_name =true then cmd.CommandText =cmd.CommandText & " name =@name ,"
-if I_Display_thumbnail=true then cmd.CommandText =cmd.CommandText & " thumbnail=@thumbnail,"
+        If I_Display_name = True Then cmd.CommandText = cmd.CommandText & " name =@name,"
+        If I_Display_thumbnail=true then cmd.CommandText =cmd.CommandText & " thumbnail=@thumbnail,"
 if I_Display_description=true then cmd.CommandText =cmd.CommandText & " description=@description,"
-if I_Display_overview =true then cmd.CommandText =cmd.CommandText & " overview =@overview ,"
-if I_Display_status=true then cmd.CommandText =cmd.CommandText & " status=@status,"
+        If I_Display_overview = True Then cmd.CommandText = cmd.CommandText & " overview =@overview,"
+        If I_Display_status=true then cmd.CommandText =cmd.CommandText & " status=@status,"
 if I_Display_date_started=true then cmd.CommandText =cmd.CommandText & " date_started=@date_started,"
 if I_Display_end_date=true then cmd.CommandText =cmd.CommandText & " end_date=@end_date,"
 cmd.CommandText = cmd.CommandText.Substring(0,cmd.CommandText.Length-1)
@@ -165,8 +165,8 @@ cmd.CommandText = cmd.CommandText & " where id=@previous_id"
 cmd.Parameters.Add("@id", 22, 255, "id")
 cmd.Parameters("@id").Value = SetNull(id)
 
-if I_Display_name =true then cmd.Parameters.Add("@name ", 22, 255, "name ")
-if I_Display_name =true then cmd.Parameters("@name ").Value = SetNull(name )
+        If I_Display_name = True Then cmd.Parameters.Add("@name ", 22, 255, "name")
+        If I_Display_name =true then cmd.Parameters("@name ").Value = SetNull(name )
 
 if I_Display_thumbnail=true then cmd.Parameters.Add("@thumbnail", 21, -1, "thumbnail")
 if I_Display_thumbnail=true then cmd.Parameters("@thumbnail").Value = SetNull(thumbnail)
@@ -174,8 +174,8 @@ if I_Display_thumbnail=true then cmd.Parameters("@thumbnail").Value = SetNull(th
 if I_Display_description=true then cmd.Parameters.Add("@description", 22, 150, "description")
 if I_Display_description=true then cmd.Parameters("@description").Value = SetNull(description)
 
-if I_Display_overview =true then cmd.Parameters.Add("@overview ", 18, 2147483647, "overview ")
-if I_Display_overview =true then cmd.Parameters("@overview ").Value = SetNull(overview )
+        If I_Display_overview = True Then cmd.Parameters.Add("@overview", 18, 2147483647, "overview")
+        If I_Display_overview =true then cmd.Parameters("@overview ").Value = SetNull(overview )
 
 if I_Display_status=true then cmd.Parameters.Add("@status", 8, 0, "status")
 if I_Display_status=true then cmd.Parameters("@status").Value = SetNull(status)
@@ -204,32 +204,32 @@ Dim cmd As New sqlCommand
 cmd.Connection = HttpContext.Current.Session("conn")
 If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = HttpContext.Current.Session("trans")
 cmd.CommandType = CommandType.Text
-cmd.CommandText = "select "
-cmd.CommandText = cmd.CommandText & "id,"
-if Display_name =true then cmd.CommandText = cmd.CommandText & "name ,"
-if Display_thumbnail=true then cmd.CommandText = cmd.CommandText & "thumbnail,"
+        cmd.CommandText = "select"
+        cmd.CommandText = cmd.CommandText & "id,"
+        If Display_name = True Then cmd.CommandText = cmd.CommandText & "name,"
+        If Display_thumbnail=true then cmd.CommandText = cmd.CommandText & "thumbnail,"
 if Display_description=true then cmd.CommandText = cmd.CommandText & "description,"
-if Display_overview =true then cmd.CommandText = cmd.CommandText & "overview ,"
-if Display_status=true then cmd.CommandText = cmd.CommandText & "status,"
+        If Display_overview = True Then cmd.CommandText = cmd.CommandText & "overview,"
+        If Display_status=true then cmd.CommandText = cmd.CommandText & "status,"
 if Display_date_started=true then cmd.CommandText = cmd.CommandText & "date_started,"
 if Display_end_date=true then cmd.CommandText = cmd.CommandText & "end_date,"
 cmd.CommandText = cmd.CommandText.Substring(0,cmd.CommandText.Length-1)
-cmd.CommandText = cmd.CommandText & " from Course " & filterstr & " " & sortstr 
-Dim pl As New sqlDataAdapter, dt As New DataTable, i As Integer
+        cmd.CommandText = cmd.CommandText & "from Course" & filterstr & "" & sortstr
+        Dim pl As New sqlDataAdapter, dt As New DataTable, i As Integer
 pl.SelectCommand = cmd
 pl.Fill(dt)
 For i = 0 To dt.Rows.Count - 1
 Dim p As New Course
 p.id=checknull(dt.Rows(i)("id"))
 p.I_Display_id=Display_id
-if Display_name =true then p.name =checknull(dt.Rows(i)("name "))
-p.I_Display_name =Display_name 
+            If Display_name = True Then p.name = checkNull(dt.Rows(i)("name"))
+            p.I_Display_name =Display_name 
 if Display_thumbnail=true then p.thumbnail=checknull(dt.Rows(i)("thumbnail"))
 p.I_Display_thumbnail=Display_thumbnail
 if Display_description=true then p.description=checknull(dt.Rows(i)("description"))
 p.I_Display_description=Display_description
-if Display_overview =true then p.overview =checknull(dt.Rows(i)("overview "))
-p.I_Display_overview =Display_overview 
+            If Display_overview = True Then p.overview = checkNull(dt.Rows(i)("overview"))
+            p.I_Display_overview =Display_overview 
 if Display_status=true then p.status=checknull(dt.Rows(i)("status"))
 p.I_Display_status=Display_status
 if Display_date_started=true then p.date_started=checknull(dt.Rows(i)("date_started"))

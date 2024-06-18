@@ -17,23 +17,22 @@
     </script>
 
     <div class="row">
-
-        <div Class="col-md-4">
-            <div Class="white-box">
-                <h3 Class="box-title">Send Feedback</h3>
-                 <div Class="form-group">
-                        <Label for="announcementTitle">Email</label>
-                        <asp:TextBox ID="email" runat="server" CssClass="form-control" placeholder="Enter email"></asp:TextBox>
-                    </div>
-                    <div Class="form-group">
-                        <Label for="announcementType">Type</label>
-                        <asp:TextBox ID="type" runat="server" CssClass="form-control" placeholder="Enter Email Type"  rows="3"></asp:TextBox>
-                    </div>
-                    <div Class="form-group">
-                        <Label for="announcementBody">Body</label>
-                        <asp:TextBox ID="body" TextMode="MultiLine" runat="server" CssClass="form-control" rows="3" placeholder="Enter message"></asp:TextBox>
-                    </div>
-                    <Button type = "button" Class="btn btn-primary" style="background-color:#000000">Add Announcement</button>
+        <div class="col-md-4">
+            <div class="white-box">
+                <h3 class="box-title">Send Email</h3>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <asp:TextBox ID="email" runat="server" CssClass="form-control" placeholder="Enter email"></asp:TextBox>
+                </div>
+                <div class="form-group">
+                    <label for="type">Type</label>
+                    <asp:TextBox ID="type" runat="server" CssClass="form-control" placeholder="Enter Email Type"></asp:TextBox>
+                </div>
+                <div class="form-group">
+                    <label for="body">Body</label>
+                    <asp:TextBox ID="body" TextMode="MultiLine" runat="server" CssClass="form-control" placeholder="Enter message"></asp:TextBox>
+                </div>
+                <asp:Button ID="btnSend" runat="server" Text="SEND" CssClass="btn btn-primary"/>
             </div>
         </div>
 

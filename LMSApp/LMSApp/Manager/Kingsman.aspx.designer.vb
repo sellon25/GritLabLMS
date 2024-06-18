@@ -41,6 +41,15 @@ Partial Public Class Kingsman
     Protected WithEvents body As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''btnSend control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSend As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''HyperLink2 control.
     '''</summary>
     '''<remarks>
