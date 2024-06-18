@@ -92,6 +92,8 @@ Public Class ManageAdmins
 
     Protected Sub DeleteButton_Click(ByVal sender As Object, ByVal e As EventArgs)
 
+        MsgBox("Hello World")
+
         DeleteAdmin()
 
     End Sub

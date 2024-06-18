@@ -14,15 +14,6 @@ Option Explicit On
 Partial Public Class Kingsman
 
     '''<summary>
-    '''feedbackForm control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents feedbackForm As Global.System.Web.UI.HtmlControls.HtmlForm
-
-    '''<summary>
     '''email control.
     '''</summary>
     '''<remarks>

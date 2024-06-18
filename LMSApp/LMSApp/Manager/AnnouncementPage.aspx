@@ -8,7 +8,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
 
-            <%--<th Class="border-top-0">Announcements</th>
+        <%--<th Class="border-top-0">Announcements</th>
                 <th class="border-top-0">Status</th>
                 <th class="border-top-0">Viewers</th>
             </tr>

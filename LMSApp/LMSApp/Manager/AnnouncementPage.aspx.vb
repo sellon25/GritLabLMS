@@ -14,7 +14,7 @@ Public Class AnnouncementPage
             Dim title As String = announcementTitle.Value
             Dim type As String = announcementType.Value
             Dim link As String = announcementLink.Value
-            Dim datetime As String = "Hello"
+            Dim datetime As DateTime = DateTime.Now
             Dim text As String = announcementText.Value
             Dim sentBy As String = announcementSentBy.Value
 

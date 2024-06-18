@@ -148,7 +148,6 @@
     <Content Include="Facilitator\TestsAndAssignments.aspx" />
     <Content Include="js\mainscript.js" />
     <Content Include="Manager\AnnouncementPage.aspx" />
-    <Content Include="Manager\Announcements.aspx" />
     <Content Include="Manager\ApproveCourses.aspx" />
     <Content Include="Manager\ApproveProjects.aspx" />
     <Content Include="Manager\ApproveProjectsCourses.aspx" />
@@ -2811,13 +2810,6 @@
     </Compile>
     <Compile Include="Manager\AnnouncementPage.aspx.vb">
       <DependentUpon>AnnouncementPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Manager\Announcements.aspx.designer.vb">
-      <DependentUpon>Announcements.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Manager\Announcements.aspx.vb">
-      <DependentUpon>Announcements.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Manager\ApproveCourses.aspx.designer.vb">

@@ -21,7 +21,6 @@
         <div Class="col-md-4">
             <div Class="white-box">
                 <h3 Class="box-title">Send Feedback</h3>
-                <form id="feedbackForm" runat="server">
                  <div Class="form-group">
                         <Label for="announcementTitle">Email</label>
                         <asp:TextBox ID="email" runat="server" CssClass="form-control" placeholder="Enter email"></asp:TextBox>
@@ -35,7 +34,6 @@
                         <asp:TextBox ID="body" TextMode="MultiLine" runat="server" CssClass="form-control" rows="3" placeholder="Enter message"></asp:TextBox>
                     </div>
                     <Button type = "button" Class="btn btn-primary" style="background-color:#000000">Add Announcement</button>
-                </form>
             </div>
         </div>
 

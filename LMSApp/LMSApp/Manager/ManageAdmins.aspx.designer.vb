@@ -14,15 +14,6 @@ Option Explicit On
 Partial Public Class ManageAdmins
 
     '''<summary>
-    '''form1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
-
-    '''<summary>
     '''TextBox1 control.
     '''</summary>
     '''<remarks>
@@ -156,49 +147,4 @@ Partial Public Class ManageAdmins
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents HyperLink3 As Global.System.Web.UI.WebControls.HyperLink
-
-    '''<summary>
-    '''HyperLink4 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents HyperLink4 As Global.System.Web.UI.WebControls.HyperLink
-
-    '''<summary>
-    '''HyperLink5 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents HyperLink5 As Global.System.Web.UI.WebControls.HyperLink
-
-    '''<summary>
-    '''HyperLink6 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents HyperLink6 As Global.System.Web.UI.WebControls.HyperLink
-
-    '''<summary>
-    '''HyperLink7 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents HyperLink7 As Global.System.Web.UI.WebControls.HyperLink
-
-    '''<summary>
-    '''HyperLink8 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents HyperLink8 As Global.System.Web.UI.WebControls.HyperLink
 End Class

@@ -6,7 +6,6 @@
 <head >
     <title></title>
 
-  
     <%--My Additional Links --%>
 
     <link href="Manager%20Files/Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -213,8 +212,9 @@
                                 <span style="text-align: left;" class="">Kingsman</span>
                             </a>
                         </li>
+
                         <li class="sidebar-item pt-2">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="Announcements.aspx"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Manager/AnnouncementPage.aspx"
                                 aria-expanded="false">
                                 <i style="text-align: left;" class="fas fa-paper-plane" aria-hidden="true"></i>
                                 &nbsp &nbsp &nbsp
