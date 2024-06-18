@@ -1,16 +1,14 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/LMSBoardManager.Master" CodeBehind="Kingsman.aspx.vb" Inherits="LMSApp.Kingsman" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="Type_pageTitle" runat="server">
-    
     Kingsman
-
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="Change_Breadcrumb_PageTitle" runat="server">
-
     Kingsman
-
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
 
+<asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
     <script>
     function resetFilter() {
         document.getElementById('txtSearch').value = '';
@@ -18,7 +16,6 @@
     }
     </script>
 
-    3
     <div class="row">
 
         <div Class="col-md-4">

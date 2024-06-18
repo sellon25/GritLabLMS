@@ -163,6 +163,9 @@
     <Content Include="Manager\Manager Files\Bootstrap\js\bootstrap.min.js" />
     <Content Include="Manager\Manager Files\Bootstrap\js\jquery-3.3.1.slim.min.js" />
     <Content Include="Manager\Manager Files\Bootstrap\js\popper.min.js" />
+    <Content Include="Manager\Manager Files\cs\bootstrap.min.css" />
+    <Content Include="Manager\Manager Files\cs\jquery.min.js" />
+    <Content Include="Manager\Manager Files\cs\popper.min.js" />
     <Content Include="Manager\Manager Files\cs\style12.css" />
     <Content Include="Manager\Manager Files\fontawesome\css\all.css" />
     <Content Include="Manager\Manager Files\fontawesome\css\all.min.css" />

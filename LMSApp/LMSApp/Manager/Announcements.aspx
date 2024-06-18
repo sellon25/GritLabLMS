@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/LMSBoardManager.Master" CodeBehind="Announcements.aspx.vb" Inherits="LMSApp.Announcements1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Type_pageTitle" runat="server">
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Change_Breadcrumb_PageTitle" runat="server">
 
@@ -8,14 +9,14 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
 
-        <%--         <th Class="border-top-0">Announcements</th>
+        <%--<th Class="border-top-0">Announcements</th>
                 <th class="border-top-0">Status</th>
                 <th class="border-top-0">Viewers</th>
             </tr>
-        </thead>
-        <tbody>
-                        <tr>
-                        <td>This is a Test Announcement</td>
+            </thead>
+            <tbody>
+                <tr>
+                <td>This is a Test Announcement</td>
                 <td class="txt-oflo text-black">Posted</td>
                 <td class="text-black">2/5</td>
                 <th>
@@ -27,30 +28,75 @@
         <tr> --%>
 
 
-
 <h3> Module Announcements</h3>
 <div Class="row">
     <!-- Add Announcement Section -->
-    <div Class="col-md-4">
-        <div Class="white-box">
-            <h3 Class="box-title">Add Announcement</h3>
-            <form>
-             <div Class="form-group">
-                    <Label for="announcementTitle">Title</label>
-                    <input type = "text" Class="form-control" id="announcementTitle" placeholder="Enter title">
+    <div class="col-md-4">
+        <div class="white-box">
+            <h3 class="box-title">Add Announcement</h3>
+            <form id="addAnnouncementForm">
+                <div class="form-group">
+                    <label for="announcementTitle">Title</label>
+                    <input type="text" class="form-control" id="announcementTitle" placeholder="Enter title">
                 </div>
-                <div Class="form-group">
-                    <Label for="announcementType">Type</label>
-                    <input type = "text" Class="form-control" id="announcementType" placeholder="Enter type">
+                <div class="form-group">
+                    <label for="announcementType">Type</label>
+                    <input type="text" class="form-control" id="announcementType" placeholder="Enter type">
                 </div>
-                <div Class="form-group">
-                    <Label for="announcementBody">Body</label>
-                    <textarea Class="form-control" id="announcementBody" rows="3"></textarea>
+                <div class="form-group">
+                    <label for="announcementLink">Link</label>
+                    <input type="text" class="form-control" id="announcementLink" placeholder="Enter link">
                 </div>
-                <Button type = "button" Class="btn btn-primary" style="background-color:#93761E">Add Announcement</button>
+                <div class="form-group">
+                    <label for="announcementDateTime">Datetime</label>
+                    <input type="datetime-local" min="2024-06-06" oninput="checkYear(this)" class="form-control" id="announcementDateTime">
+                    <script>
+                        function checkYear(input) {
+                            var enteredDate = new Date(input.value);
+                            var maxDate = new Date("2024-06-01");
+
+                            if (enteredDate < maxDate) {
+                                enteredDate.setFullYear(2005); // Set the year to 2020
+                                var formattedDate = enteredDate.toISOString().slice(0, 10);
+                                input.value = formattedDate;
+                            }
+                        }
+
+                        function updateDateTime() {
+                            var now = new Date();
+                            var year = now.getFullYear();
+                            var month = ('0' + (now.getMonth() + 1)).slice(-2);
+                            var day = ('0' + now.getDate()).slice(-2);
+                            var hours = ('0' + now.getHours()).slice(-2);
+                            var minutes = ('0' + now.getMinutes()).slice(-2);
+                            var seconds = ('0' + now.getSeconds()).slice(-2);
+                            var formattedDateTime = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+                            document.getElementById('announcementDateTime').value = formattedDateTime;
+                        }
+
+                        setInterval(updateDateTime, 1000); // Update every second
+                 </script>
+                </div>
+               <div class="form-group">
+                    <label for="announcementBody">Body</label>
+                    <textarea class="form-control" id="announcementBody" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="announcementStatus">Status</label>
+                    <select class="form-control" id="announcementStatus">
+                        <option value="draft">Draft</option>
+                        <option value="published">Published</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="announcementSentBy">Sent By</label>
+                    <input type="text" class="form-control" id="announcementSentBy" placeholder="Enter sender">
+                </div>
+                <button type="button" class="btn btn-primary" style="background-color:#93761E" onclick="addAnnouncement()">Add Announcement</button>
             </form>
         </div>
     </div>
+
     <!-- Existing Announcements Section -->
     <div Class="col-md-8">
         <div Class="white-box">
@@ -87,8 +133,18 @@
                             <span Class="mb-3 d-block">Lorem Ipsum Is simply dummy text of the printing And type setting industry.It has survived Not only </span>
                                 <div Class="text-muted fs-2 ms-auto mt-2 mt-md-0">April 14, 2021</div>
                             </div>
+                        <div class="dropdown ml-auto">
+                            <button class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="fas fa-ellipsis-v"></span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <a class="dropdown-item" href="#">Edit</a>
+                                <a class="dropdown-item" href="#">Delete</a>
+                                <a class="dropdown-item" href="#">View</a>
+                            </div>
                         </div>
-                           
+                    </div>
+                     
                     <!-- Comment Row -->
                     <div Class="d-flex flex-row comment-row p-3 mt-0">
                         <div Class="p-2"><i class="far fa-bell" style="font-size: 26px;"></i></div>
@@ -98,11 +154,22 @@
                             <span Class="mb-3 d-block">Student Solutions now ready Lorem Ipsum Is simply dummy text of the printing And type setting industry.It has survived Not only </span>
                                 <div Class="text-muted fs-2 ms-auto mt-2 mt-md-0">April 14, 2021</div>
                             </div>
+                        <div class="dropdown ml-auto">
+                            <button class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="fas fa-ellipsis-v"></span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                <a class="dropdown-item" href="#">Edit</a>
+                                <a class="dropdown-item" href="#">Delete</a>
+                                <a class="dropdown-item" href="#">View</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 </asp:Content>
 

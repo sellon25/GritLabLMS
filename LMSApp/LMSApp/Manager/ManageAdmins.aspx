@@ -1,11 +1,12 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/LMSBoardManager.Master" CodeBehind="ManageAdmins.aspx.vb" Inherits="LMSApp.ManageAdmins" %>
-<asp:Content ID="Type_pageTitle" ContentPlaceHolderID="Type_pageTitle" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="Type_pageTitle" runat="server">
     Manage Admins
 </asp:Content>
-<asp:Content ID="Change_Breadcrumb_PageTitle" ContentPlaceHolderID="Change_Breadcrumb_PageTitle" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="Change_Breadcrumb_PageTitle" runat="server">
     Manage Admins
 </asp:Content>
-<asp:Content ID="Main_ContentPlaceHolder" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
+<asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
+
  <form id="form1" runat="server">
         <br />
         <div class="container-fluid">
@@ -117,7 +118,7 @@
                         <div class="row">
                             <div class="col-4 mx-auto">
                                 <div class="form-group">
-                                    <asp:Button CssClass="btn btn-secondary btn-block btn-outline-dark text-white" ID="DeleteButton" runat="server" Text="Remove" />
+                                    <asp:Button CssClass="btn btn-secondary btn-block btn-outline-dark text-white" ID="DeleteButton" OnClick="DeleteButton_Click" runat="server" Text="Remove" />
                                 </div>
                             </div>
                             <div class="col-4 mx-auto">
