@@ -7,7 +7,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
       <div class="row" style="padding-top:10px;">
-                    <a class="col-md-12 text-black" href="Announcements.aspx">
+                    <a class="col-md-12 text-black" href="Announcements.aspx" runat="server">
                         <div class="white-box boxShadow">
                             <h3 class="box-title" >Anouncements</h3>
                         </div> 
