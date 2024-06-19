@@ -131,6 +131,7 @@
     <Content Include="Admin\SQDGSubmission.aspx" />
     <Content Include="Admin\table.aspx" />
     <Content Include="Admin\UploadPDF.aspx" />
+    <Content Include="Admin\WebForm1.aspx" />
     <Content Include="Facilitator\AnnouncementsPage.aspx" />
     <Content Include="Facilitator\AssessmentStudentList.aspx" />
     <Content Include="Facilitator\CourseContent.aspx" />
@@ -147,7 +148,7 @@
     <Content Include="Facilitator\SubmissionLinks.aspx" />
     <Content Include="Facilitator\TestsAndAssignments.aspx" />
     <Content Include="js\mainscript.js" />
-    <Content Include="Manager\AnnouncementPage.aspx" />
+    <Content Include="Manager\Announcements.aspx" />
     <Content Include="Manager\ApproveCourses.aspx" />
     <Content Include="Manager\ApproveProjects.aspx" />
     <Content Include="Manager\ApproveProjectsCourses.aspx" />
@@ -163,10 +164,11 @@
     <Content Include="Manager\Manager Files\Bootstrap\js\bootstrap.min.js" />
     <Content Include="Manager\Manager Files\Bootstrap\js\jquery-3.3.1.slim.min.js" />
     <Content Include="Manager\Manager Files\Bootstrap\js\popper.min.js" />
-    <Content Include="Manager\Manager Files\cs\bootstrap.min.css" />
-    <Content Include="Manager\Manager Files\cs\jquery.min.js" />
-    <Content Include="Manager\Manager Files\cs\popper.min.js" />
     <Content Include="Manager\Manager Files\cs\style12.css" />
+    <Content Include="Manager\Manager Files\dataTables\css\dataTables.dataTables.css" />
+    <Content Include="Manager\Manager Files\dataTables\css\jquery.dataTables.min.css" />
+    <Content Include="Manager\Manager Files\dataTables\js\jquery-3.7.1.js" />
+    <Content Include="Manager\Manager Files\dataTables\js\jquery.dataTables.min.js" />
     <Content Include="Manager\Manager Files\fontawesome\css\all.css" />
     <Content Include="Manager\Manager Files\fontawesome\css\all.min.css" />
     <Content Include="Manager\Manager Files\fontawesome\css\brands.css" />
@@ -2259,8 +2261,9 @@
     <Content Include="Manager\SQWID.aspx" />
     <Content Include="Manager\StudentsProgress.aspx" />
     <Compile Include="Models\Course_Enrollment.vb" />
-    <Compile Include="Models\Project_Enrollment.vb.vb" />
+    <Compile Include="Models\Project_Enrollment.vb" />
     <Content Include="plugins\images\miniBanking.jpg" />
+    <Content Include="SignUp.aspx" />
     <Content Include="Student\Announcements.aspx" />
     <Content Include="bootstrap\dist\css\bootstrap-grid.css" />
     <Content Include="bootstrap\dist\css\bootstrap-grid.min.css" />
@@ -2681,6 +2684,13 @@
       <DependentUpon>UploadPDF.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Admin\WebForm1.aspx.designer.vb">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\WebForm1.aspx.vb">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Facilitator\AnnouncementsPage.aspx.designer.vb">
       <DependentUpon>AnnouncementsPage.aspx</DependentUpon>
     </Compile>
@@ -2807,11 +2817,11 @@
       <DependentUpon>LMSBoardManager.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Manager\AnnouncementPage.aspx.designer.vb">
-      <DependentUpon>AnnouncementPage.aspx</DependentUpon>
+    <Compile Include="Manager\Announcements.aspx.designer.vb">
+      <DependentUpon>Announcements.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Manager\AnnouncementPage.aspx.vb">
-      <DependentUpon>AnnouncementPage.aspx</DependentUpon>
+    <Compile Include="Manager\Announcements.aspx.vb">
+      <DependentUpon>Announcements.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Manager\ApproveCourses.aspx.designer.vb">
@@ -2918,11 +2928,13 @@
     <Compile Include="Models\Course.vb" />
     <Compile Include="Models\Course_Announcement.vb" />
     <Compile Include="Models\Course_Content.vb" />
+    <Compile Include="Models\Course_Enrollment.vb" />
     <Compile Include="Models\Course_Submission.vb" />
     <Compile Include="Models\NewsEvents.vb" />
     <Compile Include="Models\Project.vb" />
     <Compile Include="Models\Project_Announcement.vb" />
     <Compile Include="Models\Project_Content.vb" />
+    <Compile Include="Models\Project_Enrollment.vb" />
     <Compile Include="Models\Project_Submission.vb" />
     <Compile Include="Models\Question_Bank.vb" />
     <Compile Include="Models\StudentAnswer.vb" />
@@ -2931,6 +2943,13 @@
     <Compile Include="Models\Test.vb" />
     <Compile Include="Models\TrackProjectProgress.vb" />
     <Compile Include="Models\User.vb" />
+    <Compile Include="SignUp.aspx.designer.vb">
+      <DependentUpon>SignUp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SignUp.aspx.vb">
+      <DependentUpon>SignUp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Student\Announcements.aspx.designer.vb">
       <DependentUpon>Announcements.aspx</DependentUpon>
     </Compile>
