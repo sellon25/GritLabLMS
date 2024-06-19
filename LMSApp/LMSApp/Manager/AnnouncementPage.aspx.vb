@@ -15,13 +15,11 @@ Public Class AnnouncementPage
                 Throw New Exception("User is not logged in.")
             End If
 
-            ' Retrieve the logged-in user's emailID from session
             Dim sentBy As String = If(Session("ID")?.ToString(), String.Empty)
             If String.IsNullOrEmpty(sentBy) Then
                 Throw New Exception("Logged in user ID is not found.")
             End If
 
-            ' Retrieve other announcement details from the request (example)
             Dim Status As Integer = 1
 
             Dim title As String = announcementTitle.Value
@@ -51,7 +49,7 @@ Public Class AnnouncementPage
             Dim announce As New Announcement()
 
             ' Set properties for the announcement
-            announce.id = 123 ' Assign a suitable id or generate dynamically
+            announce.id = 124
             announce.title = title
             announce.type = type
             announce.link = link
@@ -60,7 +58,6 @@ Public Class AnnouncementPage
             announce.status = Status
             announce.sentby = sentBy
 
-            ' Call the update method of the Announcement class
             announce.update()
 
             Return "Success"
@@ -75,12 +72,13 @@ Public Class AnnouncementPage
         Dim result As String = InsertAnnouncement()
 
         If result = "Success" Then
-            ' Optionally, you can redirect or show a success message
+
             ClientScript.RegisterStartupScript(Me.GetType(), "alert", "alert('Announcement added successfully!');", True)
         Else
-            ' Handle error case, e.g., log error, show error message
+
             ClientScript.RegisterStartupScript(Me.GetType(), "alert", "alert('Failed to add announcement: " & result & "');", True)
         End If
     End Sub
+
 
 End Class

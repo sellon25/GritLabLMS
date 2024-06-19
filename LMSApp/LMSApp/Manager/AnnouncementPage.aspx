@@ -116,16 +116,21 @@
                         <div class="text-muted fs-2 ms-auto mt-2 mt-md-0">April 14, 2021</div>
                     </div>
                     <div class="dropdown ml-auto">
-                        <button class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="fas fa-ellipsis-v"></span>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Edit</a>
-                            <a class="dropdown-item" href="#">Delete</a>
-                            <a class="dropdown-item" href="#">View</a>
+                        <asp:HiddenField ID="hiddenAction" runat="server" />
+                        <div class="dropdown">
+
+                            <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="fas fa-ellipsis-v"></span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton5">
+                                <asp:Button ID="btnEdit" runat="server" Text="Edit"  CssClass="dropdown-item" />
+                                <asp:Button ID="btnDelete" runat="server" Text="Delete"  CssClass="dropdown-item" />
+                                <asp:Button ID="btnView" runat="server" Text="View"  CssClass="dropdown-item" />
+                            </div>
                         </div>
                     </div>
                 </div>
+
                     <!-- Comment Row -->
                     <div Class="d-flex flex-row comment-row p-3 mt-0">
                         <div class="p-2"><i class="far fa-question-circle" style="font-size: 26px;"></i></div>
@@ -135,16 +140,14 @@
                             <span Class="mb-3 d-block">Lorem Ipsum Is simply dummy text of the printing And type setting industry.It has survived Not only </span>
                                 <div Class="text-muted fs-2 ms-auto mt-2 mt-md-0">April 14, 2021</div>
                             </div>
-                        <div class="dropdown ml-auto">
-                            <button class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="fas fa-ellipsis-v"></span>
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <a class="dropdown-item" href="#">Edit</a>
-                                <a class="dropdown-item" href="#">Delete</a>
-                                <a class="dropdown-item" href="#">View</a>
+                                <asp:Button ID="Button1" runat="server" Text="Edit"  CssClass="dropdown-item" />
+                                <asp:Button ID="Button2" runat="server" Text="Delete"  CssClass="dropdown-item" />
+                                <asp:Button ID="Button3" runat="server" Text="View"  CssClass="dropdown-item" />
                             </div>
-                        </div>
                     </div>
                      
                     <!-- Comment Row -->
@@ -157,13 +160,13 @@
                                 <div Class="text-muted fs-2 ms-auto mt-2 mt-md-0">April 14, 2021</div>
                             </div>
                         <div class="dropdown ml-auto">
-                            <button class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="fas fa-ellipsis-v"></span>
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                <a class="dropdown-item" href="#">Edit</a>
-                                <a class="dropdown-item" href="#">Delete</a>
-                                <a class="dropdown-item" href="#">View</a>
+                                <asp:Button ID="Button4" runat="server" Text="Edit"  CssClass="dropdown-item" />
+                                <asp:Button ID="Button5" runat="server" Text="Delete"  CssClass="dropdown-item" />
+                                <asp:Button ID="Button6" runat="server" Text="View"  CssClass="dropdown-item" />
                             </div>
                         </div>
                     </div>
