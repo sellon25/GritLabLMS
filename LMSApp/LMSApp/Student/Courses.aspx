@@ -7,14 +7,23 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
    <div class="row courses-container">
-        <a class="col-md-3" href="CoursePage.aspx">
-           <div class="white-box boxShadow coursebox" style="background-image: url(../plugins/images/sldr.jpg)">
-               <div class="description">
-                <label class="box-title">Chapter 0</label>
-                <p class="text-muted">CHPTR0</p>
-               </div>
-            </div>
-        </a>
+       <asp:Repeater ID="CoursesRepeater" runat="server">
+           <ItemTemplate>
+               <a class="col-md-3" href="CoursePage.aspx?courseId=&Container.DataItem("id")">
+                   <div class="white-box boxShadow coursebox" tyle="background-image: url("& GetImageUrl(Container.DataItem("thumbnail")) & ")">
+                       <div class="description">
+                           <label class="box-title">"& Container.DataItem("name") "</label>
+                           <p class="text-muted">"& Container.DataItem("description") "></p>
+
+                       </div>
+
+                   </div>
+
+               </a>
+
+           </ItemTemplate>
+        </asp:Repeater>
+        <!--
         <a class="col-md-3" href="CoursePage.aspx">
               <div class="white-box boxShadow coursebox" style="background-image: url(../plugins/images/calculus.png)">
                <div class="description">
@@ -46,7 +55,7 @@
                 <p class="text-muted">SQDG</p>
                </div>
             </div>
-         </a>     
+         </a>-->     
        
     </div>
 </asp:Content>

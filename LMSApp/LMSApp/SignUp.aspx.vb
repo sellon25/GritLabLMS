@@ -1,37 +1,39 @@
-﻿Imports System.IO
-Imports System.Runtime.InteropServices
-Imports System.Security.Cryptography
-Imports System.Web.Services
-Imports System.Windows
+﻿Imports System.Drawing
 
-Public Class ManageApplicationForm
+Public Class SignUp
     Inherits System.Web.UI.Page
 
+    Dim AnswerControls As New List(Of String)()
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-
+        LblError.Visible = False
+        'ApplicationForm.Visible = False
         LoadQuestions()
 
     End Sub
 
-    Protected Sub AddQuestionButton_Click(sender As Object, e As EventArgs)
-        Dim questionType As String = questionTypeList.SelectedValue
-        Dim questionNum = inputQuestionNum.Value
-        Dim questionText As String = inputQuestionText.Value.Trim()
-        Dim guid As Guid = Guid.NewGuid()
-        Dim newQuestion As New Question_Bank()
-        With newQuestion
-            .id = guid.ToString()
-            .QuestionType = questionType
-            .Text = questionText.Trim()
-            .Category_ID = "Application Form"
-        End With
-        Dim validnum = Double.TryParse(questionNum, 0.01)
-        If validnum And questionNum IsNot Nothing And questionNum IsNot "" Then
-            newQuestion.QuestionNumber = Double.Parse(questionNum, 0.01)
-        End If
+    Protected Sub Register_Click(sender As Object, e As EventArgs)
+        Dim NewUser As New User
+        If (userpassword.Value.Trim() = userconfirmp.Value.Trim()) Then
+            Dim encrytptedpass As String = CipherGate.EncryptString("inovalabs09", userpassword.Value)
 
-        newQuestion.update()
-        LoadQuestions()
+            With NewUser
+                .emailID = useremail.Value
+                .FName = userfname.Value
+                .LName = userlname.Value
+                .password = encrytptedpass
+                .role = 3
+                .status = "New Applicant"
+                .update()
+            End With
+            SignUpform.Visible = False
+            LoadQuestions()
+            ApplicationForm.Visible = True
+
+        Else
+            LblError.Text = "Passwords do not match!"
+            LblError.ForeColor = Color.Red
+            LblError.Visible = True
+        End If
     End Sub
 
     Private Sub LoadQuestions()
@@ -45,15 +47,7 @@ Public Class ManageApplicationForm
     Protected Function AddQuestionHtml(questionId As String, questionType As String, questionText As String) As HtmlGenericControl
         ' Create a new HtmlGenericControl representing a <div> element
         Dim newQuestionDiv As New HtmlGenericControl("div")
-        newQuestionDiv.Attributes("class") = "form-group mb-4"
-
-        ' Create the delete button
-        Dim btnDelete As New Button()
-        btnDelete.ID = String.Format("btnDelete_{0}", questionId)
-        btnDelete.Text = "Delete"
-        btnDelete.CssClass = "btn-0 border-0 text-danger bg-none float-end"
-        AddHandler btnDelete.Click, AddressOf DeleteQuestion
-        btnDelete.EnableViewState = True
+        newQuestionDiv.Attributes("class") = "form-group mb-4 border-bottom"
 
         ' Create the label for the question text
         Dim lblQuestionText As New Label()
@@ -61,7 +55,6 @@ Public Class ManageApplicationForm
         lblQuestionText.Text = questionText
 
         ' Add the delete button and label for question text to the newQuestionDiv
-        newQuestionDiv.Controls.Add(btnDelete)
         newQuestionDiv.Controls.Add(lblQuestionText)
 
         ' Add additional controls based on question type
@@ -103,7 +96,7 @@ Public Class ManageApplicationForm
                 newQuestionDiv.Controls.Add(addButton)
 
                 ' Add border-bottom class to the div for styling
-                newQuestionDiv.Attributes("class") &= " border-bottom"
+                'newQuestionDiv.Attributes("class") &= " border-bottom"
 
             Case "checkbox"
                 ' Add checkbox inputs for checkbox type questions
@@ -124,29 +117,32 @@ Public Class ManageApplicationForm
             Case "text"
                 ' Add input for text type questions
                 Dim textInput As New HtmlGenericControl("input")
+                textInput.ID = String.Format("textInput_{0}", questionId)
+                textInput.Attributes("runat") = "server"
                 textInput.Attributes("type") = "text"
                 textInput.Attributes("placeholder") = "Type here..."
                 textInput.Attributes("class") = "form-control p-0 border-0"
 
                 ' Add input to newQuestionDiv
                 newQuestionDiv.Controls.Add(textInput)
-
+                AnswerControls.Add(textInput.ID)
                 ' Add border-bottom class to the div for styling
-                newQuestionDiv.Attributes("class") &= " border-bottom"
+                'newQuestionDiv.Attributes("class") &= " border-bottom"
 
             Case "textarea"
                 ' Add textarea for textarea type questions
-                Dim textareaInput As New HtmlGenericControl("textarea")
-                textareaInput.Attributes("cols") = "1"
-                textareaInput.Attributes("rows") = "4"
-                textareaInput.Attributes("placeholder") = "Type here..."
-                textareaInput.Attributes("class") = "form-control p-0 border-0"
+                Dim textInput As New TextBox()
+                textInput.ID = String.Format("textInput_{0}", questionId)
+                textInput.Attributes("runat") = "server"
+                textInput.Attributes("placeholder") = "Type here..."
+                textInput.CssClass = "form-control p-0 border-0"
 
-                ' Add textarea to newQuestionDiv
-                newQuestionDiv.Controls.Add(textareaInput)
+                ' Add input to newQuestionDiv
+                newQuestionDiv.Controls.Add(textInput)
+                AnswerControls.Add(textInput.ID)
 
                 ' Add border-bottom class to the div for styling
-                newQuestionDiv.Attributes("class") &= " border-bottom"
+                'newQuestionDiv.Attributes("class") &= " border-bottom"
 
             Case "dropList"
                 ' Add select dropdown for dropList type questions
@@ -163,7 +159,7 @@ Public Class ManageApplicationForm
                 newQuestionDiv.Controls.Add(selectDropdown)
 
                 ' Add border-bottom class to the div for styling
-                newQuestionDiv.Attributes("class") &= " border-bottom"
+                'newQuestionDiv.Attributes("class") &= " border-bottom"
 
             Case "number"
                 ' Add input for number type questions
@@ -178,7 +174,7 @@ Public Class ManageApplicationForm
                 newQuestionDiv.Controls.Add(numberInput)
 
                 ' Add border-bottom class to the div for styling
-                newQuestionDiv.Attributes("class") &= " border-bottom"
+                'newQuestionDiv.Attributes("class") &= " border-bottom"
         End Select
 
         ' Return the div containing the question content
@@ -191,17 +187,37 @@ Public Class ManageApplicationForm
         Dim questionId = btn.ID.Replace("btnDelete_", "")
         Dim question As New Question_Bank()
         question = question.load(questionId)
-        question.delete()
+        'question.delete()
         LoadQuestions()
     End Sub
 
     Protected Sub AddOption(sender As Object, e As EventArgs)
         Dim btn As Button = DirectCast(sender, Button)
         Dim questionId = btn.ID.Replace("btnAdd_", "")
+
     End Sub
 
+    Protected Sub SubmitApplication_Click(sender As Object, e As EventArgs)
+        Dim collectedAnswers As New Dictionary(Of String, String)()
+
+        For Each controlID In AnswerControls
+            ' Find the control by its ID
+            Dim textInput As TextBox = CType(FindControl(controlID), TextBox)
+
+            If textInput IsNot Nothing Then
+                ' Get the entered text value
+                Dim enteredText As String = textInput.Text
+
+                ' Collect the answer
+                collectedAnswers.Add(controlID, enteredText)
+            End If
+        Next
 
 
-
-
+        For Each kvp In collectedAnswers
+            Dim controlID As String = kvp.Key
+            Dim answer As String = kvp.Value
+            ' Save or process the answer
+        Next
+    End Sub
 End Class

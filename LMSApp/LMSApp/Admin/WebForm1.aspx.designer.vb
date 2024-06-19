@@ -11,14 +11,14 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class Courses
+Partial Public Class WebForm1
 
     '''<summary>
-    '''CoursesRepeater control.
+    '''CreatedQuestions control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents CoursesRepeater As Global.System.Web.UI.WebControls.Repeater
+    Protected WithEvents CreatedQuestions As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 End Class

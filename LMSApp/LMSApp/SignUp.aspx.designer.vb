@@ -11,25 +11,43 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class gritermanagement
+Partial Public Class SignUp
 
     '''<summary>
-    '''glano control.
+    '''form1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents glano As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
-    '''username control.
+    '''SignUpform control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents username As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents SignUpform As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''userfname control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents userfname As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''userlname control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents userlname As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''useremail control.
@@ -41,92 +59,65 @@ Partial Public Class gritermanagement
     Protected WithEvents useremail As Global.System.Web.UI.HtmlControls.HtmlInputGenericControl
 
     '''<summary>
-    '''userroletxt control.
+    '''userpassword control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents userroletxt As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents userpassword As Global.System.Web.UI.HtmlControls.HtmlInputPassword
 
     '''<summary>
-    '''userrole control.
+    '''userconfirmp control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents userrole As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents userconfirmp As Global.System.Web.UI.HtmlControls.HtmlInputPassword
 
     '''<summary>
-    '''EnrollmentStatustxt control.
+    '''Register control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents EnrollmentStatustxt As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents Register As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''EnrollmentStatus control.
+    '''LblError control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents EnrollmentStatus As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents LblError As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''UpdateUser control.
+    '''ApplicationForm control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents UpdateUser As Global.System.Web.UI.HtmlControls.HtmlButton
+    Protected WithEvents ApplicationForm As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''RemoveUser control.
+    '''CreatedQuestions control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents RemoveUser As Global.System.Web.UI.HtmlControls.HtmlButton
+    Protected WithEvents CreatedQuestions As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''TableUsers control.
+    '''SubmitApplication control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TableUsers As Global.System.Web.UI.HtmlControls.HtmlGenericControl
-
-    '''<summary>
-    '''pnlEnrollment control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents pnlEnrollment As Global.System.Web.UI.WebControls.Panel
-
-    '''<summary>
-    '''lblEnrollmentInfo control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents lblEnrollmentInfo As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''btnClose control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents btnClose As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents SubmitApplication As Global.System.Web.UI.WebControls.Button
 End Class

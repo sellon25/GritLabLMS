@@ -10,28 +10,50 @@
     <div class="col-md-4">
         <div class="white-box">
             <h3 class="box-title">GRITER PROFILE</h3>
-            <form>
+            <div>
                 <div class="form-group">
                     <label for="Load_student">Enter Student Number To Load</label> 
                     <input type="text" class="form-control" id="Load_student" placeholder="Enter Student Number"><button type="button" class=" btn-success">GO</button>
                 </div>
                 
                 <div class="form-group">
-                    <label for="studentno">Student No.</label>
-                    <input type="text" class="form-control" id="studentno" placeholder="123456789 ">
+                    <label for="glano">GLA No.</label>
+                    <input type="text" class="form-control" id="glano" runat="server" placeholder="123456789">
                 </div>
                 <div class="form-group">
-                    <label for="Faculty">Faculty</label>
-                    <input type="text" class="form-control" id="Faculty" placeholder="Faculty of ...">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" runat="server" placeholder="123456789">
                 </div>
                 <div class="form-group">
-                    <label for="Average">Average</label>
-                    <input type="text" class="form-control" id="average" placeholder="Average">
+                    <label for="useremail">Email</label>
+                    <input type="email" class="form-control" id="useremail" runat="server" placeholder="abcd@efg.com">
+                </div>
+                <div class="form-group">
+                    <label for="userrole">Role</label>
+                    <input type="text" class="form-control text-muted mb-1" id="userroletxt" runat="server" readonly placeholder="">
+                     <asp:DropDownList  CssClass="form-select" ID="userrole" runat="server">
+                        <asp:ListItem Value="0">Manager</asp:ListItem>
+                        <asp:ListItem Value="1">Admin</asp:ListItem>
+                        <asp:ListItem Value="2">Facilitator/Leader</asp:ListItem>
+                         <asp:ListItem Value="4">Employee</asp:ListItem>
+                        <asp:ListItem Value="3">GLA Student</asp:ListItem>                        
+                    </asp:DropDownList>
+                </div>
+                <div class="form-group">
+                    <label for="EnrollmentStatus">Enrollment Status</label>
+                    <input type="text" class="form-control text-muted mb-1" id="EnrollmentStatustxt" runat="server" readonly placeholder="">
+                    <asp:DropDownList CssClass="form-select" ID="EnrollmentStatus" runat="server">
+                        <asp:ListItem Value="0">Accepted</asp:ListItem>
+                        <asp:ListItem Value="1">Rejected</asp:ListItem>
+                        <asp:ListItem Value="3">Pending</asp:ListItem>
+                        <asp:ListItem Value="4">Suspended</asp:ListItem>
+                    </asp:DropDownList>
+                    
                 </div>
                 <!-- style="background-color:#93761E"-->
-                <button type="button" class=" btn-success">ACCEPT</button>
-                <button type="button" class=" btn-danger" >Denied</button>
-            </form>
+                <button id="UpdateUser" type="button" runat="server" onserverclick="UpdateUser_ServerClick" class="btn btn-success">Submit Changes</button>
+                <button id="RemoveUser" type="button" class="btn btn-danger" runat="server" onserverclick="RemoveUser_ServerClick">Remove User</button>
+            </div>
         </div>
     </div>
     <!-- Existing Announcements Section -->
@@ -70,86 +92,32 @@
                             <table class="table no-wrap">
                                 <thead>
                                     <tr>
-                                        <th class="border-top-0" style="font-weight: bold;">Name and Surname</th>
-                                        <th class="border-top-0" style="font-weight: bold;">Faculty</th>
-                                        <th class="border-top-0" style="font-weight: bold;">Student Number</th>
+                                        <th class="border-top-0" style="font-weight: bold;">GLA no.</th>
+                                        <th class="border-top-0" style="font-weight: bold;">Name and Surname</th>                                       
                                         <th class="border-top-0" style="font-weight: bold;">Email</th>
+                                        <th class="border-top-0" style="font-weight: bold;">Role</th>
+                                        <th class="border-top-0" style="font-weight: bold;">Status</th>
+                                        <th class="border-top-0" style="font-weight: bold;">Track</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="txt-oflo text-black">Manqoba Siyabonga</td>
-                                        <td class="text-black">Faculty of Science</td>
-                                        <td class="text-black">222800393</td>
-                            
-                                        <td class="text-black"> student@uj.ac.za </td>
-                                        <!--<th> <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="#" Text="Track Progress" CssClass="breadcrumb-link" Font-Bold="True"></asp:HyperLink></th>
-                                    -->
-                                    </tr>
-                                    <tr>
-                   
-                                        <td class="txt-oflo text-black">Tim Jacob</td>
-                                        <td class="text-black">Faculty of Humanities</td>
-                                        <td class="text-black">222800393</td>
-                            
-                                        <td class="text-black"> student@uj.ac.za </td>
-                                       <!-- <th> <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="#" Text="Track Progress" CssClass="breadcrumb-link" Font-Bold="True"></asp:HyperLink></th>
-                                   --> </tr>
-                                    <tr>
-                            
-                                        <td class="txt-oflo text-black">Jerry Martha</td>
-                                        <td class="text-black">Faculty of College of Business and Economics</td>
-                                        <td class="text-black">224892921</td>
-                            
-                                        <td class="text-black"> student@uj.ac.za </td>
+                                <tbody id="TableUsers" runat="server">
 
-                                    </tr>
-                                    <tr>
-                        
-                                        <td class="txt-oflo text-black">Carol Nyathi</td>
-                                        <td class="text-black"> Faculty of Art, Design and Architecture</td>
-                                        <td class="text-black">224322254</td>
-                            
-                                        <td class="text-black"> student@uj.ac.za </td>
-                                                  
-                                    </tr>
-                                    <tr>
-                          
-                                        <td class="txt-oflo text-black">Majola Wendy</td>
-                                        <td class="text-black">Faculty of Engineering & the Built Environment</td>
-                                        <td class="text-black">223893937</td>
-                            
-                                        <td class="text-black"> student@uj.ac.za </td>
-                                    </tr>
-                                     <tr>
-                           
-                                         <td class="txt-oflo text-black"> Wendy Prudence</td>
-                                         <td class="text-black">Faculty of Health Sciences</td>
-                                         <td class="text-black">224008006</td>
-                             
-                                         <td class="text-black"> student@uj.ac.za </td>
-                                     </tr>
-                                     <tr>
-                                         <td class="txt-oflo text-black"> Logan Rooney</td>
-                                         <td class="text-black">Faculty of Education</td>
-                                         <td class="text-black">224030033</td>
-                             
-                                         <td class="text-black"> student@uj.ac.za </td>
-                                     </tr>
-                                     <tr>
-                                         <td class="txt-oflo text-black"> Mbali Ndlovu</td>
-                                         <td class="text-black">Faculty of Law</td>
-                                         <td class="text-black">223923224</td>
-                                         <td class="text-black"> student@uj.ac.za </td>
-                                     </tr>
                                 </tbody>
                             </table>
                         </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+        <asp:Panel ID="pnlEnrollment" runat="server" CssClass="modal" Style="display:none;">
+        <div class="modal-content p-2">
+        <h3 class="border-bottom text-center text-muted">Enrollment Information</h3>
+        <asp:Label ID="lblEnrollmentInfo" runat="server" CssClass="" Text=""></asp:Label>
+        <asp:Button ID="btnClose" runat="server" Text="Close" OnClick="btnClose_Click" CssClass="btn btn-secondary" />
+    </div>
+</asp:Panel>
 </div>
 </asp:Content>

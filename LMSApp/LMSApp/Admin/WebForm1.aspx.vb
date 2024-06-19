@@ -1,37 +1,9 @@
-﻿Imports System.IO
-Imports System.Runtime.InteropServices
-Imports System.Security.Cryptography
-Imports System.Web.Services
-Imports System.Windows
-
-Public Class ManageApplicationForm
+﻿Public Class WebForm1
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-
         LoadQuestions()
 
-    End Sub
-
-    Protected Sub AddQuestionButton_Click(sender As Object, e As EventArgs)
-        Dim questionType As String = questionTypeList.SelectedValue
-        Dim questionNum = inputQuestionNum.Value
-        Dim questionText As String = inputQuestionText.Value.Trim()
-        Dim guid As Guid = Guid.NewGuid()
-        Dim newQuestion As New Question_Bank()
-        With newQuestion
-            .id = guid.ToString()
-            .QuestionType = questionType
-            .Text = questionText.Trim()
-            .Category_ID = "Application Form"
-        End With
-        Dim validnum = Double.TryParse(questionNum, 0.01)
-        If validnum And questionNum IsNot Nothing And questionNum IsNot "" Then
-            newQuestion.QuestionNumber = Double.Parse(questionNum, 0.01)
-        End If
-
-        newQuestion.update()
-        LoadQuestions()
     End Sub
 
     Private Sub LoadQuestions()
@@ -44,16 +16,18 @@ Public Class ManageApplicationForm
     End Sub
     Protected Function AddQuestionHtml(questionId As String, questionType As String, questionText As String) As HtmlGenericControl
         ' Create a new HtmlGenericControl representing a <div> element
-        Dim newQuestionDiv As New HtmlGenericControl("div")
+        Dim newQuestionDiv As New HtmlGenericControl("form")
         newQuestionDiv.Attributes("class") = "form-group mb-4"
 
         ' Create the delete button
         Dim btnDelete As New Button()
-        btnDelete.ID = String.Format("btnDelete_{0}", questionId)
+        btnDelete.ID = "btnDelete_" & questionId
         btnDelete.Text = "Delete"
         btnDelete.CssClass = "btn-0 border-0 text-danger bg-none float-end"
         AddHandler btnDelete.Click, AddressOf DeleteQuestion
         btnDelete.EnableViewState = True
+        btnDelete.UseSubmitBehavior = False
+
 
         ' Create the label for the question text
         Dim lblQuestionText As New Label()
@@ -66,7 +40,7 @@ Public Class ManageApplicationForm
 
         ' Add additional controls based on question type
         Select Case questionType
-            Case "radio"
+            Case "radiox"
                 ' Add radio button inputs and additional controls for radio type questions
                 Dim radioInput1 As New HtmlGenericControl("input")
                 radioInput1.Attributes("type") = "radio"
@@ -186,7 +160,7 @@ Public Class ManageApplicationForm
     End Function
 
 
-    Protected Sub DeleteQuestion(sender As Object, e As EventArgs)
+    Protected Sub DeleteQuestion(sender As Object, e As CommandEventArgs)
         Dim btn As Button = DirectCast(sender, Button)
         Dim questionId = btn.ID.Replace("btnDelete_", "")
         Dim question As New Question_Bank()
@@ -198,10 +172,6 @@ Public Class ManageApplicationForm
     Protected Sub AddOption(sender As Object, e As EventArgs)
         Dim btn As Button = DirectCast(sender, Button)
         Dim questionId = btn.ID.Replace("btnAdd_", "")
+
     End Sub
-
-
-
-
-
 End Class
