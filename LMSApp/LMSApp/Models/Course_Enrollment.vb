@@ -68,7 +68,7 @@ Public Class Course_Enrollment
         cmd.ExecuteNonQuery()
     End Sub
 
-    Shared Function load(id As System.String) As Course_Enrollment
+    Function load(id As System.String) As Course_Enrollment
         Dim cmd As New SqlCommand
         cmd.Connection = HttpContext.Current.Session("conn")
         If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = HttpContext.Current.Session("trans")
