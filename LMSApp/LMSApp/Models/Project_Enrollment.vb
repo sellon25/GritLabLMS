@@ -140,7 +140,8 @@ Public Class Project_Enrollment
         newinstance = False
     End Sub
 
-    Shared Function listall(Optional ByVal filterstr As String = Nothing, Optional ByVal sortstr As String = Nothing) As System.Collections.Generic.List(Of Project_Enrollment)
+
+    Function listall(Optional ByVal filterstr As String = Nothing, Optional ByVal sortstr As String = Nothing) As System.Collections.Generic.List(Of Project_Enrollment)
         Dim ps As New Generic.List(Of Project_Enrollment)
         Dim cmd As New SqlCommand
         cmd.Connection = HttpContext.Current.Session("conn")

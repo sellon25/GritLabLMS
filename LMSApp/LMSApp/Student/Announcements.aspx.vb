@@ -5,4 +5,8 @@
 
     End Sub
 
+
+    ''Public Function getcourseannouncements(course_ID as integer) 
+    ''   dim filter as string = "where courses '=" & Session("C_ID") & "   
+    ''end sub
 End Class
