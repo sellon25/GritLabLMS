@@ -2926,11 +2926,13 @@
     <Compile Include="Models\Course.vb" />
     <Compile Include="Models\Course_Announcement.vb" />
     <Compile Include="Models\Course_Content.vb" />
+    <Compile Include="Models\Course_Enrollment.vb" />
     <Compile Include="Models\Course_Submission.vb" />
     <Compile Include="Models\NewsEvents.vb" />
     <Compile Include="Models\Project.vb" />
     <Compile Include="Models\Project_Announcement.vb" />
     <Compile Include="Models\Project_Content.vb" />
+    <Compile Include="Models\Project_Enrollment.vb" />
     <Compile Include="Models\Project_Submission.vb" />
     <Compile Include="Models\Question_Bank.vb" />
     <Compile Include="Models\StudentAnswer.vb" />

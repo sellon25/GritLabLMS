@@ -8,6 +8,7 @@ Public Class ManageApplicationForm
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+
         LoadQuestions()
 
     End Sub
@@ -43,12 +44,12 @@ Public Class ManageApplicationForm
     End Sub
     Protected Function AddQuestionHtml(questionId As String, questionType As String, questionText As String) As HtmlGenericControl
         ' Create a new HtmlGenericControl representing a <div> element
-        Dim newQuestionDiv As New HtmlGenericControl("form")
+        Dim newQuestionDiv As New HtmlGenericControl("div")
         newQuestionDiv.Attributes("class") = "form-group mb-4"
 
         ' Create the delete button
         Dim btnDelete As New Button()
-        btnDelete.ID = "btnDelete_" & questionId
+        btnDelete.ID = String.Format("btnDelete_{0}", questionId)
         btnDelete.Text = "Delete"
         btnDelete.CssClass = "btn-0 border-0 text-danger bg-none float-end"
         AddHandler btnDelete.Click, AddressOf DeleteQuestion
@@ -185,7 +186,7 @@ Public Class ManageApplicationForm
     End Function
 
 
-    Protected Sub DeleteQuestion(sender As Object, e As CommandEventArgs)
+    Protected Sub DeleteQuestion(sender As Object, e As EventArgs)
         Dim btn As Button = DirectCast(sender, Button)
         Dim questionId = btn.ID.Replace("btnDelete_", "")
         Dim question As New Question_Bank()
@@ -197,7 +198,6 @@ Public Class ManageApplicationForm
     Protected Sub AddOption(sender As Object, e As EventArgs)
         Dim btn As Button = DirectCast(sender, Button)
         Dim questionId = btn.ID.Replace("btnAdd_", "")
-
     End Sub
 
 
