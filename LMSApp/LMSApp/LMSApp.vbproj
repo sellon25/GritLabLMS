@@ -131,6 +131,7 @@
     <Content Include="Admin\SQDGSubmission.aspx" />
     <Content Include="Admin\table.aspx" />
     <Content Include="Admin\UploadPDF.aspx" />
+    <Content Include="Admin\WebForm1.aspx" />
     <Content Include="Facilitator\AnnouncementsPage.aspx" />
     <Content Include="Facilitator\AssessmentStudentList.aspx" />
     <Content Include="Facilitator\CourseContent.aspx" />
@@ -2260,6 +2261,8 @@
     <Content Include="Manager\ProjectsPage.aspx" />
     <Content Include="Manager\SQWID.aspx" />
     <Content Include="Manager\StudentsProgress.aspx" />
+    <Compile Include="Models\Course_Enrollment.vb" />
+    <Compile Include="Models\Project_Enrollment.vb" />
     <Content Include="plugins\images\miniBanking.jpg" />
     <Content Include="SignUp.aspx" />
     <Content Include="Student\Announcements.aspx" />
@@ -2681,6 +2684,13 @@
     <Compile Include="Admin\UploadPDF.aspx.vb">
       <DependentUpon>UploadPDF.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\WebForm1.aspx.designer.vb">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\WebForm1.aspx.vb">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Facilitator\AnnouncementsPage.aspx.designer.vb">
       <DependentUpon>AnnouncementsPage.aspx</DependentUpon>

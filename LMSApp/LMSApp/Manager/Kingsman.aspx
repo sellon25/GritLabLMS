@@ -1,16 +1,14 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/LMSBoardManager.Master" CodeBehind="Kingsman.aspx.vb" Inherits="LMSApp.Kingsman" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="Type_pageTitle" runat="server">
-    
     Kingsman
-
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="Change_Breadcrumb_PageTitle" runat="server">
-
     Kingsman
-
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
 
+<asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
     <script>
     function resetFilter() {
         document.getElementById('txtSearch').value = '';
@@ -19,25 +17,22 @@
     </script>
 
     <div class="row">
-
-        <div Class="col-md-4">
-            <div Class="white-box">
-                <h3 Class="box-title">Send Feedback</h3>
-                <form>
-                 <div Class="form-group">
-                        <Label for="announcementTitle">Email</label>
-                        <input type = "text" Class="form-control" id="announcementTitle" placeholder="Enter title">
-                    </div>
-                    <div Class="form-group">
-                        <Label for="announcementType">Type</label>
-                        <input type = "text" Class="form-control" id="announcementType" placeholder="Enter type">
-                    </div>
-                    <div Class="form-group">
-                        <Label for="announcementBody">Body</label>
-                        <textarea Class="form-control" id="announcementBody" rows="3"></textarea>
-                    </div>
-                    <Button type = "button" Class="btn btn-primary" style="background-color:#000000">Add Announcement</button>
-                </form>
+        <div class="col-md-4">
+            <div class="white-box">
+                <h3 class="box-title">Send Email</h3>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <asp:TextBox ID="email" runat="server" CssClass="form-control" placeholder="Enter email"></asp:TextBox>
+                </div>
+                <div class="form-group">
+                    <label for="type">Type</label>
+                    <asp:TextBox ID="type" runat="server" CssClass="form-control" placeholder="Enter Email Type"></asp:TextBox>
+                </div>
+                <div class="form-group">
+                    <label for="body">Body</label>
+                    <asp:TextBox ID="body" TextMode="MultiLine" runat="server" CssClass="form-control" placeholder="Enter message"></asp:TextBox>
+                </div>
+                <asp:Button ID="btnSend" runat="server" Text="SEND" CssClass="btn btn-primary"/>
             </div>
         </div>
 

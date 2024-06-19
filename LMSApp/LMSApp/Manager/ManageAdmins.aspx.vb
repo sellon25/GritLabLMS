@@ -1,5 +1,20 @@
-﻿Public Class ManageAdmins
+﻿Imports System
+Imports System.Collections.Generic
+Imports System.Configuration
+Imports System.Data
+Imports System.Data.SqlClient
+Imports System.Linq
+Imports System.Web
+Imports System.Web.UI
+Imports System.Web.UI.WebControls
+Imports System.Windows
+
+
+Public Class ManageAdmins
     Inherits System.Web.UI.Page
+
+
+    Private strcon As String = ConfigurationManager.ConnectionStrings("lmsDBconstring").ConnectionString
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not IsPostBack Then
@@ -45,6 +60,42 @@
             'GridView1.DataBind()
 
         End If
+    End Sub
+
+
+    Private Sub DeleteAdmin()
+
+        Try
+
+            Using lmsDBconstring As New SqlConnection(strcon)
+
+                lmsDBconstring.Open()
+
+                Dim cmd As New SqlCommand("Delete From [Admin_SignUp] Where ID Number=@ID Number")
+
+                cmd.Parameters.AddWithValue("@ID Number", TextBox1.Text.Trim())
+
+                cmd.ExecuteNonQuery()
+
+                Response.Write("<script>alert('Admin Deletes Successfully.');</script>")
+
+            End Using
+
+        Catch ex As Exception
+
+            Response.Write("<script>alert('" & ex.Message & "');</script>")
+
+        End Try
+
+
+    End Sub
+
+    Protected Sub DeleteButton_Click(ByVal sender As Object, ByVal e As EventArgs)
+
+        MsgBox("Hello World")
+
+        DeleteAdmin()
+
     End Sub
 
 End Class

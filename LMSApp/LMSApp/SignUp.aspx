@@ -1,4 +1,4 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="SignUp.aspx.vb" Inherits="LMSApp.SignUp" %>
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="SignUp.aspx.vb" Inherits="LMSApp.SignUp"  %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -64,68 +64,65 @@
 <body style="" >
     <form id="form1" style="width: 85%;" runat="server">
         <h3 class="fw-bold">Sign Up</h3>
-       <div class="card">
+       <div id="SignUpform" runat="server" class="card hide">
         <div class="card-body">
-            <form class="form-horizontal form-material">
+            <div class="form-horizontal form-material">
                 <div class="form-group mb-4">
                     <label class="col-md-12 p-0">First Name</label>
                     <div class="col-md-12 border-bottom p-0">
-                        <input type="text" placeholder="Type here..." class="form-control p-0 border-0"> </div>
+                        <input id="userfname" runat="server" type="text" placeholder="Type here..." class="form-control p-0 border-0" /> </div>
                 </div>
                 <div class="form-group mb-4">
                     <label class="col-md-12 p-0">Last Name</label>
                     <div class="col-md-12 border-bottom p-0">
-                        <input type="text" placeholder="Type here..." class="form-control p-0 border-0"> </div>
+                        <input id="userlname" runat="server" type="text" placeholder="Type here..." class="form-control p-0 border-0" /> </div>
                 </div>
-                
-               
-                <div class="form-group mb-4">
-                    <label class="col-sm-12">Title</label>
-
-                    <div class="col-sm-12 border-bottom">
-                        <select class="form-select shadow-none p-0 border-0 form-control-line">
-                            <option>Dr</option>
-                            <option>Mr</option>
-                            <option>Mrs</option>
-                            <option>Mx</option>
-                            <option>Prof</option>
-                        </select>
-                    </div>
-                </div>
-                
+                                
                 <div class="form-group mb-4">
                     <label for="example-email" class="col-md-12 p-0">Email</label>
                     <div class="col-md-12 border-bottom p-0">
-                        <input type="email" required placeholder="Type here..." class="form-control p-0 border-0" name="example-email" id="example-email">
+                        <input id="useremail" runat="server" type="email" placeholder="Type here..." class="form-control p-0 border-0" name="example-email" />
                     </div>
                 </div>
                 <div class="form-group mb-4">
                     <label class="col-md-12 p-0">Create a Password</label>
                     <div class="col-md-12 border-bottom p-0">
-                        <input type="password" required placeholder="Type here..." class="form-control p-0 border-0"> </div>
+                        <input id="userpassword" runat="server" type="password"  placeholder="Type here..." class="form-control p-0 border-0" /> </div>
                 </div>
                  <div class="form-group mb-4">
                     <label class="col-md-12 p-0">Confirm Password</label>
                     <div class="col-md-12 border-bottom p-0">
-                        <input type="password" required placeholder="Type here..." class="form-control p-0 border-0"> </div>
-                </div>
-                <div class="form-group mb-4">
-                    <label class="col-md-12 p-0">WhatsApp number</label>
-                    <div class="col-md-12 border-bottom p-0">
-                        <input type="number" required placeholder="Type here..." class="form-control p-0 border-0"> </div>
-                         <p class="small">eg. +276123456789, '+27' would be your country code. please include your country code in your phone number. </p>
+                        <input id="userconfirmp" runat="server" type="password"  placeholder="Type here..." class="form-control p-0 border-0" /> </div>
                 </div>
 
                 <div class="form-group mb-4">
                     <div class="col-sm-12">
-                        <button type="submit" class="btn btn-orange">Submit</button>
-                    </div>
+                        <asp:Button ID="Register" runat="server" Text="Submit" OnClick="Register_Click" class="btn btn-orange" />                        
+                    </div>                   
                 </div>
+                <asp:Label ID="LblError" runat="server" Text="Label"></asp:Label>
 
                 
-            </form>
+            </div>
            </div>
        </div>
+        <div id="ApplicationForm" runat="server" class="card" style="min-width:50vh">
+            <div class="card-body">
+                <h3 class="mb-4 ">Application Form</h3>
+                <div class="form-horizontal form-material">
+                    <div id="CreatedQuestions"  runat="server" class="mb-4 border-bottom">
+                        <h4 class="mb-4 fw-bold ">Application Form</h4>
+                
+           
+                    </div> 
+                </div>
+            </div>
+              <div class="form-group mb-4">
+                    <div class="col-sm-12">
+                        <asp:Button ID="SubmitApplication" runat="server" Text="Submit" OnClick="SubmitApplication_Click" class="m-2 mb-0 btn btn-orange" />                        
+                    </div>                   
+                </div>
+        </div>
     </form>
 </body>
 </html>

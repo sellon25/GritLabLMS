@@ -11,5 +11,14 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class Announcements1
+Partial Public Class WebForm1
+
+    '''<summary>
+    '''CreatedQuestions control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CreatedQuestions As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 End Class

@@ -14,20 +14,119 @@ Option Explicit On
 Partial Public Class gritermanagement
 
     '''<summary>
-    '''HyperLink2 control.
+    '''glano control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents HyperLink2 As Global.System.Web.UI.WebControls.HyperLink
+    Protected WithEvents glano As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''HyperLink1 control.
+    '''username control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents HyperLink1 As Global.System.Web.UI.WebControls.HyperLink
+    Protected WithEvents username As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''useremail control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents useremail As Global.System.Web.UI.HtmlControls.HtmlInputGenericControl
+
+    '''<summary>
+    '''userroletxt control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents userroletxt As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''userrole control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents userrole As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''EnrollmentStatustxt control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents EnrollmentStatustxt As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''EnrollmentStatus control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents EnrollmentStatus As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''UpdateUser control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents UpdateUser As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''RemoveUser control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RemoveUser As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''TableUsers control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TableUsers As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''pnlEnrollment control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnlEnrollment As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''lblEnrollmentInfo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblEnrollmentInfo As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''btnClose control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnClose As Global.System.Web.UI.WebControls.Button
 End Class
