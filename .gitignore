@@ -5,7 +5,7 @@ LMSApp/.vs/
 LMSApp/LMSApp/obj/
 
 # Ignore everything in the bin directory
-LMSApp/LMSApp/bin/
+#LMSApp/LMSApp/bin/
 
 # Specifically ignore other listed files
 LMSApp/.vs/LMSApp/config/applicationhost.config
