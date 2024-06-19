@@ -14,6 +14,15 @@ Option Explicit On
 Partial Public Class AnnouncementsPage
 
     '''<summary>
+    '''ScriptManager1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
+
+    '''<summary>
     '''announcementTitle control.
     '''</summary>
     '''<remarks>
@@ -57,4 +66,40 @@ Partial Public Class AnnouncementsPage
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents AnnouncementsRepeater As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''editAnnouncementTitle control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents editAnnouncementTitle As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''editAnnouncementType control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents editAnnouncementType As Global.System.Web.UI.HtmlControls.HtmlSelect
+
+    '''<summary>
+    '''editAnnouncementBody control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents editAnnouncementBody As Global.System.Web.UI.HtmlControls.HtmlTextArea
+
+    '''<summary>
+    '''SaveChangesButton control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents SaveChangesButton As Global.System.Web.UI.WebControls.Button
 End Class

@@ -139,6 +139,7 @@
     <Content Include="Facilitator\CoursesAndProjects.aspx" />
     <Content Include="Facilitator\Dashboard.aspx" />
     <Content Include="Facilitator\demo.aspx" />
+    <Content Include="Facilitator\getAnnouncementContent.aspx" />
     <Content Include="Facilitator\MarkAssessment.aspx" />
     <Content Include="Facilitator\NewAssessment.aspx" />
     <Content Include="Facilitator\ProgressAndFeedback.aspx" />
@@ -2737,6 +2738,13 @@
       <DependentUpon>demo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Facilitator\getAnnouncementContent.aspx.designer.vb">
+      <DependentUpon>getAnnouncementContent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Facilitator\getAnnouncementContent.aspx.vb">
+      <DependentUpon>getAnnouncementContent.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Facilitator\MarkAssessment.aspx.designer.vb">
       <DependentUpon>MarkAssessment.aspx</DependentUpon>
     </Compile>
@@ -2918,11 +2926,13 @@
     <Compile Include="Models\Course.vb" />
     <Compile Include="Models\Course_Announcement.vb" />
     <Compile Include="Models\Course_Content.vb" />
+    <Compile Include="Models\Course_Enrollment.vb" />
     <Compile Include="Models\Course_Submission.vb" />
     <Compile Include="Models\NewsEvents.vb" />
     <Compile Include="Models\Project.vb" />
     <Compile Include="Models\Project_Announcement.vb" />
     <Compile Include="Models\Project_Content.vb" />
+    <Compile Include="Models\Project_Enrollment.vb" />
     <Compile Include="Models\Project_Submission.vb" />
     <Compile Include="Models\Question_Bank.vb" />
     <Compile Include="Models\StudentAnswer.vb" />

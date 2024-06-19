@@ -222,14 +222,14 @@ For i = 0 To dt.Rows.Count - 1
 Dim p As New Announcement
 p.id=checknull(dt.Rows(i)("id"))
 p.I_Display_id=Display_id
-if Display_title =true then p.title =checknull(dt.Rows(i)("title "))
-p.I_Display_title =Display_title 
+            If Display_title = True Then p.title = checkNull(dt.Rows(i)("title"))
+            p.I_Display_title =Display_title 
 if Display_type=true then p.type=checknull(dt.Rows(i)("type"))
 p.I_Display_type=Display_type
 if Display_text=true then p.text=checknull(dt.Rows(i)("text"))
 p.I_Display_text=Display_text
-if Display_link =true then p.link =checknull(dt.Rows(i)("link "))
-p.I_Display_link =Display_link 
+            If Display_link = True Then p.link = checkNull(dt.Rows(i)("link"))
+            p.I_Display_link =Display_link 
 if Display_datetime=true then p.datetime=checknull(dt.Rows(i)("datetime"))
 p.I_Display_datetime=Display_datetime
 if Display_status=true then p.status=checknull(dt.Rows(i)("status"))

@@ -1,10 +1,12 @@
 ﻿Imports System.Data
-Imports System.Data.SqlClient
+Imports System.Web
+Imports System.Web.UI
+Imports System.Web.UI.WebControls
 
 Public Class CoursesAndProjects
     Inherits System.Web.UI.Page
 
-    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
         If Not IsPostBack Then
             If Session("Type") IsNot Nothing AndAlso Session("Type").ToString() = "2" Then
                 BindCoursesAndProjects()
@@ -19,84 +21,105 @@ Public Class CoursesAndProjects
         Dim facilitatorId As String = Session("ID").ToString()
 
         ' Fetch courses and projects
-        Dim courses As DataTable = GetCoursesByFacilitator(facilitatorId)
-        Dim projects As DataTable = GetProjectsByFacilitator(facilitatorId)
-
+        Dim courses As List(Of Course) = GetCoursesByFacilitator(facilitatorId)
+        Dim projects As List(Of Project) = GetProjectsByFacilitator(facilitatorId)
 
         ' Bind courses
-        CoursesRepeater.DataSource = courses
-        CoursesRepeater.DataBind()
+        For Each course As Course In courses
+            Dim link As New HtmlAnchor()
+            link.HRef = "CoursePage.aspx?courseId=" & course.id
+            link.Attributes("class") = "col-md-3"
+
+            Dim courseBox As New HtmlGenericControl("div")
+            courseBox.Attributes("class") = "white-box boxShadow coursebox"
+            courseBox.Style("background-image") = "url(" & GetImageUrl(course.thumbnail) & ")"
+
+            Dim nameLabel As New Label()
+            nameLabel.Attributes("class") = "box-title"
+            nameLabel.Text = course.name
+
+            Dim descriptionLabel As New Label()
+            descriptionLabel.Attributes("class") = "text-muted"
+            descriptionLabel.Text = course.description
+
+            courseBox.Controls.Add(nameLabel)
+            courseBox.Controls.Add(descriptionLabel)
+            link.Controls.Add(courseBox)
+
+            CoursesRepeater.Controls.Add(link)
+        Next
 
         ' Bind projects
-        ProjectsRepeater.DataSource = projects
-        ProjectsRepeater.DataBind()
-    End Sub
+        For Each project As Project In projects
+            Dim link As New HtmlAnchor()
+            link.HRef = "ProjectPage.aspx?projectId=" & project.id
+            link.Attributes("class") = "col-md-3"
 
+            Dim projectBox As New HtmlGenericControl("div")
+            projectBox.Attributes("class") = "white-box boxShadow coursebox"
+            'projectBox.Style("background-image") = "url(" & GetProjectImageUrl(project.thumbnail) & ")"
 
-    Private Function GetCoursesByFacilitator(facilitatorId As String) As DataTable
-        Dim dt As New DataTable()
-        Dim conn As SqlConnection = DirectCast(HttpContext.Current.Session("conn"), SqlConnection)
+            Dim nameLabel As New Label()
+            nameLabel.Attributes("class") = "box-title"
+            nameLabel.Text = project.name
 
-        Dim query As String = "SELECT id, name, thumbnail, description, facilitator, overview, status, date_started, end_date FROM Course WHERE facilitator = @facilitator"
-        Using cmd As New SqlCommand(query, conn)
-            cmd.Parameters.AddWithValue("@facilitator", facilitatorId)
-            Dim da As New SqlDataAdapter(cmd)
-            da.Fill(dt)
-        End Using
+            Dim descriptionLabel As New Label()
+            descriptionLabel.Attributes("class") = "text-muted"
+            descriptionLabel.Text = project.description
 
-        Return dt
-    End Function
+            projectBox.Controls.Add(nameLabel)
+            projectBox.Controls.Add(descriptionLabel)
+            link.Controls.Add(projectBox)
 
-    Private Function GetProjectsByFacilitator(facilitatorId As String) As DataTable
-        Dim dt As New DataTable()
-        Dim conn As SqlConnection = DirectCast(HttpContext.Current.Session("conn"), SqlConnection)
-
-        Dim query As String = "SELECT id, name, thumbnail, description, facilitator, overview, status, avg_progress, date_started, end_date FROM Project WHERE facilitator = @facilitator"
-        Using cmd As New SqlCommand(query, conn)
-            cmd.Parameters.AddWithValue("@facilitator", facilitatorId)
-            Dim da As New SqlDataAdapter(cmd)
-            da.Fill(dt)
-        End Using
-
-        Return dt
-    End Function
-
-
-    Private Sub LogColumns(dt As DataTable, tableName As String)
-        Response.Write("Table: " & tableName & "<br/>")
-        For Each column As DataColumn In dt.Columns
-            Response.Write("Column: " & column.ColumnName & "<br/>")
+            ProjectsRepeater.Controls.Add(link)
         Next
     End Sub
 
-    Private Sub LogDataTable(dt As DataTable, tableName As String)
-        Response.Write("Table: " & tableName & "<br/>")
-        For Each row As DataRow In dt.Rows
-            For Each column As DataColumn In dt.Columns
-                Response.Write(column.ColumnName & ": " & row(column.ColumnName).ToString() & "<br/>")
-            Next
-            Response.Write("<br/>")
-        Next
-    End Sub
+    Private Function GetCoursesByFacilitator(facilitatorId As String) As List(Of Course)
+        Dim filter As String = "WHERE userId = '" & facilitatorId & "'"
+        Dim courseEnrollments As List(Of Course_Enrollment) = New Course_Enrollment().listall(filter)
+        Dim facilitatorCourses As New List(Of Course)
 
+        For Each enrollment As Course_Enrollment In courseEnrollments
+            Dim course As Course = Course.load(enrollment.course_id)
+            If course IsNot Nothing Then
+                course.name = Trim(course.name)
+                facilitatorCourses.Add(course)
+            End If
+        Next
+
+        Return facilitatorCourses
+    End Function
+
+    Private Function GetProjectsByFacilitator(facilitatorId As String) As List(Of Project)
+        Dim filter As String = "WHERE userId = '" & facilitatorId & "'"
+        Dim projectEnrollments As List(Of Project_Enrollment) = New Project_Enrollment().listall(filter)
+        Dim facilitatorProjects As New List(Of Project)
+
+        For Each enrollment As Project_Enrollment In projectEnrollments
+            Dim project As Project = Project.load(enrollment.project_id)
+            If project IsNot Nothing Then
+                project.name = Trim(project.name)
+                facilitatorProjects.Add(project)
+            End If
+        Next
+
+        Return facilitatorProjects
+    End Function
 
     Public Function GetImageUrl(thumbnail As Object) As String
-        If thumbnail IsNot Nothing AndAlso thumbnail IsNot DBNull.Value Then
-            ' Convert the thumbnail to a base64 string
+        If thumbnail IsNot Nothing AndAlso Not Convert.IsDBNull(thumbnail) Then
             Dim bytes As Byte() = DirectCast(thumbnail, Byte())
             Return "data:image/jpeg;base64," & Convert.ToBase64String(bytes)
         End If
-        ' Return a default image URL if no thumbnail is available
-        Return "../plugins/images/sldr.jpg"
+        Return "../plugins/images/sldr.jpg" ' Default image URL for courses
     End Function
 
     Public Function GetProjectImageUrl(thumbnail As Object) As String
-        If thumbnail IsNot Nothing AndAlso thumbnail IsNot DBNull.Value Then
-            ' Convert the thumbnail to a base64 string
+        If thumbnail IsNot Nothing AndAlso Not Convert.IsDBNull(thumbnail) Then
             Dim bytes As Byte() = DirectCast(thumbnail, Byte())
             Return "data:image/jpeg;base64," & Convert.ToBase64String(bytes)
         End If
-        ' Return a default image URL if no thumbnail is available
-        Return "../plugins/images/Squid-Game-1.jpg"
+        Return "../plugins/images/Squid-Game-1.jpg" ' Default image URL for projects
     End Function
 End Class

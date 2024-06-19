@@ -18,11 +18,11 @@
                     <div class="row courses-container" style="width: 95%">
                         <asp:Repeater ID="CoursesRepeater" runat="server">
                             <ItemTemplate>
-                                <a class="col-md-3" href="CoursePage.aspx?courseId=<%# Eval("id") %>">
-                                    <div class="white-box boxShadow coursebox" style="background-image: url(<%# GetImageUrl(Eval("thumbnail")) %>)">
+                                <a class="col-md-3" runat="server" id="CourseLink">
+                                    <div class="white-box boxShadow coursebox" runat="server" id="CourseBox">
                                         <div class="description">
-                                            <label class="box-title"><%# Eval("name") %></label>
-                                            <p class="text-muted"><%# Eval("description") %></p>
+                                            <label class="box-title" runat="server" id="CourseNameLabel"></label>
+                                            <p class="text-muted" runat="server" id="CourseDescriptionLabel"></p>
                                         </div>
                                     </div>
                                 </a>
@@ -44,11 +44,11 @@
                     <div class="row courses-container" style="width: 95%">
                         <asp:Repeater ID="ProjectsRepeater" runat="server">
                             <ItemTemplate>
-                                <a class="col-md-3" href="ProjectPage.aspx?projectId=<%# Eval("id") %>">
-                                    <div class="white-box boxShadow coursebox" style="background-image: url(<%# GetProjectImageUrl(Eval("thumbnail")) %>)">
-                                        <div class="description">
-                                            <label class="box-title"><%# Eval("name") %></label>
-                                            <p class="text-muted"><%# Eval("description") %></p>
+                                <a class="col-md-3" runat="server" id="ProjectLink">
+                                    <div class="white-box boxShadow coursebox" runat="server" id="ProjectBox">
+                                        <div class="description" >
+                                            <label class="box-title" runat="server" id="ProjectNameLabel"></label>
+                                            <p class="text-muted" runat="server" id="ProjectDescriptionLabel"></p>
                                         </div>
                                     </div>
                                 </a>
@@ -59,6 +59,4 @@
             </div>
         </div>
     </div>
-
-
 </asp:Content>
