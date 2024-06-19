@@ -10,69 +10,70 @@ Public Shared Display_emailID as Boolean=True
     Public Shared Display_FName as Boolean=true
 Public Shared Display_LName as Boolean=true
 Public Shared Display_password as Boolean=true
-Public Shared Display_role  as Boolean=true
-Public Shared Display_join_date  as Boolean=true
-Public Shared Display_end_date as Boolean=true
-Public Shared Display_status as Boolean=true
+Public Shared Display_role  as Boolean=True
+    Public Shared Display_join_date As Boolean = True
+    Public Shared Display_end_date As Boolean = True
+    Public Shared Display_status As Boolean = True
 
-Private I_Display_emailID as Boolean=True
+    Private I_Display_emailID As Boolean = True
     Private I_Display_Username As Boolean = True
-    Private I_Display_FName as Boolean=true
-Private I_Display_LName as Boolean=true
-Private I_Display_password as Boolean=true
-Private I_Display_role  as Boolean=true
-Private I_Display_join_date  as Boolean=true
-Private I_Display_end_date as Boolean=true
-Private I_Display_status as Boolean=true
+    Private I_Display_FName As Boolean = True
+    Private I_Display_LName As Boolean = True
+    Private I_Display_password As Boolean = True
+    Private I_Display_role As Boolean = True
+    Private I_Display_join_date As Boolean = True
+    Private I_Display_end_date As Boolean = True
+    Private I_Display_status As Boolean = True
 
-Public previous_emailID as System.String
+    Public previous_emailID As System.String
 
-Public emailID as System.String
+    Public emailID As System.String
     Public Username As System.String
-    Public FName as System.String
-Public LName as System.String
-Public password as System.String
-Public role  as nullable(of System.Int32)
-Public join_date  as nullable(of System.DateTime)
-Public end_date as nullable(of System.DateTime)
-Public status as System.String
-Private newinstance As Boolean = True
+    Public FName As System.String
+    Public LName As System.String
+    Public password As System.String
+    Public role As Nullable(Of System.Int32)
+    Public GLANumber As Nullable(Of System.Int32)
+    Public join_date As Nullable(Of System.DateTime)
+    Public end_date As Nullable(Of System.DateTime)
+    Public status As System.String
+    Private newinstance As Boolean = True
 
-Shared Sub Set_Display_Field_All(display_flag as boolean)
-Display_emailID=display_flag
+    Shared Sub Set_Display_Field_All(display_flag As Boolean)
+        Display_emailID = display_flag
         Display_Username = display_flag
-        Display_FName =display_flag
-Display_LName=display_flag
-Display_password=display_flag
-Display_role =display_flag
-Display_join_date =display_flag
-Display_end_date=display_flag
-Display_status=display_flag
-End Sub
+        Display_FName = display_flag
+        Display_LName = display_flag
+        Display_password = display_flag
+        Display_role = display_flag
+        Display_join_date = display_flag
+        Display_end_date = display_flag
+        Display_status = display_flag
+    End Sub
 
 
-Private Sub insert()
-Dim cmd As New sqlCommand
-cmd.Connection = HttpContext.Current.Session("conn")
-If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = HttpContext.Current.Session("trans")
-cmd.CommandType = CommandType.Text
+    Private Sub insert()
+        Dim cmd As New SqlCommand
+        cmd.Connection = HttpContext.Current.Session("conn")
+        If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = HttpContext.Current.Session("trans")
+        cmd.CommandType = CommandType.Text
         cmd.CommandText = "insert into [User] (emailID,Username,FName,LName,password,role,join_date,end_date,status)"
-        cmd.CommandText = cmd.CommandText & "values(@emailID,@Username,@FName,@LName,@password,@role ,@join_date ,@end_date,@status)"
+        cmd.CommandText = cmd.CommandText & "values(@emailID,@Username,@FName,@LName,@password,@role ,@join_date,@end_date,@status)"
 
-        cmd.Parameters.Add("@emailID" , 22 , 255 , "emailID")
+        cmd.Parameters.Add("@emailID", 22, 255, "emailID")
         cmd.Parameters("@emailID").Value = setNull(emailID)
         cmd.Parameters.Add("@Username", 22, 255, "Username")
         cmd.Parameters("@Username").Value = setNull(Username)
-        cmd.Parameters.Add("@FName" , 22 , 255 , "FName")
+        cmd.Parameters.Add("@FName", 22, 255, "FName")
         cmd.Parameters("@FName").Value = setNull(FName)
-        cmd.Parameters.Add("@LName" , 22 , 255 , "LName")
+        cmd.Parameters.Add("@LName", 22, 255, "LName")
         cmd.Parameters("@LName").Value = setNull(LName)
         cmd.Parameters.Add("@password", 22, 500, "password")
         cmd.Parameters("@password").Value = setNull(password)
         cmd.Parameters.Add("@role ", 8, 0, "role")
         cmd.Parameters("@role ").Value = setNull(role)
-        cmd.Parameters.Add("@join_date ", 31, 0, "join_date")
-        cmd.Parameters("@join_date ").Value = setNull(join_date)
+        cmd.Parameters.Add("@join_date", 31, 0, "join_date")
+        cmd.Parameters("@join_date").Value = setNull(join_date)
         cmd.Parameters.Add("@end_date", 31, 0, "end_date")
         cmd.Parameters("@end_date").Value = setNull(end_date)
         cmd.Parameters.Add("@status", 22, 50, "status")
@@ -103,6 +104,7 @@ cmd.CommandType = CommandType.Text
         If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = HttpContext.Current.Session("trans")
         cmd.CommandType = CommandType.Text
         cmd.CommandText = "select "
+        cmd.CommandText = cmd.CommandText & "GLANumber,"
         cmd.CommandText = cmd.CommandText & "emailID,"
         If Display_Username = True Then cmd.CommandText = cmd.CommandText & "Username,"
         If Display_FName = True Then cmd.CommandText = cmd.CommandText & "FName,"
@@ -122,6 +124,8 @@ cmd.CommandType = CommandType.Text
         pl.Fill(dt)
         Dim p As New User
         For i = 0 To dt.Rows.Count - 1
+            p.GLANumber = checkNull(dt.Rows(i)("GLANumber"))
+            p.I_Display_emailID = Display_emailID
             p.emailID = checkNull(dt.Rows(i)("emailID"))
             p.I_Display_emailID = Display_emailID
             If Display_Username = True Then p.Username = checkNull(dt.Rows(i)("Username"))
@@ -158,14 +162,14 @@ cmd.CommandType = CommandType.Text
         cmd.Connection = HttpContext.Current.Session("conn")
         If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = HttpContext.Current.Session("trans")
         cmd.CommandType = CommandType.Text
-        cmd.CommandText = "update User set "
+        cmd.CommandText = "update [User] set "
         cmd.CommandText = cmd.CommandText & " emailID=@emailID,"
         If I_Display_Username = True Then cmd.CommandText = cmd.CommandText & " Username =@Username,"
         If I_Display_FName = True Then cmd.CommandText = cmd.CommandText & " FName=@FName,"
         If I_Display_LName = True Then cmd.CommandText = cmd.CommandText & " LName=@LName,"
         If I_Display_password = True Then cmd.CommandText = cmd.CommandText & " password=@password,"
         If I_Display_role = True Then cmd.CommandText = cmd.CommandText & " role =@role ,"
-        If I_Display_join_date = True Then cmd.CommandText = cmd.CommandText & " join_date =@join_date ,"
+        If I_Display_join_date = True Then cmd.CommandText = cmd.CommandText & " join_date=@join_date,"
         If I_Display_end_date = True Then cmd.CommandText = cmd.CommandText & " end_date=@end_date,"
         If I_Display_status = True Then cmd.CommandText = cmd.CommandText & " status=@status,"
         cmd.CommandText = cmd.CommandText.Substring(0, cmd.CommandText.Length - 1)
@@ -190,8 +194,8 @@ cmd.CommandType = CommandType.Text
         If I_Display_role = True Then cmd.Parameters.Add("@role ", 8, 0, "role")
         If I_Display_role = True Then cmd.Parameters("@role ").Value = setNull(role)
 
-        If I_Display_join_date = True Then cmd.Parameters.Add("@join_date ", 31, 0, "join_date ")
-        If I_Display_join_date = True Then cmd.Parameters("@join_date ").Value = setNull(join_date)
+        If I_Display_join_date = True Then cmd.Parameters.Add("@join_date", 31, 0, "join_date")
+        If I_Display_join_date = True Then cmd.Parameters("@join_date").Value = setNull(join_date)
 
         If I_Display_end_date = True Then cmd.Parameters.Add("@end_date", 31, 0, "end_date")
         If I_Display_end_date = True Then cmd.Parameters("@end_date").Value = setNull(end_date)
@@ -218,22 +222,24 @@ cmd.CommandType = CommandType.Text
         If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = HttpContext.Current.Session("trans")
         cmd.CommandType = CommandType.Text
         cmd.CommandText = "select "
+        cmd.CommandText = cmd.CommandText & "GLANumber,"
         cmd.CommandText = cmd.CommandText & "emailID,"
         If Display_Username = True Then cmd.CommandText = cmd.CommandText & "Username,"
         If Display_FName = True Then cmd.CommandText = cmd.CommandText & "FName,"
         If Display_LName = True Then cmd.CommandText = cmd.CommandText & "LName,"
         If Display_password = True Then cmd.CommandText = cmd.CommandText & "password,"
         If Display_role = True Then cmd.CommandText = cmd.CommandText & "role,"
-        If Display_join_date = True Then cmd.CommandText = cmd.CommandText & "join_date ,"
+        If Display_join_date = True Then cmd.CommandText = cmd.CommandText & "join_date,"
         If Display_end_date = True Then cmd.CommandText = cmd.CommandText & "end_date,"
         If Display_status = True Then cmd.CommandText = cmd.CommandText & "status,"
         cmd.CommandText = cmd.CommandText.Substring(0, cmd.CommandText.Length - 1)
-        cmd.CommandText = cmd.CommandText & " from User " & filterstr & " " & sortstr
+        cmd.CommandText = cmd.CommandText & " from [User] " & filterstr & " " & sortstr
         Dim pl As New SqlDataAdapter, dt As New DataTable, i As Integer
         pl.SelectCommand = cmd
         pl.Fill(dt)
         For i = 0 To dt.Rows.Count - 1
             Dim p As New User
+            p.GLANumber = checkNull(dt.Rows(i)("GLANumber"))
             p.emailID = checkNull(dt.Rows(i)("emailID"))
             p.I_Display_emailID = Display_emailID
             If Display_Username = True Then p.Username = checkNull(dt.Rows(i)("Username"))
@@ -245,10 +251,10 @@ cmd.CommandType = CommandType.Text
             If Display_password = True Then p.password = checkNull(dt.Rows(i)("password"))
             p.I_Display_password = Display_password
             If Display_role = True Then p.role = checkNull(dt.Rows(i)("role"))
-            p.I_Display_role =Display_role 
-if Display_join_date =true then p.join_date =checknull(dt.Rows(i)("join_date "))
-p.I_Display_join_date =Display_join_date 
-if Display_end_date=true then p.end_date=checknull(dt.Rows(i)("end_date"))
+            p.I_Display_role = Display_role
+            If Display_join_date = True Then p.join_date = checkNull(dt.Rows(i)("join_date"))
+            p.I_Display_join_date = Display_join_date
+            If Display_end_date=true then p.end_date=checknull(dt.Rows(i)("end_date"))
 p.I_Display_end_date=Display_end_date
 if Display_status=true then p.status=checknull(dt.Rows(i)("status"))
 p.I_Display_status=Display_status
@@ -266,8 +272,8 @@ Dim cmd As New sqlCommand
 cmd.Connection = HttpContext.Current.Session("conn")
 If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = HttpContext.Current.Session("trans")
 cmd.CommandType = CommandType.Text
-cmd.CommandText = "select emailID from User" & filterstr & " " & sortstr
-Dim pl As New sqlDataAdapter, dt As New DataTable, i As Integer
+        cmd.CommandText = "select emailID from [User]" & filterstr & " " & sortstr
+        Dim pl As New sqlDataAdapter, dt As New DataTable, i As Integer
 pl.SelectCommand = cmd
 pl.Fill(dt)
 For i = 0 To dt.Rows.Count - 1

@@ -26,6 +26,8 @@
         btnDelete.CssClass = "btn-0 border-0 text-danger bg-none float-end"
         AddHandler btnDelete.Click, AddressOf DeleteQuestion
         btnDelete.EnableViewState = True
+        btnDelete.UseSubmitBehavior = False
+
 
         ' Create the label for the question text
         Dim lblQuestionText As New Label()
@@ -38,7 +40,7 @@
 
         ' Add additional controls based on question type
         Select Case questionType
-            Case "radio"
+            Case "radiox"
                 ' Add radio button inputs and additional controls for radio type questions
                 Dim radioInput1 As New HtmlGenericControl("input")
                 radioInput1.Attributes("type") = "radio"

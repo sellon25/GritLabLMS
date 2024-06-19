@@ -39,7 +39,7 @@
 </head>
 
 <body>
-    <form id="adminForm" runat="server">
+    <form id="form1" runat="server">
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
@@ -67,7 +67,7 @@
                      <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
            <div class="d-flex align-items-center">
-                <button id="toggle-bar" class="p-0 bg-none border-0" onclick='toggleSidebar()'>
+                <button id="toggle-bar" class="p-0 bg-none border-0" type="button" onclick='toggleSidebar()'>
                     <i  class="fas fa-bars"></i>
                 </button>
                 <h4 class="pageTitle fw-bold">

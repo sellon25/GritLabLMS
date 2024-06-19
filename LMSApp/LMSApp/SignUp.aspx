@@ -64,7 +64,7 @@
 <body style="" >
     <form id="form1" style="width: 85%;" runat="server">
         <h3 class="fw-bold">Sign Up</h3>
-       <div class="card">
+       <div id="SignUpform" runat="server" class="card hide">
         <div class="card-body">
             <div class="form-horizontal form-material">
                 <div class="form-group mb-4">
@@ -81,18 +81,18 @@
                 <div class="form-group mb-4">
                     <label for="example-email" class="col-md-12 p-0">Email</label>
                     <div class="col-md-12 border-bottom p-0">
-                        <input id="useremail" runat="server" type="email" required placeholder="Type here..." class="form-control p-0 border-0" name="example-email" />
+                        <input id="useremail" runat="server" type="email" placeholder="Type here..." class="form-control p-0 border-0" name="example-email" />
                     </div>
                 </div>
                 <div class="form-group mb-4">
                     <label class="col-md-12 p-0">Create a Password</label>
                     <div class="col-md-12 border-bottom p-0">
-                        <input id="userpassword" runat="server" type="password" required placeholder="Type here..." class="form-control p-0 border-0" /> </div>
+                        <input id="userpassword" runat="server" type="password"  placeholder="Type here..." class="form-control p-0 border-0" /> </div>
                 </div>
                  <div class="form-group mb-4">
                     <label class="col-md-12 p-0">Confirm Password</label>
                     <div class="col-md-12 border-bottom p-0">
-                        <input id="userconfirmp" runat="server" type="password" required placeholder="Type here..." class="form-control p-0 border-0" /> </div>
+                        <input id="userconfirmp" runat="server" type="password"  placeholder="Type here..." class="form-control p-0 border-0" /> </div>
                 </div>
 
                 <div class="form-group mb-4">
@@ -106,6 +106,23 @@
             </div>
            </div>
        </div>
+        <div id="ApplicationForm" runat="server" class="card" style="min-width:50vh">
+            <div class="card-body">
+                <h3 class="mb-4 ">Application Form</h3>
+                <div class="form-horizontal form-material">
+                    <div id="CreatedQuestions"  runat="server" class="mb-4 border-bottom">
+                        <h4 class="mb-4 fw-bold ">Application Form</h4>
+                
+           
+                    </div> 
+                </div>
+            </div>
+              <div class="form-group mb-4">
+                    <div class="col-sm-12">
+                        <asp:Button ID="SubmitApplication" runat="server" Text="Submit" OnClick="SubmitApplication_Click" class="m-2 mb-0 btn btn-orange" />                        
+                    </div>                   
+                </div>
+        </div>
     </form>
 </body>
 </html>
