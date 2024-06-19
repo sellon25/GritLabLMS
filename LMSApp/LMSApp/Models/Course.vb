@@ -52,8 +52,8 @@ Public Shared Display_id as Boolean=True
         cmd.Connection = HttpContext.Current.Session("conn")
         If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = HttpContext.Current.Session("trans")
         cmd.CommandType = CommandType.Text
-        cmd.CommandText = "insert into Course (id,name,thumbnail,description,overview ,status,date_started,end_date)"
-        cmd.CommandText = cmd.CommandText & "values(@id,@name,@thumbnail,@description,@overview ,@status,@date_started,@end_date)"
+        cmd.CommandText = "insert into Course (id,name,thumbnail,description,overview,status,date_started,end_date)"
+        cmd.CommandText = cmd.CommandText & "values(@id,@name,@thumbnail,@description,@overview,@status,@date_started,@end_date)"
 
         cmd.Parameters.Add("@id", 22, 255, "id")
         cmd.Parameters("@id").Value = setNull(id)
@@ -63,8 +63,8 @@ Public Shared Display_id as Boolean=True
         cmd.Parameters("@thumbnail").Value = setNull(thumbnail)
         cmd.Parameters.Add("@description", 22, 150, "description")
         cmd.Parameters("@description").Value = setNull(description)
-        cmd.Parameters.Add("@overview ", 18, 2147483647, "overview ")
-        cmd.Parameters("@overview ").Value = setNull(overview)
+        cmd.Parameters.Add("@overview", 18, 2147483647, "overview")
+        cmd.Parameters("@overview").Value = setNull(overview)
         cmd.Parameters.Add("@status", 8, 0, "status")
         cmd.Parameters("@status").Value = setNull(status)
         cmd.Parameters.Add("@date_started", 31, 0, "date_started")
@@ -101,7 +101,7 @@ Public Shared Display_id as Boolean=True
         If Display_name = True Then cmd.CommandText = cmd.CommandText & "name,"
         If Display_thumbnail = True Then cmd.CommandText = cmd.CommandText & "thumbnail,"
         If Display_description = True Then cmd.CommandText = cmd.CommandText & "description,"
-        If Display_overview = True Then cmd.CommandText = cmd.CommandText & "overview ,"
+        If Display_overview = True Then cmd.CommandText = cmd.CommandText & "overview,"
         If Display_status = True Then cmd.CommandText = cmd.CommandText & "status,"
         If Display_date_started = True Then cmd.CommandText = cmd.CommandText & "date_started,"
         If Display_end_date = True Then cmd.CommandText = cmd.CommandText & "end_date,"
@@ -154,7 +154,7 @@ Public Shared Display_id as Boolean=True
         If I_Display_name = True Then cmd.CommandText = cmd.CommandText & "name=@name,"
         If I_Display_thumbnail = True Then cmd.CommandText = cmd.CommandText & " thumbnail=@thumbnail,"
         If I_Display_description = True Then cmd.CommandText = cmd.CommandText & " description=@description,"
-        If I_Display_overview = True Then cmd.CommandText = cmd.CommandText & " overview=@overview ,"
+        If I_Display_overview = True Then cmd.CommandText = cmd.CommandText & " overview=@overview,"
         If I_Display_status = True Then cmd.CommandText = cmd.CommandText & " status=@status,"
         If I_Display_date_started = True Then cmd.CommandText = cmd.CommandText & " date_started=@date_started,"
         If I_Display_end_date = True Then cmd.CommandText = cmd.CommandText & " end_date=@end_date,"
@@ -174,8 +174,8 @@ Public Shared Display_id as Boolean=True
         If I_Display_description = True Then cmd.Parameters.Add("@description", 22, 150, "description")
         If I_Display_description = True Then cmd.Parameters("@description").Value = setNull(description)
 
-        If I_Display_overview = True Then cmd.Parameters.Add("@overview ", 18, 2147483647, "overview ")
-        If I_Display_overview = True Then cmd.Parameters("@overview ").Value = setNull(overview)
+        If I_Display_overview = True Then cmd.Parameters.Add("@overview", 18, 2147483647, "overview")
+        If I_Display_overview = True Then cmd.Parameters("@overview").Value = setNull(overview)
 
         If I_Display_status = True Then cmd.Parameters.Add("@status", 8, 0, "status")
         If I_Display_status = True Then cmd.Parameters("@status").Value = setNull(status)
@@ -209,7 +209,7 @@ Public Shared Display_id as Boolean=True
         If Display_name = True Then cmd.CommandText = cmd.CommandText & "name,"
         If Display_thumbnail = True Then cmd.CommandText = cmd.CommandText & "thumbnail,"
         If Display_description = True Then cmd.CommandText = cmd.CommandText & "description,"
-        If Display_overview = True Then cmd.CommandText = cmd.CommandText & "overview ,"
+        If Display_overview = True Then cmd.CommandText = cmd.CommandText & "overview,"
         If Display_status = True Then cmd.CommandText = cmd.CommandText & "status,"
         If Display_date_started = True Then cmd.CommandText = cmd.CommandText & "date_started,"
         If Display_end_date = True Then cmd.CommandText = cmd.CommandText & "end_date,"
@@ -224,13 +224,13 @@ Public Shared Display_id as Boolean=True
             p.I_Display_id = Display_id
             If Display_name = True Then p.name = checkNull(dt.Rows(i)("name"))
             p.I_Display_name = Display_name
-            If Display_thumbnail=true then p.thumbnail=checknull(dt.Rows(i)("thumbnail"))
-p.I_Display_thumbnail=Display_thumbnail
-if Display_description=true then p.description=checknull(dt.Rows(i)("description"))
-p.I_Display_description=Display_description
-if Display_overview =true then p.overview =checknull(dt.Rows(i)("overview "))
-p.I_Display_overview =Display_overview 
-if Display_status=true then p.status=checknull(dt.Rows(i)("status"))
+            If Display_thumbnail = True Then p.thumbnail = checkNull(dt.Rows(i)("thumbnail"))
+            p.I_Display_thumbnail = Display_thumbnail
+            If Display_description = True Then p.description = checkNull(dt.Rows(i)("description"))
+            p.I_Display_description = Display_description
+            If Display_overview = True Then p.overview = checkNull(dt.Rows(i)("overview"))
+            p.I_Display_overview = Display_overview
+            If Display_status=true then p.status=checknull(dt.Rows(i)("status"))
 p.I_Display_status=Display_status
 if Display_date_started=true then p.date_started=checknull(dt.Rows(i)("date_started"))
 p.I_Display_date_started=Display_date_started
