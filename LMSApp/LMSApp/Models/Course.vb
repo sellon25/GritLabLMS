@@ -1,4 +1,4 @@
-﻿Imports microsoft.visualbasic
+Imports microsoft.visualbasic
 Imports System.Data.SqlClient
 Imports system.data
 

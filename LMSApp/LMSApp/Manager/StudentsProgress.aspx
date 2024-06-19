@@ -1,5 +1,9 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/LMSBoardManager.Master" CodeBehind="StudentsProgress.aspx.vb" Inherits="LMSApp.StudentsProgress" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Type_pageTitle" runat="server">
+
+
+    Gritters Progress
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Change_Breadcrumb_PageTitle" runat="server">
     
@@ -8,100 +12,6 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
 
-    <%-- %><script>
-        function resetFilter() {
-            document.getElementById('txtSearch').value = '';
-            applyFilter();
-        }
-    </script>
-
-    <div class="row">
-        <div class="col-md-12 col-lg-12 col-sm-12">
-            <div class="white-box bg-transparent">
-                <div class="d-md-flex mb-3">
-                    <h3 class="box-title mb-0">Students Summary Progress</h3>
-                </div>
-            <div class="row mb-3">
-                <div class="col-md-4">
-                    <label for="txtSearch">Search:</label>
-                    <input type="text" id="txtSearch" class="form-control" placeholder="Enter" onselect="applyFilter()">
-                </div>
-                <div class="col-md-4">
-                    <label for="ddlFilter">Filter by:</label>
-                    <select id="ddlFilter" class="form-control" onselect="applyFilter()">
-                        <option value="name">Name</option>
-                        <option value="id">ID Number</option>
-                        <option value="dob">Date of Birth</option>
-                    </select>
-                </div>
-                <div class="col-md-4">
-                    <label>&nbsp;</label><br>
-                    <button type="button" class="btn btn-primary" onclick="applyFilter()">Apply Filter</button>
-                    <button type="button" class="btn btn-secondary" onclick="resetFilter()">Reset</button>
-                </div>
-            </div>
-                <%--<div class="table-responsive">--%>
-                    <%--<table class="table no-wrap">
-                        <thead>
-                            <tr>
-                                <th class="border-top-0">JBS-GL#</th>
-                                <th class="border-top-0">ID Number</th>
-                                <th class="border-top-0">Surname</th>
-                                <th class="border-top-0">Name</th>
-                                <th class="border-top-0">Date Of Birth</th>
-                                <th class="border-top-0">Average</th>
-                                <th class="border-top-0">Track Progress</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td class="txt-oflo text-black">04095878965</td>
-                                <td class="text-black">Manqoba</td>
-                                <td class="text-black">Siyabonga</td>
-                                <td class="txt-oflo text-black">April 18, 2004</td>
-                                <td class="text-black">100</td>
-                                <th> <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="#" Text="Track Progress" CssClass="breadcrumb-link" Font-Bold="True"></asp:HyperLink></th>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td class="txt-oflo text-black">020256459665</td>
-                                <td class="text-black">Tim</td>
-                                <td class="text-black">Jacob</td>
-                                <td class="txt-oflo text-black">February 21, 2002</td>
-                                <td class="text-black">78</td>
-                                <th> <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="#" Text="Track Progress" CssClass="breadcrumb-link" Font-Bold="True"></asp:HyperLink></th>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td class="txt-oflo text-black">06025645963</td>
-                                <td class="text-black">Jerry</td>
-                                <td class="text-black">Martha</td>
-                                <td class="txt-oflo text-black">June 08, 2006</td>
-                                <td class="text-black">52</td>
-                                <th> <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="#" Text="Track Progress" CssClass="breadcrumb-link" Font-Bold="True"></asp:HyperLink></th>                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td class="txt-oflo text-black">04056965423</td>
-                                <td class="text-black">Carol</td>
-                                <td class="text-black">Nyathi</td>
-                                <td class="txt-oflo text-black">November 14, 2004</td>
-                                <td class="text-black">23</td>
-                                <th><asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="#" Text="Track Progress" CssClass="breadcrumb-link" Font-Bold="True"></asp:HyperLink></th>                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td class="txt-oflo text-black">030256468629</td>
-                                <td class="text-black">Majola</td>
-                                <td class="text-black">Wendy</td>
-                                <td class="txt-oflo text-black">Fevbruary 05, 2003</td>
-                                <td class="text-black">60</td>
-                                <th> <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="#" Text="Track Progress" CssClass="breadcrumb-link" Font-Bold="True"></asp:HyperLink></th>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>--%>
 
     <script>
         function resetFilter() {
@@ -112,7 +22,7 @@
 
     <div class="row">
 
-            <div class="row">
+        <div class="row">
 
         <div Class="col-md-4">
             <div Class="white-box">
@@ -176,7 +86,6 @@
                                 <th class="border-top-0" style="font-weight: bold;">Total Attendance</th>
                                 <th class="border-top-0" style="font-weight: bold;">Email</th>
                                 <th class="border-top-0" style="font-weight: bold;">Track Progress</th>
-
                             </tr>
                         </thead>
                         <tbody>

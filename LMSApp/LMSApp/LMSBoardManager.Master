@@ -6,13 +6,18 @@
 <head >
     <title></title>
 
-        <%--My Additional Links--%>
+    <%--My Additional Links --%>
 
     <link href="Manager%20Files/Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="Manager%20Files/dataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
 
 
-    <%--My Additional scripts--%>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+   <%--My Additional scripts --%>
 
     <script src="Manager%20Files/Bootstrap/js/popper.min.js"></script>
     <script src="Manager%20Files/Bootstrap/js/jquery-3.3.1.slim.min.js"></script>
@@ -59,6 +64,7 @@
 </head>
 
 <body>
+    <form id="form1" runat="server" >
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
@@ -83,16 +89,16 @@
                 <!-- End Logo -->
                 <!-- ============================================================== -->
 
-                     <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
            
                 <div class="d-flex align-items-center">
                 <button id="toggle-bar" class="p-0 bg-none border-0" onclick='toggleSidebar()'>
                     <i  class="fas fa-bars"></i>
                 </button>
                 <h4 class="pageTitle fw-bold">
-                        <asp:ContentPlaceHolder ID="Change_Breadcrumb_PageTitle" runat="server">
-                            Page title
+                <asp:ContentPlaceHolder ID="Change_Breadcrumb_PageTitle" runat="server">
+                    Page title
                 </asp:ContentPlaceHolder>
                        </h4>
 
@@ -206,8 +212,9 @@
                                 <span style="text-align: left;" class="">Kingsman</span>
                             </a>
                         </li>
+
                         <li class="sidebar-item pt-2">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="Announcements.aspx"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Manager/AnnouncementPage.aspx"
                                 aria-expanded="false">
                                 <i style="text-align: left;" class="fas fa-paper-plane" aria-hidden="true"></i>
                                 &nbsp &nbsp &nbsp
@@ -216,7 +223,7 @@
                         </li>
 
                         <li class="sidebar-item pt-2">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="Login.aspx"
                                 aria-expanded="false">
                                     <i style="text-align: left;" class="fas fa-sign-out-alt sign-out-icon"></i>
                                                                 &nbsp &nbsp &nbsp
@@ -294,7 +301,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
-
+    </form>
 </body>
 
 </html>
