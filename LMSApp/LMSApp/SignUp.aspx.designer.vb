@@ -11,140 +11,113 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class ManageAdmins
+Partial Public Class SignUp
 
     '''<summary>
-    '''TextBox1 control.
+    '''form1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox1 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
-    '''btn_Go control.
+    '''SignUpform control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btn_Go As Global.System.Web.UI.WebControls.LinkButton
+    Protected WithEvents SignUpform As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''TextBox2 control.
+    '''userfname control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox2 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents userfname As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''TextBox5 control.
+    '''userlname control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox5 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents userlname As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''TextBox4 control.
+    '''useremail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox4 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents useremail As Global.System.Web.UI.HtmlControls.HtmlInputGenericControl
 
     '''<summary>
-    '''TextBox6 control.
+    '''userpassword control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox6 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents userpassword As Global.System.Web.UI.HtmlControls.HtmlInputPassword
 
     '''<summary>
-    '''DropDownList2 control.
+    '''userconfirmp control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents DropDownList2 As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents userconfirmp As Global.System.Web.UI.HtmlControls.HtmlInputPassword
 
     '''<summary>
-    '''TextBox3 control.
+    '''Register control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox3 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents Register As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''DropDownList1 control.
+    '''LblError control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents DropDownList1 As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents LblError As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''DeleteButton control.
+    '''ApplicationForm control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents DeleteButton As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents ApplicationForm As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''btn_update control.
+    '''CreatedQuestions control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btn_update As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents CreatedQuestions As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''btn_AddNewAdmin control.
+    '''SubmitApplication control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btn_AddNewAdmin As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''HyperLink2 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents HyperLink2 As Global.System.Web.UI.WebControls.HyperLink
-
-    '''<summary>
-    '''HyperLink1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents HyperLink1 As Global.System.Web.UI.WebControls.HyperLink
-
-    '''<summary>
-    '''HyperLink3 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents HyperLink3 As Global.System.Web.UI.WebControls.HyperLink
+    Protected WithEvents SubmitApplication As Global.System.Web.UI.WebControls.Button
 End Class

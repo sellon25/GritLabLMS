@@ -11,41 +11,50 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class LMSBoardManager
+Partial Public Class ManageApplicationForm
 
     '''<summary>
-    '''Type_pageTitle control.
+    '''questionTypeList control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Type_pageTitle As Global.System.Web.UI.WebControls.ContentPlaceHolder
+    Protected WithEvents questionTypeList As Global.System.Web.UI.WebControls.RadioButtonList
 
     '''<summary>
-    '''form1 control.
+    '''inputQuestionNum control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
+    Protected WithEvents inputQuestionNum As Global.System.Web.UI.HtmlControls.HtmlInputGenericControl
 
     '''<summary>
-    '''Change_Breadcrumb_PageTitle control.
+    '''inputQuestionText control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Change_Breadcrumb_PageTitle As Global.System.Web.UI.WebControls.ContentPlaceHolder
+    Protected WithEvents inputQuestionText As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''Main_ContentPlaceHolder control.
+    '''addQuestionButton control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Main_ContentPlaceHolder As Global.System.Web.UI.WebControls.ContentPlaceHolder
+    Protected WithEvents addQuestionButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''CreatedQuestions control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CreatedQuestions As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 End Class

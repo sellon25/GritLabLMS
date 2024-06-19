@@ -16,5 +16,10 @@
                 <h3 class="box-title" >Manage Kingsmen Infomation</h3>
             </div>
         </a>
+        <a class="col-md-12 text-black" href="ManageApplicationForm.aspx">
+            <div class="white-box boxShadow">            
+                <h3 class="box-title" >Manage Application form</h3>
+            </div>
+        </a>
     </div>
 </asp:Content>

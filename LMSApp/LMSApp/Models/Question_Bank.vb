@@ -5,9 +5,12 @@ Imports system.data
 Public Class Question_Bank
 inherits Entity
 
-Public Shared Display_id as Boolean=true
-Public Shared Display_Text as Boolean=true
-Public Shared Display_CaseStudy as Boolean=true
+Public Shared Display_id as Boolean=True
+    Public Shared Display_Text As Boolean = True
+    Public Shared Display_QuestionType As Boolean = True
+    Public Shared Display_ParentQuestion As Boolean = True
+    Public Shared Display_QuestionNumber As Boolean = True
+    Public Shared Display_CaseStudy as Boolean=true
 Public Shared Display_Image as Boolean=true
 Public Shared Display_Option1 as Boolean=true
 Public Shared Display_Option2 as Boolean=true
@@ -17,9 +20,12 @@ Public Shared Display_Mark as Boolean=true
 Public Shared Display_Category_ID as Boolean=true
 Public Shared Display_Section_ID as Boolean=true
 
-Private I_Display_id as Boolean=true
-Private I_Display_Text as Boolean=true
-Private I_Display_CaseStudy as Boolean=true
+Private I_Display_id as Boolean=True
+    Private I_Display_Text As Boolean = True
+    Private I_Display_QuestionType As Boolean = True
+    Private I_Display_QuestionNumber As Boolean = True
+    Private I_Display_ParentQuestion As Boolean = True
+    Private I_Display_CaseStudy as Boolean=true
 Private I_Display_Image as Boolean=true
 Private I_Display_Option1 as Boolean=true
 Private I_Display_Option2 as Boolean=true
@@ -41,13 +47,19 @@ Public Option3 as System.String
 Public Option4 as System.String
 Public Mark as nullable(of System.Double)
 Public Category_ID as System.String
-Public Section_ID as nullable(of System.Int32)
-Private newinstance As Boolean = True
+    Public Section_ID As Nullable(Of System.Int32)
+    Public QuestionNumber As Nullable(Of System.Double)
+    Public QuestionType As System.String
+    Public ParentQuestion As System.String
+    Private newinstance As Boolean = True
 
-Shared Sub Set_Display_Field_All(display_flag as boolean)
+    Shared Sub Set_Display_Field_All(display_flag as boolean)
 Display_id=display_flag
-Display_Text=display_flag
-Display_CaseStudy=display_flag
+        Display_Text = display_flag
+        Display_QuestionType = display_flag
+        Display_QuestionNumber = display_flag
+        Display_ParentQuestion = display_flag
+        Display_CaseStudy =display_flag
 Display_Image=display_flag
 Display_Option1=display_flag
 Display_Option2=display_flag
@@ -64,14 +76,20 @@ Dim cmd As New sqlCommand
 cmd.Connection = HttpContext.Current.Session("conn")
 If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = HttpContext.Current.Session("trans")
 cmd.CommandType = CommandType.Text
-cmd.CommandText = "insert into Question_Bank (id,Text,CaseStudy,Image,Option1,Option2,Option3,Option4,Mark,Category_ID,Section_ID)"
-cmd.CommandText = cmd.CommandText & "values(@id,@Text,@CaseStudy,@Image,@Option1,@Option2,@Option3,@Option4,@Mark,@Category_ID,@Section_ID)"
+        cmd.CommandText = "insert into Question_Bank (id,Text,QuestionType,QuestionNumber,ParentQuestion,CaseStudy,Image,Option1,Option2,Option3,Option4,Mark,Category_ID,Section_ID)"
+        cmd.CommandText = cmd.CommandText & "values(@id,@Text,@QuestionType,@QuestionNumber,@ParentQuestion,@CaseStudy,@Image,@Option1,@Option2,@Option3,@Option4,@Mark,@Category_ID,@Section_ID)"
 
-cmd.Parameters.Add("@id" , 22 , 255 , "id")
+        cmd.Parameters.Add("@id" , 22 , 255 , "id")
 cmd.Parameters("@id").Value = SetNull(id)
-cmd.Parameters.Add("@Text" , 22 , -1 , "Text")
-cmd.Parameters("@Text").Value = SetNull(Text)
-cmd.Parameters.Add("@CaseStudy" , 22 , -1 , "CaseStudy")
+        cmd.Parameters.Add("@Text", 22, -1, "Text")
+        cmd.Parameters("@Text").Value = setNull(Text)
+        cmd.Parameters.Add("@QuestionType", 22, -1, "QuestionType")
+        cmd.Parameters("@QuestionType").Value = setNull(QuestionType)
+        cmd.Parameters.Add("@QuestionNumber", 22, -1, "QuestionNumber")
+        cmd.Parameters("@QuestionNumber").Value = setNull(QuestionNumber)
+        cmd.Parameters.Add("@ParentQuestion", 22, 255, "ParentQuestion")
+        cmd.Parameters("@ParentQuestion").Value = setNull(ParentQuestion)
+        cmd.Parameters.Add("@CaseStudy" , 22 , -1 , "CaseStudy")
 cmd.Parameters("@CaseStudy").Value = SetNull(CaseStudy)
 cmd.Parameters.Add("@Image" , 21 , -1 , "Image")
 cmd.Parameters("@Image").Value = SetNull(Image)
@@ -116,15 +134,18 @@ If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = Ht
 cmd.CommandType = CommandType.Text
 cmd.CommandText = "select "
 cmd.CommandText = cmd.CommandText & "id,"
-if Display_Text=true then cmd.CommandText = cmd.CommandText & "Text,"
-if Display_CaseStudy=true then cmd.CommandText = cmd.CommandText & "CaseStudy,"
+        If Display_Text = True Then cmd.CommandText = cmd.CommandText & "Text,"
+        If Display_QuestionType = True Then cmd.CommandText = cmd.CommandText & "QuestionType,"
+        If Display_QuestionType = True Then cmd.CommandText = cmd.CommandText & "QuestionNumber,"
+        If Display_CaseStudy=true then cmd.CommandText = cmd.CommandText & "CaseStudy,"
 if Display_Image=true then cmd.CommandText = cmd.CommandText & "Image,"
 if Display_Option1=true then cmd.CommandText = cmd.CommandText & "Option1,"
 if Display_Option2=true then cmd.CommandText = cmd.CommandText & "Option2,"
 if Display_Option3=true then cmd.CommandText = cmd.CommandText & "Option3,"
 if Display_Option4=true then cmd.CommandText = cmd.CommandText & "Option4,"
-if Display_Mark=true then cmd.CommandText = cmd.CommandText & "Mark,"
-if Display_Category_ID=true then cmd.CommandText = cmd.CommandText & "Category_ID,"
+        If Display_Mark = True Then cmd.CommandText = cmd.CommandText & "Mark,"
+        If Display_Mark = True Then cmd.CommandText = cmd.CommandText & "ParentQuestion,"
+        If Display_Category_ID=true then cmd.CommandText = cmd.CommandText & "Category_ID,"
 if Display_Section_ID=true then cmd.CommandText = cmd.CommandText & "Section_ID,"
 cmd.CommandText = cmd.CommandText.Substring(0,cmd.CommandText.Length-1)
 cmd.CommandText = cmd.CommandText & " from Question_Bank where id=@id"
@@ -138,9 +159,15 @@ Dim p As New Question_Bank
 For i = 0 To dt.Rows.Count - 1
 p.id=checknull(dt.Rows(i)("id"))
 p.I_Display_id=Display_id
-if Display_Text=true then p.Text=checknull(dt.Rows(i)("Text"))
-p.I_Display_Text=Display_Text
-if Display_CaseStudy=true then p.CaseStudy=checknull(dt.Rows(i)("CaseStudy"))
+            If Display_Text = True Then p.Text = checkNull(dt.Rows(i)("Text"))
+            p.I_Display_Text = Display_Text
+            If Display_QuestionType = True Then p.QuestionType = checkNull(dt.Rows(i)("QuestionType"))
+            p.I_Display_QuestionType = Display_QuestionType
+            If Display_QuestionNumber = True Then p.QuestionNumber = checkNull(dt.Rows(i)("QuestionNumber"))
+            p.I_Display_QuestionNumber = Display_QuestionNumber
+            If Display_ParentQuestion = True Then p.ParentQuestion = checkNull(dt.Rows(i)("ParentQuestion"))
+            p.I_Display_ParentQuestion = Display_ParentQuestion
+            If Display_CaseStudy=true then p.CaseStudy=checknull(dt.Rows(i)("CaseStudy"))
 p.I_Display_CaseStudy=Display_CaseStudy
 if Display_Image=true then p.Image=checknull(dt.Rows(i)("Image"))
 p.I_Display_Image=Display_Image
@@ -178,8 +205,11 @@ If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = Ht
 cmd.CommandType = CommandType.Text
 cmd.CommandText = "update Question_Bank set "
 cmd.CommandText =cmd.CommandText & " id=@id,"
-if I_Display_Text=true then cmd.CommandText =cmd.CommandText & " Text=@Text,"
-if I_Display_CaseStudy=true then cmd.CommandText =cmd.CommandText & " CaseStudy=@CaseStudy,"
+        If I_Display_Text = True Then cmd.CommandText = cmd.CommandText & " Text=@Text,"
+        If I_Display_QuestionType = True Then cmd.CommandText = cmd.CommandText & " QuestionType=@QuestionType,"
+        If I_Display_QuestionNumber = True Then cmd.CommandText = cmd.CommandText & " QuestionNumber=@QuestionNumber,"
+        If I_Display_ParentQuestion = True Then cmd.CommandText = cmd.CommandText & " ParentQuestion=@ParentQuestion,"
+        If I_Display_CaseStudy=true then cmd.CommandText =cmd.CommandText & " CaseStudy=@CaseStudy,"
 if I_Display_Image=true then cmd.CommandText =cmd.CommandText & " Image=@Image,"
 if I_Display_Option1=true then cmd.CommandText =cmd.CommandText & " Option1=@Option1,"
 if I_Display_Option2=true then cmd.CommandText =cmd.CommandText & " Option2=@Option2,"
@@ -196,9 +226,16 @@ cmd.Parameters.Add("@id", 22, 255, "id")
 cmd.Parameters("@id").Value = SetNull(id)
 
 if I_Display_Text=true then cmd.Parameters.Add("@Text", 22, -1, "Text")
-if I_Display_Text=true then cmd.Parameters("@Text").Value = SetNull(Text)
+        If I_Display_Text = True Then cmd.Parameters("@Text").Value = setNull(Text)
 
-if I_Display_CaseStudy=true then cmd.Parameters.Add("@CaseStudy", 22, -1, "CaseStudy")
+        If I_Display_Text = True Then cmd.Parameters.Add("@QuestionType", 22, -1, "QuestionType")
+        If I_Display_Text = True Then cmd.Parameters("@QuestionType").Value = setNull(QuestionType)
+        If I_Display_Text = True Then cmd.Parameters.Add("@QuestionNumber", 22, -1, "QuestionNumber")
+        If I_Display_Text = True Then cmd.Parameters("@QuestionNumber").Value = setNull(QuestionNumber)
+        If I_Display_Text = True Then cmd.Parameters.Add("@ParentQuestion", 22, 255, "ParentQuestion")
+        If I_Display_Text = True Then cmd.Parameters("@ParentQuestion").Value = setNull(ParentQuestion)
+
+        If I_Display_CaseStudy=true then cmd.Parameters.Add("@CaseStudy", 22, -1, "CaseStudy")
 if I_Display_CaseStudy=true then cmd.Parameters("@CaseStudy").Value = SetNull(CaseStudy)
 
 if I_Display_Image=true then cmd.Parameters.Add("@Image", 21, -1, "Image")
@@ -245,8 +282,11 @@ If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = Ht
 cmd.CommandType = CommandType.Text
 cmd.CommandText = "select "
 cmd.CommandText = cmd.CommandText & "id,"
-if Display_Text=true then cmd.CommandText = cmd.CommandText & "Text,"
-if Display_CaseStudy=true then cmd.CommandText = cmd.CommandText & "CaseStudy,"
+        If Display_Text = True Then cmd.CommandText = cmd.CommandText & "Text,"
+        If Display_QuestionType = True Then cmd.CommandText = cmd.CommandText & "QuestionType,"
+        If Display_QuestionType = True Then cmd.CommandText = cmd.CommandText & "QuestionNumber,"
+        If Display_QuestionType = True Then cmd.CommandText = cmd.CommandText & "ParentQuestion,"
+        If Display_CaseStudy=true then cmd.CommandText = cmd.CommandText & "CaseStudy,"
 if Display_Image=true then cmd.CommandText = cmd.CommandText & "Image,"
 if Display_Option1=true then cmd.CommandText = cmd.CommandText & "Option1,"
 if Display_Option2=true then cmd.CommandText = cmd.CommandText & "Option2,"
@@ -265,9 +305,15 @@ Dim p As New Question_Bank
 p.id=checknull(dt.Rows(i)("id"))
 p.I_Display_id=Display_id
 if Display_Text=true then p.Text=checknull(dt.Rows(i)("Text"))
-p.I_Display_Text=Display_Text
-if Display_CaseStudy=true then p.CaseStudy=checknull(dt.Rows(i)("CaseStudy"))
-p.I_Display_CaseStudy=Display_CaseStudy
+            p.I_Display_Text = Display_Text
+            If Display_QuestionType = True Then p.QuestionType = checkNull(dt.Rows(i)("QuestionType"))
+            p.I_Display_QuestionType = Display_QuestionType
+            If Display_QuestionNumber = True Then p.QuestionNumber = checkNull(dt.Rows(i)("QuestionNumber"))
+            p.I_Display_QuestionNumber = Display_QuestionNumber
+            If Display_ParentQuestion = True Then p.ParentQuestion = checkNull(dt.Rows(i)("ParentQuestion"))
+            p.I_Display_ParentQuestion = Display_ParentQuestion
+            If Display_CaseStudy = True Then p.CaseStudy = checkNull(dt.Rows(i)("CaseStudy"))
+            p.I_Display_CaseStudy=Display_CaseStudy
 if Display_Image=true then p.Image=checknull(dt.Rows(i)("Image"))
 p.I_Display_Image=Display_Image
 if Display_Option1=true then p.Option1=checknull(dt.Rows(i)("Option1"))

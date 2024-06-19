@@ -52,15 +52,18 @@
         .login-form input[type="submit"]:hover {
             background-color: #7a25d4;
         }
+        body{
+           background-image: linear-gradient(to bottom, #93761e 60%, black);
+        }
     </style>
 </head>
 <body style="display: flex;" >
     <form id="form1" style="margin: 25vh auto;" runat="server">
-        <div class="text-center col-lg-4 col-md-12">
+        <div class="text-center col-md-12">
             <img style="" src="plugins/images/glogo.png" />
         </div>
         
-        <div class="login-form">
+        <div class="login-form text-center">
 
                                
 
@@ -72,6 +75,7 @@
             <%--<input type="password" id="txtPwd" runat="server" required="required" placeholder="Password" />--%>
 
             <asp:Button ID="loginBtn" class="login-btn" runat="server" Text="Log In" OnClick="loginBtn_Click" />
+            <a href="SignUp.aspx">Apply to join GritLabs</a>
         </div>
         <asp:Label ID="lblError" runat="server" Text="Error..."></asp:Label>
     </form>
