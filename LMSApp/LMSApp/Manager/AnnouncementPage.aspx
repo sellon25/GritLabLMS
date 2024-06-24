@@ -17,7 +17,7 @@
                             <input type="text" class="form-control" id="announcementTitle" runat="server" placeholder="Enter title">
                         </div>
                         <div class="form-group">
-                            <label for="announcementType">Type</label>
+                            <label for="announcementType">Type</label> 
                                 <select id="announcementType" name="announcementType" class="form-control">
                                     <option value="Information">Information</option>
                                     <option value="Query">Query</option>
