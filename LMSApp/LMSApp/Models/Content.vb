@@ -250,14 +250,14 @@ For i = 0 To dt.Rows.Count - 1
 Dim p As New Content
 p.id=checknull(dt.Rows(i)("id"))
 p.I_Display_id=Display_id
-if Display_title =true then p.title =checknull(dt.Rows(i)("title "))
-p.I_Display_title =Display_title 
+            If Display_title = True Then p.title = checkNull(dt.Rows(i)("title"))
+            p.I_Display_title =Display_title 
 if Display_thumbnail=true then p.thumbnail=checknull(dt.Rows(i)("thumbnail"))
 p.I_Display_thumbnail=Display_thumbnail
-if Display_description =true then p.description =checknull(dt.Rows(i)("description "))
-p.I_Display_description =Display_description 
-if Display_link =true then p.link =checknull(dt.Rows(i)("link "))
-p.I_Display_link =Display_link 
+            If Display_description = True Then p.description = checkNull(dt.Rows(i)("description"))
+            p.I_Display_description =Display_description
+            If Display_link = True Then p.link = checkNull(dt.Rows(i)("link"))
+            p.I_Display_link =Display_link 
 if Display_file_data=true then p.file_data=checknull(dt.Rows(i)("file_data"))
 p.I_Display_file_data=Display_file_data
 if Display_datetime=true then p.datetime=checknull(dt.Rows(i)("datetime"))

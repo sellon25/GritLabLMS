@@ -6,8 +6,8 @@
     Course Content
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
-   <div class="row">
-       <a class="d-md-flex white-box boxShadow" href="#">
+   <div class="row" id ="CourseContent" runat="server">
+       <!--<a class="d-md-flex white-box boxShadow" href="#">
             <div class="textboookarea">
                 <img src="~/plugins/images/chemtextbook.jpg" class="textbook">
                  <div>
@@ -15,7 +15,7 @@
                      <p class="text-dark">Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book</p>
                  </div>
             </div>
-        </a>
+        </a>-->
 
     </div>
 </asp:Content>

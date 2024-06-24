@@ -6,15 +6,20 @@
     Results
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
-    
-                   <a class="col-md-12 text-black" href="CourseResults.aspx">
+   
+    <div id="CoursesContainer" runat="server">
+
+    </div>
+
+
+                   <a class="col-md-12 text-black" href="CourseResults.aspx?">
                         <div class="box-flex white-box boxShadow">
                             <h3 class="box-title">CHEM1101</h3>
                              <div class="description">
                              <span class="box-result results-good">82<span>/100</span></span>               
                             </div>
                         </div>
-                    </a>
+                    </a><!--
                      <a class="col-md-12 text-black" href="CourseResults.aspx">
                         <div class="box-flex white-box boxShadow">
                             <h3 class="box-title">FSA2109</h3>
@@ -38,5 +43,5 @@
                         </div>
                     </a>
                     
-                
+                -->
 </asp:Content>
