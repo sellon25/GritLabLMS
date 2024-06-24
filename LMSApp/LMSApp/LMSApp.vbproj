@@ -138,6 +138,7 @@
     <Content Include="Facilitator\CourseContent.aspx" />
     <Content Include="Facilitator\CoursePage.aspx" />
     <Content Include="Facilitator\CourseResults.aspx" />
+    <Content Include="Facilitator\Courses.aspx" />
     <Content Include="Facilitator\CoursesAndProjects.aspx" />
     <Content Include="Facilitator\Dashboard.aspx" />
     <Content Include="Facilitator\demo.aspx" />
@@ -148,6 +149,7 @@
     <Content Include="Facilitator\ProgressAndFeedback.aspx" />
     <Content Include="Facilitator\ProjectPage.aspx" />
     <Content Include="Facilitator\ProjectParticipants.aspx" />
+    <Content Include="Facilitator\Projects.aspx" />
     <Content Include="Facilitator\SubmissionLinks.aspx" />
     <Content Include="Facilitator\TestsAndAssignments.aspx" />
     <Content Include="js\mainscript.js" />
@@ -2734,6 +2736,13 @@
       <DependentUpon>CourseResults.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Facilitator\Courses.aspx.designer.vb">
+      <DependentUpon>Courses.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Facilitator\Courses.aspx.vb">
+      <DependentUpon>Courses.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Facilitator\CoursesAndProjects.aspx.designer.vb">
       <DependentUpon>CoursesAndProjects.aspx</DependentUpon>
     </Compile>
@@ -2803,6 +2812,13 @@
     <Compile Include="Facilitator\ProjectParticipants.aspx.vb">
       <DependentUpon>ProjectParticipants.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Facilitator\Projects.aspx.designer.vb">
+      <DependentUpon>Projects.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Facilitator\Projects.aspx.vb">
+      <DependentUpon>Projects.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Facilitator\SubmissionLinks.aspx.designer.vb">
       <DependentUpon>SubmissionLinks.aspx</DependentUpon>
