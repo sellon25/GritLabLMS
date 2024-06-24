@@ -14,15 +14,6 @@ Option Explicit On
 Partial Public Class CourseContent1
 
     '''<summary>
-    '''newContentForm control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents newContentForm As Global.System.Web.UI.HtmlControls.HtmlForm
-
-    '''<summary>
     '''newContentTitle control.
     '''</summary>
     '''<remarks>

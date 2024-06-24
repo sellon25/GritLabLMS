@@ -6,10 +6,12 @@ Public Class CourseContent1
     Dim courseId As String
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        ' Example of retrieving parameters (assuming course_id is passed as a parameter)
-        courseId = Request.QueryString("courseId") ' Replace with your actual parameter retrieval method
+        courseId = Request.QueryString("courseId")
+
 
         If Not IsPostBack Then
+            BindContent()
+        Else
             BindContent()
         End If
 
@@ -67,12 +69,13 @@ Public Class CourseContent1
         container.Controls.Add(link)
 
         ' Create the delete button
-        Dim deleteButton As New HtmlButton()
-        deleteButton.InnerText = "Delete"
+        Dim deleteButton As New Button()
+        deleteButton.ID = String.Format("DeleteContent_{0}", content.id)
+        deleteButton.Text = "Delete"
         deleteButton.Attributes("class") = "btn btn-danger ml-auto"
         deleteButton.Style.Add("height", "fit-content")
         deleteButton.Attributes("data-content-id") = content.id.ToString()
-        AddHandler deleteButton.ServerClick, AddressOf DeleteContent
+        AddHandler deleteButton.Click, AddressOf DeleteContent
 
         ' Add the delete button to the container
         container.Controls.Add(deleteButton)
@@ -82,8 +85,8 @@ Public Class CourseContent1
 
 
     Protected Sub DeleteContent(ByVal sender As Object, ByVal e As EventArgs)
-        Dim button As HtmlButton = DirectCast(sender, HtmlButton)
-        Dim contentId As Integer = Convert.ToInt32(button.Attributes("data-content-id"))
+        Dim button As Button = DirectCast(sender, Button)
+        Dim contentId As Integer = Convert.ToInt32(button.ID.Replace("DeleteContent_", ""))
 
         ' Load the content item by ID and delete it
         Dim content As Content = Content.load(contentId)
@@ -92,7 +95,7 @@ Public Class CourseContent1
         End If
 
         ' Rebind the content list to refresh the display
-        BindContent()
+        Response.Redirect("CourseContent.aspx?courseId=" & courseId)
     End Sub
 
 
@@ -131,7 +134,7 @@ Public Class CourseContent1
 
         ' Create a new instance of Course_Content
         Dim newContent As New Content()
-        newContent.id = 2 ' Assuming content_id is auto-generated or managed by database
+        newContent.id = 4
         newContent.course_id = courseId
         newContent.title = title
         newContent.description = description
@@ -140,11 +143,9 @@ Public Class CourseContent1
 
         ' Insert into database
         Try
-            newContent.update() ' This will execute the insert method from Course_Content class
-            ' Optionally, show success message or redirect to another page
+            newContent.update() ' This will execute the insert method from Course_Content
             Response.Redirect(Request.Url.AbsoluteUri)
         Catch ex As Exception
-            ' Handle exception (e.g., show error message)
             ' Response.Write(ex.Message) or log the exception
         End Try
 

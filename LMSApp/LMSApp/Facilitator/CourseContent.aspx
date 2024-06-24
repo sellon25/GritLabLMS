@@ -16,10 +16,10 @@
                 <div class="mb-3">
                     <h4>Add New Content Item</h4>
                     <!-- Form to add new content item -->
-                    <form id="newContentForm" runat="server">
+                    <div id="newContentForm">
                         <div class="form-group">
                             <label for="newContentTitle">Title:</label>
-                            <asp:TextBox ID="newContentTitle" runat="server" CssClass="form-control" placeholder="Title" Required="true"></asp:TextBox>
+                            <asp:TextBox ID="newContentTitle" runat="server" CssClass="form-control" placeholder="Title" ></asp:TextBox>
                         </div>
                         <div class="form-group">
                             <label for="newContentDescription">Description:</label>
@@ -35,7 +35,7 @@
                         </div>
                         <asp:Button ID="btnAddContent" runat="server" Text="Add Content" CssClass="btn btn-primary mt-2" OnClick="btnAddContent_Click" />
 
-                    </form>
+                    </div>
                 </div>
             </div>
             

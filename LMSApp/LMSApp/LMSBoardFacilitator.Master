@@ -32,6 +32,7 @@
 </head>
 
 <body>
+    <form id="form1" runat="server">
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
@@ -59,7 +60,7 @@
                      <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
            <div class="d-flex align-items-center">
-                <button id="toggle-bar" class="p-0 bg-none border-0" onclick='toggleSidebar()'>
+                <button id="toggle-bar" type="button" class="p-0 bg-none border-0" onclick='toggleSidebar()'>
                     <i  class="fas fa-bars"></i>
                 </button>
                 <h4 class="pageTitle fw-bold">
@@ -221,6 +222,7 @@
     <script src="../plugins/bower_components/chartist/dist/chartist.min.js"></script>
     <script src="../plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
     <script src="../js/pages/dashboards/dashboard1.js"></script>
+ </form>
 </body>
 
 </html>
