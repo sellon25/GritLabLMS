@@ -33,6 +33,25 @@ Public Class Converter
         End Try
     End Function
 
+    Public Function CapitalizeFirstLetterOfEachWord(input As String) As String
+        If String.IsNullOrEmpty(input) Then
+            Return input
+        Else
+            input = input.ToLower()
+        End If
+
+
+        Dim words As String() = input.Split(New Char() {" "c}, StringSplitOptions.RemoveEmptyEntries)
+        For i As Integer = 0 To words.Length - 1
+            If words(i).Length > 0 Then
+                words(i) = Char.ToUpper(words(i)(0)) & words(i).Substring(1).ToLower()
+            End If
+        Next
+
+        Return String.Join(" ", words)
+    End Function
+
+
     'Protected Sub UploadImage(sender As Object, e As EventArgs)
     '    If FileUpload.HasFile Then
     '        Dim connectionString As String = "Your_Connection_String"

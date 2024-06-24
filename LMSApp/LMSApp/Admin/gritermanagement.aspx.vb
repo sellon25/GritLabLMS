@@ -1,8 +1,10 @@
 ﻿Public Class gritermanagement
     Inherits System.Web.UI.Page
 
+    Private selectedUser As String
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         LoadUsers()
+        LoadAvailableCourses()
     End Sub
 
     Protected Sub SelectUser(ByVal sender As Object, ByVal e As System.EventArgs)
@@ -11,10 +13,26 @@
         Dim selecteduser As New User
         selecteduser = New User().load(id)
         glano.Value = selecteduser.GLANumber
-        username.Value = selecteduser.FName & " " & selecteduser.LName
+        userFname.Value = selecteduser.FName
+        userLname.Value = selecteduser.LName
         userrole.SelectedValue = selecteduser.role
+        userroletxt.Value = GetRoleName(selecteduser.role)
         EnrollmentStatustxt.Value = selecteduser.status
         EnrollmentStatus.SelectedValue = 3
+    End Sub
+    Protected Sub UpdateUser_ServerClick(sender As Object, e As EventArgs)
+        Dim userid = useremail.Value.Trim()
+        Dim selecteduser As New User
+        selecteduser = selecteduser.load(userid)
+        With selecteduser
+            .FName = New Converter().CapitalizeFirstLetterOfEachWord(userFname.Value)
+            .LName = New Converter().CapitalizeFirstLetterOfEachWord(userLname.Value)
+            .role = userrole.SelectedValue
+            .status = EnrollmentStatus.SelectedItem.Text.Trim()
+            .join_date = DateTime.Now
+            .update()
+        End With
+
     End Sub
     Protected Sub LoadUsers()
         Dim listUsers As New List(Of User)
@@ -90,30 +108,83 @@
         ' Handle the View Enrollment button click event
         Dim btn As Button = DirectCast(sender, Button)
         Dim id As String = btn.ID.Replace("ViewEnrollment_", "")
-
+        SelectedUserID.Value = id
         ' Fetch user enrollment info
         Dim userEnrollment As New List(Of Course_Enrollment)
         userEnrollment = New Course_Enrollment().listall("WHERE userId = '" & id & "'")
 
+        ' Clear previous enrollment information
+        EnrollmentInfo.Controls.Clear()
+
         ' Generate the enrollment info text
-        Dim enrollmentInfo As New StringBuilder()
-
         For Each enrollment In userEnrollment
-            enrollmentInfo.Append("<div class='enrol-info border-bottom'>")
-            enrollmentInfo.AppendFormat("<p>Course ID: {0}</p>", enrollment.course_id)
-            enrollmentInfo.AppendFormat("<p>Date Started: {0}</p>", enrollment.date_started)
-            enrollmentInfo.AppendFormat("<p>Enrollment Status: {0}</p>", enrollment.enrollment_status)
-            enrollmentInfo.AppendFormat("<p>Date End: {0}</p>", enrollment.date_end)
-            enrollmentInfo.Append("</div>")
-        Next
+            ' Create a div to hold enrollment information
+            Dim enrolInfoDiv As New HtmlGenericControl("div")
+            enrolInfoDiv.Attributes("class") = "enrol-info border-bottom"
 
-        ' Set the label text to the enrollment info
-        lblEnrollmentInfo.Text = enrollmentInfo.ToString()
+            ' Add course ID
+            Dim courseIdPara As New HtmlGenericControl("p")
+            courseIdPara.InnerText = String.Format("Course ID: {0}", enrollment.course_id)
+            enrolInfoDiv.Controls.Add(courseIdPara)
+
+            ' Add date started
+            Dim dateStartedPara As New HtmlGenericControl("p")
+            dateStartedPara.InnerText = String.Format("Date Started: {0}", enrollment.date_started.ToString())
+            enrolInfoDiv.Controls.Add(dateStartedPara)
+
+            ' Add enrollment status
+            Dim enrollmentStatusPara As New HtmlGenericControl("p")
+            enrollmentStatusPara.InnerText = String.Format("Enrollment Status: {0}", enrollment.enrollment_status)
+            enrolInfoDiv.Controls.Add(enrollmentStatusPara)
+
+            ' Add date end
+            Dim dateEndPara As New HtmlGenericControl("p")
+            dateEndPara.InnerText = String.Format("Date End: {0}", enrollment.date_end.ToString())
+            enrolInfoDiv.Controls.Add(dateEndPara)
+
+            ' Add average course mark (assuming it's a property in your ORM)
+            Dim averageMarkPara As New HtmlGenericControl("p")
+            averageMarkPara.InnerText = String.Format("Average course mark: {0}", GetAverageMark(enrollment.id))
+            enrolInfoDiv.Controls.Add(averageMarkPara)
+
+            ' Add remove button
+            Dim removeBtnDiv As New HtmlGenericControl("div")
+            removeBtnDiv.Attributes("class") = "w-100 d-flex justify-content-end"
+            Dim removeBtn As New Button()
+            removeBtn.ID = "RemoveCourse_" & enrollment.id
+            removeBtn.CssClass = "btn text-danger m-0 p-0 mt-2"
+            removeBtn.Text = "Remove"
+            AddHandler removeBtn.Click, AddressOf RemoveCourse_Click
+            removeBtnDiv.Controls.Add(removeBtn)
+            enrolInfoDiv.Controls.Add(removeBtnDiv)
+
+            ' Add the enrolInfoDiv to the EnrollmentInfo control
+            EnrollmentInfo.Controls.Add(enrolInfoDiv)
+        Next
 
         ' Show the popup
         pnlEnrollment.Visible = True
         pnlEnrollment.Style("display") = "block"
     End Sub
+
+
+    Private Function GetAverageMark(enrollmentId As String) As String
+        ' Add logic to fetch the average mark based on the enrollment ID
+        Return "85" ' Placeholder value
+    End Function
+
+
+    Private Sub LoadAvailableCourses()
+        Dim courses As List(Of Course) = New Course().listall()
+        CoursesAvailable.Items.Clear()
+        For Each availableCourse In courses
+            Dim courseItem As New ListItem
+            courseItem.Value = availableCourse.id
+            courseItem.Text = availableCourse.name & "(" & availableCourse.id & ")"
+            CoursesAvailable.Items.Add(courseItem)
+        Next
+    End Sub
+
 
     Protected Sub btnClose_Click(sender As Object, e As EventArgs)
         ' Hide the popup
@@ -121,11 +192,32 @@
         pnlEnrollment.Style("display") = "none"
     End Sub
 
-    Protected Sub UpdateUser_ServerClick(sender As Object, e As EventArgs)
+
+
+    Protected Sub RemoveUser_ServerClick(sender As Object, e As EventArgs)
+        Dim btn As Button = DirectCast(sender, Button)
+        Dim id As String = btn.ID.Replace("RemoveCourse_", "")
+        Dim enrollment As Course_Enrollment = New Course_Enrollment().load(id)
+        enrollment.delete()
 
     End Sub
 
-    Protected Sub RemoveUser_ServerClick(sender As Object, e As EventArgs)
+    Protected Sub RemoveCourse_Click(sender As Object, e As EventArgs)
 
+    End Sub
+
+    Protected Sub EnrollStudent_Click(sender As Object, e As EventArgs)
+        Dim NewEnrollment As New Course_Enrollment
+        Dim guid As Guid = Guid.NewGuid()
+        With NewEnrollment
+            .id = guid.ToString()
+            .date_started = DateTime.Now
+            .course_id = CoursesAvailable.SelectedValue.Trim()
+            .userId = SelectedUserID.Value.Trim()
+            .enrollment_status = "Active"
+            .update()
+        End With
+        'CoursesAvailable.
+        pnlEnrollment.Visible = False
     End Sub
 End Class
