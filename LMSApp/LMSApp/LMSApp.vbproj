@@ -144,6 +144,7 @@
     <Content Include="Facilitator\getAnnouncementContent.aspx" />
     <Content Include="Facilitator\MarkAssessment.aspx" />
     <Content Include="Facilitator\NewAssessment.aspx" />
+    <Content Include="Facilitator\NewSubmissionLink.aspx" />
     <Content Include="Facilitator\ProgressAndFeedback.aspx" />
     <Content Include="Facilitator\ProjectPage.aspx" />
     <Content Include="Facilitator\ProjectParticipants.aspx" />
@@ -2774,6 +2775,13 @@
     <Compile Include="Facilitator\NewAssessment.aspx.vb">
       <DependentUpon>NewAssessment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Facilitator\NewSubmissionLink.aspx.designer.vb">
+      <DependentUpon>NewSubmissionLink.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Facilitator\NewSubmissionLink.aspx.vb">
+      <DependentUpon>NewSubmissionLink.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Facilitator\ProgressAndFeedback.aspx.designer.vb">
       <DependentUpon>ProgressAndFeedback.aspx</DependentUpon>
