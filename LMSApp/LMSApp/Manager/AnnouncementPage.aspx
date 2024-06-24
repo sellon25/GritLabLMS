@@ -19,9 +19,9 @@
                         <div class="form-group">
                             <label for="announcementType">Type</label>
                                 <select id="announcementType" name="announcementType" class="form-control">
+                                    <option value="Information">Information</option>
+                                    <option value="Query">Query</option>
                                     <option value="Alert">Alert</option>
-                                    <option value="Alert1">Alert1</option>
-                                    <option value="Alert2">Alert2</option>
                                 </select>
                         </div>
                         <div class="form-group">
@@ -56,4 +56,7 @@
             </div>
         </div>
     </div>
+
+
+
 </asp:Content>

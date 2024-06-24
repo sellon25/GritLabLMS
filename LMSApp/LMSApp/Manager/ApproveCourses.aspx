@@ -42,11 +42,11 @@
         <div class="col-md-12">
             <div class="form-group">
                 <label for="bulkActions">Action</label>
-                <select ID="bulkActions" class="form-control">
+                <select ID="bulkActions" class="form-control" runat="server"> 
                     <option value="approve">Approve Selected</option>
                     <option value="reject">Reject Selected</option>
                 </select>
-                <button type="button" ID="ApplyBulkAction" class="btn btn-primary mt-2">Apply</button>
+                <asp:Button class="btn btn-primary" style="background-color:#93761E" onclick="AcceptReject_Click" ID="AcceptReject" runat="server" Text="Apply" />
             </div>
         </div>
     </div>
