@@ -5,7 +5,7 @@
     Tests And Assessments
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
-    <button type="button" class="btn btn-primary" style="background-color:#93761E;" onclick="window.location.href='NewAssessment.aspx';">Add New Assessment</button>
+    <button type="button" class="btn btn-primary" style="background-color:#93761E;" onclick="window.location.href='NewAssessment.aspx?courseId=<%= Request.QueryString("courseId") %>';">Add New Assessment</button>
     <div class="row" style="padding-top:10px;">
 
         <a class="col-md-12 text-black" href="AssessmentStudentList.aspx">

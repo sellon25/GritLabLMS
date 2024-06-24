@@ -11,17 +11,17 @@
                             <h3 class="box-title" >Anouncements</h3>
                         </div> 
                     </a>
-                    <a class="col-md-12 text-black" href="TestsAndAssignments.aspx?courseId=<%# Eval("id") %>">
+                    <a class="col-md-12 text-black" href="TestsAndAssignments.aspx?courseId=<%= Request.QueryString("courseId") %>">
                         <div class="white-box boxShadow">
                             <h3 class="box-title">Tests and Assessments</h3>
                         </div>
                     </a>
-                    <a class="col-md-12 text-black" href="CourseContent.aspx?courseId=<%# Eval("id") %>">
+                    <a class="col-md-12 text-black" href="CourseContent.aspx?courseId=<%= Request.QueryString("courseId") %>">
                         <div class="white-box boxShadow">
                             <h3 class="box-title">Course content</h3>
                         </div>
                     </a>
-                    <a class="col-md-12 text-black" href="SubmissionLinks.aspx?courseId=<%# Eval("id") %>">
+                    <a class="col-md-12 text-black" href="SubmissionLinks.aspx?courseId=<%= Request.QueryString("courseId") %>">
                         <div class="white-box boxShadow">
                             <h3 class="box-title">Submission links</h3>
                         </div>

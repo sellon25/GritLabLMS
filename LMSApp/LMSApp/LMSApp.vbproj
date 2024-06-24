@@ -134,6 +134,7 @@
     <Content Include="Admin\WebForm1.aspx" />
     <Content Include="Facilitator\AnnouncementsPage.aspx" />
     <Content Include="Facilitator\AssessmentStudentList.aspx" />
+    <Content Include="Facilitator\ContentPage.aspx" />
     <Content Include="Facilitator\CourseContent.aspx" />
     <Content Include="Facilitator\CoursePage.aspx" />
     <Content Include="Facilitator\CourseResults.aspx" />
@@ -2703,6 +2704,13 @@
     <Compile Include="Facilitator\AssessmentStudentList.aspx.vb">
       <DependentUpon>AssessmentStudentList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Facilitator\ContentPage.aspx.designer.vb">
+      <DependentUpon>ContentPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Facilitator\ContentPage.aspx.vb">
+      <DependentUpon>ContentPage.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Facilitator\CourseContent.aspx.designer.vb">
       <DependentUpon>CourseContent.aspx</DependentUpon>

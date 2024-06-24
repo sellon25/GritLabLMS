@@ -26,54 +26,69 @@ Public Class CoursesAndProjects
 
         ' Bind courses
         For Each course As Course In courses
-            Dim link As New HtmlAnchor()
-            link.HRef = "CoursePage.aspx?courseId=" & course.id
-            link.Attributes("class") = "col-md-3"
-
-            Dim courseBox As New HtmlGenericControl("div")
-            courseBox.Attributes("class") = "white-box boxShadow coursebox"
-            courseBox.Style("background-image") = "url(" & GetImageUrl(course.thumbnail) & ")"
-
-            Dim nameLabel As New Label()
-            nameLabel.Attributes("class") = "box-title"
-            nameLabel.Text = course.name
-
-            Dim descriptionLabel As New Label()
-            descriptionLabel.Attributes("class") = "text-muted"
-            descriptionLabel.Text = course.description
-
-            courseBox.Controls.Add(nameLabel)
-            courseBox.Controls.Add(descriptionLabel)
-            link.Controls.Add(courseBox)
-
-            CoursesRepeater.Controls.Add(link)
+            CoursesContainer.Controls.Add(CreateCourseHtml(course))
         Next
 
         ' Bind projects
         For Each project As Project In projects
-            Dim link As New HtmlAnchor()
-            link.HRef = "ProjectPage.aspx?projectId=" & project.id
-            link.Attributes("class") = "col-md-3"
-
-            Dim projectBox As New HtmlGenericControl("div")
-            projectBox.Attributes("class") = "white-box boxShadow coursebox"
-            'projectBox.Style("background-image") = "url(" & GetProjectImageUrl(project.thumbnail) & ")"
-
-            Dim nameLabel As New Label()
-            nameLabel.Attributes("class") = "box-title"
-            nameLabel.Text = project.name
-
-            Dim descriptionLabel As New Label()
-            descriptionLabel.Attributes("class") = "text-muted"
-            descriptionLabel.Text = project.description
-
-            projectBox.Controls.Add(nameLabel)
-            projectBox.Controls.Add(descriptionLabel)
-            link.Controls.Add(projectBox)
-
-            ProjectsRepeater.Controls.Add(link)
+            ProjectsContainer.Controls.Add(CreateProjectHtml(project))
         Next
     End Sub
+
+    Private Function CreateCourseHtml(course As Course) As HtmlAnchor
+        Dim link As New HtmlAnchor()
+        link.HRef = "CoursePage.aspx?courseId=" & course.id
+        link.Attributes("class") = "col-md-3"
+
+        Dim courseBox As New HtmlGenericControl("div")
+        courseBox.Attributes("class") = "white-box boxShadow coursebox"
+        courseBox.Style("background-image") = "url(" & GetImageUrl(course.thumbnail) & ")"
+
+        Dim nameLabel As New HtmlGenericControl("label")
+        nameLabel.Attributes("class") = "box-title"
+        nameLabel.InnerText = course.name
+
+        Dim descriptionLabel As New HtmlGenericControl("p")
+        descriptionLabel.Attributes("class") = "text-muted"
+        descriptionLabel.InnerText = course.description
+
+        Dim descriptionBox As New HtmlGenericControl("div")
+        descriptionBox.Attributes("class")="description"
+        descriptionBox.Controls.Add(nameLabel)
+        descriptionBox.Controls.Add(descriptionLabel)
+
+        'courseBox.Controls.Add(nameLabel)
+        courseBox.Controls.Add(descriptionBox)
+        link.Controls.Add(courseBox)
+
+        Return link
+    End Function
+
+    Private Function CreateProjectHtml(project As Project) As HtmlAnchor
+        Dim link As New HtmlAnchor()
+        link.HRef = "ProjectPage.aspx?projectId=" & project.id
+        link.Attributes("class") = "col-md-3"
+
+        Dim projectBox As New HtmlGenericControl("div")
+        projectBox.Attributes("class") = "white-box boxShadow coursebox"
+        'projectBox.Style("background-image") = "url(" & GetProjectImageUrl(project.thumbnail) & ")"
+
+        
+
+        Dim nameLabel As New HtmlGenericControl("label")
+        nameLabel.Attributes("class") = "box-title"
+        nameLabel.InnerText = project.name
+
+        Dim descriptionLabel As New HtmlGenericControl("p")
+        descriptionLabel.Attributes("class") = "text-muted"
+        descriptionLabel.InnerText = project.description
+
+        projectBox.Controls.Add(nameLabel)
+        projectBox.Controls.Add(descriptionLabel)
+        link.Controls.Add(projectBox)
+
+        Return link
+    End Function
 
     Private Function GetCoursesByFacilitator(facilitatorId As String) As List(Of Course)
         Dim filter As String = "WHERE userId = '" & facilitatorId & "'"

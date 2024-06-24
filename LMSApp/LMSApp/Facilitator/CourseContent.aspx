@@ -1,50 +1,95 @@
 ﻿<%@ Page Title="Course Content" Language="vb" AutoEventWireup="false" MasterPageFile="~/LMSBoardFacilitator.Master" CodeBehind="CourseContent.aspx.vb" Inherits="LMSApp.CourseContent1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="Type_pageTitle" runat="server">
     Course Content
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="Change_Breadcrumb_PageTitle" runat="server">
     Course Content
 </asp:Content>
+
 <asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
-    <div class="container mt-4">
-        <div class="mb-3">
-            <button type="button" class="btn btn-primary" onclick="addNewTopic();">New Topic</button>
-        </div>
-        <div class="accordion" id="accordionExample">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center" id="headingOne">
-                    <h5 class="mb-0">
-                        Topic 1: Introduction
-                    </h5>
-                    <button class="btn btn-secondary" onclick="uploadFileToTopic('Topic1');">Upload File</button>
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <!-- Left Column: Add New Content -->
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <h4>Add New Content Item</h4>
+                    <!-- Form to add new content item -->
+                    <form id="newContentForm" runat="server">
+                        <div class="form-group">
+                            <label for="newContentTitle">Title:</label>
+                            <asp:TextBox ID="newContentTitle" runat="server" CssClass="form-control" placeholder="Title" Required="true"></asp:TextBox>
+                        </div>
+                        <div class="form-group">
+                            <label for="newContentDescription">Description:</label>
+                            <asp:TextBox ID="newContentDescription" runat="server" CssClass="form-control" placeholder="Description" TextMode="MultiLine" Rows="3"></asp:TextBox>
+                        </div>
+                        <div class="form-group">
+                            <label for="newContentThumbnail">Thumbnail Image:</label>
+                            <asp:FileUpload ID="newContentThumbnail" runat="server" CssClass="form-control-file" />
+                        </div>
+                        <div class="form-group">
+                            <label for="newContentDocument">Upload Document:</label>
+                            <asp:FileUpload ID="newContentDocument" runat="server" CssClass="form-control-file" Accept=".pdf,.doc,.docx" />
+                        </div>
+                        <asp:Button ID="btnAddContent" runat="server" Text="Add Content" CssClass="btn btn-primary mt-2" OnClick="btnAddContent_Click" />
+
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Right Column: Display Existing Content -->
+            <div class="col-lg-8">
+                <h4>Course Content Items</h4>
+                <!-- List of existing content items -->
+                <div class="list-group">
+                    <!-- Example content item (replace with data binding from database) -->
+                    <div id="ContentContainer" runat="server" ></div>
+                    
+                    <!-- Repeat the above structure for each content item from database -->
                 </div>
 
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                    <div class="card-body">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><a href="path_to_pdf/Introduction_Part1.pdf" target="_blank">Introduction Part 1</a></li>
-                            <li class="list-group-item"><a href="path_to_pdf/Introduction_Part2.pdf" target="_blank">Introduction Part 2</a></li>
-                        </ul>
-                    </div>
-                </div>
+
+                    
+
+
+
             </div>
-            <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center" id="headingTwo">
-                    <h5 class="mb-0">
-                        Topic 2: Advanced Concepts
-                    </h5>
-                    <button class="btn btn-secondary" onclick="uploadFileToTopic('Topic2');">Upload File</button>
-                </div>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                    <div class="card-body">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><a href="path_to_pdf/AdvancedConcepts_Part1.pdf" target="_blank">Advanced Concepts Part 1</a></li>
-                            <li class="list-group-item"><a href="path_to_pdf/AdvancedConcepts_Part2.pdf" target="_blank">Advanced Concepts Part 2</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- Additional topics can be added here -->
         </div>
     </div>
+
+    <style>
+    .content-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .content-link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: inherit;
+        flex-grow: 1;
+    }
+
+    .textboookarea {
+        display: flex;
+        align-items: center;
+    }
+
+    .content-thumbnail {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+
+    .btn-danger {
+        height: fit-content;
+    }
+</style>
+
 </asp:Content>
