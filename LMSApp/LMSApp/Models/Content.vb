@@ -131,14 +131,14 @@ Dim p As New Content
 For i = 0 To dt.Rows.Count - 1
 p.id=checknull(dt.Rows(i)("id"))
 p.I_Display_id=Display_id
-if Display_title =true then p.title =checknull(dt.Rows(i)("title "))
-p.I_Display_title =Display_title 
+            If Display_title = True Then p.title = checkNull(dt.Rows(i)("title"))
+            p.I_Display_title =Display_title 
 if Display_thumbnail=true then p.thumbnail=checknull(dt.Rows(i)("thumbnail"))
 p.I_Display_thumbnail=Display_thumbnail
-if Display_description =true then p.description =checknull(dt.Rows(i)("description "))
-p.I_Display_description =Display_description 
-if Display_link =true then p.link =checknull(dt.Rows(i)("link "))
-p.I_Display_link =Display_link 
+            If Display_description = True Then p.description = checkNull(dt.Rows(i)("description"))
+            p.I_Display_description =Display_description
+            If Display_link = True Then p.link = checkNull(dt.Rows(i)("link"))
+            p.I_Display_link =Display_link 
 if Display_file_data=true then p.file_data=checknull(dt.Rows(i)("file_data"))
 p.I_Display_file_data=Display_file_data
 if Display_datetime=true then p.datetime=checknull(dt.Rows(i)("datetime"))
@@ -169,11 +169,11 @@ If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = Ht
 cmd.CommandType = CommandType.Text
 cmd.CommandText = "update Content set "
 cmd.CommandText =cmd.CommandText & " id=@id,"
-if I_Display_title =true then cmd.CommandText =cmd.CommandText & " title =@title ,"
-if I_Display_thumbnail=true then cmd.CommandText =cmd.CommandText & " thumbnail=@thumbnail,"
-if I_Display_description =true then cmd.CommandText =cmd.CommandText & " description =@description ,"
-if I_Display_link =true then cmd.CommandText =cmd.CommandText & " link =@link ,"
-if I_Display_file_data=true then cmd.CommandText =cmd.CommandText & " file_data=@file_data,"
+        If I_Display_title = True Then cmd.CommandText = cmd.CommandText & " title =@title,"
+        If I_Display_thumbnail=true then cmd.CommandText =cmd.CommandText & " thumbnail=@thumbnail,"
+        If I_Display_description = True Then cmd.CommandText = cmd.CommandText & " description =@description,"
+        If I_Display_link = True Then cmd.CommandText = cmd.CommandText & " link =@link,"
+        If I_Display_file_data=true then cmd.CommandText =cmd.CommandText & " file_data=@file_data,"
 if I_Display_datetime=true then cmd.CommandText =cmd.CommandText & " datetime=@datetime,"
 if I_Display_status=true then cmd.CommandText =cmd.CommandText & " status=@status,"
 if I_Display_project_id=true then cmd.CommandText =cmd.CommandText & " project_id=@project_id,"
@@ -185,19 +185,19 @@ cmd.CommandText = cmd.CommandText & " where id=@previous_id"
 cmd.Parameters.Add("@id", 8, 0, "id")
 cmd.Parameters("@id").Value = SetNull(id)
 
-if I_Display_title =true then cmd.Parameters.Add("@title ", 22, 255, "title ")
-if I_Display_title =true then cmd.Parameters("@title ").Value = SetNull(title )
+        If I_Display_title = True Then cmd.Parameters.Add("@title ", 22, 255, "title")
+        If I_Display_title =true then cmd.Parameters("@title ").Value = SetNull(title )
 
 if I_Display_thumbnail=true then cmd.Parameters.Add("@thumbnail", 21, -1, "thumbnail")
 if I_Display_thumbnail=true then cmd.Parameters("@thumbnail").Value = SetNull(thumbnail)
 
-if I_Display_description =true then cmd.Parameters.Add("@description ", 18, 2147483647, "description ")
-if I_Display_description =true then cmd.Parameters("@description ").Value = SetNull(description )
+        If I_Display_description = True Then cmd.Parameters.Add("@description", 18, 2147483647, "description")
+        If I_Display_description = True Then cmd.Parameters("@description").Value = setNull(description)
 
-if I_Display_link =true then cmd.Parameters.Add("@link ", 22, -1, "link ")
-if I_Display_link =true then cmd.Parameters("@link ").Value = SetNull(link )
+        If I_Display_link = True Then cmd.Parameters.Add("@link", 22, -1, "link")
+        If I_Display_link = True Then cmd.Parameters("@link").Value = setNull(link)
 
-if I_Display_file_data=true then cmd.Parameters.Add("@file_data", 21, -1, "file_data")
+        If I_Display_file_data=true then cmd.Parameters.Add("@file_data", 21, -1, "file_data")
 if I_Display_file_data=true then cmd.Parameters("@file_data").Value = SetNull(file_data)
 
 if I_Display_datetime=true then cmd.Parameters.Add("@datetime", 4, 0, "datetime")
@@ -232,11 +232,11 @@ If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = Ht
 cmd.CommandType = CommandType.Text
 cmd.CommandText = "select "
 cmd.CommandText = cmd.CommandText & "id,"
-if Display_title =true then cmd.CommandText = cmd.CommandText & "title ,"
-if Display_thumbnail=true then cmd.CommandText = cmd.CommandText & "thumbnail,"
-if Display_description =true then cmd.CommandText = cmd.CommandText & "description ,"
-if Display_link =true then cmd.CommandText = cmd.CommandText & "link ,"
-if Display_file_data=true then cmd.CommandText = cmd.CommandText & "file_data,"
+        If Display_title = True Then cmd.CommandText = cmd.CommandText & "title,"
+        If Display_thumbnail=true then cmd.CommandText = cmd.CommandText & "thumbnail,"
+        If Display_description = True Then cmd.CommandText = cmd.CommandText & "description,"
+        If Display_link = True Then cmd.CommandText = cmd.CommandText & "link,"
+        If Display_file_data=true then cmd.CommandText = cmd.CommandText & "file_data,"
 if Display_datetime=true then cmd.CommandText = cmd.CommandText & "datetime,"
 if Display_status=true then cmd.CommandText = cmd.CommandText & "status,"
 if Display_project_id=true then cmd.CommandText = cmd.CommandText & "project_id,"
@@ -250,14 +250,14 @@ For i = 0 To dt.Rows.Count - 1
 Dim p As New Content
 p.id=checknull(dt.Rows(i)("id"))
 p.I_Display_id=Display_id
-if Display_title =true then p.title =checknull(dt.Rows(i)("title "))
-p.I_Display_title =Display_title 
+            If Display_title = True Then p.title = checkNull(dt.Rows(i)("title"))
+            p.I_Display_title =Display_title 
 if Display_thumbnail=true then p.thumbnail=checknull(dt.Rows(i)("thumbnail"))
 p.I_Display_thumbnail=Display_thumbnail
-if Display_description =true then p.description =checknull(dt.Rows(i)("description "))
-p.I_Display_description =Display_description 
-if Display_link =true then p.link =checknull(dt.Rows(i)("link "))
-p.I_Display_link =Display_link 
+            If Display_description = True Then p.description = checkNull(dt.Rows(i)("description"))
+            p.I_Display_description =Display_description
+            If Display_link = True Then p.link = checkNull(dt.Rows(i)("link"))
+            p.I_Display_link =Display_link 
 if Display_file_data=true then p.file_data=checknull(dt.Rows(i)("file_data"))
 p.I_Display_file_data=Display_file_data
 if Display_datetime=true then p.datetime=checknull(dt.Rows(i)("datetime"))
