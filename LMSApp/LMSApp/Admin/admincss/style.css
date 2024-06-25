@@ -39,3 +39,9 @@
 .enrol-info p {
     font-size: medium;
 }
+
+.ApplicationQuestions {
+    min-height: 60vh;
+    max-height: 80vh;
+    overflow-y: scroll;
+}

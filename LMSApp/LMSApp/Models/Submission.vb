@@ -10,12 +10,16 @@ Public Class Submission
     Public Shared Display_text As Boolean = True
     Public Shared Display_file_data As Boolean = True
     Public Shared Display_datetime As Boolean = True
+    Public Shared Display_link As Boolean = True
+    Public Shared Display_enddate As Boolean = True
 
     Private I_Display_id As Boolean = True
     Private I_Display_title As Boolean = True
     Private I_Display_text As Boolean = True
     Private I_Display_file_data As Boolean = True
     Private I_Display_datetime As Boolean = True
+    Private I_Display_link As Boolean = True
+    Private I_Display_enddate As Boolean = True
 
     Public previous_id As Nullable(Of System.Int32)
 
@@ -24,6 +28,8 @@ Public Class Submission
     Public text As System.String
     Public file_data As System.Byte()
     Public datetime As Nullable(Of System.DateTime)
+    Public link As System.String
+    Public enddate As Nullable(Of System.DateTime)
     Private newinstance As Boolean = True
 
     Shared Sub Set_Display_Field_All(display_flag As Boolean)
@@ -32,6 +38,8 @@ Public Class Submission
         Display_text = display_flag
         Display_file_data = display_flag
         Display_datetime = display_flag
+        Display_link = display_flag
+        Display_enddate = display_flag
     End Sub
 
 
@@ -40,8 +48,8 @@ Public Class Submission
         cmd.Connection = HttpContext.Current.Session("conn")
         If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = HttpContext.Current.Session("trans")
         cmd.CommandType = CommandType.Text
-        cmd.CommandText = "insert into Submission (id,title,text,file_data,datetime)"
-        cmd.CommandText = cmd.CommandText & "values(@id,@title,@text,@file_data,@datetime)"
+        cmd.CommandText = "insert into Submission (id,title,text,file_data,link,enddate,datetime)"
+        cmd.CommandText = cmd.CommandText & "values(@id,@title,@text,@file_data,@link,@enddate,@datetime)"
 
         cmd.Parameters.Add("@id", 8, 0, "id")
         cmd.Parameters("@id").Value = setNull(id)
@@ -49,10 +57,15 @@ Public Class Submission
         cmd.Parameters("@title").Value = setNull(title)
         cmd.Parameters.Add("@text", 18, 2147483647, "text")
         cmd.Parameters("@text").Value = setNull(text)
+        cmd.Parameters.Add("@link", 18, 2147483647, "link")
+        cmd.Parameters("@link").Value = setNull(link)
         cmd.Parameters.Add("@file_data", 21, -1, "file_data")
         cmd.Parameters("@file_data").Value = setNull(file_data)
         cmd.Parameters.Add("@datetime", 4, 0, "datetime")
         cmd.Parameters("@datetime").Value = setNull(datetime)
+        cmd.Parameters.Add("@enddate", 4, 0, "enddate")
+        cmd.Parameters("@enddate").Value = setNull(enddate)
+
 
 
         cmd.ExecuteNonQuery()
@@ -83,6 +96,8 @@ Public Class Submission
         If Display_title = True Then cmd.CommandText = cmd.CommandText & "title,"
         If Display_text = True Then cmd.CommandText = cmd.CommandText & "text,"
         If Display_file_data = True Then cmd.CommandText = cmd.CommandText & "file_data,"
+        If Display_datetime = True Then cmd.CommandText = cmd.CommandText & "link,"
+        If Display_datetime = True Then cmd.CommandText = cmd.CommandText & "enddate,"
         If Display_datetime = True Then cmd.CommandText = cmd.CommandText & "datetime,"
         cmd.CommandText = cmd.CommandText.Substring(0, cmd.CommandText.Length - 1)
         cmd.CommandText = cmd.CommandText & " from Submission where id=@id"
@@ -102,8 +117,12 @@ Public Class Submission
             p.I_Display_text = Display_text
             If Display_file_data = True Then p.file_data = checkNull(dt.Rows(i)("file_data"))
             p.I_Display_file_data = Display_file_data
+            If Display_link = True Then p.link = checkNull(dt.Rows(i)("link"))
+            p.I_Display_link = Display_link
             If Display_datetime = True Then p.datetime = checkNull(dt.Rows(i)("datetime"))
             p.I_Display_datetime = Display_datetime
+            If Display_enddate = True Then p.enddate = checkNull(dt.Rows(i)("enddate"))
+            p.I_Display_enddate = Display_enddate
             p.previous_id = checkNull(dt.Rows(i)("id"))
             p.newinstance = False
             Return p
@@ -127,7 +146,9 @@ Public Class Submission
         If I_Display_title = True Then cmd.CommandText = cmd.CommandText & " title=@title,"
         If I_Display_text = True Then cmd.CommandText = cmd.CommandText & " text=@text,"
         If I_Display_file_data = True Then cmd.CommandText = cmd.CommandText & " file_data=@file_data,"
+        If I_Display_link = True Then cmd.CommandText = cmd.CommandText & " link=@link,"
         If I_Display_datetime = True Then cmd.CommandText = cmd.CommandText & " datetime=@datetime,"
+        If I_Display_enddate = True Then cmd.CommandText = cmd.CommandText & " enddate=@enddate,"
         cmd.CommandText = cmd.CommandText.Substring(0, cmd.CommandText.Length - 1)
         cmd.CommandText = cmd.CommandText & " where id=@previous_id"
 
@@ -141,11 +162,17 @@ Public Class Submission
         If I_Display_text = True Then cmd.Parameters.Add("@text", 18, 2147483647, "text")
         If I_Display_text = True Then cmd.Parameters("@text").Value = setNull(text)
 
+        If I_Display_link = True Then cmd.Parameters.Add("@link", 18, 2147483647, "link")
+        If I_Display_link = True Then cmd.Parameters("@link").Value = setNull(link)
+
         If I_Display_file_data = True Then cmd.Parameters.Add("@file_data", 21, -1, "file_data")
         If I_Display_file_data = True Then cmd.Parameters("@file_data").Value = setNull(file_data)
 
         If I_Display_datetime = True Then cmd.Parameters.Add("@datetime", 4, 0, "datetime")
         If I_Display_datetime = True Then cmd.Parameters("@datetime").Value = setNull(datetime)
+
+        If I_Display_enddate = True Then cmd.Parameters.Add("@enddate", 4, 0, "enddate")
+        If I_Display_enddate = True Then cmd.Parameters("@enddate").Value = setNull(enddate)
 
 
 
@@ -169,8 +196,10 @@ Public Class Submission
         cmd.CommandText = cmd.CommandText & "id,"
         If Display_title = True Then cmd.CommandText = cmd.CommandText & "title,"
         If Display_text = True Then cmd.CommandText = cmd.CommandText & "text,"
+        If Display_link = True Then cmd.CommandText = cmd.CommandText & "link,"
         If Display_file_data = True Then cmd.CommandText = cmd.CommandText & "file_data,"
         If Display_datetime = True Then cmd.CommandText = cmd.CommandText & "datetime,"
+        If Display_enddate = True Then cmd.CommandText = cmd.CommandText & "enddate,"
         cmd.CommandText = cmd.CommandText.Substring(0, cmd.CommandText.Length - 1)
         cmd.CommandText = cmd.CommandText & " from Submission " & filterstr & " " & sortstr
         Dim pl As New SqlDataAdapter, dt As New DataTable, i As Integer
@@ -186,8 +215,12 @@ Public Class Submission
             p.I_Display_text = Display_text
             If Display_file_data = True Then p.file_data = checkNull(dt.Rows(i)("file_data"))
             p.I_Display_file_data = Display_file_data
+            If Display_link = True Then p.link = checkNull(dt.Rows(i)("link"))
+            p.I_Display_link = Display_link
             If Display_datetime = True Then p.datetime = checkNull(dt.Rows(i)("datetime"))
             p.I_Display_datetime = Display_datetime
+            If Display_enddate = True Then p.enddate = checkNull(dt.Rows(i)("enddate"))
+            p.I_Display_enddate = Display_enddate
             p.previous_id = checkNull(dt.Rows(i)("id"))
             p.newinstance = False
             ps.Add(p)

@@ -174,4 +174,58 @@ Partial Public Class gritermanagement
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnClose As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''ApplicationFormPanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ApplicationFormPanel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''ApplicationForm control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ApplicationForm As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''CreatedQuestions control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CreatedQuestions As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''AcceptApplication control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents AcceptApplication As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''DeclineApplication control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DeclineApplication As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''CloseAPl control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CloseAPl As Global.System.Web.UI.WebControls.Button
 End Class

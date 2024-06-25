@@ -164,7 +164,7 @@ Public Shared Display_role  as Boolean=True
         cmd.CommandType = CommandType.Text
         cmd.CommandText = "update [User] set "
         cmd.CommandText = cmd.CommandText & " emailID=@emailID,"
-        If I_Display_Username = True Then cmd.CommandText = cmd.CommandText & " Username =@Username,"
+        If I_Display_Username = True Then cmd.CommandText = cmd.CommandText & " Username=@Username,"
         If I_Display_FName = True Then cmd.CommandText = cmd.CommandText & " FName=@FName,"
         If I_Display_LName = True Then cmd.CommandText = cmd.CommandText & " LName=@LName,"
         If I_Display_password = True Then cmd.CommandText = cmd.CommandText & " password=@password,"
@@ -179,7 +179,7 @@ Public Shared Display_role  as Boolean=True
         cmd.Parameters.Add("@emailID", 22, 255, "emailID")
         cmd.Parameters("@emailID").Value = setNull(emailID)
 
-        If I_Display_Username = True Then cmd.Parameters.Add("@Username ", 22, 255, "Username")
+        If I_Display_Username = True Then cmd.Parameters.Add("@Username", 22, 255, "Username")
         If I_Display_Username = True Then cmd.Parameters("@Username").Value = setNull(Username)
 
         If I_Display_FName = True Then cmd.Parameters.Add("@FName", 22, 255, "FName")
