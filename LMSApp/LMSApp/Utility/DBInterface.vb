@@ -1,9 +1,8 @@
 Imports System.Data.SqlClient
 
 Public Class DBInterface
-
-
-   Public Shared connectstring As String = "Data Source=.;Initial Catalog=GritLabLMS;Integrated Security=True;Encrypt=False"
+    'Apps Connection String
+    Public Shared connectstring As String = "Data Source=.;Initial Catalog=GritsLabDB;Integrated Security=True;Encrypt=False"
 
 
     Public Shared Sub SetUpConnection()

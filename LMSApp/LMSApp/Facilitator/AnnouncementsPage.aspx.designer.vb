@@ -14,13 +14,13 @@ Option Explicit On
 Partial Public Class AnnouncementsPage
 
     '''<summary>
-    '''ScriptManager1 control.
+    '''announcementType control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
+    Protected WithEvents announcementType As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''announcementTitle control.
@@ -32,74 +32,29 @@ Partial Public Class AnnouncementsPage
     Protected WithEvents announcementTitle As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''announcementType control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents announcementType As Global.System.Web.UI.HtmlControls.HtmlSelect
-
-    '''<summary>
     '''announcementBody control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents announcementBody As Global.System.Web.UI.HtmlControls.HtmlTextArea
+    Protected WithEvents announcementBody As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''AddAnnouncementButton control.
+    '''addAnnouncementButton control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents AddAnnouncementButton As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents addAnnouncementButton As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''AnnouncementsRepeater control.
+    '''CreatedAnnouncements control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents AnnouncementsRepeater As Global.System.Web.UI.WebControls.Repeater
-
-    '''<summary>
-    '''editAnnouncementTitle control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents editAnnouncementTitle As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''editAnnouncementType control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents editAnnouncementType As Global.System.Web.UI.HtmlControls.HtmlSelect
-
-    '''<summary>
-    '''editAnnouncementBody control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents editAnnouncementBody As Global.System.Web.UI.HtmlControls.HtmlTextArea
-
-    '''<summary>
-    '''SaveChangesButton control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents SaveChangesButton As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents CreatedAnnouncements As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 End Class

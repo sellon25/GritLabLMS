@@ -14,20 +14,20 @@ Option Explicit On
 Partial Public Class CoursesAndProjects
 
     '''<summary>
-    '''CoursesRepeater control.
+    '''CoursesContainer control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents CoursesRepeater As Global.System.Web.UI.WebControls.Repeater
+    Protected WithEvents CoursesContainer As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''ProjectsRepeater control.
+    '''ProjectsContainer control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ProjectsRepeater As Global.System.Web.UI.WebControls.Repeater
+    Protected WithEvents ProjectsContainer As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 End Class

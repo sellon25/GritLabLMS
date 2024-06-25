@@ -1,9 +1,12 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/LMSBoardFacilitator.Master" CodeBehind="NewAssessment.aspx.vb" Inherits="LMSApp.NewAssessment" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="Type_pageTitle" runat="server">
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="Change_Breadcrumb_PageTitle" runat="server">
     New Assessment
 </asp:Content>
+
 <asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
     <div class="container mt-4">
         <form method="post" action="SubmitNewAssessment.aspx" id="newAssessmentForm">
@@ -49,11 +52,14 @@
                     <input type="text" class="form-control" id="answerB" name="answerB">
                     <label for="answerC">Answer C:</label>
                     <input type="text" class="form-control" id="answerC" name="answerC">
+                    <label for="answerD">Answer D:</label>
+                    <input type="text" class="form-control" id="answerD" name="answerD">
                     <label for="correctAnswer">Correct Answer:</label>
                     <select class="form-control" id="correctAnswer" name="correctAnswer">
                         <option value="A">Answer A</option>
                         <option value="B">Answer B</option>
                         <option value="C">Answer C</option>
+                        <option value="C">Answer D</option>
                     </select>
                 </div>
                 <button type="button" class="btn btn-primary" onclick="addQuestion();">Add Another Question</button>

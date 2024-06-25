@@ -68,7 +68,7 @@ Public Class Project_Enrollment
         cmd.ExecuteNonQuery()
     End Sub
 
-    Shared Function load(id As System.String) As Project_Enrollment
+    Function load(id As System.String) As Project_Enrollment
         Dim cmd As New SqlCommand
         cmd.Connection = HttpContext.Current.Session("conn")
         If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = HttpContext.Current.Session("trans")
@@ -180,7 +180,7 @@ Public Class Project_Enrollment
         Return ps
     End Function
 
-    Shared Function listallPKOnly(Optional ByVal filterstr As String = Nothing, Optional ByVal sortstr As String = Nothing) As System.Collections.Generic.List(Of Project_Enrollment)
+    Function listallPKOnly(Optional ByVal filterstr As String = Nothing, Optional ByVal sortstr As String = Nothing) As System.Collections.Generic.List(Of Project_Enrollment)
         Dim ps As New Generic.List(Of Project_Enrollment)
         Dim cmd As New SqlCommand
         cmd.Connection = HttpContext.Current.Session("conn")
