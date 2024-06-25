@@ -1,4 +1,11 @@
-﻿Public Class ApproveCourses
+﻿Imports System
+Imports System.Collections.Generic
+Imports System.Linq
+Imports System.Web
+Imports System.Web.UI
+Imports System.Web.UI.WebControls
+
+Public Class ApproveCourses
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -49,53 +56,55 @@
             End If
 
             ' Find the course by name
-            Dim courses As List(Of Course) = course.listall($"WHERE name = '{CourseName}'")
+            Dim courses As List(Of Course) = Course.listall($"WHERE name = '{CourseName}'")
             If courses.Count = 0 Then
                 Throw New Exception("Course Not Found.")
             End If
 
             ' Take the first course found with the given name
-            Dim coursess As Course = courses(0)
+            Dim selectedCourse As Course = courses(0)
 
             ' Determine the action (approve/reject)
             Dim approverejectstr As String = Request.Form("bulkActions")
             Dim approvereject As Integer = GetTypeValue(approverejectstr)
 
             ' Update the status in memory
-            coursess.status = approvereject
+            selectedCourse.status = approvereject
 
             ' Log the current status for debugging
-            System.Diagnostics.Debug.WriteLine($"Current status of course '{coursess.name}' before update: {coursess.status}")
+            System.Diagnostics.Debug.WriteLine($"Current status of course '{selectedCourse.name}' before update: {selectedCourse.status}")
 
             ' Update the course status in the database
-            coursess.update()
+            selectedCourse.update()
+
 
             ' Log confirmation of status update
-            System.Diagnostics.Debug.WriteLine($"Status of course '{coursess.name}' after update: {coursess.status}")
+            System.Diagnostics.Debug.WriteLine($"Status of course '{selectedCourse.name}' after update: {selectedCourse.status}")
 
-            ' Check if the course was approved
-            If coursess.status = 1 Then
+            BindCourses()
+            ' Check if the course was approved or rejected
+            If selectedCourse.status = 1 Then
                 ' Reload the list of approved courses to reflect the change
                 BindCourses()
                 ' Optionally, provide a success message to the user
-                ' Example: successMessage.InnerText = $"Course '{course.name}' has been approved."
+                Response.Write("<script>alert('Course has been approved.');</script>")
             Else
-                ' Handle message for rejection (if needed)
-                ' Example: errorMessage.InnerText = $"Course '{course.name}' was not approved."
+                ' Optionally, provide a message to the user
+                Response.Write("<script>alert('Course was not approved.');</script>")
             End If
 
         Catch ex As Exception
             ' Handle exceptions (e.g., log them, display an error message)
-            ' Example: errorMessage.InnerText = $"Error accepting course: {ex.Message}"
             System.Diagnostics.Debug.WriteLine($"Error accepting course: {ex.Message}")
+            Response.Write($"<script>alert('Error: {ex.Message}');</script>")
         End Try
     End Sub
 
-    Private Function GetTypeValue(ByVal bulkAction As String) As Integer
-        Select Case bulkAction
-            Case "Reject Selected"
+    Private Function GetTypeValue(ByVal bulk As String) As Integer
+        Select Case bulk
+            Case "Reject"
                 Return 0
-            Case "Approve Selected"
+            Case "Approve"
                 Return 1
             Case Else
                 Throw New Exception("Invalid Action Selected.")
@@ -104,5 +113,7 @@
 
     Protected Sub AcceptReject_Click(sender As Object, e As EventArgs)
         AcceptRejectCourses()
+        BindCourses()
     End Sub
+
 End Class

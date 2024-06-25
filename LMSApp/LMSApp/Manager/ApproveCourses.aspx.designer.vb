@@ -41,15 +41,6 @@ Partial Public Class ApproveCourses
     Protected WithEvents searchInput As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''bulkActions control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents bulkActions As Global.System.Web.UI.HtmlControls.HtmlSelect
-
-    '''<summary>
     '''AcceptReject control.
     '''</summary>
     '''<remarks>
