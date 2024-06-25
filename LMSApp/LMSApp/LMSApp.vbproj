@@ -153,6 +153,7 @@
     <Content Include="Manager\ApproveCourses.aspx" />
     <Content Include="Manager\ApproveProjects.aspx" />
     <Content Include="Manager\ApproveProjectsCourses.aspx" />
+    <Content Include="Manager\CourseFacilitators.aspx" />
     <Content Include="Manager\CoursePage.aspx" />
     <Content Include="Manager\Dashboard.aspx" />
     <Content Include="Manager\demo.aspx" />
@@ -165,6 +166,7 @@
     <Content Include="Manager\Manager Files\Bootstrap\js\bootstrap.min.js" />
     <Content Include="Manager\Manager Files\Bootstrap\js\jquery-3.3.1.slim.min.js" />
     <Content Include="Manager\Manager Files\Bootstrap\js\popper.min.js" />
+    <Content Include="Manager\Manager Files\cs\all.min.css" />
     <Content Include="Manager\Manager Files\cs\style12.css" />
     <Content Include="Manager\Manager Files\dataTables\css\dataTables.dataTables.css" />
     <Content Include="Manager\Manager Files\dataTables\css\jquery.dataTables.min.css" />
@@ -2255,6 +2257,8 @@
     <Content Include="Manager\Manager Files\imgs\in-homepage-banner.jpg" />
     <Content Include="Manager\Manager Files\imgs\library.png" />
     <Content Include="Manager\Manager Files\imgs\publisher.png" />
+    <Content Include="Manager\Manager Files\imgs\R %284%29.jpeg" />
+    <Content Include="Manager\Manager Files\imgs\R %285%29.jpeg" />
     <Content Include="Manager\Manager Files\imgs\search-online.png" />
     <Content Include="Manager\Manager Files\imgs\sign-up.png" />
     <Content Include="Manager\Manager Files\imgs\writer.png" />
@@ -2849,6 +2853,13 @@
     </Compile>
     <Compile Include="Manager\ApproveProjectsCourses.aspx.vb">
       <DependentUpon>ApproveProjectsCourses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manager\CourseFacilitators.aspx.designer.vb">
+      <DependentUpon>CourseFacilitators.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\CourseFacilitators.aspx.vb">
+      <DependentUpon>CourseFacilitators.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Manager\CoursePage.aspx.designer.vb">

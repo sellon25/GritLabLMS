@@ -7,79 +7,20 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
     <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="../Manager/ApproveProjectsCourses.aspx" Text="Back" CssClass="breadcrumb-link" Font-Bold="True"></asp:HyperLink>
 
-    <div class="row courses-container">
-        <!-- Course Card Template -->
-        <div class="col-md-3">
-            <a href="CoursePage.aspx">
-                <div class="white-box boxShadow coursebox">
-                    <div class="description">
-                        <label class="box-title">Course Name 1</label>
-                        <p class="text-muted">COURSENAME1</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-md-3">
-            <a href="CoursePage.aspx">
-                <div class="white-box boxShadow coursebox">
-                    <div class="description">
-                        <label class="box-title">Course Name 2</label>
-                        <p class="text-muted">COURSENAME2</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-md-3">
-            <a href="CoursePage.aspx">
-                <div class="white-box boxShadow coursebox">
-                    <div class="description">
-                        <label class="box-title">Course Name 3</label>
-                        <p class="text-muted">COURSENAME3</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-md-3">
-            <a href="CoursePage.aspx">
-                <div class="white-box boxShadow coursebox">
-                    <div class="description">
-                        <label class="box-title">Course Name 4</label>
-                        <p class="text-muted">COURSENAME4</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        
-        <!-- Add more course cards dynamically based on data -->
-        <!-- Example: -->
-        <%-- <div class="col-md-3">
-                <a href="CoursePage.aspx">
-                    <div class="white-box boxShadow coursebox">
-                        <div class="description">
-                            <label class="box-title">Course Name 1</label>
-                            <p class="text-muted">COURSENAME1</p>
-                        </div>
-                    </div>
-                </a>
-            </div> 
-        --%>
+        <div class="row courses-container" id="CoursesContainer" runat="server">
+        <!-- Courses will be dynamically populated here -->
     </div>
 
     <!-- Additional Features -->
-    <%-- Search and Filter Options --%>
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
                 <label for="searchInput">Search Courses:</label>
-                <input type="text" id="searchInput" class="form-control" placeholder="Enter keywords">
+                <input type="text" id="searchInput" runat="server" class="form-control" placeholder="Enter keywords">
             </div>
         </div>
     </div>
 
-    <%-- Pagination --%>
     <div class="row">
         <div class="col-md-12">
             <nav aria-label="Page navigation">
@@ -97,21 +38,19 @@
         </div>
     </div>
 
-    <%-- Bulk Actions --%>
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
                 <label for="bulkActions">Action</label>
-                <select id="bulkActions" class="form-control">
+                <select ID="bulkActions" class="form-control" runat="server"> 
                     <option value="approve">Approve Selected</option>
                     <option value="reject">Reject Selected</option>
                 </select>
-                <button type="button" class="btn btn-primary mt-2">Apply</button>
+                <asp:Button class="btn btn-primary" style="background-color:#93761E" onclick="AcceptReject_Click" ID="AcceptReject" runat="server" Text="Apply" />
             </div>
         </div>
     </div>
 
-    <%-- Course Details Modal --%>
     <div class="modal fade" id="courseDetailsModal" tabindex="-1" aria-labelledby="courseDetailsModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -122,16 +61,12 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <!-- Course details will be dynamically populated here -->
-                    <!-- Example: -->
-                    <p>Course Name: <span id="courseName"></span></p>
-                    <p>Course Code: <span id="courseCode"></span></p>
-                    <p>Description: <span id="courseDescription"></span></p>
-                    <!-- Add more details as needed -->
+                    <p>Course Name: <span id="courseName" runat="server"></span></p>
+                    <p>Course Code: <span id="courseCode" runat="server"></span></p>
+                    <p>Description: <span id="courseDescription" runat="server"></span></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <!-- Additional buttons or actions if necessary -->
                 </div>
             </div>
         </div>
