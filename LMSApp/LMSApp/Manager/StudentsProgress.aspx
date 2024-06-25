@@ -27,21 +27,19 @@
         <div Class="col-md-4">
             <div Class="white-box">
                 <h3 Class="box-title">Send Feedback</h3>
-                <form>
                  <div Class="form-group">
-                        <Label for="announcementTitle">Email</label>
-                        <input type = "text" Class="form-control" id="announcementTitle" placeholder="Enter title">
+                        <Label for="SendToEmail">Email</label>
+                        <input type = "text" Class="form-control" id="SendToEmail" runat="server" placeholder="Enter Email">
                     </div>
                     <div Class="form-group">
-                        <Label for="announcementType">Type</label>
-                        <input type = "text" Class="form-control" id="announcementType" placeholder="Enter type">
+                        <Label for="Subject">Subject</label>
+                        <input type = "text" Class="form-control" id="Subjects" runat="server" placeholder="Enter Subject">
                     </div>
                     <div Class="form-group">
-                        <Label for="announcementBody">Body</label>
-                        <textarea Class="form-control" id="announcementBody" rows="3"></textarea>
+                        <Label for="EmailBody">Body</label>
+                        <input Class="form-control" id="EmailBody" runat="server" rows="3" type="text" placeholder="Type......">
                     </div>
-                    <Button type = "button" Class="btn btn-primary" style="background-color:#000000">Add Announcement</button>
-                </form>
+                <asp:Button ID="btnSendEmail" runat="server" OnClick="btnSendEmail_Click" Text="SEND" CssClass="btn btn-primary"/>
             </div>
         </div>
 
@@ -147,60 +145,6 @@
                 </div>
             </div>
         </div>
-        
-
-
-
-   <%-- <div Class="row">
-    <!-- Send Feedback Section -->
-
-            <script>
-                function resetFilter() {
-                    document.getElementById('txtSearch1').value = '';
-                    applyFilter();
-                }
-            </script>
-
-
-<div class="col-md-6">
-    <div class="white-box">
-        <h3 class="box-title">Send Feedback</h3>
-        <form>
-            <div class="row mb-3">
-                <div class="col-md-4">
-                    <label for="ddlFilter1">Filter by:</label>
-                    <select id="ddlFilter1" class="form-control" onchange="applyFilter()">
-                        <option value="name">Name</option>
-                        <option value="id">Student Number</option>
-                    </select>
-                </div>
-                <div class="col-md-8">
-                    <label for="txtSearch1">Search:</label>
-                    <div class="input-group">
-                        <input type="text" id="txtSearch1" class="form-control" placeholder="Enter" oninput="applyFilter()">
-                        <button class="btn btn-primary" type="button">Search</button>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="sendfeedbackTitle">Title</label>
-                <input type="text" class="form-control" id="sendfeedbackTitle" placeholder="Enter title">
-            </div>
-            <div class="form-group">
-                <label for="sendfeedbackType">Type</label>
-                <input type="text" class="form-control" id="sendfeedbackType" placeholder="Enter type">
-            </div>
-            <div class="form-group">
-                <label for="sendfeedbackBody">Body</label>
-                <textarea class="form-control" id="sendfeedbackBody" rows="3"></textarea>
-            </div>
-            <button type="button" class="btn btn-primary" style="background-color:#93761E">Send Feedback</button>
-        </form>
-    </div>
-</div> --%>
-
-
-
-
+    
 
 </asp:Content>

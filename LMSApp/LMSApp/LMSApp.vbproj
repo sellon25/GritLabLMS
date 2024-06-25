@@ -2265,6 +2265,10 @@
     <Content Include="Manager\ProjectsPage.aspx" />
     <Content Include="Manager\SQWID.aspx" />
     <Content Include="Manager\StudentsProgress.aspx" />
+    <Compile Include="Models\Course_Submission.vb" />
+    <Compile Include="Models\Submission.vb" />
+    <Compile Include="Models\Question_Bank.vb" />
+    <Compile Include="Models\Test.vb" />
     <Content Include="plugins\images\miniBanking.jpg" />
     <Content Include="SignUp.aspx" />
     <Content Include="Student\Announcements.aspx" />
@@ -2436,6 +2440,7 @@
     <Content Include="Student\SubmitForm.aspx" />
     <Content Include="Student\TestContent.aspx" />
     <Content Include="Student\Tests.aspx" />
+    <Compile Include="Utility\database_operations.vb" />
     <Content Include="Utility\forgot_password_message.txt" />
     <Content Include="Utility\welcome_message.txt" />
     <Content Include="Web.config" />
@@ -2946,17 +2951,13 @@
     <Compile Include="Models\Course_Announcement.vb" />
     <Compile Include="Models\Course_Content.vb" />
     <Compile Include="Models\Course_Enrollment.vb" />
-    <Compile Include="Models\Course_Submission.vb" />
     <Compile Include="Models\NewsEvents.vb" />
     <Compile Include="Models\Project.vb" />
     <Compile Include="Models\Project_Announcement.vb" />
     <Compile Include="Models\Project_Content.vb" />
     <Compile Include="Models\Project_Enrollment.vb" />
-    <Compile Include="Models\Question_Bank.vb" />
     <Compile Include="Models\StudentAnswer.vb" />
     <Compile Include="Models\StudentResults.vb" />
-    <Compile Include="Models\Submission.vb" />
-    <Compile Include="Models\Test.vb" />
     <Compile Include="Models\TrackProjectProgress.vb" />
     <Compile Include="Models\User.vb" />
     <Compile Include="SignUp.aspx.designer.vb">
@@ -3080,7 +3081,6 @@
     <Compile Include="Utility\cipherGate.vb" />
     <Compile Include="Utility\Converter.vb" />
     <Compile Include="Utility\DatabaseConnectException.vb" />
-    <Compile Include="Utility\database_operations.vb" />
     <Compile Include="Utility\date_and_time_handler.vb" />
     <Compile Include="Utility\DBInterface.vb" />
     <Compile Include="Utility\ds_reports.Designer.vb" />

@@ -14,6 +14,42 @@ Option Explicit On
 Partial Public Class StudentsProgress
 
     '''<summary>
+    '''SendToEmail control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents SendToEmail As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''Subjects control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Subjects As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''EmailBody control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents EmailBody As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''btnSendEmail control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSendEmail As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''HyperLink2 control.
     '''</summary>
     '''<remarks>
