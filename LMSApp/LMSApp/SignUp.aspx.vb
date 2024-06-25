@@ -6,7 +6,7 @@ Public Class SignUp
     Dim AnswerControls As New List(Of String)()
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         LblError.Visible = False
-        'ApplicationForm.Visible = False
+        ApplicationForm.Visible = False
         LoadQuestions()
 
     End Sub

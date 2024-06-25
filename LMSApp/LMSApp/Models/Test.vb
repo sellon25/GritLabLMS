@@ -17,12 +17,12 @@ Private I_Display_thumbnail as Boolean=true
 Private I_Display_project_id as Boolean=true
 Private I_Display_course_id as Boolean=true
 Private I_Display_date_started as Boolean=true
-Private I_Display_end_date as Boolean=true
+Private I_Display_end_date as Boolean=True
 
-Public previous_id as nullable(of System.Int32)
+    Public previous_id As System.String
 
-Public id as nullable(of System.Int32)
-Public thumbnail as System.String
+    Public id As System.String
+    Public thumbnail as System.String
 Public project_id as System.String
 Public course_id as System.String
 Public date_started as nullable(of System.DateTime)
@@ -47,8 +47,8 @@ cmd.CommandType = CommandType.Text
 cmd.CommandText = "insert into Test (id,thumbnail,project_id,course_id,date_started,end_date)"
 cmd.CommandText = cmd.CommandText & "values(@id,@thumbnail,@project_id,@course_id,@date_started,@end_date)"
 
-cmd.Parameters.Add("@id" , 8 , 0 , "id")
-cmd.Parameters("@id").Value = SetNull(id)
+        cmd.Parameters.Add("@id", 22, 255, "id")
+        cmd.Parameters("@id").Value = SetNull(id)
 cmd.Parameters.Add("@thumbnail" , 22 , 255 , "thumbnail")
 cmd.Parameters("@thumbnail").Value = SetNull(thumbnail)
 cmd.Parameters.Add("@project_id" , 22 , 255 , "project_id")
@@ -142,8 +142,8 @@ cmd.CommandText = cmd.CommandText.Substring(0,cmd.CommandText.Length-1)
 cmd.CommandText = cmd.CommandText & " where id=@previous_id"
 
 
-cmd.Parameters.Add("@id", 8, 0, "id")
-cmd.Parameters("@id").Value = SetNull(id)
+        cmd.Parameters.Add("@id", 22, 255, "id")
+        cmd.Parameters("@id").Value = SetNull(id)
 
 if I_Display_thumbnail=true then cmd.Parameters.Add("@thumbnail", 22, 255, "thumbnail")
 if I_Display_thumbnail=true then cmd.Parameters("@thumbnail").Value = SetNull(thumbnail)

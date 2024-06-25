@@ -150,14 +150,18 @@ Public Class ManageApplicationForm
 
             Case "dropList"
                 ' Add select dropdown for dropList type questions
-                Dim selectDropdown As New RadioButtonList
+                Dim selectDropdown As New DropDownList
                 selectDropdown.Attributes("class") = "form-select shadow-none p-0 border-0 form-control-line"
 
                 ' Add options to select dropdown
-                Dim option1 As New ListItem("Option 1")
-                Dim option2 As New ListItem("Option 2")
+                Dim option1 As New ListItem("Game development")
+                Dim option2 As New ListItem("Web development")
+                Dim option3 As New ListItem("Design")
+                Dim option4 As New ListItem("Microsoft360")
                 selectDropdown.Items.Add(option1)
                 selectDropdown.Items.Add(option2)
+                selectDropdown.Items.Add(option3)
+                selectDropdown.Items.Add(option4)
 
                 ' Add select dropdown to newQuestionDiv
                 newQuestionDiv.Controls.Add(selectDropdown)

@@ -14,6 +14,15 @@ Option Explicit On
 Partial Public Class gritermanagement
 
     '''<summary>
+    '''Load_student control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Load_student As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
     '''glano control.
     '''</summary>
     '''<remarks>
@@ -23,13 +32,22 @@ Partial Public Class gritermanagement
     Protected WithEvents glano As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''username control.
+    '''userFname control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents username As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents userFname As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''userLname control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents userLname As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''useremail control.
@@ -113,13 +131,40 @@ Partial Public Class gritermanagement
     Protected WithEvents pnlEnrollment As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
-    '''lblEnrollmentInfo control.
+    '''SelectedUserID control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents lblEnrollmentInfo As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents SelectedUserID As Global.System.Web.UI.WebControls.HiddenField
+
+    '''<summary>
+    '''EnrollmentInfo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents EnrollmentInfo As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''CoursesAvailable control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CoursesAvailable As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''EnrollStudent control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents EnrollStudent As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''btnClose control.
@@ -129,4 +174,58 @@ Partial Public Class gritermanagement
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnClose As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''ApplicationFormPanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ApplicationFormPanel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''ApplicationForm control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ApplicationForm As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''CreatedQuestions control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CreatedQuestions As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''AcceptApplication control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents AcceptApplication As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''DeclineApplication control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DeclineApplication As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''CloseAPl control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CloseAPl As Global.System.Web.UI.WebControls.Button
 End Class

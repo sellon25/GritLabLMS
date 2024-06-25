@@ -59,12 +59,17 @@
             justify-content: center;
             align-items: center;
         }
+        .ApplicationQuestions {
+            min-height: 60vh;
+            max-height: 80vh;
+            overflow-y: scroll;
+        }
     </style>
 </head>
 <body style="" >
     <form id="form1" style="width: 85%;" runat="server">
         <h3 class="fw-bold">Sign Up</h3>
-       <div id="SignUpform" runat="server" class="card hide">
+       <div id="SignUpform" runat="server" class="card">
         <div class="card-body">
             <div class="form-horizontal form-material">
                 <div class="form-group mb-4">
@@ -110,7 +115,7 @@
             <div class="card-body">
                 <h3 class="mb-4 ">Application Form</h3>
                 <div class="form-horizontal form-material">
-                    <div id="CreatedQuestions"  runat="server" class="mb-4 border-bottom">
+                    <div id="CreatedQuestions"  runat="server" class="ApplicationQuestions mb-4 border-bottom">
                         <h4 class="mb-4 fw-bold ">Application Form</h4>
                 
            
