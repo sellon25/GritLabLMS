@@ -12,7 +12,7 @@
                             <h3 class="box-title" >Anouncements</h3>
                         </div> 
                     </a>
-                    <a class="col-md-12 text-black" href="Tests.aspx?ourseId=<%= Request.QueryString("courseId") %>"">
+                    <a class="col-md-12 text-black" href="Tests.aspx?courseId=<%= Request.QueryString("courseId") %>"">
                         <div class="white-box boxShadow">
                             <h3 class="box-title">Tests and Assessments</h3>
                         </div>

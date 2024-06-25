@@ -2,24 +2,24 @@
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        'If (Not IsPostBack) Then
-        '    Session("Type") = "3"
-        '    If Session("Type").ToString() = "3" Then
-        '        ' loadcourses(Session("Id").ToString())
-        '        loadresults("student@g.com")
-        '    Else
-        '        ' Redirect to an appropriate page if the user is not a student
-        '        Response.Redirect("~/Unauthorized.aspx")
-        '    End If
+        If (Not IsPostBack) Then
+            Session("Type") = "3"
+            If Session("Type").ToString() = "3" Then
+                ' loadcourses(Session("Id").ToString())
+                loadresults("student@g.com")
+            Else
+                ' Redirect to an appropriate page if the user is not a student
+                Response.Redirect("~/Unauthorized.aspx")
+            End If
 
-        'End If
+        End If
     End Sub
     Private Sub loadresults(student_id As String)
         Dim courses As List(Of Course) = GetCoursesForStudent(student_id)
 
         ' Bind courses
         For Each course As Course In courses
-            CoursesContainer.Controls.Add(CreateCourseHtml(course))
+            ResultsContainer.Controls.Add(CreateCourseHtml(course))
         Next course
     End Sub
     Private Function GetCoursesForStudent(student_id As String) As List(Of Course)
