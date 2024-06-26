@@ -14,13 +14,13 @@ Option Explicit On
 Partial Public Class Tests
 
     '''<summary>
-    '''CoursesContainer1 control.
+    '''TestContainer control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents CoursesContainer1 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    Protected WithEvents TestContainer As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''CoursesContainer control.
