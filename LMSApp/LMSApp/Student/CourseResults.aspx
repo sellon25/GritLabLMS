@@ -19,7 +19,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="table-responsive"  style="max-height: 80%;">
+                            <!--<div class="table-responsive"  style="max-height: 80%;">
                                 <table class="table no-wrap">
                                           <thead>
                                         <tr>
@@ -157,6 +157,9 @@
                                     </tbody>
 
                                 </table>
+                            </div>-->
+                            <div id ="TableContainer" class="table-responsive"  style="max-height: 80%;" runat="server">
+                               
                             </div>
                         </div>
                     </div>
