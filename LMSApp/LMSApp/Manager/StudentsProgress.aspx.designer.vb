@@ -14,47 +14,74 @@ Option Explicit On
 Partial Public Class StudentsProgress
 
     '''<summary>
-    '''HyperLink2 control.
+    '''SendToEmail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents HyperLink2 As Global.System.Web.UI.WebControls.HyperLink
+    Protected WithEvents SendToEmail As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''HyperLink1 control.
+    '''Subjects control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents HyperLink1 As Global.System.Web.UI.WebControls.HyperLink
+    Protected WithEvents Subjects As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''HyperLink3 control.
+    '''EmailBody control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents HyperLink3 As Global.System.Web.UI.WebControls.HyperLink
+    Protected WithEvents EmailBody As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''HyperLink4 control.
+    '''btnSendEmail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents HyperLink4 As Global.System.Web.UI.WebControls.HyperLink
+    Protected WithEvents btnSendEmail As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''HyperLink5 control.
+    '''txtSearch control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents HyperLink5 As Global.System.Web.UI.WebControls.HyperLink
+    Protected WithEvents txtSearch As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''ddlFilter control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlFilter As Global.System.Web.UI.HtmlControls.HtmlSelect
+
+    '''<summary>
+    '''btnApplyFilter control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnApplyFilter As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''btnResetFilter control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnResetFilter As Global.System.Web.UI.WebControls.Button
 End Class

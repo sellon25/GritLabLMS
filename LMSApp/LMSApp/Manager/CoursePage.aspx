@@ -10,7 +10,7 @@
     <div class="row" style="padding-top: 20px;">
         <div class="col-md-12">
             <center>
-                <h2 style="font-weight: bold;">Course Name</h2>
+                <h2 style="font-weight: bold;" ID="lblCourseName" runat="server"></h2>
             </center>
         </div>
 
@@ -43,25 +43,17 @@
                 <h3 class="box-title" style="font-weight: bold;">Assignments and Tasks</h3>
                 <!-- Add more relevant sections as needed -->
 
-                <div class="row" >
-                    <a class="d-flex flex-row comment-row p-3 mt-0 white-box boxShado white-box boxShadow" href="TestContent.aspx" >
-                     <div class="p-2"><i class="far fa-file-alt text-black" style="font-size: 26px;"></i></div>
-                     <div class="comment-text ps-2 ps-md-3 w-100 text-black">
-                         <h5 class="font-medium">Test 1</h5>       
-                         <span class="mb-3 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry.It has survived not only </span>
-                             <div class="text-muted fs-2 ms-auto mt-2 mt-md-0"><span>Due:</span>April 14, 2021</div>
-                         </div>
-                     </a>
+                <div class="row">
+                    <!-- Example of dynamically generated content -->
+                    <div class="d-flex flex-row comment-row p-3 mt-0 white-box boxShado white-box boxShadow">
+                        <div class="p-2"><i class="far fa-file-alt text-black" style="font-size: 26px;"></i></div>
+                        <div class="comment-text ps-2 ps-md-3 w-100 text-black">
+                            <h5 class="font-medium">Test 1</h5>
+                            <span class="mb-3 d-block">Lorem Ipsum is simply dummy text of the printing and typesetting industry. It has survived not only </span>
+                            <div class="text-muted fs-2 ms-auto mt-2 mt-md-0"><span>Due:</span> April 14, 2021</div>
                         </div>
-                     <div class="row" >
-                    <a class="d-flex flex-row comment-row p-3 mt-0 white-box boxShado white-box boxShadow" href="TestContent.aspx" >
-                     <div class="p-2"><i class="far fa-file-alt text-black" style="font-size: 26px;"></i></div>
-                     <div class="comment-text ps-2 ps-md-3 w-100 text-black">
-                         <h5 class="font-medium">Quiz 4</h5>       
-                         <span class="mb-3 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry.It has survived not only </span>
-                             <div class="text-muted fs-2 ms-auto mt-2 mt-md-0"><span>Due:</span>April 14, 2021</div>
-                         </div>
-                     </a>
+                    </div>
+                    <!-- Add more dynamically generated content here -->
                 </div>
             </div>
         </div>
