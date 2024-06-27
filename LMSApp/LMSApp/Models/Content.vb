@@ -61,7 +61,7 @@ cmd.Connection = HttpContext.Current.Session("conn")
 If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = HttpContext.Current.Session("trans")
 cmd.CommandType = CommandType.Text
         cmd.CommandText = "insert into Content (title ,thumbnail,description ,link ,file_data,datetime,status,project_id,course_id)"
-        cmd.CommandText = cmd.CommandText & "values@title ,@thumbnail,@description ,@link ,@file_data,@datetime,@status,@project_id,@course_id)"
+        cmd.CommandText = cmd.CommandText & "values(@title ,@thumbnail,@description ,@link ,@file_data,@datetime,@status,@project_id,@course_id)"
 
         'cmd.Parameters.Add("@id" , 8 , 0 , "id")
         'cmd.Parameters("@id").Value = SetNull(id)

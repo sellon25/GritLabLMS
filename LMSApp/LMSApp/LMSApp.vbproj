@@ -2271,8 +2271,8 @@
     <Content Include="Manager\SQWID.aspx" />
     <Content Include="Manager\StudentsProgress.aspx" />
     <Compile Include="Models\Course_Submission.vb" />
-    <Compile Include="Models\Submission.vb" />
     <Compile Include="Models\Question_Bank.vb" />
+    <Compile Include="Models\Submission.vb" />
     <Compile Include="Models\Test.vb" />
     <Content Include="plugins\images\miniBanking.jpg" />
     <Content Include="SignUp.aspx" />
@@ -2990,7 +2990,6 @@
     <Compile Include="Models\Project_Content.vb" />
     <Compile Include="Models\Project_Enrollment.vb" />
     <Compile Include="Models\Project_Submission.vb" />
-    <Compile Include="Models\Question_Bank.vb" />
     <Compile Include="Models\StudentAnswer.vb" />
     <Compile Include="Models\StudentResults.vb" />
     <Compile Include="Models\TrackProjectProgress.vb" />

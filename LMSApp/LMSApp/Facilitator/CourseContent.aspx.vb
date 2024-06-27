@@ -149,7 +149,7 @@ Public Class CourseContent1
             newContent.update() ' This will execute the insert method from Course_Content
             Response.Redirect(Request.Url.AbsoluteUri)
         Catch ex As Exception
-            ' Response.Write(ex.Message) or log the exception
+            Response.Write(ex.Message)
         End Try
 
         BindContent()
