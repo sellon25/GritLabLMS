@@ -16,7 +16,7 @@ Public Class AnnouncementPage
 
     Private Sub BindAnnouncements()
         Try
-            Dim announcements As List(Of Announcement) = Announcement.listall()
+            Dim announcements As List(Of Announcement) = New Announcement().listall("", "order by datetime desc ")
 
             If announcements IsNot Nothing AndAlso announcements.Count > 0 Then
                 ' Sort announcements by datetime in descending order

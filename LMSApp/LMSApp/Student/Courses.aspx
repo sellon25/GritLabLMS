@@ -7,8 +7,8 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
    <div class="row courses-container" >
-       <div class="row courses-container" style="width: 95%">
-           <div id="CoursesContainer" runat="server" class="col-md-3">
+       <div class="row courses-container" style="">
+           <div id="CoursesContainer" runat="server" class="d-flex flex-wrap">
 
            </div>
 
