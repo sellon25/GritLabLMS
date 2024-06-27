@@ -5,7 +5,7 @@
     Submission Links
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
-    <button type="button" class="btn btn-primary" style="background-color:#93761E;" onclick="window.location.href='NewAssessment.aspx';">Add Submission Link</button>
+    <button type="button" class="btn btn-primary" style="background-color:#93761E;" onclick="window.location.href='NewSubmissionLink.aspx?courseId=<%= Request.QueryString("courseId") %>';">Add Submission Link</button>
     <div class="row" style="padding-top:10px;">
         <a class="col-md-12 text-decoration-underline" href="SubmitForm.aspx">
             <div class="white-box boxShadow">

@@ -16,18 +16,7 @@
                 </div>
                 <div style="overflow-y: scroll; height: 250px;">
                     <div class="row courses-container" style="width: 95%">
-                        <asp:Repeater ID="CoursesRepeater" runat="server">
-                            <ItemTemplate>
-                                <a class="col-md-3" runat="server" id="CourseLink">
-                                    <div class="white-box boxShadow coursebox" runat="server" id="CourseBox">
-                                        <div class="description">
-                                            <label class="box-title" runat="server" id="CourseNameLabel"></label>
-                                            <p class="text-muted" runat="server" id="CourseDescriptionLabel"></p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </ItemTemplate>
-                        </asp:Repeater>
+                        <div id="CoursesContainer" runat="server" class="col-md-3"></div>
                     </div>
                 </div>
             </div>
@@ -42,18 +31,7 @@
                 </div>
                 <div style="overflow-y: scroll; height: 250px;">
                     <div class="row courses-container" style="width: 95%">
-                        <asp:Repeater ID="ProjectsRepeater" runat="server">
-                            <ItemTemplate>
-                                <a class="col-md-3" runat="server" id="ProjectLink">
-                                    <div class="white-box boxShadow coursebox" runat="server" id="ProjectBox">
-                                        <div class="description" >
-                                            <label class="box-title" runat="server" id="ProjectNameLabel"></label>
-                                            <p class="text-muted" runat="server" id="ProjectDescriptionLabel"></p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </ItemTemplate>
-                        </asp:Repeater>
+                        <div id="ProjectsContainer" runat="server"></div>
                     </div>
                 </div>
             </div>
