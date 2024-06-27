@@ -46,6 +46,7 @@ Public Class ManageApplicationForm
             CreatedQuestions.Controls.Add(AddQuestionHtml(question.id, question.QuestionType, question.Text))
         Next
     End Sub
+
     Protected Function AddQuestionHtml(questionId As String, questionType As String, questionText As String) As HtmlGenericControl
         ' Create a new HtmlGenericControl representing a <div> element
         Dim newQuestionDiv As New HtmlGenericControl("div")

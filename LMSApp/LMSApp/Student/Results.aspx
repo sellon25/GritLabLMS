@@ -6,8 +6,13 @@
     Results
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
-    
-                   <a class="col-md-12 text-black" href="CourseResults.aspx">
+   
+    <div id="ResultsContainer" runat="server">
+
+    </div>
+
+
+                   <!--<a class="col-md-12 text-black" href="CourseResults.aspx?courseId= Request.QueryString("courseId") %>"">
                         <div class="box-flex white-box boxShadow">
                             <h3 class="box-title">CHEM1101</h3>
                              <div class="description">
@@ -38,5 +43,5 @@
                         </div>
                     </a>
                     
-                
+                -->
 </asp:Content>

@@ -6,9 +6,7 @@
     Announcements
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
-   <div class="row" style="
-    height: 100vh;
-">
+   <div class="row" style="height: 100vh;"  >
                     <div class="col-md-12 col-lg-12 col-sm-12">
                         <div class="white-box" style="height: 100%;">
                             <div class="d-md-flex mb-3">
@@ -23,8 +21,8 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="table-responsive" style="max-height: 100%;">
-                                <table class="table no-wrap">
+                            <div class="table-responsive" style="max-height: 100%;" id ="tableAnnouncements" runat="server">
+                               <%-- <table class="table no-wrap">
                                     <thead>
                                         <tr>
                                             <th class="border-top-0"></th>
@@ -149,13 +147,13 @@
                                         <td class="text-muted fs-2 ms-auto mt-2 mt-md-0">April 14, 2021</td>
                                         <td class="txt-oflo">
                                             <div class="comment-text ps-2 ps-md-3 w-100 text-black">
-                                            <h5 class="font-medium">Quiz 10</h5>       
-                                            <span class="mb-3 d-block text-dark">Lorem Ipsum is simply dummy text of the printing and type setting industry.It has survived not only </span>
-                                            <div class="text-muted fs-2 ms-auto mt-2 mt-md-0"><span>Posted by: </span>Prof. M Barkley</div>
+                                                <h5 class="font-medium">Quiz 10</h5>       
+                                                <span class="mb-3 d-block text-dark">Lorem Ipsum is simply dummy text of the printing and type setting industry.It has survived not only </span>
+                                                <div class="text-muted fs-2 ms-auto mt-2 mt-md-0"><span>Posted by: </span> Prof. M Barkley</div>
                                             </div>
                                         </td>                                          
                                         </tr></tbody>
-                                </table>
+                                </table>--%>
                             </div>
                         </div>
                     </div>
