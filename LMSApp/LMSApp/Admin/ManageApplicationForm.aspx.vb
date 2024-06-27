@@ -8,10 +8,14 @@ Public Class ManageApplicationForm
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-
         LoadQuestions()
+        If Not IsPostBack Then
+            ' Initial rendering of options
 
+        End If
+        RenderOptions()
     End Sub
+
 
     Protected Sub AddQuestionButton_Click(sender As Object, e As EventArgs)
         Dim questionType As String = questionTypeList.SelectedValue
@@ -68,26 +72,25 @@ Public Class ManageApplicationForm
         Select Case questionType
             Case "radio"
                 ' Add radio button inputs and additional controls for radio type questions
-                Dim radioInput1 As New HtmlGenericControl("input")
-                radioInput1.Attributes("type") = "radio"
-                radioInput1.Attributes("name") = questionId
-                radioInput1.Attributes("value") = "Option 1"
+                Dim radioInput1 As New RadioButton()
+                radioInput1.ID = String.Format("radioInput1_{0}", questionId)
+                radioInput1.GroupName = questionId
+                radioInput1.Text = "Option 1"
 
-                Dim radioInput2 As New HtmlGenericControl("input")
-                radioInput2.Attributes("type") = "radio"
-                radioInput2.Attributes("name") = questionId
-                radioInput2.Attributes("value") = "Option 2"
+                Dim radioInput2 As New RadioButton()
+                radioInput2.ID = String.Format("radioInput2_{0}", questionId)
+                radioInput2.GroupName = questionId
+                radioInput2.Text = "Option 2"
 
                 ' Add radio inputs to newQuestionDiv
                 newQuestionDiv.Controls.Add(radioInput1)
                 newQuestionDiv.Controls.Add(radioInput2)
 
                 ' Add an input and button for radio type questions
-                Dim radioTextInput As New HtmlGenericControl("input")
-                radioTextInput.Attributes("id") = "rinp-" & questionId
-                radioTextInput.Attributes("type") = "text"
+                Dim radioTextInput As New TextBox()
+                radioTextInput.ID = "rinp-" & questionId
                 radioTextInput.Attributes("placeholder") = "Type here..."
-                radioTextInput.Attributes("class") = "form-control p-0 border-0"
+                radioTextInput.CssClass = "form-control p-0 border-0"
 
                 Dim addButton As New Button()
                 addButton.ID = "btnAddOp_" + questionId
@@ -107,15 +110,13 @@ Public Class ManageApplicationForm
 
             Case "checkbox"
                 ' Add checkbox inputs for checkbox type questions
-                Dim checkboxInput1 As New HtmlGenericControl("input")
-                checkboxInput1.Attributes("type") = "checkbox"
-                checkboxInput1.Attributes("name") = questionId
-                checkboxInput1.Attributes("value") = "Option 1"
+                Dim checkboxInput1 As New CheckBox()
+                checkboxInput1.ID = String.Format("checkboxInput1_{0}", questionId)
+                checkboxInput1.Text = "Option 1"
 
-                Dim checkboxInput2 As New HtmlGenericControl("input")
-                checkboxInput2.Attributes("type") = "checkbox"
-                checkboxInput2.Attributes("name") = questionId
-                checkboxInput2.Attributes("value") = "Option 2"
+                Dim checkboxInput2 As New CheckBox()
+                checkboxInput2.ID = String.Format("checkboxInput2_{0}", questionId)
+                checkboxInput2.Text = "Option 2"
 
                 ' Add checkbox inputs to newQuestionDiv
                 newQuestionDiv.Controls.Add(checkboxInput1)
@@ -123,10 +124,10 @@ Public Class ManageApplicationForm
 
             Case "text"
                 ' Add input for text type questions
-                Dim textInput As New HtmlGenericControl("input")
-                textInput.Attributes("type") = "text"
+                Dim textInput As New TextBox()
+                textInput.ID = String.Format("textInput_{0}", questionId)
                 textInput.Attributes("placeholder") = "Type here..."
-                textInput.Attributes("class") = "form-control p-0 border-0"
+                textInput.CssClass = "form-control p-0 border-0"
 
                 ' Add input to newQuestionDiv
                 newQuestionDiv.Controls.Add(textInput)
@@ -136,11 +137,12 @@ Public Class ManageApplicationForm
 
             Case "textarea"
                 ' Add textarea for textarea type questions
-                Dim textareaInput As New HtmlGenericControl("textarea")
-                textareaInput.Attributes("cols") = "1"
-                textareaInput.Attributes("rows") = "4"
+                Dim textareaInput As New TextBox()
+                textareaInput.ID = String.Format("textareaInput_{0}", questionId)
+                textareaInput.TextMode = TextBoxMode.MultiLine
+                textareaInput.Rows = 4
                 textareaInput.Attributes("placeholder") = "Type here..."
-                textareaInput.Attributes("class") = "form-control p-0 border-0"
+                textareaInput.CssClass = "form-control p-0 border-0"
 
                 ' Add textarea to newQuestionDiv
                 newQuestionDiv.Controls.Add(textareaInput)
@@ -150,8 +152,9 @@ Public Class ManageApplicationForm
 
             Case "dropList"
                 ' Add select dropdown for dropList type questions
-                Dim selectDropdown As New DropDownList
-                selectDropdown.Attributes("class") = "form-select shadow-none p-0 border-0 form-control-line"
+                Dim selectDropdown As New DropDownList()
+                selectDropdown.ID = String.Format("selectDropdown_{0}", questionId)
+                selectDropdown.CssClass = "form-select shadow-none p-0 border-0 form-control-line"
 
                 ' Add options to select dropdown
                 Dim option1 As New ListItem("Game development")
@@ -171,12 +174,13 @@ Public Class ManageApplicationForm
 
             Case "number"
                 ' Add input for number type questions
-                Dim numberInput As New HtmlGenericControl("input")
+                Dim numberInput As New TextBox()
+                numberInput.ID = String.Format("numberInput_{0}", questionId)
                 numberInput.Attributes("type") = "number"
                 numberInput.Attributes("min") = "0"
                 numberInput.Attributes("max") = "10"
                 numberInput.Attributes("placeholder") = "Type here..."
-                numberInput.Attributes("class") = "form-control p-0 border-0"
+                numberInput.CssClass = "form-control p-0 border-0"
 
                 ' Add input to newQuestionDiv
                 newQuestionDiv.Controls.Add(numberInput)
@@ -204,6 +208,83 @@ Public Class ManageApplicationForm
         Dim questionId = btn.ID.Replace("btnAdd_", "")
     End Sub
 
+    ' Property to manage the options list using ViewState
+    Private Property OptionsList As List(Of String)
+        Get
+            If ViewState("OptionsList") Is Nothing Then
+                ViewState("OptionsList") = New List(Of String)()
+            End If
+            Return CType(ViewState("OptionsList"), List(Of String))
+        End Get
+        Set(value As List(Of String))
+            ViewState("OptionsList") = value
+        End Set
+    End Property
+
+    Protected Sub questionTypeList_SelectedIndexChanged(sender As Object, e As EventArgs)
+        Dim selectedType As String = questionTypeList.SelectedValue
+
+        If selectedType = "radio" OrElse selectedType = "checkbox" OrElse selectedType = "dropList" Then
+            pnlAdditionalOptions.Visible = True
+        Else
+            pnlAdditionalOptions.Visible = False
+        End If
+    End Sub
+
+    Protected Sub AddOption_Click(sender As Object, e As EventArgs)
+        If Not String.IsNullOrWhiteSpace(txtOption.Text) Then
+            ' Add the new option to the list
+            OptionsList.Add(txtOption.Text)
+
+            ' Clear the text box
+            txtOption.Text = String.Empty
+
+            ' Re-render the options
+            RenderOptions()
+        End If
+    End Sub
+
+    Private Sub RenderOptions()
+        ' Clear existing controls
+        phOptions.Controls.Clear()
+
+        ' Render each option
+        For Each optionText As String In OptionsList
+            ' Create a new placeholder div for the option
+            Dim optionDiv As New HtmlGenericControl("div")
+            optionDiv.Attributes("class") = "option-item"
+
+            ' Create a label to display the option text
+            Dim optionLabel As New Label()
+            optionLabel.Text = optionText
+            optionLabel.CssClass = "col-md-10 p-0"
+
+            ' Create a button to remove the option
+            Dim removeButton As New Button()
+            removeButton.Text = "Remove"
+            removeButton.CssClass = "btn text-danger float-end"
+            removeButton.CommandArgument = optionText
+            AddHandler removeButton.Click, AddressOf RemoveOption_Click
+
+            ' Add the label and remove button to the option div
+            optionDiv.Controls.Add(optionLabel)
+            optionDiv.Controls.Add(removeButton)
+
+            ' Add the option div to the placeholder
+            phOptions.Controls.Add(optionDiv)
+        Next
+    End Sub
+
+    Protected Sub RemoveOption_Click(sender As Object, e As EventArgs)
+        Dim button As Button = CType(sender, Button)
+        Dim optionText As String = button.CommandArgument
+
+        ' Remove the option from the list
+        OptionsList.Remove(optionText)
+
+        ' Re-render the options
+        RenderOptions()
+    End Sub
 
 
 

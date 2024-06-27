@@ -12,6 +12,13 @@
     padding:1rem;
 }
 
+.option-item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0.05rem;
+}
+
 .modal {
     position: fixed;
     top: 50%;
@@ -45,3 +52,4 @@
     max-height: 80vh;
     overflow-y: scroll;
 }
+

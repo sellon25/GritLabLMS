@@ -19,7 +19,7 @@
         
     </asp:ContentPlaceHolder>
     </title>
-    <asp:ContentPlaceHolder ID="ContentHeadStyles" runat="server">    
+    <asp:ContentPlaceHolder ID="ContentHead" runat="server">    
         
     </asp:ContentPlaceHolder>
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
@@ -34,7 +34,7 @@
     
     <!--link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
   rel="stylesheet"  type='text/css'--->
-    <link href="../Admin/admincss/style.css" rel="stylesheet" />
+    <link href="../Admin/admin-assets/style.css" rel="stylesheet" />
     <!--table css-->
 </head>
 
@@ -225,7 +225,7 @@
     <!-- All Jquery -->
     <!-- ============================================================== -->
     <script src="../js/mainscript.js"></script>
-
+    <script src="admin-assets/adminscripts.js"></script>
     <script src="../plugins/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="../bootstrap/dist/js/bootstrap.bundle.min.js"></script>

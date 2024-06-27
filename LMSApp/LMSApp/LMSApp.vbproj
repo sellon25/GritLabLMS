@@ -97,7 +97,8 @@
   <ItemGroup>
     <Content Include="Admin\addkingsmen.aspx" />
     <Content Include="Admin\AddProject.aspx" />
-    <Content Include="Admin\admincss\style.css" />
+    <Content Include="Admin\admin-assets\adminscripts.js" />
+    <Content Include="Admin\admin-assets\style.css" />
     <Content Include="Admin\Announcements.aspx" />
     <Content Include="Admin\AnnouncementsKingsmen.aspx" />
     <Content Include="Admin\Courses.aspx" />

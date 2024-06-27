@@ -23,6 +23,42 @@ Partial Public Class ManageApplicationForm
     Protected WithEvents questionTypeList As Global.System.Web.UI.WebControls.RadioButtonList
 
     '''<summary>
+    '''pnlAdditionalOptions control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnlAdditionalOptions As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''txtOption control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtOption As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''btnAddOption control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnAddOption As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''phOptions control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents phOptions As Global.System.Web.UI.WebControls.PlaceHolder
+
+    '''<summary>
     '''inputQuestionNum control.
     '''</summary>
     '''<remarks>

@@ -86,7 +86,7 @@
             Dim btnTrack As New Button()
             btnTrack.ID = String.Format("ViewEnrollment_{0}", usr.emailID.ToString())
             btnTrack.Attributes("class") = " btn btn-primary"
-            If (usr.status = "New Applicant") Then
+            If (usr.status.Trim() = "New Applicant" Or usr.status.Trim() = "Rejected" Or usr.status.Trim() = "Pending Application") Then
                 btnTrack.Text = "View Application"
                 AddHandler btnTrack.Click, AddressOf ViewApplication
             Else
@@ -186,6 +186,7 @@
         ' Show the popup
         pnlEnrollment.Visible = True
         pnlEnrollment.Style("display") = "block"
+
     End Sub
 
 
@@ -264,6 +265,10 @@
             .update()
         End With
         ApplicationFormPanel.Visible = False
+
+        Dim newEmail As New SendEmail
+        newEmail.SendNotification(du.emailID, "Congradulations, Your application has been accepted! </br> Your are now officially a Student of Grits Lab africa, we are happy to have you!")
+
         LoadUsers()
     End Sub
 
@@ -277,12 +282,15 @@
             .update()
         End With
         ApplicationFormPanel.Visible = False
+        Dim newEmail As New SendEmail
+        newEmail.SendNotification(du.emailID, "It was a pleasure to learn more about you through your application. However, after careful consideration, we unfortunately regret to inform you that your application to Grits Lab africa was unsuccessful! </br>")
+
         LoadUsers()
     End Sub
 
 
     Private Sub LoadQuestions()
-        Dim questions As List(Of Question_Bank) = Question_Bank.listall(" where [Category_ID]='Application Form' ")
+        Dim questions As List(Of Question_Bank) = Question_Bank.listall(" where [Category_ID]='Application Form' ", " order by QuestionNumber asc ")
         CreatedQuestions.Controls.Clear()
 
         For Each question In questions
@@ -391,14 +399,19 @@
 
             Case "dropList"
                 ' Add select dropdown for dropList type questions
-                Dim selectDropdown As New RadioButtonList
+                Dim selectDropdown As New DropDownList
                 selectDropdown.Attributes("class") = "form-select shadow-none p-0 border-0 form-control-line"
 
                 ' Add options to select dropdown
-                Dim option1 As New ListItem("Option 1")
-                Dim option2 As New ListItem("Option 2")
+                Dim option1 As New ListItem("Game development")
+                Dim option2 As New ListItem("Web development")
+                Dim option3 As New ListItem("Design")
+                Dim option4 As New ListItem("Microsoft360")
                 selectDropdown.Items.Add(option1)
                 selectDropdown.Items.Add(option2)
+                selectDropdown.Items.Add(option3)
+                selectDropdown.Items.Add(option4)
+
 
                 ' Add select dropdown to newQuestionDiv
                 newQuestionDiv.Controls.Add(selectDropdown)
