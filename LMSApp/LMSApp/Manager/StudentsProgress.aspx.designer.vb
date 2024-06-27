@@ -50,47 +50,38 @@ Partial Public Class StudentsProgress
     Protected WithEvents btnSendEmail As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''HyperLink2 control.
+    '''txtSearch control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents HyperLink2 As Global.System.Web.UI.WebControls.HyperLink
+    Protected WithEvents txtSearch As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''HyperLink1 control.
+    '''ddlFilter control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents HyperLink1 As Global.System.Web.UI.WebControls.HyperLink
+    Protected WithEvents ddlFilter As Global.System.Web.UI.HtmlControls.HtmlSelect
 
     '''<summary>
-    '''HyperLink3 control.
+    '''btnApplyFilter control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents HyperLink3 As Global.System.Web.UI.WebControls.HyperLink
+    Protected WithEvents btnApplyFilter As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''HyperLink4 control.
+    '''btnResetFilter control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents HyperLink4 As Global.System.Web.UI.WebControls.HyperLink
-
-    '''<summary>
-    '''HyperLink5 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents HyperLink5 As Global.System.Web.UI.WebControls.HyperLink
+    Protected WithEvents btnResetFilter As Global.System.Web.UI.WebControls.Button
 End Class

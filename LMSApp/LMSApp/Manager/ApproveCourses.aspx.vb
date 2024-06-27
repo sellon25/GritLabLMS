@@ -22,7 +22,8 @@ Public Class ApproveCourses
                 Dim courseHtml As New System.Text.StringBuilder()
                 For Each course As Course In courses
                     courseHtml.Append("<div class='col-md-3'>")
-                    courseHtml.Append("<a href='CoursePage.aspx'>")
+                    ' Link each course to CoursePage.aspx passing CourseName in query string
+                    courseHtml.AppendFormat("<a href='CoursePage.aspx?CourseName={0}'>", HttpUtility.UrlEncode(course.name))
                     courseHtml.Append("<div class='white-box boxShadow coursebox'>")
                     courseHtml.Append("<div class='description'>")
                     courseHtml.AppendFormat("<label class='box-title'>{0}</label>", course.name)
@@ -43,6 +44,31 @@ Public Class ApproveCourses
         End Try
     End Sub
 
+
+    Private Function GetCourseById(courseId As String) As Course
+        Try
+            Return Course.load(courseId)
+        Catch ex As Exception
+            ' Handle exception or log error
+            System.Diagnostics.Debug.WriteLine($"Error loading course with ID {courseId}: {ex.Message}")
+            Return Nothing
+        End Try
+    End Function
+
+    ' JavaScript function to show course details in modal
+    <System.Web.Services.WebMethod()>
+    Public Shared Function GetCourseDetails(courseId As String) As Course
+        Dim approveCourses As New ApproveCourses()
+        Return approveCourses.GetCourseById(courseId)
+    End Function
+
+    ' Accept/Reject button click handler
+    Protected Sub AcceptReject_Click(sender As Object, e As EventArgs)
+        AcceptRejectCourses()
+        BindCourses()
+    End Sub
+
+    ' Accept/Reject action handler
     Public Sub AcceptRejectCourses()
         Try
             If Session("LoggedIn") Is Nothing OrElse Not CType(Session("LoggedIn"), Boolean) Then
@@ -77,25 +103,18 @@ Public Class ApproveCourses
             ' Update the course status in the database
             selectedCourse.update()
 
-
             ' Log confirmation of status update
             System.Diagnostics.Debug.WriteLine($"Status of course '{selectedCourse.name}' after update: {selectedCourse.status}")
 
+            ' Optionally, provide a success message to the user
+            Response.Write("<script>alert('Course has been approved/rejected.');</script>")
+
+            ' Refresh the course list after action
             BindCourses()
-            ' Check if the course was approved or rejected
-            If selectedCourse.status = 1 Then
-                ' Reload the list of approved courses to reflect the change
-                BindCourses()
-                ' Optionally, provide a success message to the user
-                Response.Write("<script>alert('Course has been approved.');</script>")
-            Else
-                ' Optionally, provide a message to the user
-                Response.Write("<script>alert('Course was not approved.');</script>")
-            End If
 
         Catch ex As Exception
             ' Handle exceptions (e.g., log them, display an error message)
-            System.Diagnostics.Debug.WriteLine($"Error accepting course: {ex.Message}")
+            System.Diagnostics.Debug.WriteLine($"Error accepting/rejecting course: {ex.Message}")
             Response.Write($"<script>alert('Error: {ex.Message}');</script>")
         End Try
     End Sub
@@ -110,10 +129,5 @@ Public Class ApproveCourses
                 Throw New Exception("Invalid Action Selected.")
         End Select
     End Function
-
-    Protected Sub AcceptReject_Click(sender As Object, e As EventArgs)
-        AcceptRejectCourses()
-        BindCourses()
-    End Sub
 
 End Class
