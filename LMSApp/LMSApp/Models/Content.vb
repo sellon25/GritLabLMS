@@ -60,12 +60,12 @@ Dim cmd As New sqlCommand
 cmd.Connection = HttpContext.Current.Session("conn")
 If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = HttpContext.Current.Session("trans")
 cmd.CommandType = CommandType.Text
-cmd.CommandText = "insert into Content (id,title ,thumbnail,description ,link ,file_data,datetime,status,project_id,course_id)"
-cmd.CommandText = cmd.CommandText & "values(@id,@title ,@thumbnail,@description ,@link ,@file_data,@datetime,@status,@project_id,@course_id)"
+        cmd.CommandText = "insert into Content (title ,thumbnail,description ,link ,file_data,datetime,status,project_id,course_id)"
+        cmd.CommandText = cmd.CommandText & "values@title ,@thumbnail,@description ,@link ,@file_data,@datetime,@status,@project_id,@course_id)"
 
-cmd.Parameters.Add("@id" , 8 , 0 , "id")
-cmd.Parameters("@id").Value = SetNull(id)
-cmd.Parameters.Add("@title " , 22 , 255 , "title ")
+        'cmd.Parameters.Add("@id" , 8 , 0 , "id")
+        'cmd.Parameters("@id").Value = SetNull(id)
+        cmd.Parameters.Add("@title " , 22 , 255 , "title ")
 cmd.Parameters("@title ").Value = SetNull(title )
 cmd.Parameters.Add("@thumbnail" , 21 , -1 , "thumbnail")
 cmd.Parameters("@thumbnail").Value = SetNull(thumbnail)

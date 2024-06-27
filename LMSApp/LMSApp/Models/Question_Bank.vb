@@ -10,6 +10,7 @@ Public Shared Display_id as Boolean=True
     Public Shared Display_QuestionType As Boolean = True
     Public Shared Display_ParentQuestion As Boolean = True
     Public Shared Display_QuestionNumber As Boolean = True
+    Public Shared Display_TestID As Boolean = True
     Public Shared Display_CaseStudy as Boolean=true
 Public Shared Display_Image as Boolean=true
 Public Shared Display_Option1 as Boolean=true
@@ -24,6 +25,7 @@ Private I_Display_id as Boolean=True
     Private I_Display_Text As Boolean = True
     Private I_Display_QuestionType As Boolean = True
     Private I_Display_QuestionNumber As Boolean = True
+    Private I_Display_TestID As Boolean = True
     Private I_Display_ParentQuestion As Boolean = True
     Private I_Display_CaseStudy as Boolean=true
 Private I_Display_Image as Boolean=true
@@ -51,7 +53,9 @@ Public Category_ID as System.String
     Public QuestionNumber As Nullable(Of System.Double)
     Public QuestionType As System.String
     Public ParentQuestion As System.String
+    Public TestID As System.String
     Private newinstance As Boolean = True
+
 
     Shared Sub Set_Display_Field_All(display_flag as boolean)
 Display_id=display_flag
@@ -67,8 +71,9 @@ Display_Option3=display_flag
 Display_Option4=display_flag
 Display_Mark=display_flag
 Display_Category_ID=display_flag
-Display_Section_ID=display_flag
-End Sub
+        Display_Section_ID = display_flag
+        Display_TestID = display_flag
+    End Sub
 
 
 Private Sub insert()
@@ -76,8 +81,8 @@ Dim cmd As New sqlCommand
 cmd.Connection = HttpContext.Current.Session("conn")
 If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = HttpContext.Current.Session("trans")
 cmd.CommandType = CommandType.Text
-        cmd.CommandText = "insert into Question_Bank (id,Text,QuestionType,QuestionNumber,ParentQuestion,CaseStudy,Image,Option1,Option2,Option3,Option4,Mark,Category_ID,Section_ID)"
-        cmd.CommandText = cmd.CommandText & "values(@id,@Text,@QuestionType,@QuestionNumber,@ParentQuestion,@CaseStudy,@Image,@Option1,@Option2,@Option3,@Option4,@Mark,@Category_ID,@Section_ID)"
+        cmd.CommandText = "insert into Question_Bank (id,Text,QuestionType,QuestionNumber,ParentQuestion,TestID,CaseStudy,Image,Option1,Option2,Option3,Option4,Mark,Category_ID,Section_ID)"
+        cmd.CommandText = cmd.CommandText & "values(@id,@Text,@QuestionType,@QuestionNumber,@ParentQuestion,@TestID,@CaseStudy,@Image,@Option1,@Option2,@Option3,@Option4,@Mark,@Category_ID,@Section_ID)"
 
         cmd.Parameters.Add("@id" , 22 , 255 , "id")
 cmd.Parameters("@id").Value = SetNull(id)
@@ -89,6 +94,8 @@ cmd.Parameters("@id").Value = SetNull(id)
         cmd.Parameters("@QuestionNumber").Value = setNull(QuestionNumber)
         cmd.Parameters.Add("@ParentQuestion", 22, 255, "ParentQuestion")
         cmd.Parameters("@ParentQuestion").Value = setNull(ParentQuestion)
+        cmd.Parameters.Add("@TestID", 22, 255, "TestID")
+        cmd.Parameters("@TestID").Value = setNull(TestID)
         cmd.Parameters.Add("@CaseStudy" , 22 , -1 , "CaseStudy")
 cmd.Parameters("@CaseStudy").Value = SetNull(CaseStudy)
 cmd.Parameters.Add("@Image" , 21 , -1 , "Image")
@@ -144,7 +151,8 @@ if Display_Option2=true then cmd.CommandText = cmd.CommandText & "Option2,"
 if Display_Option3=true then cmd.CommandText = cmd.CommandText & "Option3,"
 if Display_Option4=true then cmd.CommandText = cmd.CommandText & "Option4,"
         If Display_Mark = True Then cmd.CommandText = cmd.CommandText & "Mark,"
-        If Display_Mark = True Then cmd.CommandText = cmd.CommandText & "ParentQuestion,"
+        If Display_ParentQuestion = True Then cmd.CommandText = cmd.CommandText & "ParentQuestion,"
+        If Display_TestID = True Then cmd.CommandText = cmd.CommandText & "TestID,"
         If Display_Category_ID=true then cmd.CommandText = cmd.CommandText & "Category_ID,"
 if Display_Section_ID=true then cmd.CommandText = cmd.CommandText & "Section_ID,"
 cmd.CommandText = cmd.CommandText.Substring(0,cmd.CommandText.Length-1)
@@ -167,6 +175,8 @@ p.I_Display_id=Display_id
             p.I_Display_QuestionNumber = Display_QuestionNumber
             If Display_ParentQuestion = True Then p.ParentQuestion = checkNull(dt.Rows(i)("ParentQuestion"))
             p.I_Display_ParentQuestion = Display_ParentQuestion
+            If Display_TestID = True Then p.TestID = checkNull(dt.Rows(i)("TestID"))
+            p.TestID = Display_TestID
             If Display_CaseStudy=true then p.CaseStudy=checknull(dt.Rows(i)("CaseStudy"))
 p.I_Display_CaseStudy=Display_CaseStudy
 if Display_Image=true then p.Image=checknull(dt.Rows(i)("Image"))
@@ -209,6 +219,7 @@ cmd.CommandText =cmd.CommandText & " id=@id,"
         If I_Display_QuestionType = True Then cmd.CommandText = cmd.CommandText & " QuestionType=@QuestionType,"
         If I_Display_QuestionNumber = True Then cmd.CommandText = cmd.CommandText & " QuestionNumber=@QuestionNumber,"
         If I_Display_ParentQuestion = True Then cmd.CommandText = cmd.CommandText & " ParentQuestion=@ParentQuestion,"
+        If I_Display_ParentQuestion = True Then cmd.CommandText = cmd.CommandText & " TestID=@TestID,"
         If I_Display_CaseStudy=true then cmd.CommandText =cmd.CommandText & " CaseStudy=@CaseStudy,"
 if I_Display_Image=true then cmd.CommandText =cmd.CommandText & " Image=@Image,"
 if I_Display_Option1=true then cmd.CommandText =cmd.CommandText & " Option1=@Option1,"
@@ -228,12 +239,14 @@ cmd.Parameters("@id").Value = SetNull(id)
 if I_Display_Text=true then cmd.Parameters.Add("@Text", 22, -1, "Text")
         If I_Display_Text = True Then cmd.Parameters("@Text").Value = setNull(Text)
 
-        If I_Display_Text = True Then cmd.Parameters.Add("@QuestionType", 22, -1, "QuestionType")
-        If I_Display_Text = True Then cmd.Parameters("@QuestionType").Value = setNull(QuestionType)
-        If I_Display_Text = True Then cmd.Parameters.Add("@QuestionNumber", 22, -1, "QuestionNumber")
-        If I_Display_Text = True Then cmd.Parameters("@QuestionNumber").Value = setNull(QuestionNumber)
-        If I_Display_Text = True Then cmd.Parameters.Add("@ParentQuestion", 22, 255, "ParentQuestion")
-        If I_Display_Text = True Then cmd.Parameters("@ParentQuestion").Value = setNull(ParentQuestion)
+        If I_Display_QuestionType = True Then cmd.Parameters.Add("@QuestionType", 22, -1, "QuestionType")
+        If I_Display_QuestionType = True Then cmd.Parameters("@QuestionType").Value = setNull(QuestionType)
+        If I_Display_QuestionNumber = True Then cmd.Parameters.Add("@QuestionNumber", 22, -1, "QuestionNumber")
+        If I_Display_QuestionNumber = True Then cmd.Parameters("@QuestionNumber").Value = setNull(QuestionNumber)
+        If I_Display_ParentQuestion = True Then cmd.Parameters.Add("@ParentQuestion", 22, 255, "ParentQuestion")
+        If I_Display_ParentQuestion = True Then cmd.Parameters("@ParentQuestion").Value = setNull(ParentQuestion)
+        If I_Display_TestID = True Then cmd.Parameters.Add("@TestID", 22, 255, "TestID")
+        If I_Display_TestID = True Then cmd.Parameters("@TestID").Value = setNull(TestID)
 
         If I_Display_CaseStudy=true then cmd.Parameters.Add("@CaseStudy", 22, -1, "CaseStudy")
 if I_Display_CaseStudy=true then cmd.Parameters("@CaseStudy").Value = SetNull(CaseStudy)
@@ -286,6 +299,7 @@ cmd.CommandText = cmd.CommandText & "id,"
         If Display_QuestionType = True Then cmd.CommandText = cmd.CommandText & "QuestionType,"
         If Display_QuestionType = True Then cmd.CommandText = cmd.CommandText & "QuestionNumber,"
         If Display_QuestionType = True Then cmd.CommandText = cmd.CommandText & "ParentQuestion,"
+        If Display_QuestionType = True Then cmd.CommandText = cmd.CommandText & "TestID,"
         If Display_CaseStudy=true then cmd.CommandText = cmd.CommandText & "CaseStudy,"
 if Display_Image=true then cmd.CommandText = cmd.CommandText & "Image,"
 if Display_Option1=true then cmd.CommandText = cmd.CommandText & "Option1,"
@@ -312,6 +326,8 @@ if Display_Text=true then p.Text=checknull(dt.Rows(i)("Text"))
             p.I_Display_QuestionNumber = Display_QuestionNumber
             If Display_ParentQuestion = True Then p.ParentQuestion = checkNull(dt.Rows(i)("ParentQuestion"))
             p.I_Display_ParentQuestion = Display_ParentQuestion
+            If Display_TestID = True Then p.TestID = checkNull(dt.Rows(i)("TestID"))
+            p.TestID = Display_TestID
             If Display_CaseStudy = True Then p.CaseStudy = checkNull(dt.Rows(i)("CaseStudy"))
             p.I_Display_CaseStudy=Display_CaseStudy
 if Display_Image=true then p.Image=checknull(dt.Rows(i)("Image"))
