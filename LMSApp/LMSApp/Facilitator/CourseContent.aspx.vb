@@ -133,8 +133,11 @@ Public Class CourseContent1
 
 
         ' Create a new instance of Course_Content
+        Dim dbOp = New database_operations
+        Dim contentList As List(Of Content) = New Content().listallPKOnly()
+
         Dim newContent As New Content()
-        newContent.id = 4
+        'newContent.id = New database_operations().GetNewPrimaryKey(Of Content)(contentList)
         newContent.course_id = courseId
         newContent.title = title
         newContent.description = description

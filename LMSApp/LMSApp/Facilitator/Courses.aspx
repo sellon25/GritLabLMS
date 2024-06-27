@@ -12,9 +12,8 @@
                 <h3 class="box-title mb-0">Courses</h3>
             </div>
             <div style="overflow-y: scroll; "> 
-                <div class="row courses-container" style="width: 95%">
                     <div id="CoursesContainer" runat="server" class="col-md-3"></div>
-                </div>
+                
             </div>
         </div>
     </div>
