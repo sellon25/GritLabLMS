@@ -10,7 +10,6 @@ Public Class AnnouncementsPage
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not IsPostBack Then
-            ' Check if the courseId or projectId query string parameter exists
             If Request.QueryString("courseId") IsNot Nothing Then
                 courseId = Request.QueryString("courseId").ToString()
                 facilitatorId = Session("ID").ToString()
@@ -18,14 +17,38 @@ Public Class AnnouncementsPage
                 projectId = Request.QueryString("projectId").ToString()
                 facilitatorId = Session("ID").ToString()
             Else
-                ' Redirect to an appropriate page if the courseId or projectId parameter is missing
                 Response.Redirect("~/ErrorPage.aspx")
             End If
-            BindAnnouncements()
+            LoadAnnouncements()
         End If
     End Sub
 
-    Private Sub BindAnnouncements()
+    Protected Sub AddAnnouncement_Click(sender As Object, e As EventArgs)
+        Dim title As String = announcementTitle.Value
+        Dim type As Integer = Convert.ToInt32(announcementType)
+        Dim body As String = announcementBody.Value
+
+        Dim newAnnouncement As New Announcement()
+        With newAnnouncement
+            .id = Nothing
+            .title = title
+            .type = type
+            .text = body
+            .datetime = DateTime.Now
+            .sentby = facilitatorId
+        End With
+
+        If Not String.IsNullOrEmpty(courseId) Then
+            newAnnouncement.id = courseId
+        ElseIf Not String.IsNullOrEmpty(projectId) Then
+            newAnnouncement.id = projectId
+        End If
+
+        newAnnouncement.update()
+        LoadAnnouncements()
+    End Sub
+
+    Private Sub LoadAnnouncements()
         Dim filterStr As String = ""
         If Not String.IsNullOrEmpty(courseId) Then
             filterStr = $"WHERE id = '{courseId}' ORDER BY datetime DESC"
@@ -33,106 +56,46 @@ Public Class AnnouncementsPage
             filterStr = $"WHERE id = '{projectId}' ORDER BY datetime DESC"
         End If
 
-        ' Fetch announcements using Announcement class
         Dim announcements As List(Of Announcement) = Announcement.listall(filterStr, "")
+        CreatedAnnouncements.Controls.Clear()
 
-        ' Bind the announcements to the Repeater control
-        AnnouncementsRepeater.DataSource = announcements
-        AnnouncementsRepeater.DataBind()
+        For Each announcement In announcements
+            CreatedAnnouncements.Controls.Add(AddAnnouncementHtml(announcement))
+        Next
     End Sub
 
-    Protected Sub AddAnnouncement_Click(ByVal sender As Object, ByVal e As EventArgs)
-        ' Get values from the form
-        Dim title As String = announcementTitle.Value
-        Dim type As Integer = Convert.ToInt32(announcementType.Value)
-        Dim body As String = announcementBody.Value
+    Protected Function AddAnnouncementHtml(announcement As Announcement) As HtmlGenericControl
+        Dim newAnnouncementDiv As New HtmlGenericControl("div")
+        newAnnouncementDiv.Attributes("class") = "form-group mb-4"
 
-        ' Create a new Announcement object
-        Dim newAnnouncement As New Announcement()
-        newAnnouncement.id = Nothing ' Assuming this is auto-generated
-        newAnnouncement.title = title
-        newAnnouncement.type = type
-        newAnnouncement.text = body
-        newAnnouncement.datetime = DateTime.Now
-        newAnnouncement.sentby = facilitatorId
+        Dim btnDelete As New Button()
+        btnDelete.ID = String.Format("btnDelete_{0}", announcement.id)
+        btnDelete.Text = "Delete"
+        btnDelete.CssClass = "btn-0 border-0 text-danger bg-none float-end"
+        AddHandler btnDelete.Click, AddressOf DeleteAnnouncement
+        btnDelete.EnableViewState = True
 
-        ' Set specific fields based on whether it's a course or project announcement
-        If Not String.IsNullOrEmpty(courseId) Then
-            newAnnouncement.id = courseId
-        ElseIf Not String.IsNullOrEmpty(projectId) Then
-            newAnnouncement.id = projectId
-        End If
+        Dim lblTitle As New Label()
+        lblTitle.CssClass = "col-md-12 p-0"
+        lblTitle.Text = announcement.title
 
-        ' Save the announcement to the database
-        newAnnouncement.update()
+        Dim lblBody As New Label()
+        lblBody.CssClass = "col-md-12 p-0"
+        lblBody.Text = announcement.text
 
-        ' Rebind the announcements
-        BindAnnouncements()
-    End Sub
+        newAnnouncementDiv.Controls.Add(btnDelete)
+        newAnnouncementDiv.Controls.Add(lblTitle)
+        newAnnouncementDiv.Controls.Add(lblBody)
 
-    Protected Sub EditButton_Click(ByVal sender As Object, ByVal e As EventArgs)
-        Dim editButton As Button = DirectCast(sender, Button)
-        Dim announcementId As Integer = Convert.ToInt32(editButton.CommandArgument)
-
-        ' Store the announcement ID in a hidden field or session variable for later use
-        ViewState("EditAnnouncementId") = announcementId
-
-        ' Manually trigger the modal display using JavaScript
-        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "showModal", "openEditModal(" & announcementId & ");", True)
-    End Sub
-
-    Protected Sub SaveChangesButton_Click(ByVal sender As Object, ByVal e As EventArgs)
-        ' Get the edited announcement details from the input fields
-        Dim editedTitle As String = editAnnouncementTitle.Value
-        Dim editedType As Integer = Convert.ToInt32(editAnnouncementType.Value)
-        Dim editedBody As String = editAnnouncementBody.Value
-
-        ' Get the ID of the announcement being edited
-        Dim announcementId As Integer = Convert.ToInt32(ViewState("EditAnnouncementId"))
-
-        ' Load the existing announcement
-        Dim existingAnnouncement As Announcement = Announcement.load(announcementId)
-        existingAnnouncement.title = editedTitle
-        existingAnnouncement.type = editedType
-        existingAnnouncement.text = editedBody
-
-        ' Update the announcement in the database
-        existingAnnouncement.update()
-
-        ' Clear the ViewState variable storing the announcement ID
-        ViewState.Remove("EditAnnouncementId")
-
-        ' Rebind the announcements
-        BindAnnouncements()
-    End Sub
-
-    ' Method to get the icon based on announcement type
-    Public Function GetIcon(ByVal type As Object) As String
-        Dim icon As String = ""
-        Select Case Convert.ToInt32(type)
-            Case 0
-                icon = "<i class='far fa-file-alt' style='font-size: 26px;'></i>"
-            Case 1
-                icon = "<i class='far fa-question-circle' style='font-size: 26px;'></i>"
-            Case 2
-                icon = "<i class='far fa-bell' style='font-size: 26px;'></i>"
-        End Select
-        Return icon
+        Return newAnnouncementDiv
     End Function
 
-    ' JSON endpoint to fetch announcement content
-    <System.Web.Services.WebMethod()>
-    Public Shared Function GetAnnouncementContent(ByVal id As Integer) As String
-        Dim announcement As Announcement = Announcement.load(id)
-        If announcement IsNot Nothing Then
-            Dim serializer As New JavaScriptSerializer()
-            Return serializer.Serialize(New With {
-                .title = announcement.title,
-                .type = announcement.type,
-                .body = announcement.text
-            })
-        End If
-        Return "{}"
-    End Function
-
+    Protected Sub DeleteAnnouncement(sender As Object, e As EventArgs)
+        Dim btn As Button = DirectCast(sender, Button)
+        Dim announcementId = btn.ID.Replace("btnDelete_", "")
+        Dim announcement As New Announcement()
+        announcement = Announcement.load(announcementId)
+        announcement.delete()
+        LoadAnnouncements()
+    End Sub
 End Class

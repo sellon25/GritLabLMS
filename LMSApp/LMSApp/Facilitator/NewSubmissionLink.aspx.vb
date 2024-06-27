@@ -1,5 +1,6 @@
-﻿Public Class SubmissionLinks
+﻿Public Class NewSubmissionLink
     Inherits System.Web.UI.Page
+
 
     Dim courseId As String
 
@@ -7,4 +8,8 @@
         courseId = Request.QueryString("courseId")
     End Sub
 
+    Protected Sub AddNewSubmissionLink(ByVal sender As Object, ByVal e As EventArgs)
+        Console.Write("WW")
+
+    End Sub
 End Class

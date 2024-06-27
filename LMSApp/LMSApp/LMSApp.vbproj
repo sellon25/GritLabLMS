@@ -97,7 +97,8 @@
   <ItemGroup>
     <Content Include="Admin\addkingsmen.aspx" />
     <Content Include="Admin\AddProject.aspx" />
-    <Content Include="Admin\admincss\style.css" />
+    <Content Include="Admin\admin-assets\adminscripts.js" />
+    <Content Include="Admin\admin-assets\style.css" />
     <Content Include="Admin\Announcements.aspx" />
     <Content Include="Admin\AnnouncementsKingsmen.aspx" />
     <Content Include="Admin\Courses.aspx" />
@@ -134,18 +135,22 @@
     <Content Include="Admin\WebForm1.aspx" />
     <Content Include="Facilitator\AnnouncementsPage.aspx" />
     <Content Include="Facilitator\AssessmentStudentList.aspx" />
+    <Content Include="Facilitator\ContentPage.aspx" />
     <Content Include="Facilitator\CourseContent.aspx" />
     <Content Include="Facilitator\CoursePage.aspx" />
     <Content Include="Facilitator\CourseResults.aspx" />
+    <Content Include="Facilitator\Courses.aspx" />
     <Content Include="Facilitator\CoursesAndProjects.aspx" />
     <Content Include="Facilitator\Dashboard.aspx" />
     <Content Include="Facilitator\demo.aspx" />
     <Content Include="Facilitator\getAnnouncementContent.aspx" />
     <Content Include="Facilitator\MarkAssessment.aspx" />
     <Content Include="Facilitator\NewAssessment.aspx" />
+    <Content Include="Facilitator\NewSubmissionLink.aspx" />
     <Content Include="Facilitator\ProgressAndFeedback.aspx" />
     <Content Include="Facilitator\ProjectPage.aspx" />
     <Content Include="Facilitator\ProjectParticipants.aspx" />
+    <Content Include="Facilitator\Projects.aspx" />
     <Content Include="Facilitator\SubmissionLinks.aspx" />
     <Content Include="Facilitator\TestsAndAssignments.aspx" />
     <Content Include="js\mainscript.js" />
@@ -2713,6 +2718,13 @@
       <DependentUpon>AssessmentStudentList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Facilitator\ContentPage.aspx.designer.vb">
+      <DependentUpon>ContentPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Facilitator\ContentPage.aspx.vb">
+      <DependentUpon>ContentPage.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Facilitator\CourseContent.aspx.designer.vb">
       <DependentUpon>CourseContent.aspx</DependentUpon>
     </Compile>
@@ -2733,6 +2745,13 @@
     <Compile Include="Facilitator\CourseResults.aspx.vb">
       <DependentUpon>CourseResults.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Facilitator\Courses.aspx.designer.vb">
+      <DependentUpon>Courses.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Facilitator\Courses.aspx.vb">
+      <DependentUpon>Courses.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Facilitator\CoursesAndProjects.aspx.designer.vb">
       <DependentUpon>CoursesAndProjects.aspx</DependentUpon>
@@ -2776,6 +2795,13 @@
       <DependentUpon>NewAssessment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Facilitator\NewSubmissionLink.aspx.designer.vb">
+      <DependentUpon>NewSubmissionLink.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Facilitator\NewSubmissionLink.aspx.vb">
+      <DependentUpon>NewSubmissionLink.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Facilitator\ProgressAndFeedback.aspx.designer.vb">
       <DependentUpon>ProgressAndFeedback.aspx</DependentUpon>
     </Compile>
@@ -2796,6 +2822,13 @@
     <Compile Include="Facilitator\ProjectParticipants.aspx.vb">
       <DependentUpon>ProjectParticipants.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Facilitator\Projects.aspx.designer.vb">
+      <DependentUpon>Projects.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Facilitator\Projects.aspx.vb">
+      <DependentUpon>Projects.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Facilitator\SubmissionLinks.aspx.designer.vb">
       <DependentUpon>SubmissionLinks.aspx</DependentUpon>
@@ -2956,6 +2989,8 @@
     <Compile Include="Models\Project_Announcement.vb" />
     <Compile Include="Models\Project_Content.vb" />
     <Compile Include="Models\Project_Enrollment.vb" />
+    <Compile Include="Models\Project_Submission.vb" />
+    <Compile Include="Models\Question_Bank.vb" />
     <Compile Include="Models\StudentAnswer.vb" />
     <Compile Include="Models\StudentResults.vb" />
     <Compile Include="Models\TrackProjectProgress.vb" />
