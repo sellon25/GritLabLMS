@@ -6,6 +6,10 @@
 
         End If
     End Sub
+
+    Private Sub loadtest()
+
+    End Sub
     'Private Function CreateTestHtml(test As Tests) As HtmlAnchor
     '    Dim link As New HtmlAnchor()
     '    link.HRef = "Tests.aspx?courseid=" & test.ID
