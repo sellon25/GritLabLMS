@@ -12,4 +12,76 @@ Option Explicit On
 
 
 Partial Public Class NewAssessment
+
+    '''<summary>
+    '''btnCreateTest control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnCreateTest As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''answerA control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents answerA As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''answerB control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents answerB As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''answerC control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents answerC As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''answerD control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents answerD As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''correctAnswer control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents correctAnswer As Global.System.Web.UI.HtmlControls.HtmlSelect
+
+    '''<summary>
+    '''mark control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents mark As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''btnAddQuestion control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnAddQuestion As Global.System.Web.UI.WebControls.Button
 End Class

@@ -23,6 +23,8 @@
                     <label for="closeDateTime">Close Date and Time:</label>
                     <input type="datetime-local" class="form-control" id="closeDateTime" name="closeDateTime">
                 </div>
+
+                <asp:Button ID="btnCreateTest" runat="server" type="button" class="btn btn-primary" OnClick="btnCreateTest_Click" Text="Create Test" />
             </div>
             <div class="mt-4">
                 <h4>Add Questions</h4>
@@ -47,24 +49,27 @@
                 </div>
                 <div id="multipleChoiceAnswers" class="form-group">
                     <label for="answerA">Answer A:</label>
-                    <input type="text" class="form-control" id="answerA" name="answerA">
+                    <input type="text" class="form-control" id="answerA" name="answerA" runat="server">
                     <label for="answerB">Answer B:</label>
-                    <input type="text" class="form-control" id="answerB" name="answerB">
+                    <input type="text" class="form-control" id="answerB" name="answerB" runat="server">
                     <label for="answerC">Answer C:</label>
-                    <input type="text" class="form-control" id="answerC" name="answerC">
+                    <input type="text" class="form-control" id="answerC" name="answerC" runat="server">
                     <label for="answerD">Answer D:</label>
-                    <input type="text" class="form-control" id="answerD" name="answerD">
+                    <input type="text" class="form-control" id="answerD" name="answerD" runat="server">
                     <label for="correctAnswer">Correct Answer:</label>
-                    <select class="form-control" id="correctAnswer" name="correctAnswer">
+                    <select class="form-control" id="correctAnswer" name="correctAnswer" runat="server">
                         <option value="A">Answer A</option>
                         <option value="B">Answer B</option>
                         <option value="C">Answer C</option>
                         <option value="C">Answer D</option>
                     </select>
+                    <label for="mark">Mark:</label>
+                    <input type="text" class="form-control" id="mark" name="mark" runat="server">
                 </div>
-                <button type="button" class="btn btn-primary" onclick="addQuestion();">Add Another Question</button>
+                <asp:Button ID="btnAddQuestion" runat="server" type="button" class="btn btn-primary" OnClick="btnAddQuestion_Click" Text="Add Another Question" />
+                
             </div>
-            <button type="submit" class="btn btn-success mt-4">Submit Assessment</button>
+            <button  runat="server" type="submit" class="btn btn-success mt-4">Submit Assessment</button>
         </form>
     </div>
 </asp:Content>
