@@ -23,15 +23,6 @@ Partial Public Class AnnouncementPage
     Protected WithEvents announcementTitle As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''announcementLink control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents announcementLink As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
     '''announcementText control.
     '''</summary>
     '''<remarks>
