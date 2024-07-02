@@ -10,20 +10,23 @@ Public Class StudentsProgress
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not IsPostBack Then
-            BindStudentProgress()
+            Dim filter As String = Nothing
+            BindStudentProgress(filter)
         End If
     End Sub
 
-    Private Sub BindStudentProgress(Optional ByVal filter As String = Nothing, Optional ByVal sort As String = Nothing)
+    Private Sub BindStudentProgress(ByVal filter As String)
         Try
             ' Retrieve the list of students from the database using the ORM with optional filter and sort parameters
             Dim courseEnrollment As New Course_Enrollment()
             Dim students As List(Of Course_Enrollment)
 
-            If String.IsNullOrEmpty(filter) Then
-                students = courseEnrollment.listall(sortstr:=sort)
+            ' Example of handling filter by User ID (assuming no changes to listall function)
+            If Not String.IsNullOrEmpty(filter) Then
+                ' Ensure the filter is properly formatted for SQL query
+                students = courseEnrollment.listall(filterstr:="WHERE " & filter)
             Else
-                students = courseEnrollment.listall(filterstr:="userId LIKE '%" & filter & "%'", sortstr:=sort)
+                students = courseEnrollment.listall()
             End If
 
             ' Build the HTML for the students table
@@ -42,7 +45,8 @@ Public Class StudentsProgress
                     studentsHtml.Append("</tr>")
                 Next
             Else
-                studentsHtml.Append("<tr><td colspan='8' class='text-center'>No students found</td></tr>")
+                ' Display "User Not Found" message if no records are found
+                studentsHtml.Append("<tr><td colspan='10' class='text-center'>User Not Found.</td></tr>")
             End If
 
             ' Add the students HTML to the table body
@@ -51,29 +55,29 @@ Public Class StudentsProgress
             ' Log the error (you can use a logging library or write to a file for real-world applications)
             System.Diagnostics.Debug.WriteLine(ex.Message)
             ' Display the error message in the table
-            StudentsTableBody.InnerHtml = String.Format("<tr><td colspan='8' class='text-center'>An error occurred while retrieving data: {0}</td></tr>", ex.Message)
+            StudentsTableBody.InnerHtml = String.Format("<tr><td colspan='10' class='text-center'>An error occurred while retrieving data: {0}</td></tr>", ex.Message)
         End Try
+    End Sub
+
+    Protected Sub ApplyFilter_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Dim searchQuery As String = txtSearch.Value.Trim()
+
+        Dim filter As String = Nothing
+        If Not String.IsNullOrEmpty(searchQuery) Then
+            ' Construct the filter string to apply to the WHERE clause
+            filter = String.Format("userId LIKE '%{0}%'", searchQuery.Replace("'", "''"))
+        End If
+
+        ' Call BindStudentProgress with the constructed filter
+        BindStudentProgress(filter)
+    End Sub
+
+    Protected Sub ResetFilter_Click(ByVal sender As Object, ByVal e As EventArgs)
+        txtSearch.Value = String.Empty
+        Dim filter As String = Nothing
+        BindStudentProgress(filter)
     End Sub
 
     Protected StudentsTableBody As HtmlGenericControl
 
-    Protected Sub applyFilter()
-        Dim filter As String = txtSearch.Value ' Adjust filter logic as needed
-        Dim sort As String = ddlFilter.Items(ddlFilter.SelectedIndex).Value ' Adjust sort logic as needed
-        BindStudentProgress(filter, sort)
-    End Sub
-
-    Protected Sub resetFilter()
-        txtSearch.Value = ""
-        ddlFilter.SelectedIndex = 0
-        BindStudentProgress()
-    End Sub
-
-    Protected Sub Resert_Click(sender As Object, e As EventArgs)
-        resetFilter()
-    End Sub
-
-    Protected Sub ApplyFilter_Click(sender As Object, e As EventArgs)
-        applyFilter()
-    End Sub
 End Class

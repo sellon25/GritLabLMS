@@ -1,4 +1,6 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/LMSBoardManager.Master" CodeBehind="ApproveCourses.aspx.vb" Inherits="LMSApp.ApproveCourses" %>
+﻿
+
+<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/LMSBoardManager.Master" CodeBehind="ApproveCourses.aspx.vb" Inherits="LMSApp.ApproveCourses" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Type_pageTitle" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Change_Breadcrumb_PageTitle" runat="server">
@@ -7,7 +9,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
     <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="../Manager/ApproveProjectsCourses.aspx" Text="Back" CssClass="breadcrumb-link" Font-Bold="True"></asp:HyperLink>
 
-        <div class="row courses-container" id="CoursesContainer" runat="server">
+    <div class="row courses-container" id="CoursesContainer" runat="server">
         <!-- Courses will be dynamically populated here -->
     </div>
 
@@ -52,23 +54,28 @@
     </div>
 
     <div class="modal fade" id="courseDetailsModal" tabindex="-1" aria-labelledby="courseDetailsModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="courseDetailsModalLabel">Course Details</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <p>Course Name: <span id="courseName" runat="server"></span></p>
-                    <p>Course Code: <span id="courseCode" runat="server"></span></p>
-                    <p>Description: <span id="courseDescription" runat="server"></span></p>
+                <div class="modal-body" id="courseDetailsModalBody">
+                    <!-- Course details will be dynamically populated here -->
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        // JavaScript function to set the value of the search input
+        function setSearchInput(courseName) {
+            var searchInput = document.getElementById('<%= searchInput.ClientID %>');
+            searchInput.value = decodeURIComponent(courseName).replace(/\+/g, ' ');
+        }
+    </script>
 </asp:Content>
+

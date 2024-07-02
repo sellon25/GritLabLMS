@@ -38,7 +38,7 @@ Partial Public Class StudentsProgress
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents EmailBody As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents EmailBody As Global.System.Web.UI.HtmlControls.HtmlTextArea
 
     '''<summary>
     '''btnSendEmail control.
