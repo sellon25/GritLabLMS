@@ -5,14 +5,14 @@ Public Class database_operations
 
 
 
-    Public Function GetNewPrimaryKey(Of T)(ByVal listofPKs As List(Of T)) As Integer
+    Public Function GetNewPrimaryKey(Of T As {Class})(ByVal listofPKs As List(Of T)) As Integer
         ' Initialize the new primary key variable
         Dim newPrimaryKey As Integer = 1
 
         ' Check if the list is not empty
         If listofPKs IsNot Nothing AndAlso listofPKs.Count > 0 Then
             ' Find the maximum primary key value in the list
-            Dim maxPrimaryKey = listofPKs.Max(Function(x) Convert.ToInt32(x.GetType().GetProperty("id").GetValue(x)))
+            Dim maxPrimaryKey = listofPKs.Max(Function(x) CType(GetType(T).GetProperty("id").GetValue(x), Integer))
 
             ' Add 1 to the maximum value to get the new primary key
             newPrimaryKey = maxPrimaryKey + 1
@@ -20,6 +20,7 @@ Public Class database_operations
 
         ' Return the new primary key
         Return newPrimaryKey
+
     End Function
 
 

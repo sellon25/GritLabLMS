@@ -244,25 +244,27 @@ Return ps
 End Function
 
 
-Shared Function listallPKOnly(Optional ByVal filterstr As String = Nothing, Optional ByVal sortstr As String = Nothing) As System.Collections.Generic.List(Of Announcement)
-Dim ps As New Generic.List(Of Announcement)
-Dim cmd As New sqlCommand
-cmd.Connection = HttpContext.Current.Session("conn")
-If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = HttpContext.Current.Session("trans")
-cmd.CommandType = CommandType.Text
-cmd.CommandText = "select id from Announcement" & filterstr & " " & sortstr
-Dim pl As New sqlDataAdapter, dt As New DataTable, i As Integer
-pl.SelectCommand = cmd
-pl.Fill(dt)
-For i = 0 To dt.Rows.Count - 1
-Dim p As New Announcement
-p.id=checknull(dt.Rows(i)("id"))
-p.previous_id=checknull(dt.Rows(i)("id"))
-p.newinstance = False
-ps.add(p)
-Next
-Return ps
-End Function
+    Public Shared Function listallPKOnly(Optional ByVal filterstr As String = Nothing, Optional ByVal sortstr As String = Nothing) As List(Of Announcement)
+        Dim ps As New List(Of Announcement)
+        Dim cmd As New SqlCommand
+        cmd.Connection = HttpContext.Current.Session("conn")
+        If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = HttpContext.Current.Session("trans")
+        cmd.CommandType = CommandType.Text
+        cmd.CommandText = "SELECT id FROM Announcement " & filterstr & " " & sortstr
+        Dim pl As New SqlDataAdapter(cmd)
+        Dim dt As New DataTable
 
+        pl.Fill(dt)
+
+        For Each row As DataRow In dt.Rows
+            Dim p As New Announcement()
+            p.id = Convert.ToInt32(row("id"))
+            p.previous_id = p.id
+            p.newinstance = False
+            ps.Add(p)
+        Next
+
+        Return ps
+    End Function
 
 End Class
