@@ -21,13 +21,4 @@ Partial Public Class Tests
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents TestContainer As Global.System.Web.UI.HtmlControls.HtmlGenericControl
-
-    '''<summary>
-    '''CoursesContainer control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents CoursesContainer As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 End Class
