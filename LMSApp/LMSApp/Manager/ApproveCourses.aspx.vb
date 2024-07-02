@@ -15,6 +15,7 @@ Public Class ApproveCourses
     End Sub
 
     Private Sub BindCourses()
+
         Try
             ' Load approved courses (status = 1)
             Dim approvedCourses As List(Of Course) = Course.listall("WHERE status = 1")
@@ -30,6 +31,15 @@ Public Class ApproveCourses
                     courseHtml.AppendFormat("<a href='CoursePage.aspx?CourseName={0}'>", HttpUtility.UrlEncode(course.name))
                     courseHtml.Append("<div class='white-box boxShadow coursebox'>")
                     courseHtml.Append("<div class='description'>")
+
+                    ' Add thumbnail if available
+                    'If course.thumbnail IsNot Nothing AndAlso course.thumbnail.Length > 0 Then
+                    '    Dim imageUrl As String = GetContentImageUrl(course.thumbnail)
+                    '    courseHtml.AppendFormat("<img src='{0}' class='course-thumbnail' alt='Course Thumbnail'>", imageUrl)
+                    'Else
+                    '    courseHtml.AppendFormat("<img src='../plugins/images/default-course-thumbnail.jpg' class='course-thumbnail' alt='Default Thumbnail'>")
+                    'End If
+
                     courseHtml.AppendFormat("<label class='box-title'>{0}</label>", course.name)
                     courseHtml.AppendFormat("<p class='text-muted'>{0}</p>", course.id)
                     courseHtml.Append("</div>")
@@ -50,6 +60,15 @@ Public Class ApproveCourses
                     courseHtml.AppendFormat("<a href='#' onclick=""setSearchInput('{0}')"">", HttpUtility.UrlEncode(course.name))
                     courseHtml.Append("<div class='white-box boxShadow coursebox'>")
                     courseHtml.Append("<div class='description'>")
+
+                    ' Add thumbnail if available
+                    'If course.thumbnail IsNot Nothing AndAlso course.thumbnail.Length > 0 Then
+                    '    Dim imageUrl As String = GetContentImageUrl(course.thumbnail)
+                    '    courseHtml.AppendFormat("<img src='{0}' class='course-thumbnail' alt='Course Thumbnail'>", imageUrl)
+                    'Else
+                    '    courseHtml.AppendFormat("<img src='../plugins/images/default-course-thumbnail.jpg' class='course-thumbnail' alt='Default Thumbnail'>")
+                    'End If
+
                     courseHtml.AppendFormat("<label class='box-title'>{0}</label>", course.name)
                     courseHtml.AppendFormat("<p class='text-muted'>{0}</p>", course.id)
                     courseHtml.Append("</div>")
@@ -152,6 +171,14 @@ Public Class ApproveCourses
             Case Else
                 Throw New Exception("Invalid Action Selected.")
         End Select
+    End Function
+
+    Public Function GetContentImageUrl(thumbnail As Object) As String
+        If thumbnail IsNot Nothing AndAlso Not Convert.IsDBNull(thumbnail) Then
+            Dim bytes As Byte() = DirectCast(thumbnail, Byte())
+            Return "data:image/jpeg;base64," & Convert.ToBase64String(bytes)
+        End If
+        Return "../plugins/images/default-content.jpg" ' Default image URL for content
     End Function
 
 End Class

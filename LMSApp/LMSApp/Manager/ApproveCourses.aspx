@@ -1,6 +1,4 @@
-﻿
-
-<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/LMSBoardManager.Master" CodeBehind="ApproveCourses.aspx.vb" Inherits="LMSApp.ApproveCourses" %>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/LMSBoardManager.Master" CodeBehind="ApproveCourses.aspx.vb" Inherits="LMSApp.ApproveCourses" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Type_pageTitle" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Change_Breadcrumb_PageTitle" runat="server">
@@ -39,7 +37,7 @@
             </nav>
         </div>
     </div>
-
+    
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
@@ -77,5 +75,12 @@
             searchInput.value = decodeURIComponent(courseName).replace(/\+/g, ' ');
         }
     </script>
-</asp:Content>
 
+    <style>
+        .course-thumbnail {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+
+</asp:Content>
