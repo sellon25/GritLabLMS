@@ -6,7 +6,7 @@
     Course Content
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
-   <div class="row" id ="CourseContent" runat="server">
+   <div class="row" id ="Course_Content" runat="server">
        <!--<a class="d-md-flex white-box boxShadow" href="#">
             <div class="textboookarea">
                 <img src="~/plugins/images/chemtextbook.jpg" class="textbook">

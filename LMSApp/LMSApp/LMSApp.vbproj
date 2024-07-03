@@ -2445,7 +2445,15 @@
     <Content Include="Student\SubmitForm.aspx" />
     <Content Include="Student\TestContent.aspx" />
     <Content Include="Student\Tests.aspx" />
+    <Compile Include="Student\ViewContent.aspx.designer.vb">
+      <DependentUpon>ViewContent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\ViewContent.aspx.vb">
+      <DependentUpon>ViewContent.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Utility\database_operations.vb" />
+    <Content Include="Student\ViewContent.aspx" />
     <Content Include="Utility\forgot_password_message.txt" />
     <Content Include="Utility\welcome_message.txt" />
     <Content Include="Web.config" />

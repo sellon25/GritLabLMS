@@ -21,7 +21,7 @@ Public Class CourseContent
         Dim contents As List(Of Content) = GetContentForStudent()
 
         For Each content As Content In contents
-            CourseContent.Controls.Add(CreateContentHtml(content))
+            Course_Content.Controls.Add(CreateContentHtml(content))
         Next content
 
     End Sub
@@ -33,10 +33,8 @@ Public Class CourseContent
     End Function
     Private Function CreateContentHtml(content As Content) As HtmlAnchor
         Dim link As New HtmlAnchor()
-        If content.link = Nothing Then
-            content.link = "#"
-        End If
-        link.HRef = content.link.ToString()
+
+        link.HRef = "ViewContent.aspx?contentId=" & content.id
         link.Attributes("class") = "d-md-flex white-box boxShadow"
 
         Dim contentBox As New HtmlGenericControl("div")
