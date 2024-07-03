@@ -32,7 +32,7 @@
                             <label for="announcementBody">Text</label>
                             <textarea class="form-control" id="announcementText" runat="server" rows="3"></textarea>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group hide">
                             <label for="announcementSentBy">Sent By</label>
                             <input type="text" class="form-control" id="announcementSentBy" runat="server" placeholder="Enter sender">
                         </div>

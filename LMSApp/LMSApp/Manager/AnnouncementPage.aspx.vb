@@ -217,9 +217,9 @@ Public Class AnnouncementPage
             Dim type As Integer = GetTypeValue(typeStr) ' Map type string to integer
 
             Dim link As String = announcementLink.Value
-            If String.IsNullOrEmpty(link) Then
-                Throw New Exception("Announcement link is required.")
-            End If
+            'If String.IsNullOrEmpty(link) Then
+            '    Throw New Exception("Announcement link is required.")
+            'End If
 
             Dim text As String = announcementText.Value
             If String.IsNullOrEmpty(text) Then
@@ -282,6 +282,11 @@ Public Class AnnouncementPage
         Else
             ClientScript.RegisterStartupScript(Me.GetType(), "alert", $"alert('Failed to add announcement: {result}');", True)
         End If
+
+        announcementTitle.Value = ""
+        announcementLink.Value = ""
+        announcementText.Value = ""
+        announcementSentBy.Value = ""
     End Sub
 
     Public Function GetIcon(ByVal type As Object) As String
