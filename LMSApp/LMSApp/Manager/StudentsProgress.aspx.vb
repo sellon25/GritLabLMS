@@ -1,9 +1,5 @@
-﻿Imports System
-Imports System.Collections.Generic
-Imports System.Linq
-Imports System.Web
-Imports System.Web.UI
-Imports System.Web.UI.WebControls
+﻿Imports System.Net.Mail
+Imports System.Web.Services.Description
 
 Public Class StudentsProgress
     Inherits System.Web.UI.Page
@@ -76,6 +72,30 @@ Public Class StudentsProgress
         txtSearch.Value = String.Empty
         Dim filter As String = Nothing
         BindStudentProgress(filter)
+    End Sub
+
+    Protected Sub SendEmail_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Try
+            ' Get email details from the form inputs
+            Dim toEmail As String = SendToEmail.Value.Trim()
+            Dim subject As String = Subjects.Value.Trim()
+            Dim body As String = EmailBody.Value.Trim()
+
+            ' Create an instance of the SendEmail class
+            Dim emailSender As New SendEmail()
+
+            ' Send the email notification
+            emailSender.SendNotification(toEmail, subject, body)
+
+            ' Optionally, show a success message or handle any post-send actions
+            ' For example: lblStatus.Text = "Email sent successfully!"
+
+        Catch ex As Exception
+            ' Handle any errors that occur during the email sending process
+            ' For example: lblStatus.Text = "Error sending email: " & ex.Message
+            ' Log the error or display a message to the user
+            System.Diagnostics.Debug.WriteLine(ex.Message)
+        End Try
     End Sub
 
     Protected StudentsTableBody As HtmlGenericControl

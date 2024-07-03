@@ -124,7 +124,7 @@ Public Class AnnouncementPage
             'announcementType.SelectedValue = announcement.type.ToString() ' Assuming ddlType is a DropDownList
             ' Get selected type from form
             ' Map type string to integer
-            announcementLink.Value = announcementToEdit.link
+            'announcementLink.Value = announcementToEdit.link
             announcementText.Value = announcementToEdit.text
             announcementSentBy.Value = announcementToEdit.sentby
 
@@ -217,6 +217,7 @@ Public Class AnnouncementPage
             Dim type As Integer = GetTypeValue(typeStr) ' Map type string to integer
 
             Dim link As String = announcementLink.Value
+            'Dim link As String = announcementLink.Value
             'If String.IsNullOrEmpty(link) Then
             '    Throw New Exception("Announcement link is required.")
             'End If
@@ -236,12 +237,12 @@ Public Class AnnouncementPage
             Dim announcementId As Integer = If(Session("EditingAnnouncementID") IsNot Nothing, Convert.ToInt32(Session("EditingAnnouncementID")), 0)
 
 
-            announce.id = 10 ' Replace with your logic for generating a new ID
+            announce.id = 11 ' Replace with your logic for generating a new ID
 
             ' Set properties for the announcement
             announce.title = title
             announce.type = type ' Set the mapped type integer
-            announce.link = link
+            'announce.link = link
             announce.datetime = datetime
             announce.text = text
             announce.status = Status

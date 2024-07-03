@@ -12,14 +12,14 @@
     </div>
 
     <!-- Additional Features -->
-    <div class="row">
+<%--    <div class="row">
         <div class="col-md-12">
             <div class="form-group">
                 <label for="searchInput">Search Courses:</label>
                 <input type="text" id="searchInput" runat="server" class="form-control" placeholder="Enter keywords">
             </div>
         </div>
-    </div>
+    </div>--%>
 
     <div class="row">
         <div class="col-md-12">
@@ -38,7 +38,7 @@
         </div>
     </div>
     
-    <div class="row">
+<%--    <div class="row">
         <div class="col-md-12">
             <div class="form-group">
                 <label for="bulkActions">Action</label>
@@ -49,7 +49,7 @@
                 <asp:Button class="btn btn-primary" style="background-color:#93761E" onclick="AcceptReject_Click" ID="AcceptReject" runat="server" Text="Apply" />
             </div>
         </div>
-    </div>
+    </div>--%>
 
     <div class="modal fade" id="courseDetailsModal" tabindex="-1" aria-labelledby="courseDetailsModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -68,13 +68,13 @@
         </div>
     </div>
 
-    <script>
+<%--    <script>
         // JavaScript function to set the value of the search input
         function setSearchInput(courseName) {
             var searchInput = document.getElementById('<%= searchInput.ClientID %>');
             searchInput.value = decodeURIComponent(courseName).replace(/\+/g, ' ');
         }
-    </script>
+    </script>--%>
 
     <style>
         .course-thumbnail {

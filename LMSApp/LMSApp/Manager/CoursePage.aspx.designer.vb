@@ -31,5 +31,14 @@ Namespace Manager
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents lblCourseName As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+        '''<summary>
+        '''AcceptReject control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents AcceptReject As Global.System.Web.UI.WebControls.Button
     End Class
 End Namespace

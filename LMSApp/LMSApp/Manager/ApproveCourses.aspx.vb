@@ -57,7 +57,7 @@ Public Class ApproveCourses
                 For Each course As Course In notApprovedCourses
                     courseHtml.Append("<div class='col-md-3'>")
                     ' Add onclick event to set the search input value
-                    courseHtml.AppendFormat("<a href='#' onclick=""setSearchInput('{0}')"">", HttpUtility.UrlEncode(course.name))
+                    courseHtml.AppendFormat("<a href='CoursePage.aspx?CourseName={0}'>", HttpUtility.UrlEncode(course.name))
                     courseHtml.Append("<div class='white-box boxShadow coursebox'>")
                     courseHtml.Append("<div class='description'>")
 
@@ -107,60 +107,60 @@ Public Class ApproveCourses
 
     ' Accept/Reject button click handler
     Protected Sub AcceptReject_Click(sender As Object, e As EventArgs)
-        AcceptRejectCourses()
+        'AcceptRejectCourses()
         BindCourses()
     End Sub
 
     ' Accept/Reject action handler
-    Public Sub AcceptRejectCourses()
-        Try
-            If Session("LoggedIn") Is Nothing OrElse Not CType(Session("LoggedIn"), Boolean) Then
-                Throw New Exception("User Not Logged In.")
-            End If
+    'Public Sub AcceptRejectCourses()
+    '    Try
+    '        If Session("LoggedIn") Is Nothing OrElse Not CType(Session("LoggedIn"), Boolean) Then
+    '            Throw New Exception("User Not Logged In.")
+    '        End If
 
-            Dim CourseName As String = searchInput.Value.Trim()
+    '        Dim CourseName As String = searchInput.Value.Trim()
 
-            If String.IsNullOrEmpty(CourseName) Then
-                Throw New Exception("Course Name Is Required.")
-            End If
+    '        If String.IsNullOrEmpty(CourseName) Then
+    '            Throw New Exception("Course Name Is Required.")
+    '        End If
 
-            ' Find the course by name
-            Dim courses As List(Of Course) = Course.listall($"WHERE name = '{CourseName}'")
-            If courses.Count = 0 Then
-                Throw New Exception("Course Not Found.")
-            End If
+    '        ' Find the course by name
+    '        Dim courses As List(Of Course) = Course.listall($"WHERE name = '{CourseName}'")
+    '        If courses.Count = 0 Then
+    '            Throw New Exception("Course Not Found.")
+    '        End If
 
-            ' Take the first course found with the given name
-            Dim selectedCourse As Course = courses(0)
+    '        ' Take the first course found with the given name
+    '        Dim selectedCourse As Course = courses(0)
 
-            ' Determine the action (approve/reject)
-            Dim approverejectstr As String = Request.Form("bulkActions")
-            Dim approvereject As Integer = GetTypeValue(approverejectstr)
+    '        ' Determine the action (approve/reject)
+    '        Dim approverejectstr As String = Request.Form("bulkActions")
+    '        Dim approvereject As Integer = GetTypeValue(approverejectstr)
 
-            ' Update the status in memory
-            selectedCourse.status = approvereject
+    '        ' Update the status in memory
+    '        selectedCourse.status = approvereject
 
-            ' Log the current status for debugging
-            System.Diagnostics.Debug.WriteLine($"Current status of course '{selectedCourse.name}' before update: {selectedCourse.status}")
+    '        ' Log the current status for debugging
+    '        System.Diagnostics.Debug.WriteLine($"Current status of course '{selectedCourse.name}' before update: {selectedCourse.status}")
 
-            ' Update the course status in the database
-            selectedCourse.update()
+    '        ' Update the course status in the database
+    '        selectedCourse.update()
 
-            ' Log confirmation of status update
-            System.Diagnostics.Debug.WriteLine($"Status of course '{selectedCourse.name}' after update: {selectedCourse.status}")
+    '        ' Log confirmation of status update
+    '        System.Diagnostics.Debug.WriteLine($"Status of course '{selectedCourse.name}' after update: {selectedCourse.status}")
 
-            ' Optionally, provide a success message to the user
-            Response.Write("<script>alert('Course has been approved/rejected.');</script>")
+    '        ' Optionally, provide a success message to the user
+    '        Response.Write("<script>alert('Course has been approved/rejected.');</script>")
 
-            ' Refresh the course list after action
-            BindCourses()
+    '        ' Refresh the course list after action
+    '        BindCourses()
 
-        Catch ex As Exception
-            ' Handle exceptions (e.g., log them, display an error message)
-            System.Diagnostics.Debug.WriteLine($"Error accepting/rejecting course: {ex.Message}")
-            Response.Write($"<script>alert('Error: {ex.Message}');</script>")
-        End Try
-    End Sub
+    '    Catch ex As Exception
+    '        ' Handle exceptions (e.g., log them, display an error message)
+    '        System.Diagnostics.Debug.WriteLine($"Error accepting/rejecting course: {ex.Message}")
+    '        Response.Write($"<script>alert('Error: {ex.Message}');</script>")
+    '    End Try
+    'End Sub
 
     Private Function GetTypeValue(ByVal bulk As String) As Integer
         Select Case bulk

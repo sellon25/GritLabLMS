@@ -1,5 +1,4 @@
-﻿
-<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/LMSBoardManager.Master" CodeBehind="StudentsProgress.aspx.vb" Inherits="LMSApp.StudentsProgress" %>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/LMSBoardManager.Master" CodeBehind="StudentsProgress.aspx.vb" Inherits="LMSApp.StudentsProgress" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Type_pageTitle" runat="server">
     Gritters Progress
 </asp:Content>
@@ -18,18 +17,22 @@
             <div class="white-box">
                 <h3 class="box-title">Send Feedback</h3>
                 <div class="form-group">
-                    <label for="SendToEmail">Email</label>
-                    <input type="text" class="form-control" id="SendToEmail" runat="server" placeholder="Enter Email">
+                    <label for="SendEmailFrom">From</label>
+                    <input type="text" class="form-control" id="SendEmailFrom" runat="server" placeholder="Enter Email From">
                 </div>
                 <div class="form-group">
-                    <label for="Subject">Subject</label>
+                    <label for="SendToEmail">To</label>
+                    <input type="text" class="form-control" id="SendToEmail" runat="server" placeholder="Enter Email To">
+                </div>
+                <div class="form-group">
+                    <label for="Subjects">Subject</label>
                     <input type="text" class="form-control" id="Subjects" runat="server" placeholder="Enter Subject">
                 </div>
                 <div class="form-group">
                     <label for="EmailBody">Body</label>
                     <textarea class="form-control" id="EmailBody" runat="server" rows="3" placeholder="Type..."></textarea>
                 </div>
-                <asp:Button ID="btnSendEmail" runat="server" Text="SEND" CssClass="btn btn-primary"/>
+                <asp:Button ID="btnSendEmail" runat="server" Text="SEND" OnClick="SendEmail_Click" CssClass="btn btn-primary"/>
             </div>
         </div>
         <div class="col-md-8">
@@ -69,14 +72,12 @@
                                     <th class="border-top-0" style="font-weight: bold;">Date Started</th>
                                     <th class="border-top-0" style="font-weight: bold;">Enrollment Status</th>
                                     <th class="border-top-0" style="font-weight: bold;">End Date</th>
-                                    <th class="border-top-0" style="font-weight: bold;">Email</th>
+                                    <th class="border-top-0" style="font-weight: bold;">Send Email</th>
                                     <th class="border-top-0" style="font-weight: bold;">Track Progress</th>
-                                    <th class="border-top-0" style="font-weight: bold;">Total Average</th>
-                                    <th class="border-top-0" style="font-weight: bold;">Total Attendance</th>
                                 </tr>
                             </thead>
-                            <tbody id="StudentsTableBody" runat="server">
-                                <!-- Rows will be dynamically populated here -->
+                            <tbody runat="server" id="StudentsTableBody">
+                                <!-- Student rows will be populated here -->
                             </tbody>
                         </table>
                     </div>
@@ -85,6 +86,3 @@
         </div>
     </div>
 </asp:Content>
-
-
-

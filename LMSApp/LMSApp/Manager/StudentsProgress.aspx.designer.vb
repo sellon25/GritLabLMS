@@ -14,6 +14,15 @@ Option Explicit On
 Partial Public Class StudentsProgress
 
     '''<summary>
+    '''SendEmailFrom control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents SendEmailFrom As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
     '''SendToEmail control.
     '''</summary>
     '''<remarks>
