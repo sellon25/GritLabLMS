@@ -143,6 +143,7 @@
     <Content Include="Facilitator\CoursesAndProjects.aspx" />
     <Content Include="Facilitator\Dashboard.aspx" />
     <Content Include="Facilitator\demo.aspx" />
+    <Content Include="Facilitator\EditAssessment.aspx" />
     <Content Include="Facilitator\getAnnouncementContent.aspx" />
     <Content Include="Facilitator\MarkAssessment.aspx" />
     <Content Include="Facilitator\NewAssessment.aspx" />
@@ -2270,6 +2271,13 @@
     <Content Include="Manager\ProjectsPage.aspx" />
     <Content Include="Manager\SQWID.aspx" />
     <Content Include="Manager\StudentsProgress.aspx" />
+    <Compile Include="Facilitator\EditAssessment.aspx.designer.vb">
+      <DependentUpon>EditAssessment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Facilitator\EditAssessment.aspx.vb">
+      <DependentUpon>EditAssessment.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Models\Course_Submission.vb" />
     <Compile Include="Models\Question_Bank.vb" />
     <Compile Include="Models\Submission.vb" />

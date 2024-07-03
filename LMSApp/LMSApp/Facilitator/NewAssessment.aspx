@@ -10,18 +10,20 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
     <div class="container mt-4">
         <form method="post" action="SubmitNewAssessment.aspx" id="newAssessmentForm">
+            <asp:HiddenField ID="hfTestId" runat="server" />
+            <asp:HiddenField ID="hfTestCreated" runat="server" Value="false" />
             <div class="form-group">
                 <label for="assessmentName">Assessment Name:</label>
-                <input type="text" class="form-control" id="assessmentName" name="assessmentName" placeholder="Enter assessment name">
+                <input type="text" class="form-control" id="assessmentName" name="assessmentName" placeholder="Enter assessment name" value="<%= Request.Form("assessmentName") %>">
             </div>
             <div class="form-row">
                 <div class="col">
                     <label for="openDateTime">Open Date and Time:</label>
-                    <input type="datetime-local" class="form-control" id="openDateTime" name="openDateTime">
+                    <input type="datetime-local" class="form-control" id="openDateTime" name="openDateTime" value="<%= Request.Form("openDateTime") %>">
                 </div>
                 <div class="col">
                     <label for="closeDateTime">Close Date and Time:</label>
-                    <input type="datetime-local" class="form-control" id="closeDateTime" name="closeDateTime">
+                    <input type="datetime-local" class="form-control" id="closeDateTime" name="closeDateTime" value="<%= Request.Form("closeDateTime") %>">
                 </div>
 
                 <asp:Button ID="btnCreateTest" runat="server" type="button" class="btn btn-primary" OnClick="btnCreateTest_Click" Text="Create Test" />
@@ -30,7 +32,7 @@
                 <h4>Add Questions</h4>
                 <div class="form-group">
                     <label for="questionText">Question Text:</label>
-                    <input type="text" class="form-control" id="questionText" name="questionText" placeholder="Enter question text">
+                    <input runat="server" type="text" class="form-control" id="questionText" name="questionText" placeholder="Enter question text">
                 </div>
                 <div class="form-group">
                     <label>Question Type:</label>
@@ -71,5 +73,18 @@
             </div>
             <button  runat="server" type="submit" class="btn btn-success mt-4">Submit Assessment</button>
         </form>
+        
     </div>
+
+    <script type="text/javascript">
+            function createOrUpdateTest() {
+                __doPostBack('<%= btnCreateTest.ClientID %>', '');
+            }
+
+            function addQuestion() {
+                __doPostBack('<%= btnAddQuestion.ClientID %>', '');
+            }
+    </script>
+    <asp:Button ID="Button1" runat="server" Text="Hidden Button" style="display:none;" OnClick="btnCreateTest_Click" />
+    <asp:Button ID="Button2" runat="server" Text="Hidden Button" style="display:none;" OnClick="btnAddQuestion_Click" />
 </asp:Content>

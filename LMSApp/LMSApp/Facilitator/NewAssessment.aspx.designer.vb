@@ -14,6 +14,24 @@ Option Explicit On
 Partial Public Class NewAssessment
 
     '''<summary>
+    '''hfTestId control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents hfTestId As Global.System.Web.UI.WebControls.HiddenField
+
+    '''<summary>
+    '''hfTestCreated control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents hfTestCreated As Global.System.Web.UI.WebControls.HiddenField
+
+    '''<summary>
     '''btnCreateTest control.
     '''</summary>
     '''<remarks>
@@ -21,6 +39,15 @@ Partial Public Class NewAssessment
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnCreateTest As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''questionText control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents questionText As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''answerA control.
@@ -84,4 +111,22 @@ Partial Public Class NewAssessment
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnAddQuestion As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Button1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Button1 As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Button2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Button2 As Global.System.Web.UI.WebControls.Button
 End Class

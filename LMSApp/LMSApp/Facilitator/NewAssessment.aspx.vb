@@ -5,9 +5,24 @@ Public Class NewAssessment
     Inherits System.Web.UI.Page
 
     'variables
-    Private testId As Integer = 1
-    Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
+    Private testId As Integer
+    Private testCreated As Boolean = False
 
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
+        If Not IsPostBack Then
+            hfTestCreated.Value = "false"
+        Else
+
+            ' Handle potential issues with converting the test ID and test created status
+            If Not String.IsNullOrEmpty(hfTestId.Value) AndAlso IsNumeric(hfTestId.Value) Then
+                testId = Convert.ToInt32(hfTestId.Value)
+            End If
+
+            If Not String.IsNullOrEmpty(hfTestCreated.Value) Then
+                testCreated = Convert.ToBoolean(hfTestCreated.Value)
+            End If
+
+        End If
     End Sub
 
     Protected Sub SubmitAssessment(ByVal sender As Object, ByVal e As EventArgs)
@@ -27,16 +42,29 @@ Public Class NewAssessment
         Dim closeDateTime As DateTime = DateTime.Parse(Request.Form("closeDateTime"))
         Dim courseId As Integer = Integer.Parse(Request.QueryString("courseId"))
 
-        ' Create and insert new Test
-        Dim newTest As New Test()
-        newTest.id = 1
-        testId = newTest.id
-        newTest.course_id = courseId
-        newTest.title = assessmentName
-        newTest.date_started = openDateTime
-        newTest.end_date = closeDateTime
-        newTest.update()
-        testId = newTest.id
+        If hfTestCreated.Value = "true" Then
+            ' update Test
+            Dim updateTest = Test.load(testId)
+            updateTest.course_id = courseId
+            updateTest.title = assessmentName
+            updateTest.date_started = openDateTime
+            updateTest.end_date = closeDateTime
+            updateTest.update()
+        Else
+            ' Create and insert new Test
+            Dim newTest As New Test()
+            newTest.id = 1
+            newTest.course_id = courseId
+            newTest.title = assessmentName
+            newTest.date_started = openDateTime
+            newTest.end_date = closeDateTime
+            newTest.update()
+            testId = newTest.id
+            hfTestId.Value = testId.ToString()
+            hfTestCreated.Value = "true"
+            testCreated = True
+        End If
+        MsgBox("Test Created: Proceed Add Questions")
     End Sub
 
     Protected Sub btnAddQuestion_Click(sender As Object, e As EventArgs)
@@ -45,14 +73,14 @@ Public Class NewAssessment
     Protected Sub AddQuestion()
 
         ' Get question values from form
-        Dim questionText As String = Request.Form("questionText")
+
         Dim questionType As String = Request.Form("questionType")
         ' Create and insert new Question_Bank: Using Category id as type indicator
         Dim newQuestion As New Question_Bank()
         newQuestion.id = 0
         newQuestion.TestID = testId
-        newQuestion.Text = questionText
-        newQuestion.Category_ID = questionType
+        newQuestion.Text = questionText.Value
+        newQuestion.QuestionType = questionType
         newQuestion.Option1 = answerA.Value
         newQuestion.Option2 = answerB.Value
         newQuestion.Option3 = answerC.Value
@@ -76,12 +104,12 @@ Public Class NewAssessment
     End Sub
 
     Private Sub ClearQuestionForm()
-        ' Logic to clear the question form fields
-        'questionText.Text = ""
-        ' answerA.Text = ""
-        ' answerB.Text = ""
-        ' answerC.Text = ""
-        '  answerD.Text = ""
+        questionText.Value = ""
+        answerA.Value = ""
+        answerB.Value = ""
+        answerC.Value = ""
+        answerD.Value = ""
+        mark.Value = ""
         correctAnswer.SelectedIndex = 0
     End Sub
 
@@ -89,7 +117,7 @@ Public Class NewAssessment
         ' Add question without creating a new test
         AddQuestion()
         ' Update the UI for new question
-        Response.Redirect(Request.Url.AbsoluteUri)
+        'Response.Redirect(Request.Url.AbsoluteUri)
     End Sub
 
 
