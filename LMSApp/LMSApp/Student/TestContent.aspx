@@ -21,7 +21,7 @@
                         </div>
                     </div>--%>
                     
-                    <div class="form-group mb-4">
+                    <%--<div class="form-group mb-4">
                         <label class="col-md-12 p-0">Which functional group does CHOOH belong to?</label>
                         <div class="col-md-12 border-bottom p-0">
                             <input type="radio" id="Alkanes" name="fav_language" value="Alkanes">
@@ -31,7 +31,7 @@
                             <input type="radio" id="Alcohols" name="fav_language" value="Alcohols">
                             <label for="Alcohols">Alcohols</label>                                            
                         </div>
-                    </div>
+                    </div>--%>
                     <%--
                     <div class="form-group mb-4">
                         <label class="col-md-12 p-0">Define the term 'lipids'</label>
