@@ -6,7 +6,11 @@
     Manage Announcements
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
+<<<<<<< Updated upstream
     <h3>Module Announcements</h3>
+=======
+    <h3>Course Announcements</h3>
+>>>>>>> Stashed changes
 <div class="row">
     <!-- Add Announcement Section -->
     <div class="col-md-4">
@@ -33,7 +37,11 @@
                         <label for="announcementBody">Text</label>
                         <textarea class="form-control" id="announcementText" runat="server" rows="3"></textarea>
                     </div>
+<<<<<<< Updated upstream
                     <div class="form-group">
+=======
+                    <div class="form-group hide">
+>>>>>>> Stashed changes
                         <label for="announcementSentBy">Sent By</label>
                         <input type="text" class="form-control" id="announcementSentBy" runat="server" placeholder="Enter sender">
                     </div>

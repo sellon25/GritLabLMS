@@ -56,6 +56,7 @@ Public Class AnnouncementsPage
             If announcements IsNot Nothing AndAlso announcements.Count > 0 Then
                 ' Sort announcements by datetime in descending order
                 announcements = announcements.OrderByDescending(Function(a) a.datetime).ToList()
+<<<<<<< Updated upstream
 
                 AnnouncementsContainer.Controls.Clear()
 
@@ -180,6 +181,133 @@ Public Class AnnouncementsPage
 
     End Sub
 
+=======
+
+                AnnouncementsContainer.Controls.Clear()
+
+                For Each announcement As Announcement In announcements
+                    Dim newAnnouncementDiv As New HtmlGenericControl("div")
+                    newAnnouncementDiv.ID = $"div{announcement.id}" ' Set unique ID for each announcement div
+                    newAnnouncementDiv.Attributes("class") = "d-flex flex-row comment-row p-3 mt-0"
+
+                    Dim iconDiv As New HtmlGenericControl("div")
+                    iconDiv.Attributes("class") = "p-2"
+                    iconDiv.InnerHtml = $"<i class='fa {GetIcon(announcement.type)}' style='font-size: 26px;'></i>"
+                    newAnnouncementDiv.Controls.Add(iconDiv)
+
+                    Dim textDiv As New HtmlGenericControl("div")
+                    textDiv.Attributes("class") = "comment-text ps-2 ps-md-3 w-100"
+                    textDiv.InnerHtml = $"<h5 class='font-medium'>{Server.HtmlEncode(announcement.title)}</h5>" &
+                                        $"<span class='mb-3 d-block'>{Server.HtmlEncode(announcement.text)}</span>" &
+                                        $"<div class='text-muted fs-2 ms-auto mt-2 mt-md-0'>{announcement.datetime:MMMM dd, yyyy h:mm tt}</div>"
+                    newAnnouncementDiv.Controls.Add(textDiv)
+
+                    Dim dropdownDiv As New HtmlGenericControl("div")
+                    dropdownDiv.Attributes("class") = "dropdown ml-auto"
+
+                    Dim buttonDropdown As New HtmlGenericControl("button")
+                    buttonDropdown.Attributes("class") = "btn"
+                    buttonDropdown.Attributes("type") = "button"
+                    buttonDropdown.Attributes("id") = $"dropdownMenuButton{announcement.id}"
+                    buttonDropdown.Attributes("data-toggle") = "dropdown"
+                    buttonDropdown.Attributes("aria-haspopup") = "true"
+                    buttonDropdown.Attributes("aria-expanded") = "false"
+                    buttonDropdown.InnerHtml = "<span class='fas fa-ellipsis-v'></span>"
+                    dropdownDiv.Controls.Add(buttonDropdown)
+
+                    Dim menuDiv As New HtmlGenericControl("div")
+                    menuDiv.Attributes("class") = "dropdown-menu"
+                    menuDiv.Attributes("aria-labelledby") = $"dropdownMenuButton{announcement.id}"
+
+                    ' Create the delete button
+                    Dim btnDelete As New Button()
+                    btnDelete.ID = String.Format("DeleteAnnouncement_{0}", announcement.id)
+                    btnDelete.Text = "Delete"
+                    btnDelete.CssClass = "dropdown-item"
+                    btnDelete.Attributes("data-announcement-id") = announcement.id.ToString()
+                    AddHandler btnDelete.Click, AddressOf DeleteAnnouncement
+                    menuDiv.Controls.Add(btnDelete)
+
+                    ' Create the view button
+                    Dim btnView As New HtmlGenericControl("button")
+                    btnView.Attributes("class") = "dropdown-item"
+                    btnView.Attributes("type") = "button"
+                    btnView.Attributes("onclick") = $"ViewAnnouncement({announcement.id})"
+                    btnView.InnerHtml = "View"
+                    menuDiv.Controls.Add(btnView)
+
+
+                    ' Create the delete button
+                    Dim btnEdit As New Button()
+                    btnEdit.ID = String.Format("EditAnnouncement_{0}", announcement.id)
+                    btnEdit.Text = "Edit"
+                    btnEdit.CssClass = "dropdown-item"
+                    btnEdit.Attributes("data-announcement-id") = announcement.id.ToString()
+                    AddHandler btnEdit.Click, AddressOf EditAnnouncement
+                    menuDiv.Controls.Add(btnEdit)
+
+                    dropdownDiv.Controls.Add(menuDiv)
+                    newAnnouncementDiv.Controls.Add(dropdownDiv)
+
+                    AnnouncementsContainer.Controls.Add(newAnnouncementDiv)
+                Next
+            Else
+                Dim noAnnouncementsDiv As New HtmlGenericControl("p")
+                noAnnouncementsDiv.InnerHtml = "No announcements available."
+                AnnouncementsContainer.Controls.Add(noAnnouncementsDiv)
+            End If
+        Catch ex As Exception
+            ' Log the exception or display a generic error message
+            Dim errorDiv As New HtmlGenericControl("p")
+            errorDiv.InnerHtml = "Error loading announcements."
+            AnnouncementsContainer.Controls.Add(errorDiv)
+        End Try
+    End Sub
+
+    Protected Sub EditAnnouncement(sender As Object, e As EventArgs)
+        ' Retrieve the announcement ID from the button's CommandArgument
+        Dim btn As Button = DirectCast(sender, Button)
+        Dim announcementId As Integer = Convert.ToInt32(btn.ID.Replace("EditAnnouncement_", ""))
+
+        Try
+
+            Dim announcementToEdit As New Announcement()
+            announcementToEdit = Announcement.load(announcementId)
+
+            Dim divToDelete As HtmlGenericControl = FindAnnouncementDiv(announcementId)
+            If divToDelete IsNot Nothing Then
+                AnnouncementsContainer.Controls.Remove(divToDelete)
+            End If
+
+            ' Retrieve the announcement details based on the ID (Example: Load announcement data into form fields)
+            ' Example: Populate form fields for editing (assuming you have TextBox controls with IDs)
+            announcementTitle.Value = announcementToEdit.title
+            'announcementType.SelectedValue = announcement.type.ToString() ' Assuming ddlType is a DropDownList
+            ' Get selected type from form
+            ' Map type string to integer
+            'announcementLink.Value = announcementToEdit.link
+            announcementText.Value = announcementToEdit.text
+            announcementSentBy.Value = announcementToEdit.sentby
+
+            ' Store the ID of the announcement being edited (you may store it in a hidden field or session)
+            Session("EditingAnnouncementID") = announcementId
+
+            announcementToEdit.delete()
+
+
+            ' Optionally, you can show a hidden edit panel or switch to an edit view
+            ' Example: Make edit panel visible
+            ' Handle case where announcement is not found
+
+        Catch ex As Exception
+
+            ClientScript.RegisterStartupScript(Me.GetType(), "alert", "alert('Announcement not found.');", True)
+
+        End Try
+
+    End Sub
+
+>>>>>>> Stashed changes
 
     Protected Sub DeleteAnnouncement(sender As Object, e As EventArgs)
         Dim btn As Button = DirectCast(sender, Button)
@@ -251,9 +379,16 @@ Public Class AnnouncementsPage
             Dim type As Integer = GetTypeValue(typeStr) ' Map type string to integer
 
             Dim link As String = announcementLink.Value
+<<<<<<< Updated upstream
             If String.IsNullOrEmpty(link) Then
                 Throw New Exception("Announcement link is required.")
             End If
+=======
+            'Dim link As String = announcementLink.Value
+            'If String.IsNullOrEmpty(link) Then
+            '    Throw New Exception("Announcement link is required.")
+            'End If
+>>>>>>> Stashed changes
 
             Dim text As String = announcementText.Value
             If String.IsNullOrEmpty(text) Then
@@ -270,12 +405,20 @@ Public Class AnnouncementsPage
             Dim announcementId As Integer = If(Session("EditingAnnouncementID") IsNot Nothing, Convert.ToInt32(Session("EditingAnnouncementID")), 0)
 
 
+<<<<<<< Updated upstream
             announce.id = 9 ' Replace with your logic for generating a new ID
+=======
+            announce.id = 11 ' Replace with your logic for generating a new ID
+>>>>>>> Stashed changes
 
             ' Set properties for the announcement
             announce.title = title
             announce.type = type ' Set the mapped type integer
+<<<<<<< Updated upstream
             announce.link = link
+=======
+            'announce.link = link
+>>>>>>> Stashed changes
             announce.datetime = datetime
             announce.text = text
             announce.status = Status
@@ -316,6 +459,14 @@ Public Class AnnouncementsPage
         Else
             ClientScript.RegisterStartupScript(Me.GetType(), "alert", $"alert('Failed to add announcement: {result}');", True)
         End If
+<<<<<<< Updated upstream
+=======
+
+        announcementTitle.Value = ""
+        announcementLink.Value = ""
+        announcementText.Value = ""
+        announcementSentBy.Value = ""
+>>>>>>> Stashed changes
     End Sub
 
     Public Function GetIcon(ByVal type As Object) As String
@@ -339,4 +490,43 @@ Public Class AnnouncementsPage
         Next
         Return Nothing
     End Function
+<<<<<<< Updated upstream
+=======
+
+    'Protected Function AddAnnouncementHtml(announcement As Announcement) As HtmlGenericControl
+    '    Dim newAnnouncementDiv As New HtmlGenericControl("div")
+    '    newAnnouncementDiv.Attributes("class") = "form-group mb-4"
+
+    '    Dim btnDelete As New Button()
+    '    btnDelete.ID = String.Format("btnDelete_{0}", announcement.id)
+    '    btnDelete.Text = "Delete"
+    '    btnDelete.CssClass = "btn-0 border-0 text-danger bg-none float-end"
+    '    AddHandler btnDelete.Click, AddressOf DeleteAnnouncement
+    '    btnDelete.EnableViewState = True
+
+    '    Dim lblTitle As New Label()
+    '    lblTitle.CssClass = "col-md-12 p-0"
+    '    lblTitle.Text = announcement.title
+
+    '    Dim lblBody As New Label()
+    '    lblBody.CssClass = "col-md-12 p-0"
+    '    lblBody.Text = announcement.text
+
+    '    newAnnouncementDiv.Controls.Add(btnDelete)
+    '    newAnnouncementDiv.Controls.Add(lblTitle)
+    '    newAnnouncementDiv.Controls.Add(lblBody)
+
+    '    Return newAnnouncementDiv
+    'End Function
+
+    'Protected Sub DeleteAnnouncement(sender As Object, e As EventArgs)
+    '    Dim btn As Button = DirectCast(sender, Button)
+    '    Dim announcementId = btn.ID.Replace("btnDelete_", "")
+    '    Dim announcement As New Announcement()
+    '    announcement = Announcement.load(announcementId)
+    '    announcement.delete()
+    '    LoadAnnouncements()
+    'End Sub
+
+>>>>>>> Stashed changes
 End Class
