@@ -31,7 +31,7 @@
                         </div>
                         <div class="form-group">
                             <label for="newContentDocument">Upload Document:</label>
-                            <asp:FileUpload ID="newContentDocument" runat="server" CssClass="form-control-file" Accept=".pdf,.doc,.docx" />
+                            <asp:FileUpload ID="newContentDocument" runat="server" CssClass="form-control-file" Accept=".pdf,.doc,.docx,.mp4,.avi,.mov,.wmv" />
                         </div>
                         <asp:Button ID="btnAddContent" runat="server" Text="Add Content" CssClass="btn btn-primary mt-2" OnClick="btnAddContent_Click" />
 

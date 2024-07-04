@@ -123,6 +123,7 @@ Public Class CourseContent1
 
         Dim thumbnail As Byte() = Nothing
         Dim fileData As Byte() = Nothing
+
         If newContentThumbnail.HasFile Then
             thumbnail = newContentThumbnail.FileBytes
         End If
