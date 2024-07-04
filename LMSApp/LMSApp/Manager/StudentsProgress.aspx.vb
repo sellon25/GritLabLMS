@@ -1,5 +1,6 @@
 ﻿Imports System.Net.Mail
 Imports System.Web.Services.Description
+Imports Microsoft.VisualBasic.ApplicationServices
 
 Public Class StudentsProgress
     Inherits System.Web.UI.Page
@@ -81,20 +82,29 @@ Public Class StudentsProgress
             Dim subject As String = Subjects.Value.Trim()
             Dim body As String = EmailBody.Value.Trim()
 
+            ' Fetch user details by userId
+            Dim user As User = New User().load(toEmail)
+
+            If user IsNot Nothing Then
+                ' Customize the email body with the user's details
+                body = String.Format("Hello {0} {1}, {2}", user.FName, user.LName, body)
+            Else
+                ' Handle the case where the user is not found
+                System.Diagnostics.Debug.WriteLine("User not found.")
+                Exit Sub
+            End If
+
             ' Create an instance of the SendEmail class
             Dim emailSender As New SendEmail()
 
-            ' Send the email notification
+            ' Send the email notification using the userId
             emailSender.SendNotification(toEmail, subject, body)
 
             ' Optionally, show a success message or handle any post-send actions
-            ' For example: lblStatus.Text = "Email sent successfully!"
-
+            System.Diagnostics.Debug.WriteLine("Email sent successfully!")
         Catch ex As Exception
             ' Handle any errors that occur during the email sending process
-            ' For example: lblStatus.Text = "Error sending email: " & ex.Message
-            ' Log the error or display a message to the user
-            System.Diagnostics.Debug.WriteLine(ex.Message)
+            System.Diagnostics.Debug.WriteLine("Error sending email: " & ex.Message)
         End Try
     End Sub
 

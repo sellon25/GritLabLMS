@@ -9,7 +9,7 @@
     <script>
         function resetFilter() {
             document.getElementById('txtSearch').value = '';
-            document.getElementById('<%= btnApplyFilter.ClientID %>').click();
+<%--            document.getElementById('<%= btnApplyFilter.ClientID %>').click();--%>
         }
     </script>
     <div class="row">
