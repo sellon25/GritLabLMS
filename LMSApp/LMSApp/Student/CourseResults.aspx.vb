@@ -50,7 +50,7 @@
             Dim row As New HtmlGenericControl("tr")
             row.Controls.Add(CreateCell("td", result.test_id)) 'use test id to get the name of the test
             row.Controls.Add(CreateCell("td", result.score.ToString()))
-            row.Controls.Add(CreateCell("td", "100")) ' (Placeholder for total mark) use test id to get the tottal mark for the test
+            'row.Controls.Add(CreateCell("td", "100")) ' (Placeholder for total mark) use test id to get the tottal mark for the test
             row.Controls.Add(CreateCell("td", "82")) ' Placeholder for average use test ud to get the average for the test 
             row.Controls.Add(CreateCell("td", result.mark_date.ToString()))
             tbody.Controls.Add(row)
