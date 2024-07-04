@@ -22,6 +22,8 @@ Public Class AnnouncementsPage
             End If
             BindAnnouncements()
         End If
+
+        BindAnnouncements()
     End Sub
 
     Private Sub BindAnnouncements()
