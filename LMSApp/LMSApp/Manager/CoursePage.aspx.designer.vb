@@ -33,6 +33,15 @@ Namespace Manager
         Protected WithEvents lblCourseName As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
         '''<summary>
+        '''AssignmentsContainer control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents AssignmentsContainer As Global.System.Web.UI.WebControls.PlaceHolder
+
+        '''<summary>
         '''AcceptReject control.
         '''</summary>
         '''<remarks>
