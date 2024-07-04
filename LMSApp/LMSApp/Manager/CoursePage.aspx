@@ -30,7 +30,7 @@
                 <h3 class="box-title" style="font-weight: bold;">Course Resources</h3>
                 <ul style="list-style-type: none; padding-left: 0;">
                     <li><a href="Tests.aspx">Course Learning Guide</a></li>
-                    <li><a href="CourseContent.aspx">Course Content</a></li>
+                    <li><a href="Content.aspx">Course Content</a></li>
                     <li><a href="CourseFacilitators.aspx">Course Facilitators</a></li>
                     <!-- Add more relevant links to resources -->
                 </ul>

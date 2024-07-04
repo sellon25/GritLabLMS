@@ -158,6 +158,7 @@
     <Content Include="Manager\ApproveCourses.aspx" />
     <Content Include="Manager\ApproveProjects.aspx" />
     <Content Include="Manager\ApproveProjectsCourses.aspx" />
+    <Content Include="Manager\Content.aspx" />
     <Content Include="Manager\CourseFacilitators.aspx" />
     <Content Include="Manager\CoursePage.aspx" />
     <Content Include="Manager\Dashboard.aspx" />
@@ -171,6 +172,7 @@
     <Content Include="Manager\Manager Files\Bootstrap\js\bootstrap.min.js" />
     <Content Include="Manager\Manager Files\Bootstrap\js\jquery-3.3.1.slim.min.js" />
     <Content Include="Manager\Manager Files\Bootstrap\js\popper.min.js" />
+    <Content Include="Manager\Manager Files\Content.aspx" />
     <Content Include="Manager\Manager Files\cs\all.min.css" />
     <Content Include="Manager\Manager Files\cs\style12.css" />
     <Content Include="Manager\Manager Files\dataTables\css\dataTables.dataTables.css" />
@@ -2270,6 +2272,20 @@
     <Content Include="Manager\ProjectsPage.aspx" />
     <Content Include="Manager\SQWID.aspx" />
     <Content Include="Manager\StudentsProgress.aspx" />
+    <Compile Include="Manager\Content.aspx.designer.vb">
+      <DependentUpon>Content.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\Content.aspx.vb">
+      <DependentUpon>Content.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Manager\Manager Files\Content.aspx.designer.vb">
+      <DependentUpon>Content.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\Manager Files\Content.aspx.vb">
+      <DependentUpon>Content.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Models\Course_Submission.vb" />
     <Compile Include="Models\Question_Bank.vb" />
     <Compile Include="Models\Submission.vb" />
