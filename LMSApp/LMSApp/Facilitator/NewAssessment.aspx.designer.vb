@@ -41,6 +41,15 @@ Partial Public Class NewAssessment
     Protected WithEvents btnCreateTest As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
+    '''questionNumber control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents questionNumber As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
     '''questionText control.
     '''</summary>
     '''<remarks>
@@ -48,6 +57,15 @@ Partial Public Class NewAssessment
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents questionText As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''newQuestionImage control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents newQuestionImage As Global.System.Web.UI.WebControls.FileUpload
 
     '''<summary>
     '''answerA control.

@@ -65,7 +65,7 @@
         ElseIf DateTime.Now <= test.end_date Then
             status.Attributes("style") = "color: green;"
             status.InnerText = "Open"
-            container.Attributes("href") = "EditAssessment.aspx?testId=" & test.id
+            container.Attributes("href") = "AssessmentStudentList.aspx?testId=" & test.id
         Else
             status.Attributes("style") = "color: red;"
             status.InnerText = "Closed"

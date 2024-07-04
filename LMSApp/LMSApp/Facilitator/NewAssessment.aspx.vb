@@ -7,6 +7,7 @@ Public Class NewAssessment
     'variables
     Private testId As Integer
     Private testCreated As Boolean = False
+    Private tempId As Integer = 3
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
         If Not IsPostBack Then
@@ -53,7 +54,7 @@ Public Class NewAssessment
         Else
             ' Create and insert new Test
             Dim newTest As New Test()
-            newTest.id = 1
+            newTest.id = tempId
             newTest.course_id = courseId
             newTest.title = assessmentName
             newTest.date_started = openDateTime
@@ -77,7 +78,7 @@ Public Class NewAssessment
         Dim questionType As String = Request.Form("questionType")
         ' Create and insert new Question_Bank: Using Category id as type indicator
         Dim newQuestion As New Question_Bank()
-        newQuestion.id = 0
+        newQuestion.id = tempId
         newQuestion.TestID = testId
         newQuestion.Text = questionText.Value
         newQuestion.QuestionType = questionType
@@ -87,13 +88,21 @@ Public Class NewAssessment
         newQuestion.Option4 = answerD.Value
         newQuestion.Mark = CDbl(mark.Value)
 
+        Dim questionImage As Byte() = Nothing
+        If newQuestionImage.HasFile Then
+            questionImage = newQuestionImage.FileBytes
+        End If
+
+        newQuestion.QuestionNumber = questionNumber.Value
+        newQuestion.Image = questionImage
+
         newQuestion.update()
         Dim questionId As Integer = newQuestion.id
 
         ' If multiple choice, add answers
         If questionType = "multipleChoice" Then
             Dim answer As New Answer()
-            answer.id = 0
+            answer.id = tempId
             answer.Answer = correctAnswer.Value
             answer.question_id = newQuestion.id
             answer.update()
@@ -109,6 +118,7 @@ Public Class NewAssessment
         answerB.Value = ""
         answerC.Value = ""
         answerD.Value = ""
+        questionNumber.Value = ""
         mark.Value = ""
         correctAnswer.SelectedIndex = 0
     End Sub

@@ -21,4 +21,13 @@ Partial Public Class Dashboard
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents projectsAssigned As Global.System.Web.UI.WebControls.Literal
+
+    '''<summary>
+    '''coursesAssigned control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents coursesAssigned As Global.System.Web.UI.WebControls.Literal
 End Class

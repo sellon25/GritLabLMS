@@ -120,7 +120,7 @@ Public Class CourseContent1
         Dim title As String = newContentTitle.Text.Trim()
         Dim description As String = newContentDescription.Text.Trim()
 
-        ' Example: Handle file upload for thumbnail
+
         Dim thumbnail As Byte() = Nothing
         Dim fileData As Byte() = Nothing
         If newContentThumbnail.HasFile Then

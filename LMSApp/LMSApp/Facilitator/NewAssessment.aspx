@@ -31,8 +31,16 @@
             <div class="mt-4">
                 <h4>Add Questions</h4>
                 <div class="form-group">
+                    <label for="questionNumber">Question Number:</label>
+                    <input runat="server" type="text" class="form-control" id="questionNumber" name="questionNumber" placeholder="Enter number">
+                </div>
+                <div class="form-group">
                     <label for="questionText">Question Text:</label>
                     <input runat="server" type="text" class="form-control" id="questionText" name="questionText" placeholder="Enter question text">
+                </div>
+                <div class="form-group">
+                    <label for="newQuestionImage">Question Image:</label>
+                    <asp:FileUpload ID="newQuestionImage" runat="server" CssClass="form-control-file" />
                 </div>
                 <div class="form-group">
                     <label>Question Type:</label>
