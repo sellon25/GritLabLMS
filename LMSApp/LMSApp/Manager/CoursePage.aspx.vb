@@ -13,7 +13,7 @@ Namespace Manager
             If Not IsPostBack Then
                 ' Check if CourseName and CourseId are provided in query string
                 Dim courseName As String = Request.QueryString("CourseName")
-                Dim courseId As String = Request.QueryString("CourseId")
+                Dim courseId As String = Request.QueryString("CourseID")
 
                 If Not String.IsNullOrEmpty(courseName) Then
                     lblCourseName.InnerText = courseName
@@ -24,6 +24,7 @@ Namespace Manager
                 If Not String.IsNullOrEmpty(courseId) Then
                     ' Bind dynamic content based on the course ID
                     BindTestsAndAssignments(courseId)
+                    LoadCourseOverview(courseId)
                 Else
                     ' Handle case where CourseId is not provided
                     ' Optionally, display a message or take another action
@@ -34,10 +35,10 @@ Namespace Manager
         Protected Sub AcceptReject_Click(ByVal sender As Object, ByVal e As EventArgs)
             ' Handle course approval/rejection logic here
             Try
-                Dim CourseName As String = lblCourseName.InnerText ' or use the course ID if available
-                Dim courseId As String = Request.QueryString("CourseId")
+                Dim courseName As String = lblCourseName.InnerText ' or use the course ID if available
+                Dim courseId As String = Request.QueryString("CourseID")
 
-                If String.IsNullOrEmpty(CourseName) OrElse String.IsNullOrEmpty(courseId) Then
+                If String.IsNullOrEmpty(courseName) OrElse String.IsNullOrEmpty(courseId) Then
                     Throw New Exception("Course Name and Course ID are Required.")
                 End If
 
@@ -79,6 +80,7 @@ Namespace Manager
             Response.Redirect("ApproveCourses.aspx")
         End Sub
 
+
         Private Sub BindTestsAndAssignments(ByVal courseId As String)
             Try
                 ' Assuming Test is a class and listall is a method that returns a List(Of Test)
@@ -100,8 +102,8 @@ Namespace Manager
                         Dim textDiv As New HtmlGenericControl("div")
                         textDiv.Attributes("class") = "comment-text ps-2 ps-md-3 w-100 text-black"
                         textDiv.InnerHtml = $"<h5 class='font-medium'>{Server.HtmlEncode(assignment.title)}</h5>" &
-                                            $"<span class='mb-3 d-block'>{Server.HtmlEncode(assignment.date_started)}</span>" &
-                                            $"<div class='text-muted fs-2 ms-auto mt-2 mt-md-0'><span>Due:</span> {assignment.end_date:MMMM dd, yyyy}</div>"
+                                    $"<span class='mb-3 d-block'>{Server.HtmlEncode(assignment.date_started)}</span>" &
+                                    $"<div class='text-muted fs-2 ms-auto mt-2 mt-md-0'><span>Due:</span> {assignment.end_date:MMMM dd, yyyy}</div>"
                         newAssignmentDiv.Controls.Add(textDiv)
 
                         AssignmentsContainer.Controls.Add(newAssignmentDiv)
@@ -118,6 +120,39 @@ Namespace Manager
                 AssignmentsContainer.Controls.Add(errorDiv)
             End Try
         End Sub
+
+
+        Private Sub LoadCourseOverview(ByVal courseId As String)
+            ' Method to load course overview dynamically
+            Try
+                ' Retrieve course details from the database
+                Dim selectedCourse As Course = Course.load(courseId)
+
+                If selectedCourse IsNot Nothing Then
+                    ' Generate HTML for course overview dynamically
+                    Dim courseOverviewHtml As New System.Text.StringBuilder()
+
+                    courseOverviewHtml.AppendLine("<h3 class='box-title' style='font-weight: bold;'>Course Overview</h3>")
+                    courseOverviewHtml.AppendLine("<p><strong>Description: </strong>" & Server.HtmlEncode(selectedCourse.description) & "</p>")
+                    courseOverviewHtml.AppendLine("<p><strong>Overview: </strong>" & Server.HtmlEncode(selectedCourse.overview) & "</p>")
+                    courseOverviewHtml.AppendLine("<p><strong>End Date: </strong>" & Server.HtmlEncode(selectedCourse.end_date) & "</p>")
+
+                    ' Add the generated HTML to the container
+                    CourseOverviewContainer.Controls.Clear()
+                    CourseOverviewContainer.Controls.Add(New LiteralControl(courseOverviewHtml.ToString()))
+
+                Else
+                    ' Handle case where course details are not found
+                    CourseOverviewContainer.Controls.Clear()
+                    CourseOverviewContainer.Controls.Add(New LiteralControl("<p>Course details not available.</p>"))
+                End If
+            Catch ex As Exception
+                ' Handle exceptions
+                CourseOverviewContainer.Controls.Clear()
+                CourseOverviewContainer.Controls.Add(New LiteralControl("<p>Error loading course overview.</p>"))
+            End Try
+        End Sub
+
 
         Private Function GetTypeValue(ByVal bulk As String) As Integer
             Select Case bulk

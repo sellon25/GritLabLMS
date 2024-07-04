@@ -115,7 +115,7 @@ Public Class AnnouncementPage
 
             Dim divToDelete As HtmlGenericControl = FindAnnouncementDiv(announcementId)
             If divToDelete IsNot Nothing Then
-                AnnouncementsContainer.Controls.Remove(divToDelete)
+                'AnnouncementsContainer.Controls.Remove(divToDelete)
             End If
 
             ' Retrieve the announcement details based on the ID (Example: Load announcement data into form fields)
@@ -124,7 +124,7 @@ Public Class AnnouncementPage
             'announcementType.SelectedValue = announcement.type.ToString() ' Assuming ddlType is a DropDownList
             ' Get selected type from form
             ' Map type string to integer
-            'announcementLink.Value = announcementToEdit.link
+            announcementLink.Value = announcementToEdit.link
             announcementText.Value = announcementToEdit.text
             announcementSentBy.Value = announcementToEdit.sentby
 
@@ -242,7 +242,7 @@ Public Class AnnouncementPage
             ' Set properties for the announcement
             announce.title = title
             announce.type = type ' Set the mapped type integer
-            'announce.link = link
+            announce.link = link
             announce.datetime = datetime
             announce.text = text
             announce.status = Status

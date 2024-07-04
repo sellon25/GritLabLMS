@@ -29,6 +29,7 @@ Public Class ApproveCourses
                 For Each course As Course In approvedCourses
                     courseHtml.Append("<div class='col-md-3'>")
                     courseHtml.AppendFormat("<a href='CoursePage.aspx?CourseName={0}'>", HttpUtility.UrlEncode(course.name))
+                    courseHtml.AppendFormat("<a href='CoursePage.aspx?CourseID={0}'>", HttpUtility.UrlEncode(course.id))
                     courseHtml.Append("<div class='white-box boxShadow coursebox'>")
                     courseHtml.Append("<div class='description'>")
 
@@ -41,7 +42,8 @@ Public Class ApproveCourses
                     'End If
 
                     courseHtml.AppendFormat("<label class='box-title'>{0}</label>", course.name)
-                    courseHtml.AppendFormat("<p class='text-muted'>{0}</p>", course.id)
+                    courseHtml.AppendFormat("<label class='box-title'>{0}</label>", "")
+
                     courseHtml.Append("</div>")
                     courseHtml.Append("</div>")
                     courseHtml.Append("</a>")
@@ -58,6 +60,7 @@ Public Class ApproveCourses
                     courseHtml.Append("<div class='col-md-3'>")
                     ' Add onclick event to set the search input value
                     courseHtml.AppendFormat("<a href='CoursePage.aspx?CourseName={0}'>", HttpUtility.UrlEncode(course.name))
+                    courseHtml.AppendFormat("<a href='CoursePage.aspx?CourseID={0}'>", HttpUtility.UrlEncode(course.id))
                     courseHtml.Append("<div class='white-box boxShadow coursebox'>")
                     courseHtml.Append("<div class='description'>")
 
@@ -70,7 +73,7 @@ Public Class ApproveCourses
                     'End If
 
                     courseHtml.AppendFormat("<label class='box-title'>{0}</label>", course.name)
-                    courseHtml.AppendFormat("<p class='text-muted'>{0}</p>", course.id)
+                    courseHtml.AppendFormat("<p class='text-muted'>{0}</p>", "")
                     courseHtml.Append("</div>")
                     courseHtml.Append("</div>")
                     courseHtml.Append("</a>")

@@ -17,10 +17,7 @@
         <!-- Course Overview Section -->
         <div class="col-md-6">
             <div class="white-box boxShadow">
-                <h3 class="box-title" style="font-weight: bold;">Course Overview</h3>
-                <p><strong>Description: </strong> A brief description of the course.</p>
-                <p><strong>Duration: </strong> Duration of the course.</p>
-                <p><strong>Prerequisites: </strong> Prerequisites required for the course.</p>
+                <asp:PlaceHolder ID="CourseOverviewContainer" runat="server"></asp:PlaceHolder>
             </div>
         </div>
 
@@ -54,7 +51,7 @@
                         <option value="Approve">Approve</option>
                         <option value="Reject">Reject</option>
                     </select>
-                    <asp:Button class="btn btn-primary" style="background-color:#93761E" onclick="AcceptReject_Click" ID="AcceptReject" runat="server" Text="Apply" />
+                    <asp:Button class="btn btn-primary" style="background-color:#93761E" OnClick="AcceptReject_Click" ID="AcceptReject" runat="server" Text="Apply" />
                 </div>
             </div>
         </div>
