@@ -7,7 +7,7 @@ Public Class NewAssessment
     'variables
     Private testId As Integer
     Private testCreated As Boolean = False
-    Private tempId As Integer = 5
+    Private tempId As Integer = 6
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
         If Not IsPostBack Then
