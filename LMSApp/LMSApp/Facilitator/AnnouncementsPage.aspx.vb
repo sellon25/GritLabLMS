@@ -8,6 +8,7 @@ Public Class AnnouncementsPage
     Private courseId As String
     Private projectId As String
     Private facilitatorId As String
+    Private tempId As Integer = 1
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not IsPostBack Then
@@ -28,9 +29,18 @@ Public Class AnnouncementsPage
 
     Private Sub BindAnnouncements()
         Try
-            Dim announcements As List(Of Announcement) = New Announcement().listall("", "order by datetime desc ")
+            Dim filter As String = "WHERE course_id = '" & Request.QueryString("courseId") & "'"
+            Dim courseAnnouncements As List(Of Course_Announcement) = New Course_Announcement().listall(filter)
 
-            If announcements IsNot Nothing AndAlso announcements.Count > 0 Then
+            If courseAnnouncements IsNot Nothing AndAlso courseAnnouncements.Count > 0 Then
+                Dim announcements As List(Of Announcement) = New List(Of Announcement)
+                'get announcement from announcement table
+                For Each a As Course_Announcement In courseAnnouncements
+                    Dim ann As Announcement = Announcement.load(a.announcement_id)
+                    announcements.Add(ann)
+                Next
+
+
                 ' Sort announcements by datetime in descending order
                 announcements = announcements.OrderByDescending(Function(a) a.datetime).ToList()
 
@@ -104,7 +114,7 @@ Public Class AnnouncementsPage
                 Next
             Else
                 Dim noAnnouncementsDiv As New HtmlGenericControl("p")
-                noAnnouncementsDiv.InnerHtml = "No announcements available."
+                noAnnouncementsDiv.InnerHtml = "No announcements yet."
                 AnnouncementsContainer.Controls.Add(noAnnouncementsDiv)
             End If
         Catch ex As Exception
@@ -127,11 +137,10 @@ Public Class AnnouncementsPage
 
             Dim divToDelete As HtmlGenericControl = FindAnnouncementDiv(announcementId)
             If divToDelete IsNot Nothing Then
-                AnnouncementsContainer.Controls.Remove(divToDelete)
+                'AnnouncementsContainer.Controls.Remove(divToDelete)
             End If
 
-            ' Retrieve the announcement details based on the ID (Example: Load announcement data into form fields)
-            ' Example: Populate form fields for editing (assuming you have TextBox controls with IDs)
+            ' Retrieve the announcement details based on the ID 
             announcementTitle.Value = announcementToEdit.title
             'announcementType.SelectedValue = announcement.type.ToString() ' Assuming ddlType is a DropDownList
             ' Get selected type from form
@@ -143,12 +152,8 @@ Public Class AnnouncementsPage
             ' Store the ID of the announcement being edited (you may store it in a hidden field or session)
             Session("EditingAnnouncementID") = announcementId
 
-            announcementToEdit.delete()
+            'announcementToEdit.delete()
 
-
-            ' Optionally, you can show a hidden edit panel or switch to an edit view
-            ' Example: Make edit panel visible
-            ' Handle case where announcement is not found
 
         Catch ex As Exception
 
@@ -167,6 +172,13 @@ Public Class AnnouncementsPage
             ' Perform deletion logic here
             Dim announcementToDelete As New Announcement()
             announcementToDelete = Announcement.load(announcementId)
+
+            Dim filter As String = "WHERE announcement_id = '" & announcementId & "'"
+            Dim courseAnnouncement As List(Of Course_Announcement) = New Course_Announcement().listall(filter)
+
+            For Each c As Course_Announcement In courseAnnouncement
+                c.delete()
+            Next
             announcementToDelete.delete()
 
             ' Inform the user
@@ -187,7 +199,7 @@ Public Class AnnouncementsPage
     End Sub
 
     Public Shared Function GetNextAnnouncementId() As Integer
-        Dim nextId As Integer = 1 ' Default starting ID
+        Dim nextId As Integer = 1
 
         Try
             ' Retrieve all existing IDs
@@ -243,24 +255,44 @@ Public Class AnnouncementsPage
 
             ' Create an instance of Announcement
             Dim announce As New Announcement()
-
+            Dim courseAnnounce As New Course_Announcement()
 
             ' Determine if it's an insert or update
-            Dim announcementId As Integer = If(Session("EditingAnnouncementID") IsNot Nothing, Convert.ToInt32(Session("EditingAnnouncementID")), 0)
+            If Session("EditingAnnouncementID") IsNot Nothing Then
+                Dim announcementId As Integer = Convert.ToInt32(Session("EditingAnnouncementID"))
 
+                'announce.id = announcementId 
+                announce = Announcement.load(announcementId)
+                ' Set properties for the announcement
+                announce.title = title
+                announce.type = type
+                'announce.link = link
+                announce.datetime = datetime
+                announce.text = text
+                announce.status = Status
+                announce.sentby = sentBy
 
-            announce.id = 11 ' Replace with your logic for generating a new ID
+                announce.update()
+            Else
+                announce.id = tempId ' Replace with your logic for generating a new ID
 
-            ' Set properties for the announcement
-            announce.title = title
-            announce.type = type ' Set the mapped type integer
-            'announce.link = link
-            announce.datetime = datetime
-            announce.text = text
-            announce.status = Status
-            announce.sentby = sentBy
+                ' Set properties for the announcement
+                announce.title = title
+                announce.type = type ' Set the mapped type integer
+                'announce.link = link
+                announce.datetime = datetime
+                announce.text = text
+                announce.status = Status
+                announce.sentby = sentBy
 
-            announce.update()
+                announce.update()
+
+                courseAnnounce.id = tempId
+                courseAnnounce.announcement_id = announce.id
+                courseAnnounce.course_id = Request.QueryString("courseId")
+
+                courseAnnounce.update()
+            End If
 
             ' Clear session variable once done with editing or insertion
             Session.Remove("EditingAnnouncementID")
