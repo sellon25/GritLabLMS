@@ -2731,7 +2731,7 @@
     </Compile>
     <Compile Include="Facilitator\ContentPage.aspx.vb">
       <DependentUpon>ContentPage.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Facilitator\CourseContent.aspx.designer.vb">
       <DependentUpon>CourseContent.aspx</DependentUpon>
