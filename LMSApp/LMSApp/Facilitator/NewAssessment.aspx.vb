@@ -7,7 +7,7 @@ Public Class NewAssessment
     'variables
     Private testId As Integer
     Private testCreated As Boolean = False
-    Private tempId As Integer = 3
+    Private tempId As Integer = 5
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
         If Not IsPostBack Then
@@ -97,7 +97,6 @@ Public Class NewAssessment
         newQuestion.Image = questionImage
 
         newQuestion.update()
-        Dim questionId As Integer = newQuestion.id
 
         ' If multiple choice, add answers
         If questionType = "multipleChoice" Then
