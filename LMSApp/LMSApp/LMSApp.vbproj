@@ -158,7 +158,7 @@
     <Content Include="Manager\ApproveCourses.aspx" />
     <Content Include="Manager\ApproveProjects.aspx" />
     <Content Include="Manager\ApproveProjectsCourses.aspx" />
-    <Content Include="Manager\Content.aspx" />
+    <Content Include="Manager\ContentPage.aspx" />
     <Content Include="Manager\CourseFacilitators.aspx" />
     <Content Include="Manager\CoursePage.aspx" />
     <Content Include="Manager\Dashboard.aspx" />
@@ -172,8 +172,6 @@
     <Content Include="Manager\Manager Files\Bootstrap\js\bootstrap.min.js" />
     <Content Include="Manager\Manager Files\Bootstrap\js\jquery-3.3.1.slim.min.js" />
     <Content Include="Manager\Manager Files\Bootstrap\js\popper.min.js" />
-    <Content Include="Manager\Manager Files\cs\all.min.css" />
-    <Content Include="Manager\Manager Files\cs\style12.css" />
     <Content Include="Manager\Manager Files\dataTables\css\dataTables.dataTables.css" />
     <Content Include="Manager\Manager Files\dataTables\css\jquery.dataTables.min.css" />
     <Content Include="Manager\Manager Files\dataTables\js\jquery-3.7.1.js" />
@@ -2271,11 +2269,11 @@
     <Content Include="Manager\ProjectsPage.aspx" />
     <Content Include="Manager\SQWID.aspx" />
     <Content Include="Manager\StudentsProgress.aspx" />
-    <Compile Include="Manager\Content.aspx.designer.vb">
-      <DependentUpon>Content.aspx</DependentUpon>
+    <Compile Include="Manager\ContentPage.aspx.designer.vb">
+      <DependentUpon>ContentPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Manager\Content.aspx.vb">
-      <DependentUpon>Content.aspx</DependentUpon>
+    <Compile Include="Manager\ContentPage.aspx.vb">
+      <DependentUpon>ContentPage.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Models\Course_Submission.vb" />
@@ -3480,7 +3478,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Manager\Manager Files\cs\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -204,7 +204,7 @@
                         <li class="sidebar-item pt-2">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="Kingsman.aspx"
                                 aria-expanded="false">
-                                <i style="text-align: left;" class="fas fa-crown" aria-hidden="true"></i>
+                                <i style="text-align: left;" class="fas fa-crown"></i>
                                 &nbsp &nbsp &nbsp
                                 <span style="text-align: left;" class="">Kingsman</span>
                             </a>
@@ -213,7 +213,7 @@
                         <li class="sidebar-item pt-2">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Manager/AnnouncementPage.aspx"
                                 aria-expanded="false">
-                                <i style="text-align: left;" class="fas fa-paper-plane" aria-hidden="true"></i>
+                                <i style="text-align: left;" class="fas fa-paper-plane"></i>
                                 &nbsp &nbsp &nbsp
                                 <span style="text-align: left;" class="">Send Announcements</span>
                             </a>

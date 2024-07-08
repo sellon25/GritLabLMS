@@ -42,6 +42,15 @@ Namespace Manager
         Protected WithEvents CourseOverviewContainer As Global.System.Web.UI.WebControls.PlaceHolder
 
         '''<summary>
+        '''CourseResourcesContainer control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents CourseResourcesContainer As Global.System.Web.UI.WebControls.PlaceHolder
+
+        '''<summary>
         '''AssignmentsContainer control.
         '''</summary>
         '''<remarks>

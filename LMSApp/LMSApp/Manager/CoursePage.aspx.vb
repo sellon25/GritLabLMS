@@ -11,68 +11,37 @@ Namespace Manager
 
         Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
             If Not IsPostBack Then
-                ' Check if CourseName and CourseId are provided in query string
-                Dim courseName As String = Request.QueryString("CourseName")
                 Dim courseId As String = Request.QueryString("CourseID")
+                Dim course As Course = Course.load(courseId)
 
-                If Not String.IsNullOrEmpty(courseName) Then
-                    lblCourseName.InnerText = courseName
-                Else
-                    lblCourseName.InnerText = "Course Details"
-                End If
-
-                If Not String.IsNullOrEmpty(courseId) Then
-                    ' Bind dynamic content based on the course ID
+                If course IsNot Nothing Then
+                    lblCourseName.InnerText = course.name
                     BindTestsAndAssignments(courseId)
                     LoadCourseOverview(courseId)
+                    LoadCourseResources(courseId)
                 Else
-                    ' Handle case where CourseId is not provided
-                    ' Optionally, display a message or take another action
+                    lblCourseName.InnerText = "Course Details"
                 End If
             End If
         End Sub
 
         Protected Sub AcceptReject_Click(ByVal sender As Object, ByVal e As EventArgs)
-            ' Handle course approval/rejection logic here
             Try
-                Dim courseName As String = lblCourseName.InnerText ' or use the course ID if available
                 Dim courseId As String = Request.QueryString("CourseID")
+                Dim course As Course = Course.load(courseId)
 
-                If String.IsNullOrEmpty(courseName) OrElse String.IsNullOrEmpty(courseId) Then
-                    Throw New Exception("Course Name and Course ID are Required.")
-                End If
-
-                ' Find the course by ID
-                Dim courses As List(Of Course) = Course.listall($"WHERE id = '{courseId}'")
-
-                If courses.Count = 0 Then
+                If course Is Nothing Then
                     Throw New Exception("Course Not Found.")
                 End If
 
-                ' Take the first course found with the given ID
-                Dim selectedCourse As Course = courses(0)
-
-                ' Determine the action (approve/reject)
                 Dim approverejectstr As String = Request.Form("bulkActions")
                 Dim approvereject As Integer = GetTypeValue(approverejectstr)
 
-                ' Update the status in memory
-                selectedCourse.status = approvereject
+                course.status = approvereject
+                course.update()
 
-                ' Log the current status for debugging
-                System.Diagnostics.Debug.WriteLine($"Current status of course '{selectedCourse.name}' before update: {selectedCourse.status}")
-
-                ' Update the course status in the database
-                selectedCourse.update()
-
-                ' Log confirmation of status update
-                System.Diagnostics.Debug.WriteLine($"Status of course '{selectedCourse.name}' after update: {selectedCourse.status}")
-
-                ' Optionally, provide a success message to the user
                 ClientScript.RegisterStartupScript(Me.GetType(), "alert", $"alert('Course has been approved/rejected.');", True)
-
             Catch ex As Exception
-                ' Handle exceptions (e.g., log them, display an error message)
                 System.Diagnostics.Debug.WriteLine($"Error accepting/rejecting course: {ex.Message}")
                 ClientScript.RegisterStartupScript(Me.GetType(), "alert", $"alert('Error: {ex.Message}');", True)
             End Try
@@ -80,14 +49,11 @@ Namespace Manager
             Response.Redirect("ApproveCourses.aspx")
         End Sub
 
-
         Private Sub BindTestsAndAssignments(ByVal courseId As String)
             Try
-                ' Assuming Test is a class and listall is a method that returns a List(Of Test)
                 Dim TestAssignments As List(Of Test) = Test.listall($"WHERE course_id = '{courseId}' ORDER BY date_started DESC")
 
                 If TestAssignments IsNot Nothing AndAlso TestAssignments.Count > 0 Then
-                    ' Sort assignments and tasks by datetime in descending order
                     AssignmentsContainer.Controls.Clear()
 
                     For Each assignment As Test In TestAssignments
@@ -114,45 +80,48 @@ Namespace Manager
                     AssignmentsContainer.Controls.Add(noAssignmentsDiv)
                 End If
             Catch ex As Exception
-                ' Handle exceptions
                 Dim errorDiv As New HtmlGenericControl("p")
                 errorDiv.InnerHtml = "Error loading assignments and tasks."
                 AssignmentsContainer.Controls.Add(errorDiv)
             End Try
         End Sub
 
-
         Private Sub LoadCourseOverview(ByVal courseId As String)
-            ' Method to load course overview dynamically
             Try
-                ' Retrieve course details from the database
                 Dim selectedCourse As Course = Course.load(courseId)
+                Dim courseOverviewHtml As New System.Text.StringBuilder()
 
                 If selectedCourse IsNot Nothing Then
-                    ' Generate HTML for course overview dynamically
-                    Dim courseOverviewHtml As New System.Text.StringBuilder()
-
                     courseOverviewHtml.AppendLine("<h3 class='box-title' style='font-weight: bold;'>Course Overview</h3>")
                     courseOverviewHtml.AppendLine("<p><strong>Description: </strong>" & Server.HtmlEncode(selectedCourse.description) & "</p>")
                     courseOverviewHtml.AppendLine("<p><strong>Overview: </strong>" & Server.HtmlEncode(selectedCourse.overview) & "</p>")
                     courseOverviewHtml.AppendLine("<p><strong>End Date: </strong>" & Server.HtmlEncode(selectedCourse.end_date) & "</p>")
 
-                    ' Add the generated HTML to the container
-                    CourseOverviewContainer.Controls.Clear()
-                    CourseOverviewContainer.Controls.Add(New LiteralControl(courseOverviewHtml.ToString()))
-
                 Else
-                    ' Handle case where course details are not found
-                    CourseOverviewContainer.Controls.Clear()
-                    CourseOverviewContainer.Controls.Add(New LiteralControl("<p>Course details not available.</p>"))
+                    CourseOverviewContainer.Controls.Add(New LiteralControl("<p>Course overview not available.</p>"))
                 End If
+
+                CourseOverviewContainer.Controls.Add(New LiteralControl(courseOverviewHtml.ToString()))
+
             Catch ex As Exception
-                ' Handle exceptions
-                CourseOverviewContainer.Controls.Clear()
-                CourseOverviewContainer.Controls.Add(New LiteralControl("<p>Error loading course overview.</p>"))
+                Dim errorDiv As New HtmlGenericControl("p")
+                errorDiv.InnerHtml = "Error loading course overview."
+                CourseOverviewContainer.Controls.Add(errorDiv)
             End Try
         End Sub
 
+        Private Sub LoadCourseResources(ByVal courseId As String)
+            Dim selectedCourse As Course = Course.load(courseId)
+            Dim resourcesHtml As New StringBuilder()
+            resourcesHtml.AppendLine("<h3 class='box-title' style='font-weight: bold;'>Course Resources</h3>")
+            resourcesHtml.AppendLine("<ul style='list-style-type: none; padding-left: 0;'>")
+            resourcesHtml.AppendFormat("<li><a href='ContentPage.aspx?CourseID={0}'>Course Content</a></li>", HttpUtility.UrlEncode(selectedCourse.id))
+            resourcesHtml.AppendLine("<li><a href='Tests.aspx'>Course Learning Guide</a></li>")
+            resourcesHtml.AppendLine("<li><a href='CourseFacilitators.aspx'>Course Facilitators</a></li>")
+            resourcesHtml.AppendLine("</ul>")
+
+            CourseResourcesContainer.Controls.Add(New LiteralControl(resourcesHtml.ToString()))
+        End Sub
 
         Private Function GetTypeValue(ByVal bulk As String) As Integer
             Select Case bulk
@@ -164,7 +133,5 @@ Namespace Manager
                     Throw New Exception("Invalid Action Selected.")
             End Select
         End Function
-
-        ' Other methods and functions specific to CoursePage.aspx.vb can be placed here
     End Class
 End Namespace
