@@ -245,7 +245,7 @@ Public Class AnnouncementPage
             Dim announcementId As Integer = If(Session("EditingAnnouncementID") IsNot Nothing, Convert.ToInt32(Session("EditingAnnouncementID")), 0)
 
 
-            announce.id = 11 ' Replace with your logic for generating a new ID
+            announce.id = New database_operations().GetNewPrimaryKey("id", "Announcement", HttpContext.Current.Session("conn")) ' Replace with your logic for generating a new ID
 
             ' Set properties for the announcement
             announce.title = title
