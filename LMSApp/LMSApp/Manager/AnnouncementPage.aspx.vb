@@ -36,9 +36,17 @@ Public Class AnnouncementPage
 
                     Dim textDiv As New HtmlGenericControl("div")
                     textDiv.Attributes("class") = "comment-text ps-2 ps-md-3 w-100"
+
                     textDiv.InnerHtml = $"<h5 class='font-medium'>{Server.HtmlEncode(announcement.title)}</h5>" &
-                                        $"<span class='mb-3 d-block'>{Server.HtmlEncode(announcement.text)}</span>" &
-                                        $"<div class='text-muted fs-2 ms-auto mt-2 mt-md-0'>{announcement.datetime:MMMM dd, yyyy h:mm tt}</div>"
+                    $"<span class='mb-3 d-block'>{Server.HtmlEncode(announcement.text)}</span>" &
+                    $"<div class='d-flex justify-content-between align-items-center'>" &
+                    $"<div class='text-muted fs-2 mt-2 mt-md-0'>{announcement.datetime:MMMM dd, yyyy h:mm tt}</div>" &
+                    $"<div class=text-muted fs-2 mt-2 mt-md-0'><span class='me-1'>Link:</span><a href='{Server.HtmlEncode(announcement.link)}'>{Server.HtmlEncode(announcement.link)}</a></div>" &
+                    $"</div>"
+
+
+
+
                     newAnnouncementDiv.Controls.Add(textDiv)
 
                     Dim dropdownDiv As New HtmlGenericControl("div")

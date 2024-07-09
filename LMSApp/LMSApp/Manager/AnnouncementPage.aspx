@@ -25,12 +25,12 @@
                                 </select>
                         </div>
                         <div class="form-group">
-                            <label for="announcementLink">Link</label>
-                            <input type="text" class="form-control" id="announcementLink" runat="server" placeholder="Enter link">
-                        </div>
-                        <div class="form-group">
                             <label for="announcementBody">Text</label>
                             <textarea class="form-control" id="announcementText" runat="server" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="announcementLink">Link</label>
+                            <input type="text" class="form-control" id="announcementLink" runat="server" placeholder="Enter link">
                         </div>
                         <div class="form-group hide">
                             <label for="announcementSentBy">Sent By</label>
