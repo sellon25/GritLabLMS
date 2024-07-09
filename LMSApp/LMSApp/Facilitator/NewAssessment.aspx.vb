@@ -54,7 +54,7 @@ Public Class NewAssessment
         Else
             ' Create and insert new Test
             Dim newTest As New Test()
-            newTest.id = tempId
+            newTest.id = New database_operations().GetNewPrimaryKey("id", "Test", HttpContext.Current.Session("conn"))
             newTest.course_id = courseId
             newTest.title = assessmentName
             newTest.date_started = openDateTime
@@ -78,7 +78,7 @@ Public Class NewAssessment
         Dim questionType As String = Request.Form("questionType")
         ' Create and insert new Question_Bank: Using Category id as type indicator
         Dim newQuestion As New Question_Bank()
-        newQuestion.id = tempId
+        newQuestion.id = New database_operations().GetNewPrimaryKey("id", "Question_Bank", HttpContext.Current.Session("conn"))
         newQuestion.TestID = testId
         newQuestion.Text = questionText.Value
         newQuestion.QuestionType = questionType
@@ -101,7 +101,7 @@ Public Class NewAssessment
         ' If multiple choice, add answers
         If questionType = "multipleChoice" Then
             Dim answer As New Answer()
-            answer.id = tempId
+            answer.id = New database_operations().GetNewPrimaryKey("id", "Answer", HttpContext.Current.Session("conn"))
             answer.Answer = correctAnswer.Value
             answer.question_id = newQuestion.id
             answer.update()

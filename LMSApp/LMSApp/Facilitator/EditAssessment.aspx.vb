@@ -10,8 +10,8 @@
         End If
     End Sub
     Private Sub RecreateDynamicControls()
-        Dim filter As String = "WHERE TestID ='" & Request.QueryString("testid") & "'"
-        EditAssessment.Controls.Clear()
+        Dim filter As String = "WHERE TestID ='" & Request.QueryString("testId") & "'"
+        editAssessment.Controls.Clear()
 
         ' Get the list of questions based on the filter
         Dim questions As List(Of Question_Bank) = Question_Bank.listall(filter)
@@ -31,7 +31,7 @@
         ' Create and add the submit button to the test content
         Dim submitbutton As New HtmlGenericControl("div")
         submitbutton.Attributes("class") = "col-sm-12"
-        submitbutton.Controls.Add(createsubmitbutton(Request.QueryString("testid")))
+        submitbutton.Controls.Add(createsubmitbutton(Request.QueryString("testId")))
 
         Dim submitbox As New HtmlGenericControl("div")
         submitbox.Attributes("class") = "form-group mb-4"
@@ -41,8 +41,8 @@
     End Sub
 
     Private Sub loadtest()
-        Dim filter As String = "WHERE TestID ='" & Request.QueryString("testid") & "'"
-        EditAssessment.Controls.Clear()
+        Dim filter As String = "WHERE TestID ='" & Request.QueryString("testId") & "'"
+        editAssessment.Controls.Clear()
 
         ' Get the list of questions based on the filter
         Dim questions As List(Of Question_Bank) = Question_Bank.listall(filter)
@@ -62,7 +62,7 @@
         ' Create and add the submit button to the test content
         Dim submitbutton As New HtmlGenericControl("div")
         submitbutton.Attributes("class") = "col-sm-12"
-        submitbutton.Controls.Add(createsubmitbutton(Request.QueryString("testid")))
+        submitbutton.Controls.Add(createsubmitbutton(Request.QueryString("testId")))
 
         Dim submitbox As New HtmlGenericControl("div")
         submitbox.Attributes("class") = "form-group mb-4"

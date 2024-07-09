@@ -8,7 +8,6 @@ Public Class AnnouncementsPage
     Private courseId As String
     Private projectId As String
     Private facilitatorId As String
-    Private tempId As Integer = 1
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not IsPostBack Then
@@ -241,10 +240,7 @@ Public Class AnnouncementsPage
             Dim type As Integer = GetTypeValue(typeStr) ' Map type string to integer
 
             Dim link As String = announcementLink.Value
-            'Dim link As String = announcementLink.Value
-            'If String.IsNullOrEmpty(link) Then
-            '    Throw New Exception("Announcement link is required.")
-            'End If
+
 
             Dim text As String = announcementText.Value
             If String.IsNullOrEmpty(text) Then
@@ -266,7 +262,7 @@ Public Class AnnouncementsPage
                 ' Set properties for the announcement
                 announce.title = title
                 announce.type = type
-                'announce.link = link
+                announce.link = link
                 announce.datetime = datetime
                 announce.text = text
                 announce.status = Status
@@ -274,12 +270,12 @@ Public Class AnnouncementsPage
 
                 announce.update()
             Else
-                announce.id = tempId ' Replace with your logic for generating a new ID
+                announce.id = New database_operations().GetNewPrimaryKey("id", "Announcement", HttpContext.Current.Session("conn")) ' Replace with your logic for generating a new ID
 
                 ' Set properties for the announcement
                 announce.title = title
                 announce.type = type ' Set the mapped type integer
-                'announce.link = link
+                announce.link = link
                 announce.datetime = datetime
                 announce.text = text
                 announce.status = Status
@@ -287,7 +283,7 @@ Public Class AnnouncementsPage
 
                 announce.update()
 
-                courseAnnounce.id = tempId
+                courseAnnounce.id = New database_operations().GetNewPrimaryKey("id", "Announcement", HttpContext.Current.Session("conn"))
                 courseAnnounce.announcement_id = announce.id
                 courseAnnounce.course_id = Request.QueryString("courseId")
 
