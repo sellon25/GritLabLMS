@@ -60,7 +60,7 @@ Public Class AnnouncementsPage
                     textDiv.InnerHtml = $"<h5 class='font-medium'>{Server.HtmlEncode(announcement.title)}</h5>" &
                                         $"<span class='mb-3 d-block'>{Server.HtmlEncode(announcement.text)}</span>" &
                                         $"<div class='text-muted fs-2 ms-auto mt-2 mt-md-0'>{announcement.datetime:MMMM dd, yyyy h:mm tt}</div>" &
-                                        $"<div class='text-muted fs-2  mt-2 mt-md-0'><span class='me-1'>Link:</span><a href='{Server.HtmlEncode(announcement.link)}'>{Server.HtmlEncode(announcement.link)}</a></div>"
+                                        $"<div class='text-muted fs-2  mt-2 mt-md-0' style='text-align: right;'><span class='me-1'>Link:</span><a href='{Server.HtmlEncode(announcement.link)}'>{Server.HtmlEncode(announcement.link)}</a></div>"
 
                     newAnnouncementDiv.Controls.Add(textDiv)
 
@@ -89,15 +89,6 @@ Public Class AnnouncementsPage
                     btnDelete.Attributes("data-announcement-id") = announcement.id.ToString()
                     AddHandler btnDelete.Click, AddressOf DeleteAnnouncement
                     menuDiv.Controls.Add(btnDelete)
-
-                    ' Create the view button
-                    Dim btnView As New HtmlGenericControl("button")
-                    btnView.Attributes("class") = "dropdown-item"
-                    btnView.Attributes("type") = "button"
-                    btnView.Attributes("onclick") = $"ViewAnnouncement({announcement.id})"
-                    btnView.InnerHtml = "View"
-                    menuDiv.Controls.Add(btnView)
-
 
                     ' Create the delete button
                     Dim btnEdit As New Button()
@@ -262,7 +253,7 @@ Public Class AnnouncementsPage
                 announce.title = title
                 announce.type = type
                 announce.link = link
-                announce.datetime = datetime
+                'announce.datetime = datetime
                 announce.text = text
                 announce.status = Status
                 announce.sentby = sentBy
