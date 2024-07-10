@@ -144,14 +144,13 @@ Public Class AnnouncementsPage
             'announcementType.SelectedValue = announcement.type.ToString() ' Assuming ddlType is a DropDownList
             ' Get selected type from form
             ' Map type string to integer
-            'announcementLink.Value = announcementToEdit.link
+            announcementLink.Value = announcementToEdit.link
             announcementText.Value = announcementToEdit.text
             announcementSentBy.Value = announcementToEdit.sentby
 
             ' Store the ID of the announcement being edited (you may store it in a hidden field or session)
             Session("EditingAnnouncementID") = announcementId
 
-            'announcementToEdit.delete()
 
 
         Catch ex As Exception
@@ -189,10 +188,8 @@ Public Class AnnouncementsPage
                 AnnouncementsContainer.Controls.Remove(divToDelete)
             End If
 
-            Response.Redirect("AnnouncementPage.aspx")
 
         Catch ex As Exception
-            ' Handle exceptions (e.g., log them)
             ClientScript.RegisterStartupScript(Me.GetType(), "error", $"alert('Error deleting announcement: {ex.Message}');", True)
         End Try
     End Sub

@@ -5,21 +5,28 @@ Public Class database_operations
 
 
 
-    Public Function GetNewPrimaryKey(Of T)(ByVal listofPKs As List(Of T)) As Integer
-        ' Initialize the new primary key variable
-        Dim newPrimaryKey As Integer = 1
+    Public Shared Function GetNewPrimaryKey(ByVal pkColumnName As String, ByVal tableName As String, ByVal conn As SqlConnection) As Integer
+        Dim newPk As Integer
 
-        ' Check if the list is not empty
-        If listofPKs IsNot Nothing AndAlso listofPKs.Count > 0 Then
-            ' Find the maximum primary key value in the list
-            Dim maxPrimaryKey = listofPKs.Max(Function(x) Convert.ToInt32(x.GetType().GetProperty("id").GetValue(x)))
+        Try
+            Dim cmd As New SqlCommand("SELECT MAX(" & pkColumnName & ") FROM " & tableName, conn)
+            Dim result As Object = cmd.ExecuteScalar()
+            If IsDBNull(result) Then
+                newPk = 1
+            Else
+                newPk = Convert.ToInt32(result) + 1
+            End If
+        Catch ex As Exception
+            ' Handle exception
+            newPk = 1
+        End Try
 
-            ' Add 1 to the maximum value to get the new primary key
-            newPrimaryKey = maxPrimaryKey + 1
-        End If
+        ' Double-check that the newPk does not already exist
+        Do While doesFieldExistInTable(pkColumnName, newPk.ToString(), tableName, conn)
+            newPk += 1
+        Loop
 
-        ' Return the new primary key
-        Return newPrimaryKey
+        Return newPk
     End Function
 
 
