@@ -2276,7 +2276,7 @@
     </Compile>
     <Compile Include="Facilitator\EditAssessment.aspx.vb">
       <DependentUpon>EditAssessment.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Models\Course_Submission.vb" />
     <Compile Include="Models\Question_Bank.vb" />

@@ -39,6 +39,53 @@
     <script src="Manager%20Files/Bootstrap/js/bootstrap.min.js"></script>
     <script src="Manager%20Files/dataTables/js/jquery.dataTables.min.js"></script>
 
+    <!-- Edit Assesment Script -->
+    <script type="text/javascript">
+        function showQuestion(index) {
+            var questions = document.getElementsByClassName('question');
+            for (var i = 0; i < questions.length; i++) {
+                questions[i].style.display = 'none';
+            }
+            questions[index].style.display = 'block';
+            var dots = document.getElementsByClassName('dot');
+            for (var i = 0; i < dots.length; i++) {
+                dots[i].classList.remove('active');
+            }
+            dots[index].classList.add('active');
+        }
+    </script>
+
+    <!-- Edit Assesment Style -->
+    <style>
+    #navDotsContainer {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .dot {
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        cursor: pointer;
+        transition: background-color 0.6s ease;
+    }
+
+    .dot.active {
+        background-color: #717171;
+    }
+
+    .question-container {
+        padding: 20px;
+        border: 1px solid #ddd;
+        margin-bottom: 20px;
+    }
+    </style>
+
+
+
 </head>
 
 <body>
