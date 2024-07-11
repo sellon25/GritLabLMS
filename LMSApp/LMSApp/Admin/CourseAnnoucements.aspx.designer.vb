@@ -11,5 +11,5 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class SQDGSubmission
+Partial Public Class CourseAnnoucements
 End Class

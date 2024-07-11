@@ -40,7 +40,7 @@
                         <asp:ListItem Value="1">Admin</asp:ListItem>
                         <asp:ListItem Value="2">Facilitator/Leader</asp:ListItem>
                          <asp:ListItem Value="4">Employee</asp:ListItem>
-                        <asp:ListItem Value="3">GLA Student</asp:ListItem>                        
+                        <asp:ListItem Value="3">Student</asp:ListItem>                        
                     </asp:DropDownList>
                 </div>
                 <div class="form-group">
@@ -136,7 +136,9 @@
                 </div>--%>
             </div>
             <div class="form-group w-100 mb-0 pt-2 border-top">
-                <asp:DropDownList ID="CoursesAvailable" class="form-select w-100" runat="server"></asp:DropDownList>
+                <asp:DropDownList ID="CoursesAvailable" class="form-select w-100" runat="server">
+
+                </asp:DropDownList>
                 <asp:Button  ID="EnrollStudent" runat="server" OnClick="EnrollStudent_Click" class="btn mb-2 btn-primary" Text="Enroll To Course" />
             </div>
 

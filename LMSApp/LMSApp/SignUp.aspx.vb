@@ -140,9 +140,30 @@ Public Class SignUp
                 ' Add input to newQuestionDiv
                 newQuestionDiv.Controls.Add(textInput)
                 AnswerControls.Add(textInput.ID)
+<<<<<<< Updated upstream
 
                 ' Add border-bottom class to the div for styling
                 'newQuestionDiv.Attributes("class") &= " border-bottom"
+=======
+                ' Add border-bottom class to the div for styling
+                newQuestionDiv.Attributes("class") &= " border-bottom"
+
+            Case "textarea"
+                ' Add textarea for textarea type questions
+                Dim textareaInput As New TextBox()
+                textareaInput.ID = String.Format("textareaInput_{0}", questionId)
+                textareaInput.TextMode = TextBoxMode.MultiLine
+                textareaInput.Rows = 4
+                textareaInput.Attributes("placeholder") = "Type here..."
+                textareaInput.CssClass = "form-control p-0 border-0"
+                AnswerControls.Add(textareaInput.ID)
+
+                ' Add textarea to newQuestionDiv
+                newQuestionDiv.Controls.Add(textareaInput)
+
+                ' Add border-bottom class to the div for styling
+                newQuestionDiv.Attributes("class") &= " border-bottom"
+>>>>>>> Stashed changes
 
             Case "dropList"
                 ' Add select dropdown for dropList type questions
@@ -154,6 +175,12 @@ Public Class SignUp
                 Dim option2 As New ListItem("Option 2")
                 selectDropdown.Items.Add(option1)
                 selectDropdown.Items.Add(option2)
+<<<<<<< Updated upstream
+=======
+                selectDropdown.Items.Add(option3)
+                selectDropdown.Items.Add(option4)
+                AnswerControls.Add(selectDropdown.ID)
+>>>>>>> Stashed changes
 
                 ' Add select dropdown to newQuestionDiv
                 newQuestionDiv.Controls.Add(selectDropdown)
