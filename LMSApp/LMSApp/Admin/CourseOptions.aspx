@@ -26,7 +26,7 @@
         </a>
         <a class="col-md-12 text-black" href="../Admin/SQDGAnnoucements.aspx">
             <div class="white-box boxShadow">
-                <h3 class="box-title" >Announcements</h3>
+                <h3 class="box-title">Announcements</h3>
             </div> 
         </a>
         
