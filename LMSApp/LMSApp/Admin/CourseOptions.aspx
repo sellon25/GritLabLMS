@@ -29,7 +29,10 @@
                 <h3 class="box-title">Announcements</h3>
             </div> 
         </a>
-        
+        <div class="col-md-12">
+            <h4 class="w-100 ">Action:</h4>
+
+        </div>
         
     </div>
 </asp:Content>
