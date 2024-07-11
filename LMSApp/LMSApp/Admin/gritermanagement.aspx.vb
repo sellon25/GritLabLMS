@@ -6,19 +6,9 @@
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         LoadUsers()
-
+        LoadAvailableCourses()
         pnlEnrollment.Visible = False
         ApplicationFormPanel.Visible = False
-        If Not IsPostBack Then
-            ' Initial load logic
-            LoadAvailableCourses()
-        Else
-            ' Recreate dynamic controls on postback
-            Dim userId As String = SelectedUserID.Value
-            If Not String.IsNullOrEmpty(userId) Then
-                PopulateEnrollmentInfo(userId)
-            End If
-        End If
     End Sub
 
     Protected Sub SelectUser(ByVal sender As Object, ByVal e As System.EventArgs)
@@ -48,7 +38,6 @@
             .update()
         End With
 
-        Response.Redirect("gritermanagement.aspx")
     End Sub
     Protected Sub LoadUsers()
         Dim listUsers As New List(Of User)
@@ -133,8 +122,6 @@
                 Return "Manager"
             Case 3
                 Return "Student"
-            Case 4
-                Return "Employee"
             Case Else
                 Return "Unknown"
         End Select
@@ -145,20 +132,9 @@
         Dim btn As Button = DirectCast(sender, Button)
         Dim id As String = btn.ID.Replace("ViewEnrollment_", "")
 
-        ' Store the selected user ID in a hidden field
-        SelectedUserID.Value = id
-
-        ' Populate the enrollment information
-        PopulateEnrollmentInfo(id)
-
-        ' Show the popup
-        pnlEnrollment.Visible = True
-        pnlEnrollment.Style("display") = "block"
-    End Sub
-    Private Sub PopulateEnrollmentInfo(userId As String)
         ' Fetch user enrollment info
         Dim userEnrollment As New List(Of Course_Enrollment)
-        userEnrollment = New Course_Enrollment().listall("WHERE userId = '" & userId & "'")
+        userEnrollment = New Course_Enrollment().listall("WHERE userId = '" & id & "'")
 
         ' Clear previous enrollment information
         EnrollmentInfo.Controls.Clear()
@@ -206,14 +182,12 @@
             ' Add the enrolInfoDiv to the EnrollmentInfo control
             EnrollmentInfo.Controls.Add(enrolInfoDiv)
         Next
-<<<<<<< Updated upstream
 
         ' Show the popup
         pnlEnrollment.Visible = True
         pnlEnrollment.Style("display") = "block"
-=======
->>>>>>> Stashed changes
     End Sub
+
 
     Private Function GetAverageMark(enrollmentId As String) As String
         ' Add logic to fetch the average mark based on the enrollment ID
@@ -237,7 +211,6 @@
         ' Hide the popup
         pnlEnrollment.Visible = False
         pnlEnrollment.Style("display") = "none"
-        SelectedUserID.Value = String.Empty
     End Sub
 
 
@@ -259,12 +232,6 @@
         Dim id As String = btn.ID.Replace("RemoveCourse_", "")
         Dim enrollment As Course_Enrollment = New Course_Enrollment().load(id)
         enrollment.delete()
-
-        Dim btn2 As New Button
-        btn2.ID = "ViewEnrollment_" + SelectedUserID.Value
-
-        ViewEnrollment_Click(btn, Nothing)
-
     End Sub
 
     Protected Sub EnrollStudent_Click(sender As Object, e As EventArgs)
@@ -458,8 +425,4 @@
         ' Return the div containing the question content
         Return newQuestionDiv
     End Function
-
-    Protected Sub CoursesAvailable_SelectedIndexChanged(sender As Object, e As EventArgs)
-        Dim x = CoursesAvailable.SelectedValue
-    End Sub
 End Class

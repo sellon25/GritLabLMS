@@ -3,23 +3,8 @@ Imports System.Reflection
 
 Public Class database_operations
 
-    Public Shared Function GetNewPrimaryKey(ByVal pkColumnName As String, ByVal tableName As String, ByVal conn As SqlConnection) As Integer
-        Dim newPk As Integer
 
-        Try
-            Dim cmd As New SqlCommand("SELECT MAX(" & pkColumnName & ") FROM " & tableName, conn)
-            Dim result As Object = cmd.ExecuteScalar()
-            If IsDBNull(result) Then
-                newPk = 1
-            Else
-                newPk = Convert.ToInt32(result) + 1
-            End If
-        Catch ex As Exception
-            ' Handle exception
-            newPk = 1
-        End Try
 
-<<<<<<< Updated upstream
     Public Function GetNewPrimaryKey(Of T)(ByVal listofPKs As List(Of T)) As Integer
         ' Initialize the new primary key variable
         Dim newPrimaryKey As Integer = 1
@@ -35,14 +20,6 @@ Public Class database_operations
 
         ' Return the new primary key
         Return newPrimaryKey
-=======
-        ' Double-check that the newPk does not already exist
-        Do While doesFieldExistInTable(pkColumnName, newPk.ToString(), tableName, conn)
-            newPk += 1
-        Loop
-
-        Return newPk
->>>>>>> Stashed changes
     End Function
 
 
@@ -70,10 +47,9 @@ Public Class database_operations
         Dim sql As String
         Dim myReader As SqlDataReader = Nothing
         Dim retValue As Boolean = False
-        sql = "select * from " & tableName & " where lower(" & columnName & ")=@columnValue"
+        sql = "select * from " & tableName & " where lower(" & columnName & ")='" & LCase(columnValue) & "'"
         Try
             cmd.CommandText = sql
-            cmd.Parameters.AddWithValue("@columnValue", columnValue)
             cmd.Connection = conn
             myReader = cmd.ExecuteReader()
             While myReader.Read
