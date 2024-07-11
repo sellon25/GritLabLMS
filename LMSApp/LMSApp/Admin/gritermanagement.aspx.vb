@@ -206,13 +206,9 @@
             ' Add the enrolInfoDiv to the EnrollmentInfo control
             EnrollmentInfo.Controls.Add(enrolInfoDiv)
         Next
-<<<<<<< Updated upstream
-
         ' Show the popup
         pnlEnrollment.Visible = True
         pnlEnrollment.Style("display") = "block"
-=======
->>>>>>> Stashed changes
     End Sub
 
     Private Function GetAverageMark(enrollmentId As String) As String

@@ -48,18 +48,12 @@ Public Class AnnouncementPage
             ' Create an instance of Announcement
             Dim announce As New Announcement()
 
-<<<<<<< Updated upstream
-=======
-
             ' Determine if it's an insert or update
             Dim announcementId As Integer = If(Session("EditingAnnouncementID") IsNot Nothing, Convert.ToInt32(Session("EditingAnnouncementID")), 0)
             Dim anounIds As List(Of Announcement) = New Announcement().listallPKOnly()
 
             announce.id = New database_operations().GetNewPrimaryKey("id", "Announcement", HttpContext.Current.Session("conn"))
 
->>>>>>> Stashed changes
-            ' Set properties for the announcement
-            announce.id = 124
             announce.title = title
             announce.type = type
             announce.link = link

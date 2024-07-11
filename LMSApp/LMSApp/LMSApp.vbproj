@@ -2262,8 +2262,6 @@
     <Content Include="Manager\ProjectsPage.aspx" />
     <Content Include="Manager\SQWID.aspx" />
     <Content Include="Manager\StudentsProgress.aspx" />
-<<<<<<< Updated upstream
-=======
     <Compile Include="Admin\CourseOptions.aspx.designer.vb">
       <DependentUpon>CourseOptions.aspx</DependentUpon>
     </Compile>
@@ -2271,11 +2269,6 @@
       <DependentUpon>CourseOptions.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Models\Course_Submission.vb" />
-    <Compile Include="Models\Question_Bank.vb" />
-    <Compile Include="Models\Submission.vb" />
-    <Compile Include="Models\Test.vb" />
->>>>>>> Stashed changes
     <Content Include="plugins\images\miniBanking.jpg" />
     <Content Include="SignUp.aspx" />
     <Content Include="Student\Announcements.aspx" />

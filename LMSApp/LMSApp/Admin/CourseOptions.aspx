@@ -29,8 +29,8 @@
                 <h3 class="box-title">Announcements</h3>
             </div> 
         </a>
-        <div class="col-md-12">
-            <h4 class="w-100 ">Action:</h4>
+        <div class="col-md-12 border-1">
+            <h4 class="w-100 border-bottom">Action:</h4>
 
         </div>
         
