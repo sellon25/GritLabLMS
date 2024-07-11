@@ -75,12 +75,12 @@
                 <div class="form-group mb-4">
                     <label class="col-md-12 p-0">First Name</label>
                     <div class="col-md-12 border-bottom p-0">
-                        <input id="userfname" runat="server" type="text" placeholder="Type here..." class="form-control text-capitalize p-0 border-0" /> </div>
+                        <input id="userfname" runat="server" type="text" placeholder="Type here..." class="form-control p-0 border-0" /> </div>
                 </div>
                 <div class="form-group mb-4">
                     <label class="col-md-12 p-0">Last Name</label>
                     <div class="col-md-12 border-bottom p-0">
-                        <input id="userlname" runat="server" type="text" placeholder="Type here..." class="form-control text-capitalize p-0 border-0" /> </div>
+                        <input id="userlname" runat="server" type="text" placeholder="Type here..." class="form-control p-0 border-0" /> </div>
                 </div>
                                 
                 <div class="form-group mb-4">
