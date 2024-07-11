@@ -15457,3 +15457,6 @@ html[dir=ltr] body .p-l-0 {
         margin: 0.2rem;
     }
 
+    .w-fit{
+        width: fit-content;
+    }

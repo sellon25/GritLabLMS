@@ -100,6 +100,7 @@
     <Content Include="Admin\admincss\style.css" />
     <Content Include="Admin\Announcements.aspx" />
     <Content Include="Admin\AnnouncementsKingsmen.aspx" />
+    <Content Include="Admin\CourseOptions.aspx" />
     <Content Include="Admin\Courses.aspx" />
     <Content Include="Admin\Dashboard.aspx" />
     <Content Include="Admin\demo.aspx" />
@@ -126,9 +127,9 @@
     <Content Include="Admin\Set_Announcements.aspx" />
     <Content Include="Admin\Set_Projects_and_Course.aspx" />
     <Content Include="Admin\SQDG.aspx" />
-    <Content Include="Admin\SQDGAnnoucements.aspx" />
-    <Content Include="Admin\SQDGOverview.aspx" />
-    <Content Include="Admin\SQDGSubmission.aspx" />
+    <Content Include="Admin\CourseAnnoucements.aspx" />
+    <Content Include="Admin\CourseOverview.aspx" />
+    <Content Include="Admin\CourseSubmission.aspx" />
     <Content Include="Admin\table.aspx" />
     <Content Include="Admin\UploadPDF.aspx" />
     <Content Include="Admin\WebForm1.aspx" />
@@ -2261,6 +2262,20 @@
     <Content Include="Manager\ProjectsPage.aspx" />
     <Content Include="Manager\SQWID.aspx" />
     <Content Include="Manager\StudentsProgress.aspx" />
+<<<<<<< Updated upstream
+=======
+    <Compile Include="Admin\CourseOptions.aspx.designer.vb">
+      <DependentUpon>CourseOptions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CourseOptions.aspx.vb">
+      <DependentUpon>CourseOptions.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Models\Course_Submission.vb" />
+    <Compile Include="Models\Question_Bank.vb" />
+    <Compile Include="Models\Submission.vb" />
+    <Compile Include="Models\Test.vb" />
+>>>>>>> Stashed changes
     <Content Include="plugins\images\miniBanking.jpg" />
     <Content Include="SignUp.aspx" />
     <Content Include="Student\Announcements.aspx" />
@@ -2648,25 +2663,25 @@
       <DependentUpon>SQDG.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\SQDGAnnoucements.aspx.designer.vb">
-      <DependentUpon>SQDGAnnoucements.aspx</DependentUpon>
+    <Compile Include="Admin\CourseAnnoucements.aspx.designer.vb">
+      <DependentUpon>CourseAnnoucements.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\SQDGAnnoucements.aspx.vb">
-      <DependentUpon>SQDGAnnoucements.aspx</DependentUpon>
+    <Compile Include="Admin\CourseAnnoucements.aspx.vb">
+      <DependentUpon>CourseAnnoucements.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\SQDGOverview.aspx.designer.vb">
-      <DependentUpon>SQDGOverview.aspx</DependentUpon>
+    <Compile Include="Admin\CourseOverview.aspx.designer.vb">
+      <DependentUpon>CourseOverview.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\SQDGOverview.aspx.vb">
-      <DependentUpon>SQDGOverview.aspx</DependentUpon>
+    <Compile Include="Admin\CourseOverview.aspx.vb">
+      <DependentUpon>CourseOverview.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\SQDGSubmission.aspx.designer.vb">
-      <DependentUpon>SQDGSubmission.aspx</DependentUpon>
+    <Compile Include="Admin\CourseSubmission.aspx.designer.vb">
+      <DependentUpon>CourseSubmission.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\SQDGSubmission.aspx.vb">
-      <DependentUpon>SQDGSubmission.aspx</DependentUpon>
+    <Compile Include="Admin\CourseSubmission.aspx.vb">
+      <DependentUpon>CourseSubmission.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\table.aspx.designer.vb">

@@ -12,5 +12,5 @@ Option Explicit On
 
 
 
-Partial Public Class SQDGAnnoucements
+Partial Public Class CourseOptions
 End Class
