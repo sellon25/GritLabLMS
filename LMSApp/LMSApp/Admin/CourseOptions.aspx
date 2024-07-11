@@ -11,17 +11,17 @@
         
         <a class="col-md-12 text-black" href="SQDGOverview.aspx">
             <div class="white-box boxShadow">
-                <h3 class="box-title" >Overview of Squid Game</h3>
+                <h3 class="box-title" >Overview</h3>
             </div> 
         </a>
         <a class="col-md-12 text-black" href="../Admin/SQDGSubmission.aspx">
             <div class="white-box boxShadow">
-                <h3 class="box-title" >Submission Link</h3>
+                <h3 class="box-title" >Submission Links</h3>
             </div> 
         </a>
         <a class="col-md-12 text-black" href="../Admin/ManageUsers.aspx">
             <div class="white-box boxShadow">
-                <h3 class="box-title" >Manager Users</h3>
+                <h3 class="box-title" >Manager Enrollment</h3>
             </div> 
         </a>
         <a class="col-md-12 text-black" href="../Admin/SQDGAnnoucements.aspx">
