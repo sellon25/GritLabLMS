@@ -57,31 +57,44 @@
 
     <!-- Edit Assesment Style -->
     <style>
-    #navDotsContainer {
-        text-align: center;
+        /* CSS for nav-container */
+    .nav-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         margin-top: 20px;
     }
 
+    /* CSS for nav buttons */
+    .nav-button {
+        margin: 0 10px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    /* CSS for dots */
     .dot {
-        height: 15px;
-        width: 15px;
-        margin: 0 2px;
+        height: 10px;
+        width: 10px;
+        margin: 0 5px;
         background-color: #bbb;
         border-radius: 50%;
         display: inline-block;
         cursor: pointer;
-        transition: background-color 0.6s ease;
     }
 
     .dot.active {
         background-color: #717171;
     }
 
-    .question-container {
-        padding: 20px;
-        border: 1px solid #ddd;
-        margin-bottom: 20px;
-    }
+    /*
+        .question-container {
+            padding: 20px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+    */
+    
     </style>
 
 
