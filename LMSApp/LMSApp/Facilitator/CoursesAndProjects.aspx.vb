@@ -77,10 +77,10 @@ Public Class CoursesAndProjects
 
     Private Function GetCoursesByFacilitator(facilitatorId As String) As List(Of Course)
         Dim filter As String = "WHERE userId = '" & facilitatorId & "'"
-        Dim courseEnrollments As List(Of Course_Enrollment) = New Course_Enrollment().listall(filter)
+        Dim Course_Enrollments As List(Of Course_Enrollment) = New Course_Enrollment().listall(filter)
         Dim facilitatorCourses As New List(Of Course)
 
-        For Each enrollment As Course_Enrollment In courseEnrollments
+        For Each enrollment As Course_Enrollment In Course_Enrollments
             Dim course As Course = Course.load(enrollment.course_id)
             If course IsNot Nothing Then
                 course.name = Trim(course.name)
@@ -93,10 +93,10 @@ Public Class CoursesAndProjects
 
     Private Function GetProjectsByFacilitator(facilitatorId As String) As List(Of Project)
         Dim filter As String = "WHERE userId = '" & facilitatorId & "'"
-        Dim projectEnrollments As List(Of Project_Enrollment) = New Project_Enrollment().listall(filter)
+        Dim Project_Enrollments As List(Of Project_Enrollment) = New Project_Enrollment().listall(filter)
         Dim facilitatorProjects As New List(Of Project)
 
-        For Each enrollment As Project_Enrollment In projectEnrollments
+        For Each enrollment As Project_Enrollment In Project_Enrollments
             Dim project As Project = Project.load(enrollment.project_id)
             If project IsNot Nothing Then
                 project.name = Trim(project.name)

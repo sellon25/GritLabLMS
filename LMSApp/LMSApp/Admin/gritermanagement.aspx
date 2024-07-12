@@ -36,10 +36,7 @@
                     <label for="userrole">Role</label>
                     <input type="text" class="form-control text-muted mb-1" id="userroletxt" runat="server" readonly placeholder="">
                      <asp:DropDownList  CssClass="form-select" ID="userrole" runat="server">
-                        <asp:ListItem Value="0">Manager</asp:ListItem>
-                        <asp:ListItem Value="1">Admin</asp:ListItem>
-                        <asp:ListItem Value="2">Facilitator/Leader</asp:ListItem>
-                         <asp:ListItem Value="4">Employee</asp:ListItem>
+                        <asp:ListItem Value="2">Facilitator/Leader</asp:ListItem>                  
                         <asp:ListItem Value="3">Student</asp:ListItem>                        
                     </asp:DropDownList>
                 </div>

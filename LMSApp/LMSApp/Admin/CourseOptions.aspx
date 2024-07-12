@@ -21,7 +21,7 @@
         </a>
         <a class="col-md-12 text-black" href="../Admin/ManageUsers.aspx">
             <div class="white-box boxShadow">
-                <h3 class="box-title" >Manager Enrollment</h3>
+                <h3 class="box-title" >Manage Enrollment</h3>
             </div> 
         </a>
         <a class="col-md-12 text-black" href="../Admin/SQDGAnnoucements.aspx">
@@ -29,9 +29,12 @@
                 <h3 class="box-title">Announcements</h3>
             </div> 
         </a>
-        <div class="col-md-12 border-1">
-            <h4 class="w-100 border-bottom">Action:</h4>
-
+        <div class="col-md-12 white-box">
+            <h4 class="w-100 border-bottom fw-bold">Action:</h4>
+            <div class="">
+                <button id="RequestDelete" class="btn btn-danger" runat="server">Request to remove course</button>
+                <div class="text-muted mt-2"><span>Status: </span> <span class="fw-bold text-black pl-1"> Active</span></div>
+            </div>
         </div>
         
     </div>

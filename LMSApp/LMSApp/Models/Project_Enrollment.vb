@@ -11,6 +11,7 @@ Public Class Project_Enrollment
     Public Shared Display_date_started As Boolean = True
     Public Shared Display_enrollment_status As Boolean = True
     Public Shared Display_date_end As Boolean = True
+    Public Shared Display_role As Boolean = True
 
     Private I_Display_id As Boolean = True
     Private I_Display_userId As Boolean = True
@@ -18,6 +19,7 @@ Public Class Project_Enrollment
     Private I_Display_date_started As Boolean = True
     Private I_Display_enrollment_status As Boolean = True
     Private I_Display_date_end As Boolean = True
+    Private I_Display_role As Boolean = True
 
     Public previous_id As System.String
 
@@ -27,6 +29,7 @@ Public Class Project_Enrollment
     Public date_started As Nullable(Of DateTime)
     Public enrollment_status As System.String
     Public date_end As Nullable(Of DateTime)
+    Public role As Nullable(Of Integer)
     Private newinstance As Boolean = True
 
     Shared Sub Set_Display_Field_All(display_flag As Boolean)
@@ -36,6 +39,7 @@ Public Class Project_Enrollment
         Display_date_started = display_flag
         Display_enrollment_status = display_flag
         Display_date_end = display_flag
+        Display_role = display_flag
     End Sub
 
     Private Sub insert()
@@ -43,8 +47,8 @@ Public Class Project_Enrollment
         cmd.Connection = HttpContext.Current.Session("conn")
         If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = HttpContext.Current.Session("trans")
         cmd.CommandType = CommandType.Text
-        cmd.CommandText = "insert into Project_Enrollment (id, userId, project_id, date_started, enrollment_status, date_end)"
-        cmd.CommandText = cmd.CommandText & " values (@id, @userId, @project_id, @date_started, @enrollment_status, @date_end)"
+        cmd.CommandText = "insert into Project_Enrollment (id, userId, project_id, date_started, enrollment_status, date_end, role)"
+        cmd.CommandText = cmd.CommandText & " values (@id, @userId, @project_id, @date_started, @enrollment_status, @date_end, @role)"
 
         cmd.Parameters.Add("@id", SqlDbType.VarChar, 255).Value = setNull(id)
         cmd.Parameters.Add("@userId", SqlDbType.VarChar, 255).Value = setNull(userId)
@@ -52,6 +56,7 @@ Public Class Project_Enrollment
         cmd.Parameters.Add("@date_started", SqlDbType.DateTime).Value = setNull(date_started)
         cmd.Parameters.Add("@enrollment_status", SqlDbType.VarChar, 50).Value = setNull(enrollment_status)
         cmd.Parameters.Add("@date_end", SqlDbType.DateTime).Value = setNull(date_end)
+        cmd.Parameters.Add("@role", SqlDbType.Int).Value = setNull(role)
 
         cmd.ExecuteNonQuery()
         newinstance = False
@@ -68,7 +73,7 @@ Public Class Project_Enrollment
         cmd.ExecuteNonQuery()
     End Sub
 
-    Function load(id As System.String) As Project_Enrollment
+    Shared Function load(id As System.String) As Project_Enrollment
         Dim cmd As New SqlCommand
         cmd.Connection = HttpContext.Current.Session("conn")
         If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = HttpContext.Current.Session("trans")
@@ -80,6 +85,7 @@ Public Class Project_Enrollment
         If Display_date_started = True Then cmd.CommandText = cmd.CommandText & "date_started,"
         If Display_enrollment_status = True Then cmd.CommandText = cmd.CommandText & "enrollment_status,"
         If Display_date_end = True Then cmd.CommandText = cmd.CommandText & "date_end,"
+        If Display_role = True Then cmd.CommandText = cmd.CommandText & "role,"
         cmd.CommandText = cmd.CommandText.Substring(0, cmd.CommandText.Length - 1)
         cmd.CommandText = cmd.CommandText & " from Project_Enrollment where id=@id"
         cmd.Parameters.Add("@id", SqlDbType.VarChar, 255).Value = id
@@ -101,6 +107,8 @@ Public Class Project_Enrollment
             p.I_Display_enrollment_status = Display_enrollment_status
             If Display_date_end = True Then p.date_end = checkNull(dt.Rows(i)("date_end"))
             p.I_Display_date_end = Display_date_end
+            If Display_role = True Then p.role = checkNull(dt.Rows(i)("role"))
+            p.I_Display_role = Display_role
             p.previous_id = checkNull(dt.Rows(i)("id"))
             p.newinstance = False
             Return p
@@ -125,6 +133,7 @@ Public Class Project_Enrollment
         If I_Display_date_started = True Then cmd.CommandText = cmd.CommandText & "date_started=@date_started,"
         If I_Display_enrollment_status = True Then cmd.CommandText = cmd.CommandText & "enrollment_status=@enrollment_status,"
         If I_Display_date_end = True Then cmd.CommandText = cmd.CommandText & "date_end=@date_end,"
+        If I_Display_role = True Then cmd.CommandText = cmd.CommandText & "role=@role,"
         cmd.CommandText = cmd.CommandText.Substring(0, cmd.CommandText.Length - 1)
         cmd.CommandText = cmd.CommandText & " where id=@previous_id"
 
@@ -134,14 +143,14 @@ Public Class Project_Enrollment
         If I_Display_date_started = True Then cmd.Parameters.Add("@date_started", SqlDbType.DateTime).Value = setNull(date_started)
         If I_Display_enrollment_status = True Then cmd.Parameters.Add("@enrollment_status", SqlDbType.VarChar, 50).Value = setNull(enrollment_status)
         If I_Display_date_end = True Then cmd.Parameters.Add("@date_end", SqlDbType.DateTime).Value = setNull(date_end)
+        If I_Display_role = True Then cmd.Parameters.Add("@role", SqlDbType.Int).Value = setNull(role)
         cmd.Parameters.Add("@previous_id", SqlDbType.VarChar, 255).Value = Me.previous_id
 
         cmd.ExecuteNonQuery()
         newinstance = False
     End Sub
 
-
-    Function listall(Optional ByVal filterstr As String = Nothing, Optional ByVal sortstr As String = Nothing) As System.Collections.Generic.List(Of Project_Enrollment)
+    Shared Function listall(Optional ByVal filterstr As String = Nothing, Optional ByVal sortstr As String = Nothing) As System.Collections.Generic.List(Of Project_Enrollment)
         Dim ps As New Generic.List(Of Project_Enrollment)
         Dim cmd As New SqlCommand
         cmd.Connection = HttpContext.Current.Session("conn")
@@ -154,6 +163,7 @@ Public Class Project_Enrollment
         If Display_date_started = True Then cmd.CommandText = cmd.CommandText & "date_started,"
         If Display_enrollment_status = True Then cmd.CommandText = cmd.CommandText & "enrollment_status,"
         If Display_date_end = True Then cmd.CommandText = cmd.CommandText & "date_end,"
+        If Display_role = True Then cmd.CommandText = cmd.CommandText & "role,"
         cmd.CommandText = cmd.CommandText.Substring(0, cmd.CommandText.Length - 1)
         cmd.CommandText = cmd.CommandText & " from Project_Enrollment " & filterstr & " " & sortstr
         Dim pl As New SqlDataAdapter, dt As New DataTable, i As Integer
@@ -173,6 +183,8 @@ Public Class Project_Enrollment
             p.I_Display_enrollment_status = Display_enrollment_status
             If Display_date_end = True Then p.date_end = checkNull(dt.Rows(i)("date_end"))
             p.I_Display_date_end = Display_date_end
+            If Display_role = True Then p.role = checkNull(dt.Rows(i)("role"))
+            p.I_Display_role = Display_role
             p.previous_id = checkNull(dt.Rows(i)("id"))
             p.newinstance = False
             ps.Add(p)
@@ -180,7 +192,7 @@ Public Class Project_Enrollment
         Return ps
     End Function
 
-    Function listallPKOnly(Optional ByVal filterstr As String = Nothing, Optional ByVal sortstr As String = Nothing) As System.Collections.Generic.List(Of Project_Enrollment)
+    Shared Function listallPKOnly(Optional ByVal filterstr As String = Nothing, Optional ByVal sortstr As String = Nothing) As System.Collections.Generic.List(Of Project_Enrollment)
         Dim ps As New Generic.List(Of Project_Enrollment)
         Dim cmd As New SqlCommand
         cmd.Connection = HttpContext.Current.Session("conn")
