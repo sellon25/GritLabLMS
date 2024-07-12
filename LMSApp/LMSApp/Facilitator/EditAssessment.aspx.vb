@@ -7,9 +7,12 @@
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not IsPostBack Then
             loadtest()
-
+        Else
+            questions = CType(Session("questions"), List(Of Question_Bank))
+            RebuildUI()
         End If
     End Sub
+
 
     Private Sub loadtest()
         Dim filter As String = "WHERE TestID ='" & Request.QueryString("testId") & "'"
@@ -17,6 +20,12 @@
 
         ' Get the list of questions based on the filter
         questions = Question_Bank.listall(filter)
+        Session("questions") = questions ' Store in session
+
+        RebuildUI()
+    End Sub
+
+    Private Sub RebuildUI()
         Dim questionIDs As New List(Of String)
 
         ' Create a container for all questions
@@ -42,6 +51,7 @@
         Dim navContainer As New HtmlGenericControl("div")
         navContainer.Attributes("id") = "navContainer"
         navContainer.Attributes("class") = "nav-container"
+        navContainer.Attributes("style") = "text-align:center;"
 
         Dim prevButton As New HtmlGenericControl("span")
         prevButton.InnerText = "<<prev"
@@ -73,37 +83,39 @@
         ' Add JavaScript for navigation
         Dim script As New LiteralControl()
         script.Text = "<script type='text/javascript'>
-                        var currentQuestionIndex = 0;
+                    var currentQuestionIndex = 0;
 
-                        function showQuestion(index) {
-                            var questions = document.getElementsByClassName('question');
-                            for (var i = 0; i < questions.length; i++) {
-                                questions[i].style.display = 'none';
-                            }
-                            questions[index].style.display = 'block';
-                            var dots = document.getElementsByClassName('dot');
-                            for (var i = 0; i < dots.length; i++) {
-                                dots[i].classList.remove('active');
-                            }
-                            dots[index].classList.add('active');
-                            currentQuestionIndex = index;
+                    function showQuestion(index) {
+                        var questions = document.getElementsByClassName('question');
+                        for (var i = 0; i < questions.length; i++) {
+                            questions[i].style.display = 'none';
                         }
+                        questions[index].style.display = 'block';
+                        var dots = document.getElementsByClassName('dot');
+                        for (var i = 0; i < dots.length; i++) {
+                            dots[i].classList.remove('active');
+                        }
+                        dots[index].classList.add('active');
+                        currentQuestionIndex = index;
+                    }
 
-                        function showPreviousQuestion() {
-                            if (currentQuestionIndex > 0) {
-                                showQuestion(currentQuestionIndex - 1);
-                            }
+                    function showPreviousQuestion() {
+                        if (currentQuestionIndex > 0) {
+                            showQuestion(currentQuestionIndex - 1);
                         }
+                    }
 
-                        function showNextQuestion() {
-                            var questions = document.getElementsByClassName('question');
-                            if (currentQuestionIndex < questions.length - 1) {
-                                showQuestion(currentQuestionIndex + 1);
-                            }
+                    function showNextQuestion() {
+                        var questions = document.getElementsByClassName('question');
+                        if (currentQuestionIndex < questions.length - 1) {
+                            showQuestion(currentQuestionIndex + 1);
                         }
-                       </script>"
+                    }
+                   </script>"
         editAssessment.Controls.Add(script)
     End Sub
+
+
 
     Private Function CreateQuestionHtml(question As Question_Bank) As HtmlGenericControl
         Dim questionContainer As New HtmlGenericControl("div")
@@ -114,16 +126,14 @@
         Dim questionNumberDiv As New HtmlGenericControl("div")
         questionNumberDiv.Attributes("class") = "form-group"
         Dim questionNumberLabel As New HtmlGenericControl("label")
-        questionNumberLabel.Attributes("for") = "questionNumber"
+        questionNumberLabel.Attributes("for") = "questionNumber-" & question.id.ToString()
         questionNumberLabel.InnerText = "Question Number:"
         questionNumberDiv.Controls.Add(questionNumberLabel)
-        Dim questionNumberInput As New HtmlGenericControl("input")
+        Dim questionNumberInput As New HtmlInputText()
         questionNumberInput.Attributes("runat") = "server"
-        questionNumberInput.Attributes("type") = "text"
+        questionNumberInput.ID = "questionNumber-" & question.id.ToString()
+        questionNumberInput.Value = question.QuestionNumber
         questionNumberInput.Attributes("class") = "form-control"
-        questionNumberInput.Attributes("id") = "questionNumber"
-        questionNumberInput.Attributes("name") = "questionNumber"
-        questionNumberInput.Attributes("value") = question.QuestionNumber
         questionNumberDiv.Controls.Add(questionNumberInput)
         questionContainer.Controls.Add(questionNumberDiv)
 
@@ -131,70 +141,29 @@
         Dim questionTextDiv As New HtmlGenericControl("div")
         questionTextDiv.Attributes("class") = "form-group"
         Dim questionTextLabel As New HtmlGenericControl("label")
-        questionTextLabel.Attributes("for") = "questionText"
+        questionTextLabel.Attributes("for") = "questionText-" & question.id.ToString()
         questionTextLabel.InnerText = "Question Text:"
         questionTextDiv.Controls.Add(questionTextLabel)
-        Dim questionTextInput As New HtmlGenericControl("input")
+        Dim questionTextInput As New HtmlInputText()
         questionTextInput.Attributes("runat") = "server"
-        questionTextInput.Attributes("type") = "text"
+        questionTextInput.ID = "questionText-" & question.id.ToString()
+        questionTextInput.Value = question.Text
         questionTextInput.Attributes("class") = "form-control"
-        questionTextInput.Attributes("id") = "questionText"
-        questionTextInput.Attributes("name") = "questionText"
-        questionTextInput.Attributes("value") = question.Text
         questionTextDiv.Controls.Add(questionTextInput)
         questionContainer.Controls.Add(questionTextDiv)
-
-        ' Create the label and FileUpload for the question image
-        Dim questionImageLabel As New HtmlGenericControl("label")
-        questionImageLabel.Attributes("for") = "questionImage_" & question.id
-        questionImageLabel.InnerText = "Change Question Image:"
-
-        ' Display the current image if it exists
-        If question.Image IsNot Nothing AndAlso question.Image.Length > 0 Then
-            Dim imageContainer As New HtmlGenericControl("div")
-
-            Dim base64Image As String = Convert.ToBase64String(question.Image)
-            Dim imgSrc As String = "data:image/png;base64," & base64Image
-            Dim questionImage As New HtmlGenericControl("img")
-            questionImage.Attributes("src") = imgSrc
-            questionImage.Attributes("class") = "img-fluid"
-            questionImage.Attributes("alt") = "Question Image"
-            questionImage.Attributes("style") = "width: 40%; height: auto;"
-            imageContainer.Controls.Add(questionImage)
-            questionContainer.Controls.Add(imageContainer)
-        End If
-
-
-        ' File upload control for updating the image
-        Dim questionImageUpload As New FileUpload()
-        questionImageUpload.ID = "questionImage_" & question.id
-        questionImageUpload.CssClass = "form-control-file"
-        questionImageUpload.Attributes("runat") = "server"
-
-        questionContainer.Controls.Add(questionImageLabel)
-        questionContainer.Controls.Add(questionImageUpload)
-
-
-        ' Question type and options
-        Dim questionTypeDiv As New HtmlGenericControl("div")
-        questionTypeDiv.Attributes("class") = "form-group"
-        Dim questionTypeLabel As New HtmlGenericControl("label")
-        questionTypeLabel.InnerText = "Question Type:"
-        questionTypeDiv.Controls.Add(questionTypeLabel)
 
         ' Option A
         Dim answerADiv As New HtmlGenericControl("div")
         answerADiv.Attributes("class") = "form-group"
         Dim answerALabel As New HtmlGenericControl("label")
-        answerALabel.Attributes("for") = "answerA"
+        answerALabel.Attributes("for") = "answerA-" & question.id.ToString()
         answerALabel.InnerText = "Answer A:"
         answerADiv.Controls.Add(answerALabel)
-        Dim answerAInput As New HtmlGenericControl("input")
-        answerAInput.Attributes("type") = "text"
+        Dim answerAInput As New HtmlInputText()
+        answerAInput.Attributes("runat") = "server"
+        answerAInput.ID = "answerA-" & question.id.ToString()
+        answerAInput.Value = question.Option1
         answerAInput.Attributes("class") = "form-control"
-        answerAInput.Attributes("id") = "answerA"
-        answerAInput.Attributes("name") = "answerA"
-        answerAInput.Attributes("value") = question.Option1
         answerADiv.Controls.Add(answerAInput)
         questionContainer.Controls.Add(answerADiv)
 
@@ -202,15 +171,14 @@
         Dim answerBDiv As New HtmlGenericControl("div")
         answerBDiv.Attributes("class") = "form-group"
         Dim answerBLabel As New HtmlGenericControl("label")
-        answerBLabel.Attributes("for") = "answerB"
+        answerBLabel.Attributes("for") = "answerB-" & question.id.ToString()
         answerBLabel.InnerText = "Answer B:"
         answerBDiv.Controls.Add(answerBLabel)
-        Dim answerBInput As New HtmlGenericControl("input")
-        answerBInput.Attributes("type") = "text"
+        Dim answerBInput As New HtmlInputText()
+        answerBInput.Attributes("runat") = "server"
+        answerBInput.ID = "answerB-" & question.id.ToString()
+        answerBInput.Value = question.Option2
         answerBInput.Attributes("class") = "form-control"
-        answerBInput.Attributes("id") = "answerB"
-        answerBInput.Attributes("name") = "answerB"
-        answerBInput.Attributes("value") = question.Option2
         answerBDiv.Controls.Add(answerBInput)
         questionContainer.Controls.Add(answerBDiv)
 
@@ -218,15 +186,14 @@
         Dim answerCDiv As New HtmlGenericControl("div")
         answerCDiv.Attributes("class") = "form-group"
         Dim answerCLabel As New HtmlGenericControl("label")
-        answerCLabel.Attributes("for") = "answerC"
+        answerCLabel.Attributes("for") = "answerC-" & question.id.ToString()
         answerCLabel.InnerText = "Answer C:"
         answerCDiv.Controls.Add(answerCLabel)
-        Dim answerCInput As New HtmlGenericControl("input")
-        answerCInput.Attributes("type") = "text"
+        Dim answerCInput As New HtmlInputText()
+        answerCInput.Attributes("runat") = "server"
+        answerCInput.ID = "answerC-" & question.id.ToString()
+        answerCInput.Value = question.Option3
         answerCInput.Attributes("class") = "form-control"
-        answerCInput.Attributes("id") = "answerC"
-        answerCInput.Attributes("name") = "answerC"
-        answerCInput.Attributes("value") = question.Option3
         answerCDiv.Controls.Add(answerCInput)
         questionContainer.Controls.Add(answerCDiv)
 
@@ -234,15 +201,14 @@
         Dim answerDDiv As New HtmlGenericControl("div")
         answerDDiv.Attributes("class") = "form-group"
         Dim answerDLabel As New HtmlGenericControl("label")
-        answerDLabel.Attributes("for") = "answerD"
+        answerDLabel.Attributes("for") = "answerD-" & question.id.ToString()
         answerDLabel.InnerText = "Answer D:"
         answerDDiv.Controls.Add(answerDLabel)
-        Dim answerDInput As New HtmlGenericControl("input")
-        answerDInput.Attributes("type") = "text"
+        Dim answerDInput As New HtmlInputText()
+        answerDInput.Attributes("runat") = "server"
+        answerDInput.ID = "answerD-" & question.id.ToString()
+        answerDInput.Value = question.Option4
         answerDInput.Attributes("class") = "form-control"
-        answerDInput.Attributes("id") = "answerD"
-        answerDInput.Attributes("name") = "answerD"
-        answerDInput.Attributes("value") = question.Option4
         answerDDiv.Controls.Add(answerDInput)
         questionContainer.Controls.Add(answerDDiv)
 
@@ -258,16 +224,14 @@
         Dim correctAnswerDiv As New HtmlGenericControl("div")
         correctAnswerDiv.Attributes("class") = "form-group"
         Dim correctAnswerLabel As New HtmlGenericControl("label")
-        correctAnswerLabel.Attributes("for") = "correctAnswer"
+        correctAnswerLabel.Attributes("for") = "correctAnswer-" & question.id.ToString()
         correctAnswerLabel.InnerText = "Correct Answer:"
         correctAnswerDiv.Controls.Add(correctAnswerLabel)
-        Dim correctAnswerInput As New HtmlGenericControl("input")
-        correctAnswerInput.Attributes("type") = "text"
+        Dim correctAnswerInput As New HtmlInputText()
+        correctAnswerInput.Attributes("runat") = "server"
+        correctAnswerInput.ID = "correctAnswer-" & question.id.ToString()
+        correctAnswerInput.Value = correctAnswer.Answer
         correctAnswerInput.Attributes("class") = "form-control"
-        correctAnswerInput.Attributes("id") = "correctAnswer"
-        correctAnswerInput.Attributes("name") = "correctAnswer"
-        correctAnswerInput.Attributes("readonly") = "readonly"
-        correctAnswerInput.Attributes("value") = correctAnswer.Answer
         correctAnswerDiv.Controls.Add(correctAnswerInput)
         questionContainer.Controls.Add(correctAnswerDiv)
 
@@ -275,15 +239,14 @@
         Dim markDiv As New HtmlGenericControl("div")
         markDiv.Attributes("class") = "form-group"
         Dim markLabel As New HtmlGenericControl("label")
-        markLabel.Attributes("for") = "mark"
+        markLabel.Attributes("for") = "mark-" & question.id.ToString()
         markLabel.InnerText = "Mark:"
         markDiv.Controls.Add(markLabel)
-        Dim markInput As New HtmlGenericControl("input")
-        markInput.Attributes("type") = "text"
+        Dim markInput As New HtmlInputText()
+        markInput.Attributes("runat") = "server"
+        markInput.ID = "mark-" & question.id.ToString()
+        markInput.Value = question.Mark
         markInput.Attributes("class") = "form-control"
-        markInput.Attributes("id") = "mark"
-        markInput.Attributes("name") = "mark"
-        markInput.Attributes("value") = question.Mark
         markDiv.Controls.Add(markInput)
         questionContainer.Controls.Add(markDiv)
 
@@ -302,30 +265,49 @@
         Return questionContainer
     End Function
 
+
     Protected Sub UpdateQuestion_Click(sender As Object, e As EventArgs)
         Dim button As Button = CType(sender, Button)
         Dim questionId As Integer = Convert.ToInt32(button.CommandArgument)
         Dim questionDiv As HtmlGenericControl = CType(editAssessment.FindControl("question-" & questionId.ToString()), HtmlGenericControl)
 
-        Dim questionNumber As String = CType(questionDiv.FindControl("questionNumber"), HtmlInputText).Value
-        Dim questionText As String = CType(questionDiv.FindControl("questionText"), HtmlInputText).Value
-        Dim answerA As String = CType(questionDiv.FindControl("answerA"), HtmlInputText).Value
-        Dim answerB As String = CType(questionDiv.FindControl("answerB"), HtmlInputText).Value
-        Dim answerC As String = CType(questionDiv.FindControl("answerC"), HtmlInputText).Value
-        Dim answerD As String = CType(questionDiv.FindControl("answerD"), HtmlInputText).Value
-        Dim correctAnswer As String = CType(questionDiv.FindControl("correctAnswer"), HtmlInputText).Value
-        Dim mark As String = CType(questionDiv.FindControl("mark"), HtmlInputText).Value
+        If questionDiv Is Nothing Then
+            ' Handle case where questionDiv is not found
+            Return
+        End If
+
+        Dim questionNumberInput As HtmlInputText = CType(questionDiv.FindControl("questionNumber-" & questionId.ToString()), HtmlInputText)
+        Dim questionTextInput As HtmlInputText = CType(questionDiv.FindControl("questionText-" & questionId.ToString()), HtmlInputText)
+        Dim answerAInput As HtmlInputText = CType(questionDiv.FindControl("answerA-" & questionId.ToString()), HtmlInputText)
+        Dim answerBInput As HtmlInputText = CType(questionDiv.FindControl("answerB-" & questionId.ToString()), HtmlInputText)
+        Dim answerCInput As HtmlInputText = CType(questionDiv.FindControl("answerC-" & questionId.ToString()), HtmlInputText)
+        Dim answerDInput As HtmlInputText = CType(questionDiv.FindControl("answerD-" & questionId.ToString()), HtmlInputText)
+        Dim correctAnswerInput As HtmlInputText = CType(questionDiv.FindControl("correctAnswer-" & questionId.ToString()), HtmlInputText)
+        Dim markInput As HtmlInputText = CType(questionDiv.FindControl("mark-" & questionId.ToString()), HtmlInputText)
+
+        If questionNumberInput Is Nothing OrElse questionTextInput Is Nothing OrElse answerAInput Is Nothing OrElse answerBInput Is Nothing OrElse answerCInput Is Nothing OrElse answerDInput Is Nothing OrElse correctAnswerInput Is Nothing OrElse markInput Is Nothing Then
+            ' Handle case where any control is not found
+            Return
+        End If
+
+        Dim questionNumber As String = questionNumberInput.Value
+        Dim questionText As String = questionTextInput.Value
+        Dim answerA As String = answerAInput.Value
+        Dim answerB As String = answerBInput.Value
+        Dim answerC As String = answerCInput.Value
+        Dim answerD As String = answerDInput.Value
+        Dim correctAnswer As String = correctAnswerInput.Value
+        Dim mark As String = markInput.Value
 
         ' Update the question in the database
         Dim question As New Question_Bank()
-        question.id = questionId
+        question = Question_Bank.load(questionId)
         question.QuestionNumber = questionNumber
         question.Text = questionText
         question.Option1 = answerA
         question.Option2 = answerB
         question.Option3 = answerC
         question.Option4 = answerD
-        'question.CorrectAnswer = correctAnswer
         question.Mark = mark
         question.update()
 
@@ -335,6 +317,8 @@
         successMessage.InnerText = "Question updated successfully!"
         questionDiv.Controls.Add(successMessage)
     End Sub
+
+
 End Class
 
 
