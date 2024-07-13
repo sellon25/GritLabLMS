@@ -112,46 +112,69 @@ Public Class AnnouncementPage
     End Sub
 
     Protected Sub EditAnnouncement(sender As Object, e As EventArgs)
-        ' Retrieve the announcement ID from the button's CommandArgument
         Dim btn As Button = DirectCast(sender, Button)
         Dim announcementId As Integer = Convert.ToInt32(btn.ID.Replace("EditAnnouncement_", ""))
 
         Try
-
             Dim announcementToEdit As New Announcement()
             announcementToEdit = Announcement.load(announcementId)
 
-            Dim divToDelete As HtmlGenericControl = FindAnnouncementDiv(announcementId)
-            If divToDelete IsNot Nothing Then
-                'AnnouncementsContainer.Controls.Remove(divToDelete)
-            End If
-
-            ' Retrieve the announcement details based on the ID (Example: Load announcement data into form fields)
-            ' Example: Populate form fields for editing (assuming you have TextBox controls with IDs)
+            ' Populate form fields
             announcementTitle.Value = announcementToEdit.title
-            'announcementType.SelectedValue = announcement.type.ToString() ' Assuming ddlType is a DropDownList
-            ' Get selected type from form
-            ' Map type string to integer
             announcementLink.Value = announcementToEdit.link
             announcementText.Value = announcementToEdit.text
             announcementSentBy.Value = announcementToEdit.sentby
 
-            ' Store the ID of the announcement being edited (you may store it in a hidden field or session)
+            ' Store the ID of the announcement being edited
             Session("EditingAnnouncementID") = announcementId
-
-            announcementToEdit.delete()
-
-
-            ' Optionally, you can show a hidden edit panel or switch to an edit view
-            ' Example: Make edit panel visible
-            ' Handle case where announcement is not found
-
         Catch ex As Exception
-
             ClientScript.RegisterStartupScript(Me.GetType(), "alert", "alert('Announcement not found.');", True)
-
         End Try
+    End Sub
+    Private Sub UpdateSendToDropdown()
+        Try
+            chkListCoursesProjects.Visible = False ' Hide checkbox list by default
 
+            Dim selectedForm As String = sendTo.SelectedValue.Trim()
+
+            Select Case selectedForm
+                Case "Course"
+                    LoadCourses()
+                Case "Project"
+                    LoadProjects()
+                Case Else
+                    chkListCoursesProjects.Visible = False
+            End Select
+        Catch ex As Exception
+            ClientScript.RegisterStartupScript(Me.GetType(), "error", $"alert('Error updating SendTo dropdown: {ex.Message}');", True)
+        End Try
+    End Sub
+
+    Private Sub LoadCourses()
+        Dim courses As List(Of Course) = Course.listall("", "order by id desc ")
+        chkListCoursesProjects.Items.Clear()
+
+        For Each course As Course In courses
+            chkListCoursesProjects.Items.Add(New ListItem(course.name, course.id))
+        Next
+
+        chkListCoursesProjects.Visible = True
+    End Sub
+
+    Private Sub LoadProjects()
+        Dim projects As List(Of Project) = Project.listall("", "order by id desc ")
+        chkListCoursesProjects.Items.Clear()
+
+        For Each project As Project In projects
+            chkListCoursesProjects.Items.Add(New ListItem(project.name, project.id))
+        Next
+
+        chkListCoursesProjects.Visible = True
+    End Sub
+
+
+    Protected Sub announcementsForm_SelectedIndexChanged(sender As Object, e As EventArgs)
+        UpdateSendToDropdown()
     End Sub
 
 
@@ -160,9 +183,24 @@ Public Class AnnouncementPage
         Dim announcementId As Integer = Convert.ToInt32(btn.ID.Replace("DeleteAnnouncement_", ""))
 
         Try
-            ' Perform deletion logic here
-            Dim announcementToDelete As New Announcement()
-            announcementToDelete = Announcement.load(announcementId)
+            ' Delete related records in Course_Announcement
+            Dim courseAnnounce As New Course_Announcement()
+            Dim relatedCourseAnnouncements As List(Of Course_Announcement) = courseAnnounce.listall($"WHERE announcement_id = {announcementId}", "")
+
+            For Each relatedCourseAnnouncement In relatedCourseAnnouncements
+                relatedCourseAnnouncement.delete()
+            Next
+
+            ' Delete related records in Project_Announcement
+            Dim projectAnnounce As New Project_Announcement()
+            Dim relatedProjectAnnouncements As List(Of Project_Announcement) = projectAnnounce.listall($"WHERE announcement_id = {announcementId}", "")
+
+            For Each relatedProjectAnnouncement In relatedProjectAnnouncements
+                relatedProjectAnnouncement.delete()
+            Next
+
+            ' Delete the announcement itself
+            Dim announcementToDelete As Announcement = Announcement.load(announcementId)
             announcementToDelete.delete()
 
             ' Inform the user
@@ -175,7 +213,6 @@ Public Class AnnouncementPage
             End If
 
             Response.Redirect("AnnouncementPage.aspx")
-
         Catch ex As Exception
             ' Handle exceptions (e.g., log them)
             ClientScript.RegisterStartupScript(Me.GetType(), "error", $"alert('Error deleting announcement: {ex.Message}');", True)
@@ -201,6 +238,91 @@ Public Class AnnouncementPage
         Return nextId
     End Function
 
+
+    '<WebMethod()>
+    'Public Function InsertAnnouncement2() As String
+    '    Try
+    '        ' Check if the user is logged in
+    '        If Session("LoggedIn") Is Nothing OrElse Not CType(Session("LoggedIn"), Boolean) Then
+    '            Throw New Exception("User is not logged in.")
+    '        End If
+
+    '        Dim sentBy As String = If(Session("ID")?.ToString(), String.Empty)
+    '        If String.IsNullOrEmpty(sentBy) Then
+    '            Throw New Exception("Logged in user ID is not found.")
+    '        End If
+
+    '        Dim Status As Integer = 1
+
+    '        Dim title As String = announcementTitle.Value
+    '        If String.IsNullOrEmpty(title) Then
+    '            Throw New Exception("Announcement title is required.")
+    '        End If
+
+    '        Dim typeStr As String = Request.Form("announcementType") ' Get selected type from form
+    '        Dim type As Integer = GetTypeValue(typeStr) ' Map type string to integer
+
+    '        Dim link As String = announcementLink.Value
+
+
+    '        Dim text As String = announcementText.Value
+    '        If String.IsNullOrEmpty(text) Then
+    '            Throw New Exception("Announcement text is required.")
+    '        End If
+
+    '        Dim datetime As DateTime = DateTime.Now
+
+    '        ' Create an instance of Announcement
+    '        Dim announce As New Announcement()
+    '        Dim courseAnnounce As New Course_Announcement()
+
+    '        ' Determine if it's an insert or update
+    '        If Session("EditingAnnouncementID") IsNot Nothing Then
+    '            Dim announcementId As Integer = Convert.ToInt32(Session("EditingAnnouncementID"))
+
+    '            'announce.id = announcementId 
+    '            announce = Announcement.load(announcementId)
+    '            ' Set properties for the announcement
+    '            announce.title = title
+    '            announce.type = type
+    '            announce.link = link
+    '            announce.datetime = datetime
+    '            announce.text = text
+    '            announce.status = Status
+    '            announce.sentby = sentBy
+
+    '            announce.update()
+    '        Else
+    '            announce.id = New database_operations().GetNewPrimaryKey("id", "Announcement", HttpContext.Current.Session("conn")) ' Replace with your logic for generating a new ID
+    '            ' Set properties for the announcement
+    '            announce.title = title
+    '            announce.type = type ' Set the mapped type integer
+    '            announce.link = link
+    '            announce.datetime = datetime
+    '            announce.text = text
+    '            announce.status = Status
+    '            announce.sentby = sentBy
+
+    '            announce.update()
+
+    '            'courseAnnounce.id = New database_operations().GetNewPrimaryKey("id", "Announcement", HttpContext.Current.Session("conn"))
+    '            courseAnnounce.announcement_id = announce.id
+    '            'courseAnnounce.course_id = Request.QueryString("courseId")
+
+    '            'courseAnnounce.update()
+    '        End If
+
+    '        ' Clear session variable once done with editing or insertion
+    '        Session.Remove("EditingAnnouncementID")
+
+    '        BindAnnouncements() ' Rebind announcements after insertion or update
+
+    '        Return "Success"
+    '    Catch ex As Exception
+    '        Return "Error: " & ex.Message
+    '    End Try
+    'End Function
+
     <WebMethod()>
     Public Function InsertAnnouncement() As String
         Try
@@ -215,60 +337,75 @@ Public Class AnnouncementPage
             End If
 
             Dim Status As Integer = 1
-
             Dim title As String = announcementTitle.Value
             If String.IsNullOrEmpty(title) Then
                 Throw New Exception("Announcement title is required.")
             End If
 
-            Dim typeStr As String = Request.Form("announcementType") ' Get selected type from form
-            Dim type As Integer = GetTypeValue(typeStr) ' Map type string to integer
-
+            Dim typeStr As String = Request.Form("announcementType")
+            Dim type As Integer = GetTypeValue(typeStr)
             Dim link As String = announcementLink.Value
-            'Dim link As String = announcementLink.Value
-            'If String.IsNullOrEmpty(link) Then
-            '    Throw New Exception("Announcement link is required.")
-            'End If
-
             Dim text As String = announcementText.Value
             If String.IsNullOrEmpty(text) Then
                 Throw New Exception("Announcement text is required.")
             End If
 
             Dim datetime As DateTime = DateTime.Now
-
-            ' Create an instance of Announcement
             Dim announce As New Announcement()
 
+            Dim announcementId As Integer
 
-            ' Determine if it's an insert or update
-            Dim announcementId As Integer = If(Session("EditingAnnouncementID") IsNot Nothing, Convert.ToInt32(Session("EditingAnnouncementID")), 0)
+            If Session("EditingAnnouncementID") IsNot Nothing Then
+                announcementId = Convert.ToInt32(Session("EditingAnnouncementID"))
+                announce = Announcement.load(announcementId)
+                announce.title = title
+                announce.type = type
+                announce.link = link
+                announce.datetime = datetime
+                announce.text = text
+                announce.status = Status
+                announce.sentby = sentBy
+                announce.update()
+                Session.Remove("EditingAnnouncementID")
+            Else
+                announcementId = GetNextAnnouncementId()
+                announce.id = announcementId
+                announce.title = title
+                announce.type = type
+                announce.link = link
+                announce.datetime = datetime
+                announce.text = text
+                announce.status = Status
+                announce.sentby = sentBy
+                announce.update() ' Use insert method for new record
+            End If
 
+            ' Handle course association
+            For Each item As ListItem In chkListCoursesProjects.Items
+                If item.Selected Then
+                    Dim courseAnnounce As New Course_Announcement() With {
+                    .announcement_id = announcementId,
+                    .course_id = item.Value
+                }
+                    courseAnnounce.update() ' Use insert method provided by your ORM
+                End If
+            Next
 
-            announce.id = New database_operations().GetNewPrimaryKey("id", "Announcement", HttpContext.Current.Session("conn")) ' Replace with your logic for generating a new ID
-
-            ' Set properties for the announcement
-            announce.title = title
-            announce.type = type ' Set the mapped type integer
-            announce.link = link
-            announce.datetime = datetime
-            announce.text = text
-            announce.status = Status
-            announce.sentby = sentBy
-
-            announce.update()
-
-            ' Clear session variable once done with editing or insertion
-            Session.Remove("EditingAnnouncementID")
-
-            BindAnnouncements() ' Rebind announcements after insertion or update
-
+            ClientScript.RegisterStartupScript(Me.GetType(), "alert", "alert('Announcement added successfully!');", True)
+            BindAnnouncements()
             Return "Success"
         Catch ex As Exception
+            ' Log the exception or display an error message
             Return "Error: " & ex.Message
         End Try
     End Function
 
+
+    Protected Sub UpdateSendToDropdown(sender As Object, e As EventArgs)
+
+        UpdateSendToDropdown()
+
+    End Sub
 
     Private Function GetTypeValue(ByVal typeStr As String) As Integer
         Select Case typeStr
@@ -292,11 +429,15 @@ Public Class AnnouncementPage
             ClientScript.RegisterStartupScript(Me.GetType(), "alert", $"alert('Failed to add announcement: {result}');", True)
         End If
 
+        ' Clear form fields
         announcementTitle.Value = ""
         announcementLink.Value = ""
         announcementText.Value = ""
         announcementSentBy.Value = ""
+        BindAnnouncements()
+
     End Sub
+
 
     Public Function GetIcon(ByVal type As Object) As String
         Dim iconClass As String = ""
