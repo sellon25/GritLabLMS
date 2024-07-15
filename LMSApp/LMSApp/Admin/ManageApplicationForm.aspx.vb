@@ -34,12 +34,31 @@ Public Class ManageApplicationForm
             newQuestion.QuestionNumber = Double.Parse(questionNum, 0.01)
         End If
 
+        ' Insert options if applicable
+        If OptionsList IsNot Nothing AndAlso OptionsList.Count > 0 Then
+            For Each optionText As String In OptionsList
+                Dim optionGuid As Guid = Guid.NewGuid()
+                Dim optionQuestion As New Question_Bank()
+                With optionQuestion
+                    .id = optionGuid.ToString()
+                    .QuestionType = "option" ' or any specific type you want to use for options
+                    .Text = optionText
+                    .Category_ID = "Application Form"
+                    .ParentQuestion = newQuestion.id
+                End With
+                optionQuestion.update()
+            Next
+        End If
+
+        ' Clear the options list after insertion
+        OptionsList.Clear()
+
         newQuestion.update()
         LoadQuestions()
     End Sub
 
     Private Sub LoadQuestions()
-        Dim questions As List(Of Question_Bank) = Question_Bank.listall(" where [Category_ID]='Application Form' ")
+        Dim questions As List(Of Question_Bank) = Question_Bank.listall(" where [Category_ID]='Application Form' and [QuestionType] != 'option' ")
         CreatedQuestions.Controls.Clear()
 
         For Each question In questions
@@ -72,56 +91,45 @@ Public Class ManageApplicationForm
         ' Add additional controls based on question type
         Select Case questionType
             Case "radio"
-                ' Add radio button inputs and additional controls for radio type questions
-                Dim radioInput1 As New RadioButton()
-                radioInput1.ID = String.Format("radioInput1_{0}", questionId)
-                radioInput1.GroupName = questionId
-                radioInput1.Text = "Option 1"
+                ' Add RadioButtonList for radio type questions
+                Dim radioList As New RadioButtonList()
+                radioList.ID = String.Format("radioList_{0}", questionId)
+                radioList.CssClass = "m-2 border-0"
 
-                Dim radioInput2 As New RadioButton()
-                radioInput2.ID = String.Format("radioInput2_{0}", questionId)
-                radioInput2.GroupName = questionId
-                radioInput2.Text = "Option 2"
+                ' Fetch options for this radio type question
+                Dim options As List(Of Question_Bank) = Question_Bank.listall(String.Format(" WHERE [ParentQuestion]='{0}' AND [QuestionType]='option' ", questionId))
 
-                ' Add radio inputs to newQuestionDiv
-                newQuestionDiv.Controls.Add(radioInput1)
-                newQuestionDiv.Controls.Add(radioInput2)
+                ' Add options to RadioButtonList
+                For Each optionText In options
+                    radioList.Items.Add(New ListItem(optionText.Text, optionText.id))
+                Next
 
-                ' Add an input and button for radio type questions
-                Dim radioTextInput As New TextBox()
-                radioTextInput.ID = "rinp-" & questionId
-                radioTextInput.Attributes("placeholder") = "Type here..."
-                radioTextInput.CssClass = "form-control p-0 border-0"
-
-                Dim addButton As New Button()
-                addButton.ID = "btnAddOp_" + questionId
-                addButton.Text = "Add"
-                addButton.CssClass = "btn mb-2 btn-primary"
-                addButton.Style.Add("background-color", "#3C1B50")
-
-                ' Add button click event handler
-                AddHandler addButton.Click, AddressOf AddOption
-
-                ' Add input and button to newQuestionDiv
-                newQuestionDiv.Controls.Add(radioTextInput)
-                newQuestionDiv.Controls.Add(addButton)
+                ' Add RadioButtonList to newQuestionDiv
+                newQuestionDiv.Controls.Add(radioList)
 
                 ' Add border-bottom class to the div for styling
                 newQuestionDiv.Attributes("class") &= " border-bottom"
 
+
             Case "checkbox"
-                ' Add checkbox inputs for checkbox type questions
-                Dim checkboxInput1 As New CheckBox()
-                checkboxInput1.ID = String.Format("checkboxInput1_{0}", questionId)
-                checkboxInput1.Text = "Option 1"
+                ' Add CheckBoxList for checkbox type questions
+                Dim checkboxList As New CheckBoxList()
+                checkboxList.ID = String.Format("checkboxList_{0}", questionId)
+                checkboxList.CssClass = "m-2 border-0"
 
-                Dim checkboxInput2 As New CheckBox()
-                checkboxInput2.ID = String.Format("checkboxInput2_{0}", questionId)
-                checkboxInput2.Text = "Option 2"
+                ' Fetch options for this checkbox type question
+                Dim options As List(Of Question_Bank) = Question_Bank.listall(String.Format(" WHERE [ParentQuestion]='{0}' AND [QuestionType]='option' ", questionId))
 
-                ' Add checkbox inputs to newQuestionDiv
-                newQuestionDiv.Controls.Add(checkboxInput1)
-                newQuestionDiv.Controls.Add(checkboxInput2)
+                ' Add options to CheckBoxList
+                For Each optionText In options
+                    checkboxList.Items.Add(New ListItem(optionText.Text, optionText.id))
+                Next
+
+                ' Add CheckBoxList to newQuestionDiv
+                newQuestionDiv.Controls.Add(checkboxList)
+
+                ' Add border-bottom class to the div for styling
+                newQuestionDiv.Attributes("class") &= " border-bottom"
 
             Case "text"
                 ' Add input for text type questions
@@ -157,15 +165,13 @@ Public Class ManageApplicationForm
                 selectDropdown.ID = String.Format("selectDropdown_{0}", questionId)
                 selectDropdown.CssClass = "form-select shadow-none p-0 border-0 form-control-line"
 
+                ' Fetch options for this dropList question
+                Dim options As List(Of Question_Bank) = Question_Bank.listall(String.Format(" WHERE [ParentQuestion]='{0}' AND [QuestionType]='option' ", questionId))
+
                 ' Add options to select dropdown
-                Dim option1 As New ListItem("Game development")
-                Dim option2 As New ListItem("Web development")
-                Dim option3 As New ListItem("Design")
-                Dim option4 As New ListItem("Microsoft360")
-                selectDropdown.Items.Add(option1)
-                selectDropdown.Items.Add(option2)
-                selectDropdown.Items.Add(option3)
-                selectDropdown.Items.Add(option4)
+                For Each optionText In options
+                    selectDropdown.Items.Add(New ListItem(optionText.Text, optionText.id))
+                Next
 
                 ' Add select dropdown to newQuestionDiv
                 newQuestionDiv.Controls.Add(selectDropdown)
@@ -193,6 +199,7 @@ Public Class ManageApplicationForm
         ' Return the div containing the question content
         Return newQuestionDiv
     End Function
+
 
 
     Protected Sub DeleteQuestion(sender As Object, e As EventArgs)
