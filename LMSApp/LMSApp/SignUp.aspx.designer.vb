@@ -120,4 +120,58 @@ Partial Public Class SignUp
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents SubmitApplication As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''OTPform control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents OTPform As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''HiddenpField control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents HiddenpField As Global.System.Web.UI.WebControls.HiddenField
+
+    '''<summary>
+    '''Div2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Div2 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''userotp control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents userotp As Global.System.Web.UI.HtmlControls.HtmlInputGenericControl
+
+    '''<summary>
+    '''SubmitOTP control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents SubmitOTP As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Button2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Button2 As Global.System.Web.UI.WebControls.Button
 End Class

@@ -75,12 +75,12 @@
                 <div class="form-group mb-4">
                     <label class="col-md-12 p-0">First Name</label>
                     <div class="col-md-12 border-bottom p-0">
-                        <input id="userfname" runat="server" type="text" placeholder="Type here..." class="form-control p-0 border-0" /> </div>
+                        <input id="userfname" runat="server" type="text" placeholder="Type here..." class="form-control text-capitalize p-0 border-0" /> </div>
                 </div>
                 <div class="form-group mb-4">
                     <label class="col-md-12 p-0">Last Name</label>
                     <div class="col-md-12 border-bottom p-0">
-                        <input id="userlname" runat="server" type="text" placeholder="Type here..." class="form-control p-0 border-0" /> </div>
+                        <input id="userlname" runat="server" type="text" placeholder="Type here..." class="form-control text-capitalize p-0 border-0" /> </div>
                 </div>
                                 
                 <div class="form-group mb-4">
@@ -126,6 +126,32 @@
                     <div class="col-sm-12">
                         <asp:Button ID="SubmitApplication" runat="server" Text="Submit" OnClick="SubmitApplication_Click" class="m-2 mb-0 btn btn-orange" />                        
                     </div>                   
+                </div>
+        </div>
+        <div id="OTPform" runat="server" class="card" style="min-width:50vh">
+            <asp:HiddenField ID="HiddenpField" runat="server" />
+            <div class="card-body">
+                <h3 class="mb-4 ">Application Form</h3>
+                <div class="form-horizontal form-material">
+                    <div id="Div2"  runat="server" class="ApplicationQuestions mb-4 border-bottom">
+                        <h4 class="mb-4 fw-bold ">Verify email</h4>
+                        <div class="form-group mb-4">
+                    <label class="col-md-12 p-0">Enter OTP</label>
+                    <div class="col-md-12 border-bottom p-0">
+                        <input id="userotp" runat="server" type="number" placeholder="Type here..." class="form-control text-capitalize p-0 border-0" /> </div>
+                </div>
+                
+                                
+                    </div> 
+                </div>
+            </div>
+              <div class="form-group mb-4">
+                    <div class="col-sm-12">
+                        <asp:Button ID="SubmitOTP" runat="server" Text="Submit" OnClick="SubmitOTP_Click" class="m-2 mb-0 btn btn-orange" />                        
+                    </div> 
+                  <div class="col-sm-12">
+                        <asp:Button ID="Button2" runat="server" Text="Resend OTP" OnClick="SubmitApplication_Click" class="m-2 mb-0 btn btn-secondary" />                        
+                    </div>  
                 </div>
         </div>
     </form>
