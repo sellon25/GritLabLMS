@@ -42,3 +42,22 @@ function resetFilter(id) {
 // Add event listeners for the search and filter elements
 
 //document.getElementById("ddlFilter").addEventListener("change", applyFilter););
+
+
+function previewImage(input, containerId) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            var container = document.getElementById(containerId);
+            container.style.backgroundImage = "url('" + e.target.result + "')";
+            container.style.backgroundSize = "cover";
+            container.style.backgroundPosition = "center";
+            container.style.backgroundRepeat = "no-repeat";
+            container.style.height = "200px";  // Adjust the height as needed
+            container.style.width = "200px";   // Adjust the width as needed
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
