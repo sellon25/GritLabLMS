@@ -95,6 +95,13 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="WebForm3.aspx.designer.vb">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm3.aspx.vb">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Content Include="Admin\addkingsmen.aspx" />
     <Content Include="Admin\AddProject.aspx" />
     <Content Include="Admin\admin-assets\adminscripts.js" />
@@ -2450,6 +2457,7 @@
     <Content Include="Utility\welcome_message.txt" />
     <Content Include="Web.config" />
     <Content Include="WebForm2.aspx" />
+    <Content Include="WebForm3.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\addkingsmen.aspx.designer.vb">

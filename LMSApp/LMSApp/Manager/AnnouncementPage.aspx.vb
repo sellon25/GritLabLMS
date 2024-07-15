@@ -236,7 +236,7 @@ Public Class AnnouncementPage
             Dim announcementId As Integer = If(Session("EditingAnnouncementID") IsNot Nothing, Convert.ToInt32(Session("EditingAnnouncementID")), 0)
             Dim anounIds As List(Of Announcement) = New Announcement().listallPKOnly()
 
-            announce.id = New database_operations().GetNewPrimaryKey(Of Announcement)(anounIds)
+            announce.id = New database_operations().GetNewPrimaryKey("id", "Announcement", HttpContext.Current.Session("conn"))
 
             ' Set properties for the announcement
             announce.title = title
