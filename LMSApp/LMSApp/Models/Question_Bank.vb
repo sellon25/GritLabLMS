@@ -176,7 +176,7 @@ Public Shared Display_id as Boolean=True
             If Display_ParentQuestion = True Then p.ParentQuestion = checkNull(dt.Rows(i)("ParentQuestion"))
             p.I_Display_ParentQuestion = Display_ParentQuestion
             If Display_TestID = True Then p.TestID = checkNull(dt.Rows(i)("TestID"))
-            p.TestID = Display_TestID
+            p.I_Display_TestID = Display_TestID
             If Display_CaseStudy = True Then p.CaseStudy = checkNull(dt.Rows(i)("CaseStudy"))
             p.I_Display_CaseStudy = Display_CaseStudy
             If Display_Image = True Then p.Image = checkNull(dt.Rows(i)("Image"))
