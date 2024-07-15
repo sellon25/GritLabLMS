@@ -150,7 +150,7 @@
                         <asp:Button ID="SubmitOTP" runat="server" Text="Submit" OnClick="SubmitOTP_Click" class="m-2 mb-0 btn btn-orange" />                        
                     </div> 
                   <div class="col-sm-12">
-                        <asp:Button ID="Button2" runat="server" Text="Resend OTP" OnClick="SubmitApplication_Click" class="m-2 mb-0 btn btn-secondary" />                        
+                        <asp:Button ID="ResendOTP" runat="server" Text="Resend OTP" OnClick="ResendOTP_Click" class="m-2 mb-0 btn btn-secondary" />                        
                     </div>  
                 </div>
         </div>

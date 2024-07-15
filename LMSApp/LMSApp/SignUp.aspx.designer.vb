@@ -167,11 +167,11 @@ Partial Public Class SignUp
     Protected WithEvents SubmitOTP As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Button2 control.
+    '''ResendOTP control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Button2 As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents ResendOTP As Global.System.Web.UI.WebControls.Button
 End Class

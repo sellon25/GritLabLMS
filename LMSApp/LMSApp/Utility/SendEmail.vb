@@ -23,25 +23,36 @@ Public Class SendEmail
         Smtp_Server.Send(e_mail)
     End Sub
 
-    Public Sub SendOTP(Email)
+    Public Function SendOTP(Email As String) As Int32
+        ' Generate a random 6-digit OTP
+        Dim random As New Random()
+        Dim otp As String = random.Next(100000, 999999).ToString("D6")
+
+        ' Set up the SMTP server
         Dim Smtp_Server As New SmtpClient
-        Dim e_mail As New MailMessage()
         Smtp_Server.UseDefaultCredentials = False
-        Smtp_Server.Credentials = New Net.NetworkCredential("gritslabapp@gmail.com", "ygigfqjsqysumxvh")
+        Smtp_Server.Credentials = New Net.NetworkCredential("chietawebapp@gmail.com", "ygigfqjsqysumxvh")
         Smtp_Server.Port = 587
         Smtp_Server.EnableSsl = True
         Smtp_Server.Host = "smtp.gmail.com"
 
-        e_mail = New MailMessage()
+        ' Create the email message
+        Dim e_mail As New MailMessage()
         e_mail.From = New MailAddress("chietawebapp@gmail.com")
         e_mail.To.Add(Email)
-        e_mail.Subject = "Password Reset"
+        e_mail.Subject = "Your OTP Code"
         e_mail.IsBodyHtml = False
-        e_mail.Body = "Your password for Account: " + Email + " has been reset successfully" + Environment.NewLine + Environment.NewLine + "Kind regards" + Environment.NewLine + "Grits Lab Team"
-        'Goto OTP Page
-        Smtp_Server.Send(e_mail)
-    End Sub
+        e_mail.Body = "Dear user," + Environment.NewLine + Environment.NewLine +
+                  "Your One-Time Password (OTP) is: " + otp + Environment.NewLine + Environment.NewLine +
+                  "Please use this code to complete your process." + Environment.NewLine + Environment.NewLine +
+                  "Kind regards," + Environment.NewLine + "Chieta Team"
 
+        ' Send the email
+        Smtp_Server.Send(e_mail)
+
+        ' Return the OTP for further use (e.g., for comparison when user enters it)
+        Return Convert.ToInt32(otp)
+    End Function
     Public Sub SendNotification(userId As String, message As String)
 
 

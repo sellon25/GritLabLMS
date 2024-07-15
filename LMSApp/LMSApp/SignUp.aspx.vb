@@ -26,13 +26,27 @@ Public Class SignUp
                 .update()
             End With
             SignUpform.Visible = False
-            LoadQuestions()
-            ApplicationForm.Visible = True
+            'LoadQuestions()
+            Dim otp As New SendEmail
+            HiddenpField.Value = otp.SendOTP(useremail.Value)
+            OTPform.Visible = True
 
         Else
             LblError.Text = "Passwords do not match!"
             LblError.ForeColor = Color.Red
             LblError.Visible = True
+        End If
+    End Sub
+
+    Protected Sub ResendOTP_Click(sender As Object, e As EventArgs)
+        Dim otp As New SendEmail
+        userotp.Value = ""
+        HiddenpField.Value = otp.SendOTP(useremail.Value)
+    End Sub
+
+    Protected Sub SubmitOTP_Click(sender As Object, e As EventArgs)
+        If HiddenpField.Value = userotp.Value.Trim() Then
+            ApplicationForm.Visible = True
         End If
     End Sub
 
@@ -243,5 +257,7 @@ Public Class SignUp
             ' Save or process the answer
         Next
     End Sub
+
+
 
 End Class
