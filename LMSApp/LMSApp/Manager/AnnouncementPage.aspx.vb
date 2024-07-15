@@ -219,24 +219,24 @@ Public Class AnnouncementPage
         End Try
     End Sub
 
-    Public Shared Function GetNextAnnouncementId() As Integer
-        Dim nextId As Integer = 1 ' Default starting ID
+    'Public Shared Function GetNextAnnouncementId() As Integer
+    '    Dim nextId As Integer = 1 ' Default starting ID
 
-        Try
-            ' Retrieve all existing IDs
-            Dim ids As List(Of Announcement) = Announcement.listallPKOnly(Nothing, Nothing)
+    '    Try
+    '        ' Retrieve all existing IDs
+    '        Dim ids As List(Of Announcement) = Announcement.listallPKOnly(Nothing, Nothing)
 
-            ' Find the maximum ID
-            If ids IsNot Nothing AndAlso ids.Count > 0 Then
-                nextId = ids.Max(Function(a) a.id.GetValueOrDefault()) + 1
-            End If
-        Catch ex As Exception
-            ' Handle exceptions if needed
-            Throw New Exception("Error getting next announcement ID: " & ex.Message)
-        End Try
+    '        ' Find the maximum ID
+    '        If ids IsNot Nothing AndAlso ids.Count > 0 Then
+    '            nextId = ids.Max(Function(a) a.id.GetValueOrDefault()) + 1
+    '        End If
+    '    Catch ex As Exception
+    '        ' Handle exceptions if needed
+    '        Throw New Exception("Error getting next announcement ID: " & ex.Message)
+    '    End Try
 
-        Return nextId
-    End Function
+    '    Return nextId
+    'End Function
 
 
     '<WebMethod()>
@@ -368,7 +368,7 @@ Public Class AnnouncementPage
                 announce.update()
                 Session.Remove("EditingAnnouncementID")
             Else
-                announcementId = GetNextAnnouncementId()
+                announcementId = New database_operations().GetNewPrimaryKey("id", "Announcement", HttpContext.Current.Session("conn"))
                 announce.id = announcementId
                 announce.title = title
                 announce.type = type
@@ -380,16 +380,26 @@ Public Class AnnouncementPage
                 announce.update() ' Use insert method for new record
             End If
 
-            ' Handle course association
-            For Each item As ListItem In chkListCoursesProjects.Items
-                If item.Selected Then
-                    Dim courseAnnounce As New Course_Announcement() With {
-                    .announcement_id = announcementId,
-                    .course_id = item.Value
-                }
-                    courseAnnounce.update() ' Use insert method provided by your ORM
-                End If
-            Next
+            ' Handle course/project association
+            If chkListCoursesProjects.Visible Then
+                For Each item As ListItem In chkListCoursesProjects.Items
+                    If item.Selected Then
+                        If sendTo.SelectedValue = "Course" Then
+                            Dim courseAnnounce As New Course_Announcement()
+                            courseAnnounce.id = New database_operations().GetNewPrimaryKey("id", "Course_Announcement", HttpContext.Current.Session("conn"))
+                            courseAnnounce.announcement_id = announce.id
+                            courseAnnounce.course_id = item.Value
+                            courseAnnounce.update()
+                        ElseIf sendTo.SelectedValue = "Project" Then
+                            Dim projectAnnounce As New Project_Announcement()
+                            projectAnnounce.id = New database_operations().GetNewPrimaryKey("id", "Project_Announcement", HttpContext.Current.Session("conn"))
+                            projectAnnounce.announcement_id = announce.id
+                            projectAnnounce.project_id = item.Value
+                            projectAnnounce.update()
+                        End If
+                    End If
+                Next
+            End If
 
             ClientScript.RegisterStartupScript(Me.GetType(), "alert", "alert('Announcement added successfully!');", True)
             BindAnnouncements()
