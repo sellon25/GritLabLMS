@@ -6,6 +6,8 @@ Public Class SignUp
     Dim AnswerControls As New List(Of String)()
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         LblError.Visible = False
+        OTPform.Visible = False
+        HiddenpField.Visible = False
         ApplicationForm.Visible = False
         LoadQuestions()
 
@@ -26,8 +28,10 @@ Public Class SignUp
                 .update()
             End With
             SignUpform.Visible = False
-            LoadQuestions()
-            ApplicationForm.Visible = True
+            Dim otp As New SendEmail
+            otp.SendOTP(NewUser.emailID)
+            OTPform.Visible = True
+
 
         Else
             LblError.Text = "Passwords do not match!"
@@ -202,14 +206,14 @@ Public Class SignUp
     End Function
 
 
-    Protected Sub DeleteQuestion(sender As Object, e As EventArgs)
-        Dim btn As Button = DirectCast(sender, Button)
-        Dim questionId = btn.ID.Replace("btnDelete_", "")
-        Dim question As New Question_Bank()
-        question = question.load(questionId)
-        'question.delete()
-        LoadQuestions()
-    End Sub
+    'Protected Sub DeleteQuestion(sender As Object, e As EventArgs)
+    '    Dim btn As Button = DirectCast(sender, Button)
+    '    Dim questionId = btn.ID.Replace("btnDelete_", "")
+    '    Dim question As New Question_Bank()
+    '    question = question.load(questionId)
+    '    'question.delete()
+    '    LoadQuestions()
+    'End Sub
 
     Protected Sub AddOption(sender As Object, e As EventArgs)
         Dim btn As Button = DirectCast(sender, Button)
@@ -239,5 +243,10 @@ Public Class SignUp
             Dim answer As String = kvp.Value
             ' Save or process the answer
         Next
+    End Sub
+
+    Protected Sub SubmitOTP_Click(sender As Object, e As EventArgs)
+
+
     End Sub
 End Class
