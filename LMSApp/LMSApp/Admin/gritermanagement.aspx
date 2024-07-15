@@ -1,9 +1,6 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/LMSBoardAdmin.Master" CodeBehind="gritermanagement.aspx.vb" Inherits="LMSApp.gritermanagement" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Type_pageTitle" runat="server">
 </asp:Content>
-<asp:Content ID="Content5" ContentPlaceHolderID="ContentHead" runat="server">
-    
-</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Change_Breadcrumb_PageTitle" runat="server">
     Manage Griters
 </asp:Content>
@@ -39,11 +36,8 @@
                     <label for="userrole">Role</label>
                     <input type="text" class="form-control text-muted mb-1" id="userroletxt" runat="server" readonly placeholder="">
                      <asp:DropDownList  CssClass="form-select" ID="userrole" runat="server">
-                        <asp:ListItem Value="0">Manager</asp:ListItem>
-                        <asp:ListItem Value="1">Admin</asp:ListItem>
-                        <asp:ListItem Value="2">Facilitator/Leader</asp:ListItem>
-                         <asp:ListItem Value="4">Employee</asp:ListItem>
-                        <asp:ListItem Value="3">GLA Student</asp:ListItem>                        
+                        <asp:ListItem Value="2">Facilitator/Leader</asp:ListItem>                  
+                        <asp:ListItem Value="3">Student</asp:ListItem>                        
                     </asp:DropDownList>
                 </div>
                 <div class="form-group">
@@ -52,7 +46,7 @@
                     <asp:DropDownList CssClass="form-select" ID="EnrollmentStatus" runat="server">
                         <asp:ListItem Value="0">Accepted</asp:ListItem>
                         <asp:ListItem Value="1">Rejected</asp:ListItem>
-                        <asp:ListItem Value="3">Pending Application</asp:ListItem>
+                        <asp:ListItem Value="3">Pending - New Applicant</asp:ListItem>
                         <asp:ListItem Value="4">Active</asp:ListItem>
                         <asp:ListItem Value="5">Suspended</asp:ListItem>
                     </asp:DropDownList>
@@ -65,7 +59,6 @@
         </div>
     </div>
     <!-- Existing Announcements Section -->
-      
     <div class="col-md-8">
         <div class="white-box">
             <div class="card p-0">
@@ -82,19 +75,18 @@
                             <input type="text" id="txtSearch" class="form-control" placeholder="Enter" onselect="applyFilter()">
                         </div>
                         <div class="col-md-4">
-                            <label for="ddlFilter">Filter by status:</label>
+                            <label for="ddlFilter">Filter by:</label>
                             <select id="ddlFilter" class="form-control" onselect="applyFilter()">
-                                <option value=""></option>
-                                <option value="New Applicant">New Applicants</option>
-                                <option value="Rejected">Rejected</option>
-                                <option value="Active">Active</option>
-                                <option value="Pending">Pending</option>
+                                <option value="NAME">Name</option>
+                                <option value="SN">Student Number</option>
+                                <option value="SUR">Surname</option>
+                                <option value="FAC"> Faculty</option>
                             </select>
                         </div>
                         <div class="col-md-4">
                             <label>&nbsp;</label><br>
-                            <button type="button" class="btn btn-primary" onclick="applyFilter('<%= TableUsers.ClientID.ToString() %>')">Apply Filter</button>
-                            <button type="button" class="btn btn-secondary" onclick="resetFilter('<%= TableUsers.ClientID.ToString() %>')">Reset</button>
+                            <button type="button" class="btn btn-primary" onclick="applyFilter()">Apply Filter</button>
+                            <button type="button" class="btn btn-secondary" onclick="resetFilter()">Reset</button>
                  
                         </div>
                     </div>
@@ -141,7 +133,9 @@
                 </div>--%>
             </div>
             <div class="form-group w-100 mb-0 pt-2 border-top">
-                <asp:DropDownList ID="CoursesAvailable" class="form-select w-100" runat="server"></asp:DropDownList>
+                <asp:DropDownList ID="CoursesAvailable" class="form-select w-100" runat="server">
+
+                </asp:DropDownList>
                 <asp:Button  ID="EnrollStudent" runat="server" OnClick="EnrollStudent_Click" class="btn mb-2 btn-primary" Text="Enroll To Course" />
             </div>
 
@@ -150,17 +144,12 @@
 
         <asp:Button ID="btnClose" runat="server" Text="Close" CssClass="btn btn-secondary" OnClientClick="hidePopup('<%= pnlEnrollment.ClientID %>'); return false;" />
 
-       <script type="text/javascript">
-                const tableID = '<%= TableUsers.ClientID.ToString() %>';
-        </script>
         <script type="text/javascript">
-           
             function hidePopup(id) {
                 var popup = document.getElementById(id);
                 popup.style.display = 'none';
             }
-        </script>
-        <script type="text/javascript">
+        </script><script type="text/javascript">
             function hidePopup() {
                 var popup = document.getElementById(id);
                 popup.style.display = 'none';

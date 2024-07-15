@@ -6,9 +6,19 @@
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         LoadUsers()
-        LoadAvailableCourses()
+
         pnlEnrollment.Visible = False
         ApplicationFormPanel.Visible = False
+        If Not IsPostBack Then
+            ' Initial load logic
+            LoadAvailableCourses()
+        Else
+            ' Recreate dynamic controls on postback
+            Dim userId As String = SelectedUserID.Value
+            If Not String.IsNullOrEmpty(userId) Then
+                PopulateEnrollmentInfo(userId)
+            End If
+        End If
     End Sub
 
     Protected Sub SelectUser(ByVal sender As Object, ByVal e As System.EventArgs)
@@ -38,6 +48,7 @@
             .update()
         End With
 
+        Response.Redirect("gritermanagement.aspx")
     End Sub
     Protected Sub LoadUsers()
         Dim listUsers As New List(Of User)
@@ -86,7 +97,7 @@
             Dim btnTrack As New Button()
             btnTrack.ID = String.Format("ViewEnrollment_{0}", usr.emailID.ToString())
             btnTrack.Attributes("class") = " btn btn-primary"
-            If (usr.status.Trim() = "New Applicant" Or usr.status.Trim() = "Rejected" Or usr.status.Trim() = "Pending Application") Then
+            If (usr.status = "New Applicant") Then
                 btnTrack.Text = "View Application"
                 AddHandler btnTrack.Click, AddressOf ViewApplication
             Else
@@ -122,6 +133,8 @@
                 Return "Manager"
             Case 3
                 Return "Student"
+            Case 4
+                Return "Employee"
             Case Else
                 Return "Unknown"
         End Select
@@ -132,9 +145,20 @@
         Dim btn As Button = DirectCast(sender, Button)
         Dim id As String = btn.ID.Replace("ViewEnrollment_", "")
 
+        ' Store the selected user ID in a hidden field
+        SelectedUserID.Value = id
+
+        ' Populate the enrollment information
+        PopulateEnrollmentInfo(id)
+
+        ' Show the popup
+        pnlEnrollment.Visible = True
+        pnlEnrollment.Style("display") = "block"
+    End Sub
+    Private Sub PopulateEnrollmentInfo(userId As String)
         ' Fetch user enrollment info
         Dim userEnrollment As New List(Of Course_Enrollment)
-        userEnrollment = New Course_Enrollment().listall("WHERE userId = '" & id & "'")
+        userEnrollment = New Course_Enrollment().listall("WHERE userId = '" & userId & "'")
 
         ' Clear previous enrollment information
         EnrollmentInfo.Controls.Clear()
@@ -182,13 +206,10 @@
             ' Add the enrolInfoDiv to the EnrollmentInfo control
             EnrollmentInfo.Controls.Add(enrolInfoDiv)
         Next
-
         ' Show the popup
         pnlEnrollment.Visible = True
         pnlEnrollment.Style("display") = "block"
-
     End Sub
-
 
     Private Function GetAverageMark(enrollmentId As String) As String
         ' Add logic to fetch the average mark based on the enrollment ID
@@ -212,6 +233,7 @@
         ' Hide the popup
         pnlEnrollment.Visible = False
         pnlEnrollment.Style("display") = "none"
+        SelectedUserID.Value = String.Empty
     End Sub
 
 
@@ -233,6 +255,12 @@
         Dim id As String = btn.ID.Replace("RemoveCourse_", "")
         Dim enrollment As Course_Enrollment = New Course_Enrollment().load(id)
         enrollment.delete()
+
+        Dim btn2 As New Button
+        btn2.ID = "ViewEnrollment_" + SelectedUserID.Value
+
+        ViewEnrollment_Click(btn, Nothing)
+
     End Sub
 
     Protected Sub EnrollStudent_Click(sender As Object, e As EventArgs)
@@ -265,10 +293,6 @@
             .update()
         End With
         ApplicationFormPanel.Visible = False
-
-        Dim newEmail As New SendEmail
-        newEmail.SendNotification(du.emailID, "Congradulations, Your application has been accepted! </br> Your are now officially a Student of Grits Lab africa, we are happy to have you!")
-
         LoadUsers()
     End Sub
 
@@ -282,15 +306,12 @@
             .update()
         End With
         ApplicationFormPanel.Visible = False
-        Dim newEmail As New SendEmail
-        newEmail.SendNotification(du.emailID, "It was a pleasure to learn more about you through your application. However, after careful consideration, we unfortunately regret to inform you that your application to Grits Lab africa was unsuccessful! </br>")
-
         LoadUsers()
     End Sub
 
 
     Private Sub LoadQuestions()
-        Dim questions As List(Of Question_Bank) = Question_Bank.listall(" where [Category_ID]='Application Form' ", " order by QuestionNumber asc ")
+        Dim questions As List(Of Question_Bank) = Question_Bank.listall(" where [Category_ID]='Application Form' ")
         CreatedQuestions.Controls.Clear()
 
         For Each question In questions
@@ -399,19 +420,14 @@
 
             Case "dropList"
                 ' Add select dropdown for dropList type questions
-                Dim selectDropdown As New DropDownList
+                Dim selectDropdown As New RadioButtonList
                 selectDropdown.Attributes("class") = "form-select shadow-none p-0 border-0 form-control-line"
 
                 ' Add options to select dropdown
-                Dim option1 As New ListItem("Game development")
-                Dim option2 As New ListItem("Web development")
-                Dim option3 As New ListItem("Design")
-                Dim option4 As New ListItem("Microsoft360")
+                Dim option1 As New ListItem("Option 1")
+                Dim option2 As New ListItem("Option 2")
                 selectDropdown.Items.Add(option1)
                 selectDropdown.Items.Add(option2)
-                selectDropdown.Items.Add(option3)
-                selectDropdown.Items.Add(option4)
-
 
                 ' Add select dropdown to newQuestionDiv
                 newQuestionDiv.Controls.Add(selectDropdown)
@@ -438,4 +454,8 @@
         ' Return the div containing the question content
         Return newQuestionDiv
     End Function
+
+    Protected Sub CoursesAvailable_SelectedIndexChanged(sender As Object, e As EventArgs)
+        Dim x = CoursesAvailable.SelectedValue
+    End Sub
 End Class
