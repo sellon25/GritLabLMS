@@ -183,7 +183,7 @@ Public Class ManageApplicationForm
                 ' Add input for number type questions
                 Dim numberInput As New TextBox()
                 numberInput.ID = String.Format("numberInput_{0}", questionId)
-                numberInput.Attributes("type") = "number"
+                numberInput.TextMode = TextBoxMode.Number
                 numberInput.Attributes("min") = "0"
                 numberInput.Attributes("max") = "10"
                 numberInput.Attributes("placeholder") = "Type here..."

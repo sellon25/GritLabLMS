@@ -114,6 +114,7 @@
         <div id="ApplicationForm" runat="server" class="card" style="min-width:50vh">
             <div class="card-body">
                 <h3 class="mb-4 ">Application Form</h3>
+                <asp:HiddenField ID="hiddenuserID" runat="server" />
                 <div class="form-horizontal form-material">
                     <div id="CreatedQuestions"  runat="server" class="ApplicationQuestions mb-4 border-bottom">
                         <h4 class="mb-4 fw-bold ">Application Form</h4>
@@ -121,12 +122,36 @@
            
                     </div> 
                 </div>
-            </div>
+            
               <div class="form-group mb-4">
                     <div class="col-sm-12">
                         <asp:Button ID="SubmitApplication" runat="server" Text="Submit" OnClick="SubmitApplication_Click" class="m-2 mb-0 btn btn-orange" />                        
                     </div>                   
                 </div>
+                <asp:Label ID="LblError2" runat="server" Text="Label"></asp:Label>
+
+            </div>
+        </div>
+          <div id="AcknowledgementDiv" runat="server" class="card" style="min-width:50vh">
+            <div class="card-body">
+                
+                <asp:HiddenField ID="HiddenField1" runat="server" />
+                <div class="form-horizontal form-material">
+                    <div id="Div2"  runat="server" class="ApplicationQuestions mb-4 border-bottom">
+                        <h4 class="mb-4 fw-bold ">Thank you for applying to Grits Lab Africa</h4>
+                
+                        <p></p>
+                    </div> 
+                </div>
+            
+              <div class="form-group mb-4">
+                    <div class="col-sm-12">
+                        <asp:Button ID="Button1" runat="server" Text="Submit" OnClick="SubmitApplication_Click" class="m-2 mb-0 btn btn-orange" />                        
+                    </div>                   
+                </div>
+                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+
+            </div>
         </div>
     </form>
 </body>

@@ -6,8 +6,9 @@ Public Class SignUp
     Dim AnswerControls As New List(Of String)()
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
+        SignUpform.Visible = False
         LblError.Visible = False
-        ApplicationForm.Visible = False
+        ApplicationForm.Visible = True
         LoadQuestions()
     End Sub
 
@@ -27,6 +28,7 @@ Public Class SignUp
             End With
             SignUpform.Visible = False
             LoadQuestions()
+            hiddenuserID.Value = useremail.Value
             ApplicationForm.Visible = True
         Else
             LblError.Text = "Passwords do not match!"
@@ -48,18 +50,18 @@ Public Class SignUp
         Dim newQuestionDiv As New HtmlGenericControl("div")
         newQuestionDiv.Attributes("class") = "form-group mb-4"
 
-        Dim btnDelete As New Button()
-        btnDelete.ID = String.Format("btnDelete_{0}", questionId)
-        btnDelete.Text = "Delete"
-        btnDelete.CssClass = "btn-0 border-0 text-danger bg-none float-end"
-        AddHandler btnDelete.Click, AddressOf DeleteQuestion
-        btnDelete.EnableViewState = True
+        'Dim btnDelete As New Button()
+        'btnDelete.ID = String.Format("btnDelete_{0}", questionId)
+        'btnDelete.Text = "Delete"
+        'btnDelete.CssClass = "btn-0 border-0 text-danger bg-none float-end"
+        'AddHandler btnDelete.Click, AddressOf DeleteQuestion
+        'btnDelete.EnableViewState = True
 
         Dim lblQuestionText As New Label()
         lblQuestionText.CssClass = "col-md-12 p-0"
         lblQuestionText.Text = questionText
 
-        newQuestionDiv.Controls.Add(btnDelete)
+        'newQuestionDiv.Controls.Add(btnDelete)
         newQuestionDiv.Controls.Add(lblQuestionText)
 
         Select Case questionType
@@ -74,6 +76,7 @@ Public Class SignUp
                 Next
                 newQuestionDiv.Controls.Add(radioList)
                 newQuestionDiv.Attributes("class") &= " border-bottom"
+                AnswerControls.Add(radioList.ID)
 
             Case "checkbox"
                 Dim checkboxList As New CheckBoxList()
@@ -86,6 +89,8 @@ Public Class SignUp
                 Next
                 newQuestionDiv.Controls.Add(checkboxList)
                 newQuestionDiv.Attributes("class") &= " border-bottom"
+                AnswerControls.Add(checkboxList.ID)
+
 
             Case "text"
                 Dim textInput As New TextBox()
@@ -94,6 +99,8 @@ Public Class SignUp
                 textInput.CssClass = "form-control p-0 border-0"
                 newQuestionDiv.Controls.Add(textInput)
                 newQuestionDiv.Attributes("class") &= " border-bottom"
+                AnswerControls.Add(textInput.ID)
+
 
             Case "textarea"
                 Dim textareaInput As New TextBox()
@@ -104,6 +111,8 @@ Public Class SignUp
                 textareaInput.CssClass = "form-control p-0 border-0"
                 newQuestionDiv.Controls.Add(textareaInput)
                 newQuestionDiv.Attributes("class") &= " border-bottom"
+                AnswerControls.Add(textareaInput.ID)
+
 
             Case "dropList"
                 Dim selectDropdown As New DropDownList()
@@ -115,20 +124,24 @@ Public Class SignUp
                 Next
                 newQuestionDiv.Controls.Add(selectDropdown)
                 newQuestionDiv.Attributes("class") &= " border-bottom"
+                AnswerControls.Add(selectDropdown.ID)
+
 
             Case "number"
                 Dim numberInput As New TextBox()
                 numberInput.ID = String.Format("numberInput_{0}", questionId)
-                numberInput.Attributes("type") = "number"
+                numberInput.TextMode = TextBoxMode.Number
                 numberInput.Attributes("min") = "0"
-                numberInput.Attributes("max") = "10"
+                numberInput.Attributes("max") = "25"
                 numberInput.Attributes("placeholder") = "Type here..."
                 numberInput.CssClass = "form-control p-0 border-0"
                 newQuestionDiv.Controls.Add(numberInput)
                 newQuestionDiv.Attributes("class") &= " border-bottom"
+                AnswerControls.Add(numberInput.ID)
+
         End Select
 
-        AnswerControls.Add(questionId)
+
         Return newQuestionDiv
     End Function
 
@@ -172,11 +185,16 @@ Public Class SignUp
             End If
         Next
 
+        Dim reguser As User = New User().load(hiddenuserID.Value)
+        If reguser Is Nothing Then
+            LblError.Text = "There was an error with registering your account please try signing up again,"
+        End If
+
         For Each kvp In collectedAnswers
             Dim studentAnswer As New StudentAnswer()
             studentAnswer.id = New database_operations().GetNewPrimaryKey("[id]", "[StudentAnswer]", HttpContext.Current.Session("conn"))
             studentAnswer.Answer = kvp.Value
-            studentAnswer.student_id = "your_student_id_here" ' Replace with actual student ID
+            studentAnswer.student_id = hiddenuserID.Value
             studentAnswer.question_id = kvp.Key
             studentAnswer.update()
         Next
