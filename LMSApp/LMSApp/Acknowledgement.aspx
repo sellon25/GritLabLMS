@@ -1,9 +1,10 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="Login.aspx.vb" Inherits="LMSApp.Login" %>
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="Acknowledgement.aspx.vb" Inherits="LMSApp.Acknowledgement" %>
 
 <!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Login</title>
+<title>Login</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
@@ -54,32 +55,43 @@
         }
         body{
            background-image: linear-gradient(to bottom, #93761e 60%, black);
+           display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+        #AcknowledgementDiv {
+            /*min-height: 60vh;*/
+            max-width: 65vh;
+            /*overflow-y: scroll;*/
         }
     </style>
 </head>
-<body style="display: flex;" >
-    <form id="form1" style="margin: 25vh auto;" runat="server">
-        <div class="text-center col-md-12">
-            <img style="" src="plugins/images/glogo.png" />
-        </div>
-        
-        <div class="login-form text-center">
-
-                               
-
-            <asp:TextBox ID="txtUsername" runat="server" required="required" placeholder="Email"></asp:TextBox>
-
-            <%--<input type="text" id="txtUsername" runat="server" required="required" placeholder="Student/Staff ID" />--%>
-
-            <asp:TextBox ID="txtPwd" runat="server" required="required" placeholder="Password"></asp:TextBox>
-            <%--<input type="password" id="txtPwd" runat="server" required="required" placeholder="Password" />--%>
-
-            <asp:Button ID="loginBtn" class="login-btn" runat="server" Text="Log In" OnClick="loginBtn_Click" />
-            <a class="d-block" href="SignUp.aspx">Apply to join GritLabs</a>
+<body>
+    <form id="form1" runat="server">
+        <div>
+             <div id="AcknowledgementDiv"  class="card" >
+            <div class="card-body">
+                
+                <asp:HiddenField ID="HiddenField1" runat="server" />
+                <div class="form-horizontal form-material">
+                    <div id="Div2"  runat="server" class="mb-4 border-bottom">
+                        <h4 class="mb-4 fw-bold ">Thank you for applying to Grits Lab Africa</h4>
+                
+                        <p>We are still reviewing your application, we will communicate with you as soon as a decision regarding your application then you will be able to access our learning system with your login details.</p>
+                    </div> 
+                </div>
             
-            <asp:Label ID="lblError" CssClass="mt-5 col-12 d-block" runat="server" Text="Error..."></asp:Label>
+              <div class="form-group mb-4">
+                    <div class="col-sm-12">
+                        <a href="Login.aspx" id="n" runat="server" class="m-2 mb-0 btn btn-primary" >Back to Login</a>                        
+                    </div>                   
+                </div>
+                <asp:Label ID="lblApplError" runat="server" CssClass=" text-center text-danger" Text="" Visible="false"></asp:Label>
+
+            </div>
         </div>
-       
+        </div>
     </form>
 </body>
 </html>

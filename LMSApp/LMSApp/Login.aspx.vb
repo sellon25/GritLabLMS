@@ -49,9 +49,14 @@ Public Class Login
     Sub CheckUserAndGotoPage(pageurl As String, obj As User, userID As String, pwd As String)
 
         With obj
-            Dim encrptedPassword As String = CipherGate.EncryptString(pwd, "toom9")
+            Dim encrptedPassword As String = CipherGate.EncryptString("inovalabs09", pwd)
 
             If ((obj.emailID = userID) And (encrptedPassword = obj.password)) Then
+
+                If obj.status = "New Applicant" Then
+                    Response.Redirect("Acknowledgement.aspx")
+                    Exit Sub
+                End If
                 Session("User_name") = obj.FName + " " + obj.LName
                 Session("Type") = obj.role
                 Session("ID") = userID
@@ -62,7 +67,7 @@ Public Class Login
                 End If
 
             Else
-                lblError.ForeColor = Color.Red
+                    lblError.ForeColor = Color.Red
                 lblError.Text = "Incorrect Student/Staff ID or Password!"
                 lblError.Visible = True
             End If

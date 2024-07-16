@@ -169,7 +169,7 @@
     </div>
 </asp:Panel>
 <asp:Panel ID="ApplicationFormPanel" runat="server" CssClass="modal">
-     <div id="ApplicationForm" runat="server" class="card" style="min-width:50vh">
+     <div id="ApplicationForm" runat="server" class="card">
             <div class="card-body">
                 <h3 class="mb-4 ">Application Form</h3>
                 <div class="form-horizontal form-material">
@@ -180,13 +180,14 @@
                     </div> 
                 </div>
             </div>
-              <div class="form-group mb-4">
+              
+        </div>
+    <div class="form-group mb-4">
                     <div class="col-sm-12">
                         <asp:Button ID="AcceptApplication" runat="server" Text="Accept" OnClick="AcceptApplication_Click" class="m-2 mb-0 btn btn-orange" />                        
                         <asp:Button ID="DeclineApplication" runat="server" Text="Decline" OnClick="DeclineApplication_Click" class="m-2 mb-0 btn btn-danger" />                        
                     </div>                   
                 </div>
-        </div>
     <asp:Button ID="CloseAPl" runat="server" Text="Close" CssClass="btn btn-secondary" OnClientClick="hidePopup(this.id); return false;" />
     
 </asp:Panel>

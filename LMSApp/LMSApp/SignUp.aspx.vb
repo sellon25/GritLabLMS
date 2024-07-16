@@ -20,6 +20,22 @@ Public Class SignUp
     Protected Sub Register_Click(sender As Object, e As EventArgs)
         Register.Enabled = False
         hiddenuserID.Value = ""
+
+        ' Validate that all required fields are filled
+        If String.IsNullOrWhiteSpace(useremail.Value) OrElse
+           String.IsNullOrWhiteSpace(userfname.Value) OrElse
+           String.IsNullOrWhiteSpace(userlname.Value) OrElse
+           String.IsNullOrWhiteSpace(userpassword.Value) OrElse
+           String.IsNullOrWhiteSpace(userconfirmp.Value) Then
+
+            LblError.Text = "All fields are required. Please fill in all fields."
+            LblError.ForeColor = Color.Red
+            LblError.Visible = True
+            Register.Enabled = True
+            Exit Sub
+        End If
+
+
         Dim NewUser As New User
         If (userpassword.Value.Trim() = userconfirmp.Value.Trim()) Then
             Dim encryptedPass As String = CipherGate.EncryptString("inovalabs09", userpassword.Value)

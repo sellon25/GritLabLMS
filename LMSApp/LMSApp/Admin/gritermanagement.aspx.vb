@@ -290,152 +290,128 @@
 
 
     Private Sub LoadQuestions()
-        Dim questions As List(Of Question_Bank) = Question_Bank.listall(" where [Category_ID]='Application Form' ", " order by QuestionNumber asc ")
+        Dim questions As List(Of Question_Bank) = Question_Bank.listall(" where ( [Category_ID]='Application Form' or [TestID]='Application Form' ) and QuestionType != 'option' ", " order by QuestionNumber asc ")
         CreatedQuestions.Controls.Clear()
 
         For Each question In questions
-            CreatedQuestions.Controls.Add(AddQuestionHtml(question.id, question.QuestionType, question.Text))
+            CreatedQuestions.Controls.Add(AddQuestionHtml(question.id, question.QuestionType, question.Text, SelectedUserID.Value))
         Next
     End Sub
-    Protected Function AddQuestionHtml(questionId As String, questionType As String, questionText As String) As HtmlGenericControl
-        ' Create a new HtmlGenericControl representing a <div> element
+    Protected Function AddQuestionHtml(questionId As String, questionType As String, questionText As String, userId As String) As HtmlGenericControl
         Dim newQuestionDiv As New HtmlGenericControl("div")
-        newQuestionDiv.Attributes("class") = "form-group mb-4 border-bottom"
+        newQuestionDiv.Attributes("class") = "form-group mb-4"
 
-        ' Create the label for the question text
         Dim lblQuestionText As New Label()
         lblQuestionText.CssClass = "col-md-12 p-0"
         lblQuestionText.Text = questionText
 
-        ' Add the delete button and label for question text to the newQuestionDiv
         newQuestionDiv.Controls.Add(lblQuestionText)
 
-        ' Add additional controls based on question type
+        Dim answer As String = String.Empty
+        Dim studentAnswer As StudentAnswer = studentAnswer.load(questionId, userId)
+        If studentAnswer IsNot Nothing Then
+            answer = studentAnswer.Answer
+        End If
+
         Select Case questionType
             Case "radio"
-                ' Add radio button inputs and additional controls for radio type questions
-                Dim radioInput1 As New HtmlGenericControl("input")
-                radioInput1.Attributes("type") = "radio"
-                radioInput1.Attributes("name") = questionId
-                radioInput1.Attributes("value") = "Option 1"
+                Dim radioList As New RadioButtonList()
+                radioList.ID = String.Format("radioList_{0}", questionId)
+                radioList.CssClass = "m-2 border-0"
 
-                Dim radioInput2 As New HtmlGenericControl("input")
-                radioInput2.Attributes("type") = "radio"
-                radioInput2.Attributes("name") = questionId
-                radioInput2.Attributes("value") = "Option 2"
-
-                ' Add radio inputs to newQuestionDiv
-                newQuestionDiv.Controls.Add(radioInput1)
-                newQuestionDiv.Controls.Add(radioInput2)
-
-                ' Add an input and button for radio type questions
-                Dim radioTextInput As New HtmlGenericControl("input")
-                radioTextInput.Attributes("id") = "rinp-" & questionId
-                radioTextInput.Attributes("type") = "text"
-                radioTextInput.Attributes("placeholder") = "Type here..."
-                radioTextInput.Attributes("class") = "form-control p-0 border-0"
-
-                Dim addButton As New Button()
-                addButton.ID = "btnAddOp_" + questionId
-                addButton.Text = "Add"
-                addButton.CssClass = "btn mb-2 btn-primary"
-                addButton.Style.Add("background-color", "#3C1B50")
-
-                ' Add button click event handler
-                'AddHandler addButton.Click, AddressOf AddOption
-
-                ' Add input and button to newQuestionDiv
-                newQuestionDiv.Controls.Add(radioTextInput)
-                newQuestionDiv.Controls.Add(addButton)
-
-                ' Add border-bottom class to the div for styling
-                'newQuestionDiv.Attributes("class") &= " border-bottom"
+                Dim options As List(Of Question_Bank) = Question_Bank.listall(String.Format(" WHERE [ParentQuestion]='{0}' AND [QuestionType]='option' ", questionId))
+                For Each optionText In options
+                    radioList.Items.Add(New ListItem(optionText.Text, optionText.id))
+                    If optionText.Text.Trim() = answer.Trim() Then
+                        answer = optionText.id
+                    End If
+                Next
+                If Not String.IsNullOrEmpty(answer) Then
+                    radioList.SelectedValue = answer
+                End If
+                radioList.Enabled = False
+                newQuestionDiv.Controls.Add(radioList)
+                newQuestionDiv.Attributes("class") &= " border-bottom"
+                AnswerControls.Add(radioList.ID)
 
             Case "checkbox"
-                ' Add checkbox inputs for checkbox type questions
-                Dim checkboxInput1 As New HtmlGenericControl("input")
-                checkboxInput1.Attributes("type") = "checkbox"
-                checkboxInput1.Attributes("name") = questionId
-                checkboxInput1.Attributes("value") = "Option 1"
+                Dim checkboxList As New CheckBoxList()
+                checkboxList.ID = String.Format("checkboxList_{0}", questionId)
+                checkboxList.CssClass = "m-2 border-0"
 
-                Dim checkboxInput2 As New HtmlGenericControl("input")
-                checkboxInput2.Attributes("type") = "checkbox"
-                checkboxInput2.Attributes("name") = questionId
-                checkboxInput2.Attributes("value") = "Option 2"
-
-                ' Add checkbox inputs to newQuestionDiv
-                newQuestionDiv.Controls.Add(checkboxInput1)
-                newQuestionDiv.Controls.Add(checkboxInput2)
+                Dim options As List(Of Question_Bank) = Question_Bank.listall(String.Format(" WHERE [ParentQuestion]='{0}' AND [QuestionType]='option' ", questionId))
+                For Each optionText In options
+                    checkboxList.Items.Add(New ListItem(optionText.Text, optionText.id))
+                Next
+                If Not String.IsNullOrEmpty(answer) Then
+                    For Each item As ListItem In checkboxList.Items
+                        If answer.Contains(item.Text) Then
+                            item.Selected = True
+                        End If
+                    Next
+                End If
+                checkboxList.Enabled = False
+                newQuestionDiv.Controls.Add(checkboxList)
+                newQuestionDiv.Attributes("class") &= " border-bottom"
+                AnswerControls.Add(checkboxList.ID)
 
             Case "text"
-                ' Add input for text type questions
-                Dim textInput As New HtmlGenericControl("input")
-                textInput.ID = String.Format("textInput_{0}", questionId)
-                textInput.Attributes("runat") = "server"
-                textInput.Attributes("type") = "text"
-                textInput.Attributes("placeholder") = "Type here..."
-                textInput.Attributes("class") = "form-control p-0 border-0"
-
-                ' Add input to newQuestionDiv
-                newQuestionDiv.Controls.Add(textInput)
-                AnswerControls.Add(textInput.ID)
-                ' Add border-bottom class to the div for styling
-                'newQuestionDiv.Attributes("class") &= " border-bottom"
-
-            Case "textarea"
-                ' Add textarea for textarea type questions
                 Dim textInput As New TextBox()
                 textInput.ID = String.Format("textInput_{0}", questionId)
-                textInput.Attributes("runat") = "server"
                 textInput.Attributes("placeholder") = "Type here..."
                 textInput.CssClass = "form-control p-0 border-0"
-
-                ' Add input to newQuestionDiv
+                textInput.Text = answer
+                textInput.ReadOnly = True
                 newQuestionDiv.Controls.Add(textInput)
+                newQuestionDiv.Attributes("class") &= " border-bottom"
                 AnswerControls.Add(textInput.ID)
 
-                ' Add border-bottom class to the div for styling
-                'newQuestionDiv.Attributes("class") &= " border-bottom"
+            Case "textarea"
+                Dim textareaInput As New TextBox()
+                textareaInput.ID = String.Format("textareaInput_{0}", questionId)
+                textareaInput.TextMode = TextBoxMode.MultiLine
+                textareaInput.Rows = 4
+                textareaInput.Attributes("placeholder") = "Type here..."
+                textareaInput.CssClass = "form-control p-0 border-0"
+                textareaInput.Text = answer
+                textareaInput.ReadOnly = True
+                newQuestionDiv.Controls.Add(textareaInput)
+                newQuestionDiv.Attributes("class") &= " border-bottom"
+                AnswerControls.Add(textareaInput.ID)
 
             Case "dropList"
-                ' Add select dropdown for dropList type questions
-                Dim selectDropdown As New DropDownList
-                selectDropdown.Attributes("class") = "form-select shadow-none p-0 border-0 form-control-line"
-
-                ' Add options to select dropdown
-                Dim option1 As New ListItem("Game development")
-                Dim option2 As New ListItem("Web development")
-                Dim option3 As New ListItem("Design")
-                Dim option4 As New ListItem("Microsoft360")
-                selectDropdown.Items.Add(option1)
-                selectDropdown.Items.Add(option2)
-                selectDropdown.Items.Add(option3)
-                selectDropdown.Items.Add(option4)
-
-
-                ' Add select dropdown to newQuestionDiv
+                Dim selectDropdown As New DropDownList()
+                selectDropdown.ID = String.Format("selectDropdown_{0}", questionId)
+                selectDropdown.CssClass = "form-select shadow-none p-0 border-0 form-control-line"
+                Dim options As List(Of Question_Bank) = Question_Bank.listall(String.Format(" WHERE [ParentQuestion]='{0}' AND [QuestionType]='option' ", questionId))
+                For Each optionText In options
+                    selectDropdown.Items.Add(New ListItem(optionText.Text, optionText.id))
+                Next
+                If Not String.IsNullOrEmpty(answer) Then
+                    selectDropdown.SelectedValue = answer
+                End If
+                selectDropdown.Enabled = False
                 newQuestionDiv.Controls.Add(selectDropdown)
-
-                ' Add border-bottom class to the div for styling
-                'newQuestionDiv.Attributes("class") &= " border-bottom"
+                newQuestionDiv.Attributes("class") &= " border-bottom"
+                AnswerControls.Add(selectDropdown.ID)
 
             Case "number"
-                ' Add input for number type questions
-                Dim numberInput As New HtmlGenericControl("input")
-                numberInput.Attributes("type") = "number"
+                Dim numberInput As New TextBox()
+                numberInput.ID = String.Format("numberInput_{0}", questionId)
+                numberInput.TextMode = TextBoxMode.Number
                 numberInput.Attributes("min") = "0"
-                numberInput.Attributes("max") = "10"
+                numberInput.Attributes("max") = "25"
                 numberInput.Attributes("placeholder") = "Type here..."
-                numberInput.Attributes("class") = "form-control p-0 border-0"
-
-                ' Add input to newQuestionDiv
+                numberInput.CssClass = "form-control p-0 border-0"
+                numberInput.Text = answer
+                numberInput.ReadOnly = True
                 newQuestionDiv.Controls.Add(numberInput)
-
-                ' Add border-bottom class to the div for styling
-                'newQuestionDiv.Attributes("class") &= " border-bottom"
+                newQuestionDiv.Attributes("class") &= " border-bottom"
+                AnswerControls.Add(numberInput.ID)
         End Select
 
-        ' Return the div containing the question content
         Return newQuestionDiv
     End Function
+
+
 End Class

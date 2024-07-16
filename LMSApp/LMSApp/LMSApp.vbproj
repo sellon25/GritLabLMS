@@ -95,6 +95,7 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Acknowledgement.aspx" />
     <Content Include="Admin\addkingsmen.aspx" />
     <Content Include="Admin\AddProject.aspx" />
     <Content Include="Admin\admin-assets\adminscripts.js" />
@@ -2272,6 +2273,13 @@
     <Content Include="Manager\ProjectsPage.aspx" />
     <Content Include="Manager\SQWID.aspx" />
     <Content Include="Manager\StudentsProgress.aspx" />
+    <Compile Include="Acknowledgement.aspx.designer.vb">
+      <DependentUpon>Acknowledgement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Acknowledgement.aspx.vb">
+      <DependentUpon>Acknowledgement.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Admin\CourseOptions.aspx.designer.vb">
       <DependentUpon>CourseOptions.aspx</DependentUpon>
     </Compile>
@@ -2466,7 +2474,6 @@
     <Content Include="Utility\forgot_password_message.txt" />
     <Content Include="Utility\welcome_message.txt" />
     <Content Include="Web.config" />
-    <Content Include="WebForm2.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\addkingsmen.aspx.designer.vb">
@@ -3141,13 +3148,6 @@
     <Compile Include="Utility\Mailing_Service.vb" />
     <Compile Include="Utility\Money_Matters.vb" />
     <Compile Include="Utility\SendEmail.vb" />
-    <Compile Include="WebForm2.aspx.designer.vb">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm2.aspx.vb">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

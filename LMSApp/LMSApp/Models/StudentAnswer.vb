@@ -117,7 +117,49 @@ Return Nothing
 End Function
 
 
-Sub update()
+    Shared Function load(questionID As System.String, userID As System.String) As StudentAnswer
+        Dim cmd As New SqlCommand
+        cmd.Connection = HttpContext.Current.Session("conn")
+        If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = HttpContext.Current.Session("trans")
+        cmd.CommandType = CommandType.Text
+        cmd.CommandText = "select "
+        cmd.CommandText = cmd.CommandText & "id,"
+        If Display_Answer = True Then cmd.CommandText = cmd.CommandText & "Answer,"
+        If Display_Image = True Then cmd.CommandText = cmd.CommandText & "Image,"
+        If Display_student_id = True Then cmd.CommandText = cmd.CommandText & "student_id,"
+        If Display_question_id = True Then cmd.CommandText = cmd.CommandText & "question_id,"
+        cmd.CommandText = cmd.CommandText.Substring(0, cmd.CommandText.Length - 1)
+        cmd.CommandText = cmd.CommandText & " from StudentAnswer where question_id= @question_id AND student_id=@student_id"
+        'cmd.Parameters.Add("@id", 8, 0, "id")
+        'cmd.Parameters("@id").Value = id
+        cmd.Parameters.Add("@question_id", 22, 255, "question_id")
+        cmd.Parameters("@question_id").Value = questionID
+        cmd.Parameters.Add("@student_id", 22, 255, "student_id")
+        cmd.Parameters("@student_id").Value = userID
+
+        Dim pl As New SqlDataAdapter, dt As New DataTable, i As Integer
+        pl.SelectCommand = cmd
+        pl.Fill(dt)
+        Dim p As New StudentAnswer
+        For i = 0 To dt.Rows.Count - 1
+            p.id = checkNull(dt.Rows(i)("id"))
+            p.I_Display_id = Display_id
+            If Display_Answer = True Then p.Answer = checkNull(dt.Rows(i)("Answer"))
+            p.I_Display_Answer = Display_Answer
+            If Display_Image = True Then p.Image = checkNull(dt.Rows(i)("Image"))
+            p.I_Display_Image = Display_Image
+            If Display_student_id = True Then p.student_id = checkNull(dt.Rows(i)("student_id"))
+            p.I_Display_student_id = Display_student_id
+            If Display_question_id = True Then p.question_id = checkNull(dt.Rows(i)("question_id"))
+            p.I_Display_question_id = Display_question_id
+            p.previous_id = checkNull(dt.Rows(i)("id"))
+            p.newinstance = False
+            Return p
+        Next
+        Return Nothing
+    End Function
+
+    Sub update()
 If newinstance = True Then
 insert()
 Return

@@ -44,6 +44,7 @@ Public Class ManageApplicationForm
                     .QuestionType = "option" ' or any specific type you want to use for options
                     .Text = optionText
                     .Category_ID = "Application Form"
+                    .TestID = "Application Form"
                     .ParentQuestion = newQuestion.id
                 End With
                 optionQuestion.update()
