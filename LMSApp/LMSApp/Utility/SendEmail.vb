@@ -103,7 +103,7 @@ Public Class SendEmail
 
         e_mail = New MailMessage()
         e_mail.From = New MailAddress("chietawebapp@gmail.com")
-        e_mail.To.Add("sellondaba25@gmail.com")
+        e_mail.To.Add(User.emailID)
 
         e_mail.Subject = "Grits Lab App Notification"
 
