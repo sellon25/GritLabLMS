@@ -156,7 +156,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Admin/Set_Projects_and_Course.aspx"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Admin/Courses.aspx"
                                 aria-expanded="false">
                                 <i class=" fas fa-tasks" aria-hidden="true"></i>
                                 <p class="text-white"  style="font-size: 13.5px;">Set Projects & <br/> Courses</p>

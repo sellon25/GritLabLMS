@@ -103,8 +103,14 @@
 
                 <div class="form-group mb-4">
                     <div class="col-sm-12">
-                        <asp:Button ID="Register" runat="server" Text="Submit" OnClick="Register_Click" class="btn btn-orange" />                        
-                    </div>                   
+                        <asp:Button ID="Register" runat="server" Text="Submit" OnClick="Register_Click" class="btn btn-orange" /> 
+                         
+                    </div>
+                    <div class="form-group mb-4">
+                    <div class="col-sm-12">
+                    <a href="Login.aspx" class="mt-2 mb-0 btn btn-primary" >Back to Login</a>  
+                        </div>
+                        </div>
                 </div>
                 <asp:Label ID="LblError" runat="server" Text="" Visible="false"></asp:Label>
 
@@ -168,13 +174,13 @@
                     <div id="Div2"  runat="server" class="mb-4 border-bottom">
                         <h4 class="mb-4 fw-bold ">Thank you for applying to Grits Lab Africa</h4>
                 
-                        <p></p>
+                        <p>A confirmation of your application has been sent to your email.</p>
                     </div> 
                 </div>
             
               <div class="form-group mb-4">
                     <div class="col-sm-12">
-                        <asp:Button ID="Button1" runat="server" Text="Submit" OnClick="SubmitApplication_Click" class="m-2 mb-0 btn btn-orange" />                        
+                        <a href="Login.aspx" id="n" runat="server" class="m-2 mb-0 btn btn-primary" >Back to Login</a>                        
                     </div>                   
                 </div>
                 <asp:Label ID="lblApplError" runat="server" CssClass=" text-center text-danger" Text="" Visible="false"></asp:Label>

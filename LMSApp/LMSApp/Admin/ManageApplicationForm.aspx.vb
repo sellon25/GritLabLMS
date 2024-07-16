@@ -55,6 +55,7 @@ Public Class ManageApplicationForm
 
         newQuestion.update()
         LoadQuestions()
+        Response.Redirect(Request.Url.ToString())
     End Sub
 
     Private Sub LoadQuestions()
@@ -201,13 +202,20 @@ Public Class ManageApplicationForm
     End Function
 
 
-
     Protected Sub DeleteQuestion(sender As Object, e As EventArgs)
         Dim btn As Button = DirectCast(sender, Button)
         Dim questionId = btn.ID.Replace("btnDelete_", "")
         Dim question As New Question_Bank()
         question = question.load(questionId)
+
+        Dim sdtAnswers As StudentAnswer = New StudentAnswer
+        sdtAnswers.delete(String.Format(" where [question_id]='{0}'", question.id))
+
+
         question.delete()
+
+
+
         LoadQuestions()
     End Sub
 
