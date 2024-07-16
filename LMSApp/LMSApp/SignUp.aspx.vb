@@ -36,6 +36,19 @@ Public Class SignUp
             LblError.Visible = True
         End If
     End Sub
+    Protected Sub ResendOTP_Click(sender As Object, e As EventArgs)
+        Dim otp As New SendEmail
+        userotp.Value = ""
+        HiddenpField.Value = otp.SendOTP(useremail.Value)
+    End Sub
+
+    Protected Sub SubmitOTP_Click(sender As Object, e As EventArgs)
+        If HiddenpField.Value = userotp.Value.Trim() Then
+            ApplicationForm.Visible = True
+        Else
+            lblOtpError.Text = "Incorrect OTP! Try again."
+        End If
+    End Sub
 
     Private Sub LoadQuestions()
         Dim questions As List(Of Question_Bank) = Question_Bank.listall(" WHERE [Category_ID]='Application Form' AND [QuestionType]!='option' ")
@@ -187,8 +200,10 @@ Public Class SignUp
 
         Dim reguser As User = New User().load(hiddenuserID.Value)
         If reguser Is Nothing Then
-            LblError.Text = "There was an error with registering your account please try signing up again,"
+            lblApplError.Text = "There was an error with registering your account please try signing up again."
+            Exit Sub
         End If
+
 
         For Each kvp In collectedAnswers
             Dim studentAnswer As New StudentAnswer()

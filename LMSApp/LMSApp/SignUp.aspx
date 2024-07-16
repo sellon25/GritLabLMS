@@ -111,6 +111,33 @@
             </div>
            </div>
        </div>
+          <div id="OTPform" runat="server" class="card" style="min-width:50vh">
+            <asp:HiddenField ID="HiddenpField" runat="server" />
+            <div class="card-body">
+                <h3 class="mb-4 ">Application Form</h3>
+                <div class="form-horizontal form-material">
+                    <div id="Div1"  runat="server" class="ApplicationQuestions mb-4 border-bottom">
+                        <h4 class="mb-4 fw-bold ">Verify email</h4>
+                        <div class="form-group mb-4">
+                            <label class="col-md-12 p-0">Enter OTP</label>
+                            <div class="col-md-12 border-bottom p-0">
+                                <input id="userotp" runat="server" type="number" placeholder="Type here..." class="form-control text-capitalize p-0 border-0" /> </div>
+                        </div>               
+                                
+                    </div> 
+                    <asp:Label ID="lblOtpError" runat="server" CssClass=" text-center text-danger" Text="Label"></asp:Label>
+
+                </div>
+            </div>
+              <div class="form-group mb-4">
+                    <div class="col-sm-12">
+                        <asp:Button ID="SubmitOTP" runat="server" Text="Submit" OnClick="SubmitOTP_Click" class="m-2 mb-0 btn btn-orange" />                        
+                    </div> 
+                  <div class="col-sm-12">
+                        <asp:Button ID="ResendOTP" runat="server" Text="Resend OTP" OnClick="ResendOTP_Click" class="m-2 mb-0 btn btn-secondary" />                        
+                    </div>  
+                </div>
+        </div>
         <div id="ApplicationForm" runat="server" class="card" style="min-width:50vh">
             <div class="card-body">
                 <h3 class="mb-4 ">Application Form</h3>
@@ -149,7 +176,7 @@
                         <asp:Button ID="Button1" runat="server" Text="Submit" OnClick="SubmitApplication_Click" class="m-2 mb-0 btn btn-orange" />                        
                     </div>                   
                 </div>
-                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                <asp:Label ID="lblApplError" runat="server" CssClass=" text-center text-danger" Text="Label"></asp:Label>
 
             </div>
         </div>

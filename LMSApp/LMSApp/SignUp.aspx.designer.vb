@@ -95,6 +95,69 @@ Partial Public Class SignUp
     Protected WithEvents LblError As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
+    '''OTPform control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents OTPform As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''HiddenpField control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents HiddenpField As Global.System.Web.UI.WebControls.HiddenField
+
+    '''<summary>
+    '''Div1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Div1 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''userotp control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents userotp As Global.System.Web.UI.HtmlControls.HtmlInputGenericControl
+
+    '''<summary>
+    '''lblOtpError control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblOtpError As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''SubmitOTP control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents SubmitOTP As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''ResendOTP control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ResendOTP As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''ApplicationForm control.
     '''</summary>
     '''<remarks>
@@ -176,11 +239,11 @@ Partial Public Class SignUp
     Protected WithEvents Button1 As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Label1 control.
+    '''lblApplError control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Label1 As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lblApplError As Global.System.Web.UI.WebControls.Label
 End Class
