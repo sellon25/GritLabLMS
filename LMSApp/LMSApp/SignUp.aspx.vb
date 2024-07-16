@@ -1,4 +1,5 @@
 ﻿Imports System.Drawing
+Imports Microsoft.VisualBasic.ApplicationServices
 
 Public Class SignUp
     Inherits System.Web.UI.Page
@@ -6,47 +7,85 @@ Public Class SignUp
     Dim AnswerControls As New List(Of String)()
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
-        SignUpform.Visible = False
+        AcknowledgementDiv.Visible = False
         LblError.Visible = False
-        ApplicationForm.Visible = True
+        ApplicationForm.Visible = False
+        hiddenuserID.Visible = False
+        If Not IsPostBack Then
+            OTPform.Visible = False
+        End If
         LoadQuestions()
     End Sub
 
     Protected Sub Register_Click(sender As Object, e As EventArgs)
+        Register.Enabled = False
+        hiddenuserID.Value = ""
         Dim NewUser As New User
         If (userpassword.Value.Trim() = userconfirmp.Value.Trim()) Then
             Dim encryptedPass As String = CipherGate.EncryptString("inovalabs09", userpassword.Value)
-
-            With NewUser
-                .emailID = useremail.Value
-                .FName = userfname.Value
-                .LName = userlname.Value
-                .password = encryptedPass
-                .role = 3
-                .status = "New Applicant"
-                .update()
-            End With
-            SignUpform.Visible = False
-            LoadQuestions()
+            Try
+                With NewUser
+                    .emailID = useremail.Value
+                    .FName = userfname.Value
+                    .LName = userlname.Value
+                    .password = encryptedPass
+                    .role = 3
+                    .status = "notVerified"
+                    .update()
+                End With
+            Catch ex As Exception
+                LblError.Text = "Email already exists. Try logining in or contact GLA help to confirm your account."
+                LblError.ForeColor = Color.Red
+                LblError.Visible = True
+                Register.Enabled = True
+                Exit Sub
+            End Try
             hiddenuserID.Value = useremail.Value
-            ApplicationForm.Visible = True
+            SignUpform.Visible = False
+            Dim otp As New SendEmail
+            userotp.Value = ""
+            HiddenpField.Value = otp.SendOTP(useremail.Value, String.Format("{0} {1}", NewUser.FName, NewUser.LName))
+            OTPform.Visible = True
         Else
             LblError.Text = "Passwords do not match!"
             LblError.ForeColor = Color.Red
             LblError.Visible = True
+            Register.Enabled = True
         End If
     End Sub
     Protected Sub ResendOTP_Click(sender As Object, e As EventArgs)
+        ResendOTP.Enabled = False
         Dim otp As New SendEmail
         userotp.Value = ""
-        HiddenpField.Value = otp.SendOTP(useremail.Value)
+        HiddenpField.Value = otp.SendOTP(hiddenuserID.Value)
+        LblError.Text = "OTP has been resent!"
+        LblError.ForeColor = Color.Green
+        LblError.Visible = True
+        ResendOTP.Enabled = True
     End Sub
 
-    Protected Sub SubmitOTP_Click(sender As Object, e As EventArgs)
+    Private Function confirmOTP() As Boolean
+        Dim confirm As Boolean = False
         If HiddenpField.Value = userotp.Value.Trim() Then
+            Dim vuser As User = New User().load(hiddenuserID.Value)
+            vuser.status = "New Applicant"
+            vuser.update()
+            ApplicationForm.Visible = True
+            confirm = True
+        Else
+            lblOtpError.Text = "Incorrect OTP! Try again or Resend OTP."
+            lblOtpError.Visible = True
+        End If
+        Return confirm
+    End Function
+    Protected Sub SubmitOTP_Click(sender As Object, e As EventArgs)
+        If confirmOTP() Then
+            LoadQuestions()
+            hiddenuserID.Value = useremail.Value
+            OTPform.Visible = False
             ApplicationForm.Visible = True
         Else
-            lblOtpError.Text = "Incorrect OTP! Try again."
+            OTPform.Visible = True
         End If
     End Sub
 
@@ -167,6 +206,7 @@ Public Class SignUp
     End Sub
 
     Protected Sub SubmitApplication_Click(sender As Object, e As EventArgs)
+        SubmitApplication.Enabled = False
         Dim collectedAnswers As New Dictionary(Of String, String)()
 
         For Each controlID In AnswerControls
@@ -174,15 +214,20 @@ Public Class SignUp
             If control IsNot Nothing Then
                 If TypeOf control Is TextBox Then
                     Dim textInput As TextBox = CType(control, TextBox)
+                    controlID = controlID.Replace("textInput_", String.Empty)
+                    controlID = controlID.Replace("textareaInput_", String.Empty)
+                    controlID = controlID.Replace("numberInput_", String.Empty)
                     collectedAnswers.Add(controlID, textInput.Text)
                 ElseIf TypeOf control Is RadioButtonList Then
                     Dim radioInput As RadioButtonList = CType(control, RadioButtonList)
+                    controlID = controlID.Replace("radioList_", String.Empty)
                     If radioInput.SelectedItem IsNot Nothing Then
                         collectedAnswers.Add(controlID, radioInput.SelectedItem.Text)
                     End If
                 ElseIf TypeOf control Is CheckBoxList Then
                     Dim checkboxList As CheckBoxList = CType(control, CheckBoxList)
                     Dim selectedOptions As New List(Of String)()
+                    controlID = controlID.Replace("checkboxList_", String.Empty)
                     For Each item As ListItem In checkboxList.Items
                         If item.Selected Then
                             selectedOptions.Add(item.Text)
@@ -192,6 +237,7 @@ Public Class SignUp
                         collectedAnswers.Add(controlID, String.Join(", ", selectedOptions))
                     End If
                 ElseIf TypeOf control Is DropDownList Then
+                    controlID = controlID.Replace("selectDropdown_", String.Empty)
                     Dim dropdownInput As DropDownList = CType(control, DropDownList)
                     collectedAnswers.Add(controlID, dropdownInput.SelectedValue)
                 End If
@@ -214,6 +260,14 @@ Public Class SignUp
             studentAnswer.update()
         Next
 
+        Dim message As String = "Thank you for applying for GRITS LAB , we really appreciate the time and effort you have spent to do so." + Environment.NewLine +
+             "We are dedicated to acquiring the most dedicated students. We review each application with care to ensure we progress only those candidates who are the best fit for the bootcamp." +
+         Environment.NewLine + "You can expect to hear from us as soon as we review your application."
+
+        Dim email As SendEmail = New SendEmail
+        email.SendNotification(hiddenuserID.Value, message)
+
+        AcknowledgementDiv.Visible = True
         ' Optionally, redirect or display a message after saving
         ' Response.Redirect("ThankYou.aspx")
     End Sub
