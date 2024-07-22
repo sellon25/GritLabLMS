@@ -128,7 +128,7 @@ Partial Public Class gritermanagement
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents pnlEnrollment As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents pnlEnrollment As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''SelectedUserID control.

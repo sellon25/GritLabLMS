@@ -413,5 +413,8 @@
         Return newQuestionDiv
     End Function
 
-
+    Protected Sub CoursesAvailable_SelectedIndexChanged(sender As Object, e As EventArgs)
+        Dim item As DropDownList = DirectCast(sender, DropDownList)
+        Dim id = item.SelectedValue
+    End Sub
 End Class

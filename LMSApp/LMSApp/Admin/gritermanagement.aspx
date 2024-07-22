@@ -122,7 +122,7 @@
             </div>
         </div>
     </div>
-        <asp:Panel ID="pnlEnrollment" runat="server" CssClass="modal">
+        <div ID="pnlEnrollment" runat="server" class="modal">
             <asp:HiddenField ID="SelectedUserID" runat="server" />
         <div class="modal-content p-2">
         <h3 class="border-bottom text-center text-muted">Enrollment Information</h3>
@@ -141,9 +141,9 @@
                 </div>--%>
             </div>
             <div class="form-group w-100 mb-0 pt-2 border-top">
-                <asp:DropDownList ID="CoursesAvailable" class="form-select w-100" runat="server"></asp:DropDownList>
+                <asp:DropDownList ID="CoursesAvailable" class="form-select w-100" OnSelectedIndexChanged="CoursesAvailable_SelectedIndexChanged" runat="server"></asp:DropDownList>
                 <asp:Button  ID="EnrollStudent" runat="server" OnClick="EnrollStudent_Click" class="btn mb-2 btn-primary" Text="Enroll To Course" />
-            </div>
+            </div>   
 
       
         
@@ -167,7 +167,7 @@
             }
         </script>
     </div>
-</asp:Panel>
+</div>
 <asp:Panel ID="ApplicationFormPanel" runat="server" CssClass="modal">
      <div id="ApplicationForm" runat="server" class="card">
             <div class="card-body">
