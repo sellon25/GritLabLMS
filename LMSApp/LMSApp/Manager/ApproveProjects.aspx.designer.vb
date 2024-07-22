@@ -21,4 +21,13 @@ Partial Public Class ApproveProjects
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents HyperLink1 As Global.System.Web.UI.WebControls.HyperLink
+
+    '''<summary>
+    '''ProjectsContainer control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ProjectsContainer As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 End Class

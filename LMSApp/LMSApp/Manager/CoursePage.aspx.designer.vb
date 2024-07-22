@@ -31,5 +31,41 @@ Namespace Manager
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents lblCourseName As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+        '''<summary>
+        '''CourseOverviewContainer control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents CourseOverviewContainer As Global.System.Web.UI.WebControls.PlaceHolder
+
+        '''<summary>
+        '''CourseResourcesContainer control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents CourseResourcesContainer As Global.System.Web.UI.WebControls.PlaceHolder
+
+        '''<summary>
+        '''AssignmentsContainer control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents AssignmentsContainer As Global.System.Web.UI.WebControls.PlaceHolder
+
+        '''<summary>
+        '''AcceptReject control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents AcceptReject As Global.System.Web.UI.WebControls.Button
     End Class
 End Namespace

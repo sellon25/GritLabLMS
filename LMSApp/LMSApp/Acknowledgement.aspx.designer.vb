@@ -11,50 +11,50 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class ProjectsPage1
+Partial Public Class Acknowledgement
 
     '''<summary>
-    '''HyperLink1 control.
+    '''form1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents HyperLink1 As Global.System.Web.UI.WebControls.HyperLink
+    Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
-    '''lblProjectName control.
+    '''HiddenField1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents lblProjectName As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    Protected WithEvents HiddenField1 As Global.System.Web.UI.WebControls.HiddenField
 
     '''<summary>
-    '''ProjectOverviewContainer control.
+    '''Div2 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ProjectOverviewContainer As Global.System.Web.UI.WebControls.PlaceHolder
+    Protected WithEvents Div2 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''ProjectResourcesContainer control.
+    '''n control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ProjectResourcesContainer As Global.System.Web.UI.WebControls.PlaceHolder
+    Protected WithEvents n As Global.System.Web.UI.HtmlControls.HtmlAnchor
 
     '''<summary>
-    '''AcceptReject control.
+    '''lblApplError control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents AcceptReject As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents lblApplError As Global.System.Web.UI.WebControls.Label
 End Class

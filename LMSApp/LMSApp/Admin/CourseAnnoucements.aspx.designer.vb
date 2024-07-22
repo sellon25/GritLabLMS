@@ -11,113 +11,86 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class StudentsProgress
+Partial Public Class CourseAnnoucements
 
     '''<summary>
-    '''SendEmailFrom control.
+    '''courseId control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents SendEmailFrom As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents courseId As Global.System.Web.UI.WebControls.HiddenField
 
     '''<summary>
-    '''SendToEmail control.
+    '''adminId control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents SendToEmail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents adminId As Global.System.Web.UI.WebControls.HiddenField
 
     '''<summary>
-    '''Subjects control.
+    '''projectId control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Subjects As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents projectId As Global.System.Web.UI.WebControls.HiddenField
 
     '''<summary>
-    '''EmailBody control.
+    '''announcementTitle control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents EmailBody As Global.System.Web.UI.HtmlControls.HtmlTextArea
+    Protected WithEvents announcementTitle As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''btnSendEmail control.
+    '''announcementText control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btnSendEmail As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents announcementText As Global.System.Web.UI.HtmlControls.HtmlTextArea
 
     '''<summary>
-    '''txtSearch control.
+    '''announcementLink control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtSearch As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents announcementLink As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlFilter control.
+    '''announcementSentBy control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlFilter As Global.System.Web.UI.HtmlControls.HtmlSelect
+    Protected WithEvents announcementSentBy As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''btnApplyFilter control.
+    '''addAnnouncement control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btnApplyFilter As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents addAnnouncement As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''btnResetFilter control.
+    '''AnnouncementsContainer control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btnResetFilter As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''hfStudentId control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents hfStudentId As Global.System.Web.UI.WebControls.HiddenField
-
-    '''<summary>
-    '''hfStatus control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents hfStatus As Global.System.Web.UI.WebControls.HiddenField
-
-    '''<summary>
-    '''btnUpdateStatus control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents btnUpdateStatus As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents AnnouncementsContainer As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 End Class

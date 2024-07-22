@@ -11,16 +11,43 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class Courses1
+Partial Public Class CourseOptions
 
     '''<summary>
-    '''AddCourseForm control.
+    '''ActionContainer control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents AddCourseForm As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    Protected WithEvents ActionContainer As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''EditCourseInfo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents EditCourseInfo As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''RequestDelete control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RequestDelete As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''CourseForm control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CourseForm As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''coureName control.
@@ -122,20 +149,38 @@ Partial Public Class Courses1
     Protected WithEvents CancelBtn As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''AddNewCourse control.
+    '''linkManageUsers control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents AddNewCourse As Global.System.Web.UI.HtmlControls.HtmlButton
+    Protected WithEvents linkManageUsers As Global.System.Web.UI.HtmlControls.HtmlAnchor
 
     '''<summary>
-    '''CoursesContainer control.
+    '''linkAnnouncements control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents CoursesContainer As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    Protected WithEvents linkAnnouncements As Global.System.Web.UI.HtmlControls.HtmlAnchor
+
+    '''<summary>
+    '''linkSubmission control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents linkSubmission As Global.System.Web.UI.HtmlControls.HtmlAnchor
+
+    '''<summary>
+    '''linkResults control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents linkResults As Global.System.Web.UI.HtmlControls.HtmlAnchor
 End Class

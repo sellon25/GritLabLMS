@@ -93,4 +93,49 @@ Partial Public Class ManageApplicationForm
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents CreatedQuestions As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''confirmationBox control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents confirmationBox As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''hdnQuestionId control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents hdnQuestionId As Global.System.Web.UI.WebControls.HiddenField
+
+    '''<summary>
+    '''hdnConfirmDelete control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents hdnConfirmDelete As Global.System.Web.UI.WebControls.HiddenField
+
+    '''<summary>
+    '''btnConfirmYes control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnConfirmYes As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''btnConfirmNo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnConfirmNo As Global.System.Web.UI.WebControls.Button
 End Class

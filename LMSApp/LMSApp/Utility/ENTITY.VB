@@ -1,3 +1,5 @@
+Imports System.Globalization
+
 Public Class ENTITY
 
     Shared Function checkNull(ByVal val As Object) As Object
@@ -50,6 +52,17 @@ Public Class ENTITY
             Return val
         End If
 
+    End Function
+
+    Shared Function ToTitleCase(input As String) As String
+        If String.IsNullOrEmpty(input) Then
+            Return input
+        End If
+
+        Dim cultureInfo As CultureInfo = cultureInfo.CurrentCulture
+        Dim textInfo As TextInfo = cultureInfo.TextInfo
+
+        Return textInfo.ToTitleCase(input.ToLower())
     End Function
 
 End Class

@@ -1,37 +1,23 @@
 ﻿Imports System.IO
 
-Public Class Courses1
+Public Class CourseOptions
     Inherits System.Web.UI.Page
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        AddCourseForm.Visible = False
-        PopulateCourses()
-        If Not IsPostBack Then
-            PopulateFacilitators()
-
+        'If Not IsPostBack Then
+        CourseForm.Visible = False
+        Dim courseId As String = Request.QueryString("cId")
+        If Not String.IsNullOrEmpty(courseId) Then
+            'linkOverview.HRef = "CourseOverview.aspx?cId=" & courseId
+            linkSubmission.HRef = "../Admin/CourseSubmissions.aspx?cId=" & courseId
+            linkManageUsers.HRef = "../Admin/ManageUsers.aspx?cId=" & courseId
+            linkAnnouncements.HRef = "../Admin/Announcements.aspx?cId=" & courseId
+            linkResults.HRef = "../Admin/Announcements.aspx?cId=" & courseId
         End If
+        'End If
+
+        PopulateFacilitators()
     End Sub
-
-    Private Sub PopulateCourses()
-        Dim courses As List(Of Course) = Course.listall()
-        Dim htmlContent As New StringBuilder()
-        CoursesContainer.InnerHtml = htmlContent.ToString()
-        For Each course As Course In courses
-            ' Convert the byte array to a base64 string
-            Dim thumbnailBase64 As String = If(course.thumbnail IsNot Nothing, Convert.ToBase64String(course.thumbnail), String.Empty)
-
-            htmlContent.Append("<a class='col-md-3' href='CourseOptions.aspx?cId=" & course.id & "'>")
-            htmlContent.Append("<div class='white-box boxShadow coursebox' style='background-image: url(data:image/jpg;base64," & thumbnailBase64 & ")'>")
-            htmlContent.Append("<div class='description'>")
-            htmlContent.Append("<label class='box-title'>" & course.name & "</label>")
-            htmlContent.Append("<p class='text-muted'>" & course.id & "</p>")
-            htmlContent.Append("</div>")
-            htmlContent.Append("</div>")
-            htmlContent.Append("</a>")
-        Next
-
-        CoursesContainer.InnerHtml = htmlContent.ToString()
-    End Sub
-
 
     Private Sub PopulateFacilitators()
         Dim users As New List(Of User)
@@ -44,7 +30,7 @@ Public Class Courses1
         Next
     End Sub
 
-    Protected Sub CreateCourse_Click(sender As Object, e As EventArgs) Handles CreateCourse.Click
+    Protected Sub UpdateCourse_Click(sender As Object, e As EventArgs) Handles CreateCourse.Click
         'If Not IsPostBack Then Return
 
         Dim newCourse As New Course()
@@ -67,10 +53,9 @@ Public Class Courses1
 
         ' Handle facilitators (if any additional handling is required)
         For Each item As ListItem In Selectfactilitators.Items
-            Dim emailer As New SendEmail
             If item.Selected Then
-                emailer.SendNotification(item.Value, "New Course (" + newCourse.id + ") Added", "You have been assigned a facilitator for a new course " + newCourse.name + "(" + newCourse.id + ").")
-
+                ' Add logic to handle selected facilitators
+                ' For example, create a CourseFacilitator record linking the course with the facilitator
             End If
         Next
 
@@ -92,15 +77,16 @@ Public Class Courses1
     End Sub
 
     Protected Sub AddNewCourse_ServerClick(sender As Object, e As EventArgs)
-        AddCourseForm.Visible = True
-        AddNewCourse.Visible = False
-        CoursesContainer.Visible = False
+        CourseForm.Visible = True
+        EditCourseInfo.Visible = False
+        ActionContainer.Visible = False
     End Sub
 
     Protected Sub CancelBtn_Click(sender As Object, e As EventArgs)
         ClearFormFields()
-        AddNewCourse.Visible = True
+        ActionContainer.Visible = True
         Response.Redirect(Request.Url.AbsoluteUri)
 
     End Sub
+
 End Class
