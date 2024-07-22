@@ -116,7 +116,6 @@ Namespace Manager
             resourcesHtml.AppendLine("<h3 class='box-title' style='font-weight: bold;'>Course Resources</h3>")
             resourcesHtml.AppendLine("<ul style='list-style-type: none; padding-left: 0;'>")
             resourcesHtml.AppendFormat("<li><a href='ContentPage.aspx?CourseID={0}'>Course Content</a></li>", HttpUtility.UrlEncode(selectedCourse.id))
-            resourcesHtml.AppendLine("<li><a href='Tests.aspx'>Course Learning Guide</a></li>")
             resourcesHtml.AppendLine("<li><a href='CourseFacilitators.aspx'>Course Facilitators</a></li>")
             resourcesHtml.AppendLine("</ul>")
 

@@ -35,15 +35,20 @@ Public Class StudentsProgress
                     studentsHtml.AppendFormat("<td class='txt-oflo text-black'>{0}</td>", student.userId)
                     studentsHtml.AppendFormat("<td class='text-black'>{0}</td>", student.course_id)
                     studentsHtml.AppendFormat("<td class='text-black'>{0}</td>", student.date_started)
-                    studentsHtml.AppendFormat("<td class='text-black'>{0}</td>", student.enrollment_status)
+                    studentsHtml.AppendFormat("<td class='text-black'>
+                        <select id='ddlStatus_{0}' onchange='updateStatus({0})' class='form-control'>
+                            <option value='Enrolled' {1}>Enrolled</option>
+                            <option value='Completed' {2}>Completed</option>
+                            <option value='Dropped' {3}>Dropped</option>
+                        </select>
+                    </td>", student.id, If(student.enrollment_status = "Enrolled", "selected", ""), If(student.enrollment_status = "Completed", "selected", ""), If(student.enrollment_status = "Dropped", "selected", ""))
                     studentsHtml.AppendFormat("<td class='text-black'>{0}</td>", student.date_end)
                     studentsHtml.AppendFormat("<td class='text-black'><a href='mailto:{0}'>{0}</a></td>", student.userId)
-                    studentsHtml.AppendFormat("<td><a href='#' class='breadcrumb-link font-bold'>Track Progress</a></td>")
                     studentsHtml.Append("</tr>")
                 Next
             Else
                 ' Display "User Not Found" message if no records are found
-                studentsHtml.Append("<tr><td colspan='10' class='text-center'>User Not Found.</td></tr>")
+                studentsHtml.Append("<tr><td colspan='8' class='text-center'>User Not Found.</td></tr>")
             End If
 
             ' Add the students HTML to the table body
@@ -52,7 +57,7 @@ Public Class StudentsProgress
             ' Log the error (you can use a logging library or write to a file for real-world applications)
             System.Diagnostics.Debug.WriteLine(ex.Message)
             ' Display the error message in the table
-            StudentsTableBody.InnerHtml = String.Format("<tr><td colspan='10' class='text-center'>An error occurred while retrieving data: {0}</td></tr>", ex.Message)
+            StudentsTableBody.InnerHtml = String.Format("<tr><td colspan='8' class='text-center'>An error occurred while retrieving data: {0}</td></tr>", ex.Message)
         End Try
     End Sub
 
@@ -73,6 +78,31 @@ Public Class StudentsProgress
         txtSearch.Value = String.Empty
         Dim filter As String = Nothing
         BindStudentProgress(filter)
+    End Sub
+
+    Protected Sub UpdateStatus_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Dim studentId As String = hfStudentId.Value
+        Dim newStatus As String = hfStatus.Value
+
+        Try
+            Dim enrollment As New Course_Enrollment()
+            enrollment = enrollment.load(studentId)
+            If enrollment IsNot Nothing Then
+                enrollment.enrollment_status = newStatus
+                enrollment.update()
+                ' Optionally, provide feedback that the status was updated
+                System.Diagnostics.Debug.WriteLine("Status updated successfully!")
+            Else
+                ' Handle the case where the enrollment record is not found
+                System.Diagnostics.Debug.WriteLine("Enrollment record not found.")
+            End If
+        Catch ex As Exception
+            ' Handle any errors
+            System.Diagnostics.Debug.WriteLine("Error updating status: " & ex.Message)
+        End Try
+
+        ' Rebind the student progress list to reflect the changes
+        BindStudentProgress(txtSearch.Value.Trim())
     End Sub
 
     Protected Sub SendEmail_Click(ByVal sender As Object, ByVal e As EventArgs)

@@ -11,6 +11,19 @@
             document.getElementById('txtSearch').value = '';
 <%--            document.getElementById('<%= btnApplyFilter.ClientID %>').click();--%>
         }
+
+        function updateStatus(studentId) {
+            var dropdown = document.getElementById('ddlStatus_' + studentId);
+            var selectedStatus = dropdown.value;
+
+            console.log('Updating status for studentId: ' + studentId + ' to status: ' + selectedStatus);
+
+            document.getElementById('<%= hfStudentId.ClientID %>').value = studentId;
+            document.getElementById('<%= hfStatus.ClientID %>').value = selectedStatus;
+
+            document.getElementById('<%= btnUpdateStatus.ClientID %>').click();
+        }
+
     </script>
     <div class="row">
         <div class="col-md-4">
@@ -73,7 +86,7 @@
                                     <th class="border-top-0" style="font-weight: bold;">Enrollment Status</th>
                                     <th class="border-top-0" style="font-weight: bold;">End Date</th>
                                     <th class="border-top-0" style="font-weight: bold;">Send Email</th>
-                                    <th class="border-top-0" style="font-weight: bold;">Track Progress</th>
+                                    <th class="border-top-0" style="font-weight: bold;">Total Average</th>
                                 </tr>
                             </thead>
                             <tbody runat="server" id="StudentsTableBody">
@@ -85,4 +98,8 @@
             </div>
         </div>
     </div>
+    <!-- Hidden fields for updating status -->
+    <asp:HiddenField ID="hfStudentId" runat="server" />
+    <asp:HiddenField ID="hfStatus" runat="server" />
+    <asp:Button ID="btnUpdateStatus" runat="server" style="display:none;" OnClick="UpdateStatus_Click" />
 </asp:Content>
