@@ -46,8 +46,8 @@ Public Class ManageUsers
             userFname.Value = selecteduser.FName
             userLname.Value = selecteduser.LName
             useremail.Value = selecteduser.emailID
-            userrole.Text = selecteduser.role
-            userroletxt.Value = 1
+            userrole.Text = 1
+            userroletxt.Value = "Student"
             EnrollmentStatustxt.Value = "Not Enrolled"
             EnrollmentStatus.SelectedValue = 3
         ElseIf btn.ID.Contains("Select_") Then
