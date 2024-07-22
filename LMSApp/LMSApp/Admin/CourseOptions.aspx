@@ -9,26 +9,32 @@
      <div>
        <!-- <div class="white-box boxShadow coursebox" style="background-image: url(../plugins/images/Squid-Game-1.jpg)"></div>-->
         
-        <a class="col-md-12 text-black" href="SQDGOverview.aspx">
+        <a id="linkOverview" class="col-md-12 text-black" runat="server">
             <div class="white-box boxShadow">
-                <h3 class="box-title" >Overview</h3>
+                <h3 class="box-title">Overview</h3>
             </div> 
         </a>
-        <a class="col-md-12 text-black" href="../Admin/SQDGSubmission.aspx">
-            <div class="white-box boxShadow">
-                <h3 class="box-title" >Submission Links</h3>
-            </div> 
-        </a>
-        <a class="col-md-12 text-black" href="../Admin/ManageUsers.aspx">
-            <div class="white-box boxShadow">
-                <h3 class="box-title" >Manage Enrollment</h3>
-            </div> 
-        </a>
-        <a class="col-md-12 text-black" href="../Admin/SQDGAnnoucements.aspx">
+         <a id="linkAnnouncements" class="col-md-12 text-black" runat="server">
             <div class="white-box boxShadow">
                 <h3 class="box-title">Announcements</h3>
             </div> 
         </a>
+        <a id="linkSubmission" class="col-md-12 text-black" runat="server">
+            <div class="white-box boxShadow">
+                <h3 class="box-title">Submission Links</h3>
+            </div> 
+        </a>
+        <a id="linkManageUsers" class="col-md-12 text-black" runat="server">
+            <div class="white-box boxShadow">
+                <h3 class="box-title">Manage Enrollments</h3>
+            </div> 
+        </a>
+        <a id="linkResults" class="col-md-12 text-black" runat="server">
+            <div class="white-box boxShadow">
+                <h3 class="box-title">Results</h3>
+            </div> 
+        </a>
+       
         <div class="col-md-12 white-box">
             <h4 class="w-100 border-bottom fw-bold">Action:</h4>
             <div class="">

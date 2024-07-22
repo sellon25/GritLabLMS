@@ -14,6 +14,51 @@ Option Explicit On
 Partial Public Class CourseOptions
 
     '''<summary>
+    '''linkOverview control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents linkOverview As Global.System.Web.UI.HtmlControls.HtmlAnchor
+
+    '''<summary>
+    '''linkAnnouncements control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents linkAnnouncements As Global.System.Web.UI.HtmlControls.HtmlAnchor
+
+    '''<summary>
+    '''linkSubmission control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents linkSubmission As Global.System.Web.UI.HtmlControls.HtmlAnchor
+
+    '''<summary>
+    '''linkManageUsers control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents linkManageUsers As Global.System.Web.UI.HtmlControls.HtmlAnchor
+
+    '''<summary>
+    '''linkResults control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents linkResults As Global.System.Web.UI.HtmlControls.HtmlAnchor
+
+    '''<summary>
     '''RequestDelete control.
     '''</summary>
     '''<remarks>

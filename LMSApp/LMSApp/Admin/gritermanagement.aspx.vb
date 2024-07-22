@@ -270,7 +270,7 @@
         ApplicationFormPanel.Visible = False
 
         Dim newEmail As New SendEmail
-        newEmail.SendNotification("sellondaba25@gmail.com", "Congradulations, Your application has been accepted! </br> Your are now officially a Student Of Grits Lab africa, we are happy To have you!")
+        newEmail.SendNotification("sellondaba25@gmail.com", "Congratulations, Your application has been accepted! </br> Your are now officially a Student Of Grits Lab africa, we are happy To have you!")
 
         LoadUsers()
     End Sub

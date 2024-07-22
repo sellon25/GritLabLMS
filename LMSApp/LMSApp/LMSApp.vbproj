@@ -129,9 +129,9 @@
     <Content Include="Admin\Set_Announcements.aspx" />
     <Content Include="Admin\Set_Projects_and_Course.aspx" />
     <Content Include="Admin\SQDG.aspx" />
-    <Content Include="Admin\SQDGAnnoucements.aspx" />
-    <Content Include="Admin\SQDGOverview.aspx" />
-    <Content Include="Admin\SQDGSubmission.aspx" />
+    <Content Include="Admin\CourseAnnoucements.aspx" />
+    <Content Include="Admin\CourseOverview.aspx" />
+    <Content Include="Admin\CourseSubmissions.aspx" />
     <Content Include="Admin\table.aspx" />
     <Content Include="Admin\UploadPDF.aspx" />
     <Content Include="Admin\WebForm1.aspx" />
@@ -2686,25 +2686,25 @@
       <DependentUpon>SQDG.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\SQDGAnnoucements.aspx.designer.vb">
-      <DependentUpon>SQDGAnnoucements.aspx</DependentUpon>
+    <Compile Include="Admin\CourseAnnoucements.aspx.designer.vb">
+      <DependentUpon>CourseAnnoucements.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\SQDGAnnoucements.aspx.vb">
-      <DependentUpon>SQDGAnnoucements.aspx</DependentUpon>
+    <Compile Include="Admin\CourseAnnoucements.aspx.vb">
+      <DependentUpon>CourseAnnoucements.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\SQDGOverview.aspx.designer.vb">
-      <DependentUpon>SQDGOverview.aspx</DependentUpon>
+    <Compile Include="Admin\CourseOverview.aspx.designer.vb">
+      <DependentUpon>CourseOverview.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\SQDGOverview.aspx.vb">
-      <DependentUpon>SQDGOverview.aspx</DependentUpon>
+    <Compile Include="Admin\CourseOverview.aspx.vb">
+      <DependentUpon>CourseOverview.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\SQDGSubmission.aspx.designer.vb">
-      <DependentUpon>SQDGSubmission.aspx</DependentUpon>
+    <Compile Include="Admin\CourseSubmissions.aspx.designer.vb">
+      <DependentUpon>CourseSubmissions.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\SQDGSubmission.aspx.vb">
-      <DependentUpon>SQDGSubmission.aspx</DependentUpon>
+    <Compile Include="Admin\CourseSubmissions.aspx.vb">
+      <DependentUpon>CourseSubmissions.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\table.aspx.designer.vb">

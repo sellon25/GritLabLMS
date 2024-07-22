@@ -19,7 +19,7 @@ Public Class Courses1
             ' Convert the byte array to a base64 string
             Dim thumbnailBase64 As String = If(course.thumbnail IsNot Nothing, Convert.ToBase64String(course.thumbnail), String.Empty)
 
-            htmlContent.Append("<a class='col-md-3' href='CourseOptions.aspx?id=" & course.id & "'>")
+            htmlContent.Append("<a class='col-md-3' href='CourseOptions.aspx?cId=" & course.id & "'>")
             htmlContent.Append("<div class='white-box boxShadow coursebox' style='background-image: url(data:image/jpg;base64," & thumbnailBase64 & ")'>")
             htmlContent.Append("<div class='description'>")
             htmlContent.Append("<label class='box-title'>" & course.name & "</label>")
