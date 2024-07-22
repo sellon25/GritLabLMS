@@ -19,6 +19,7 @@
                     <div class="form-group">
                         <label for="announcementType">Type</label> 
                             <select id="announcementType" name="announcementType" class="form-control">
+                                <option value="Information">--Select--</option>
                                 <option value="Information">Information</option>
                                 <option value="Query">Query</option>
                                 <option value="Alert">Alert</option>
@@ -30,7 +31,7 @@
                     </div>
                     <div class="form-group">
                         <label for="announcementBody">Text</label>
-                        <textarea class="form-control" id="announcementText" runat="server" rows="3"></textarea>
+                        <textarea class="form-control" id="announcementText" runat="server" rows="3" placeholder="Enter announcement"></textarea>
                     </div>
                     <div class="form-group hide">
                         <label for="announcementSentBy">Sent By</label>

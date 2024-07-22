@@ -9,7 +9,22 @@
     End Sub
 
     Protected Sub AddNewSubmissionLink(ByVal sender As Object, ByVal e As EventArgs)
-        Console.Write("WW")
 
+        Dim submission As New Submission
+        If newSubmissionFile.HasFile Then
+            submission.file_data = newSubmissionFile.FileBytes
+        End If
+        submission.id = New database_operations().GetNewPrimaryKey("id", "Submission", HttpContext.Current.Session("conn"))
+        submission.title = submissionTitle.Value
+        submission.text = submissionText.Value
+        submission.datetime = openDateTime.Value
+        submission.enddate = closeDateTime.Value
+        submission.course_id = Request.QueryString("courseId")
+        submission.update()
+
+        submissionTitle.Value = ""
+        submissionText.Value = ""
+        openDateTime.Value = Nothing
+        closeDateTime.Value = Nothing
     End Sub
 End Class

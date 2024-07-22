@@ -82,10 +82,15 @@ Public Class NewAssessment
         newQuestion.TestID = testId
         newQuestion.Text = questionText.Value
         newQuestion.QuestionType = questionType
-        newQuestion.Option1 = answerA.Value
-        newQuestion.Option2 = answerB.Value
-        newQuestion.Option3 = answerC.Value
-        newQuestion.Option4 = answerD.Value
+
+        Select Case questionType
+            Case "multipleChoice"
+                newQuestion.Option1 = answerA.Value
+                newQuestion.Option2 = answerB.Value
+                newQuestion.Option3 = answerC.Value
+                newQuestion.Option4 = answerD.Value
+        End Select
+
         newQuestion.Mark = CDbl(mark.Value)
 
         Dim questionImage As Byte() = Nothing

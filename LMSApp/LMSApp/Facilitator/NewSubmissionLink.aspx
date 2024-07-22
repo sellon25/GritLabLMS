@@ -8,22 +8,33 @@
     <div class="container mt-4">
     <div>
         <div class="form-group">
-            <label for="assessmentName">Submission Title:</label>
-            <input type="text" class="form-control" id="submissionTitle" name="submissionTitle" placeholder="Enter submission title">
+            <label for="submissionTitle">Submission Title:</label>
+            <input type="text" runat="server" class="form-control" id="submissionTitle" name="submissionTitle" placeholder="Enter submission title">
         </div>
+
+        <div class="form-group">
+            <label for="submissionText">Submission Text:</label>
+            <input type="text" runat="server" class="form-control" id="submissionText" name="submissionText" placeholder="Enter submission Text">
+        </div>
+
         <div class="form-row">
             <div class="col">
                 <label for="openDateTime">Open Date and Time:</label>
-                <input type="datetime-local" class="form-control" id="openDateTime" name="openDateTime">
+                <input type="datetime-local" runat="server" class="form-control" id="openDateTime" name="openDateTime">
             </div>
             <div class="col">
                 <label for="closeDateTime">Close Date and Time:</label>
-                <input type="datetime-local" class="form-control" id="closeDateTime" name="closeDateTime">
+                <input type="datetime-local" runat="server" class="form-control" id="closeDateTime" name="closeDateTime">
             </div>
         </div>
+        <div class="form-group">
+            <label for="newSubmissionFile">New Submission File:</label>
+            <asp:FileUpload ID="newSubmissionFile" runat="server" CssClass="form-control-file" />
+        </div>
+
         <div class="mt-4">
         </div>
-        <button type="submit" class="btn btn-success mt-4" onclick="AddNewSubmissionLink" runat="server">Add Submission Link</button>
+        <asp:Button ID="btnAddNewSubmission" runat="server" type="button" class="btn btn-success mt-4" OnClick="AddNewSubmissionLink" Text="Add Submission Link" />
     </div>
 </div>
 </asp:Content>
