@@ -2304,7 +2304,6 @@
     <Compile Include="Models\NewUser.vb" />
     <Compile Include="Models\Question_Bank.vb" />
     <Compile Include="Models\Test.vb" />
-    <Compile Include="Models\Course_Submission.vb" />
     <Compile Include="Models\Project_Submission.vb" />
     <Compile Include="Models\Submission.vb" />
     <Content Include="plugins\images\miniBanking.jpg" />

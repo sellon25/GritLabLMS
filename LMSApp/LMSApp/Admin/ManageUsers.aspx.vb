@@ -117,13 +117,13 @@ Public Class ManageUsers
                 Dim btnTrack As New Button()
                 btnTrack.ID = String.Format("ViewEnrollment_{0}", usr.emailID.ToString())
                 btnTrack.Attributes("class") = " btn btn-primary"
-                If (usr.status.Trim() = "New Applicant" Or usr.status.Trim() = "Rejected" Or usr.status.Trim() = "Pending Application") Then
-                    btnTrack.Text = "View Application"
-                    AddHandler btnTrack.Click, AddressOf ViewApplication
-                Else
-                    btnTrack.Text = "View Enrollment"
-                    AddHandler btnTrack.Click, AddressOf ViewEnrollment_Click
-                End If
+                'If (usr.status.Trim() = "New Applicant" Or usr.status.Trim() = "Rejected" Or usr.status.Trim() = "Pending Application") Then
+                '    btnTrack.Text = "View Application"
+                '    AddHandler btnTrack.Click, AddressOf ViewApplication
+                'Else
+                btnTrack.Text = "View Enrollments"
+                AddHandler btnTrack.Click, AddressOf ViewEnrollment_Click
+                'End If
                 btnTrack.EnableViewState = False
 
                 cellTrack.Controls.Add(btnTrack)
