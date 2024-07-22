@@ -14,13 +14,13 @@
     </div>
 </a>
 
-<a class="col-md-3" href="../Manager/ApproveProjects.aspx">
+<%--<a class="col-md-3" href="../Manager/ApproveProjects.aspx">
     <div class="white-box boxShadow coursebox">
         <div class="description">
             <label class="box-title">Approve Projects</label>
             <p class="text-muted">PROJECT</p>
         </div>
     </div>
-</a>
+</a>--%>
 
 </asp:Content>

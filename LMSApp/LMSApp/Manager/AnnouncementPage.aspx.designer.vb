@@ -23,13 +23,31 @@ Partial Public Class AnnouncementPage
     Protected WithEvents announcementTitle As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''announcementLink control.
+    '''announcementsForm control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents announcementLink As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents announcementsForm As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''sendTo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sendTo As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''chkListCoursesProjects control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents chkListCoursesProjects As Global.System.Web.UI.WebControls.CheckBoxList
 
     '''<summary>
     '''announcementText control.
@@ -39,6 +57,15 @@ Partial Public Class AnnouncementPage
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents announcementText As Global.System.Web.UI.HtmlControls.HtmlTextArea
+
+    '''<summary>
+    '''announcementLink control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents announcementLink As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''announcementSentBy control.
@@ -65,5 +92,5 @@ Partial Public Class AnnouncementPage
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents AnnouncementsContainer As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    Protected WithEvents AnnouncementsContainer As Global.System.Web.UI.WebControls.PlaceHolder
 End Class

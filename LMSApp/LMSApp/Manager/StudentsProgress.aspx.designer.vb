@@ -14,6 +14,15 @@ Option Explicit On
 Partial Public Class StudentsProgress
 
     '''<summary>
+    '''SendEmailFrom control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents SendEmailFrom As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
     '''SendToEmail control.
     '''</summary>
     '''<remarks>
@@ -38,7 +47,7 @@ Partial Public Class StudentsProgress
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents EmailBody As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents EmailBody As Global.System.Web.UI.HtmlControls.HtmlTextArea
 
     '''<summary>
     '''btnSendEmail control.
@@ -84,4 +93,31 @@ Partial Public Class StudentsProgress
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnResetFilter As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''hfStudentId control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents hfStudentId As Global.System.Web.UI.WebControls.HiddenField
+
+    '''<summary>
+    '''hfStatus control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents hfStatus As Global.System.Web.UI.WebControls.HiddenField
+
+    '''<summary>
+    '''btnUpdateStatus control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnUpdateStatus As Global.System.Web.UI.WebControls.Button
 End Class

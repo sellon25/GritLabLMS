@@ -17,23 +17,14 @@
         <!-- Course Overview Section -->
         <div class="col-md-6">
             <div class="white-box boxShadow">
-                <h3 class="box-title" style="font-weight: bold;">Course Overview</h3>
-                <p><strong>Description: </strong> A brief description of the course.</p>
-                <p><strong>Duration: </strong> Duration of the course.</p>
-                <p><strong>Prerequisites: </strong> Prerequisites required for the course.</p>
+                <asp:PlaceHolder ID="CourseOverviewContainer" runat="server"></asp:PlaceHolder>
             </div>
         </div>
 
         <!-- Course Resources Section -->
         <div class="col-md-6">
             <div class="white-box boxShadow">
-                <h3 class="box-title" style="font-weight: bold;">Course Resources</h3>
-                <ul style="list-style-type: none; padding-left: 0;">
-                    <li><a href="Tests.aspx">Course Learning Guide</a></li>
-                    <li><a href="CourseContent.aspx">Course Content</a></li>
-                    <li><a href="CourseFacilitators.aspx">Course Facilitators</a></li>
-                    <!-- Add more relevant links to resources -->
-                </ul>
+                <asp:PlaceHolder ID="CourseResourcesContainer" runat="server"></asp:PlaceHolder>
             </div>
         </div>
 
@@ -41,19 +32,20 @@
         <div class="col-md-12">
             <div class="white-box boxShadow">
                 <h3 class="box-title" style="font-weight: bold;">Assignments and Tasks</h3>
-                <!-- Add more relevant sections as needed -->
+                <asp:PlaceHolder ID="AssignmentsContainer" runat="server"></asp:PlaceHolder>
+            </div>
+        </div>
 
-                <div class="row">
-                    <!-- Example of dynamically generated content -->
-                    <div class="d-flex flex-row comment-row p-3 mt-0 white-box boxShado white-box boxShadow">
-                        <div class="p-2"><i class="far fa-file-alt text-black" style="font-size: 26px;"></i></div>
-                        <div class="comment-text ps-2 ps-md-3 w-100 text-black">
-                            <h5 class="font-medium">Test 1</h5>
-                            <span class="mb-3 d-block">Lorem Ipsum is simply dummy text of the printing and typesetting industry. It has survived not only </span>
-                            <div class="text-muted fs-2 ms-auto mt-2 mt-md-0"><span>Due:</span> April 14, 2021</div>
-                        </div>
-                    </div>
-                    <!-- Add more dynamically generated content here -->
+        <!-- Approval and Rejection Buttons -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="bulkActions">Action</label>
+                    <select ID="bulkActions" name="bulkActions" class="form-control"> 
+                        <option value="Approve">Approve</option>
+                        <option value="Reject">Reject</option>
+                    </select>
+                    <asp:Button class="btn btn-primary" style="background-color:#93761E" OnClick="AcceptReject_Click" ID="AcceptReject" runat="server" Text="Apply" />
                 </div>
             </div>
         </div>

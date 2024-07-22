@@ -30,49 +30,4 @@ Partial Public Class ApproveCourses
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents CoursesContainer As Global.System.Web.UI.HtmlControls.HtmlGenericControl
-
-    '''<summary>
-    '''searchInput control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents searchInput As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''AcceptReject control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents AcceptReject As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''courseName control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents courseName As Global.System.Web.UI.HtmlControls.HtmlGenericControl
-
-    '''<summary>
-    '''courseCode control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents courseCode As Global.System.Web.UI.HtmlControls.HtmlGenericControl
-
-    '''<summary>
-    '''courseDescription control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents courseDescription As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 End Class

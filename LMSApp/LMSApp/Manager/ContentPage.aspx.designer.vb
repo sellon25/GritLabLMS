@@ -11,23 +11,14 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class ApproveProjects
+Partial Public Class ContentPage1
 
     '''<summary>
-    '''HyperLink1 control.
+    '''ContentContainer control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents HyperLink1 As Global.System.Web.UI.WebControls.HyperLink
-
-    '''<summary>
-    '''ProjectsContainer control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ProjectsContainer As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    Protected WithEvents ContentContainer As Global.System.Web.UI.WebControls.PlaceHolder
 End Class
