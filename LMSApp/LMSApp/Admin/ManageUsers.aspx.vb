@@ -15,7 +15,7 @@ Public Class ManageUsers
         ApplicationFormPanel.Visible = False
         If Not IsPostBack Then
             ' Initial load logic
-            LoadAvailableCourses()
+            'LoadAvailableCourses()
         Else
             ' Recreate dynamic controls on postback
             Dim userId As String = SelectedUserID.Value
@@ -136,7 +136,7 @@ Public Class ManageUsers
         Dim listUsers As New List(Of Course_Enrollment)
         Dim courseId As String = Request.QueryString("cId")
 
-        listUsers = New Course_Enrollment().listall(String.Format(" where [course_id]='{0}' "), courseId)
+        listUsers = New Course_Enrollment().listall(" where [course_id]='" + courseId + "' ")
 
 
         ' Clear existing rows if necessary
@@ -301,16 +301,16 @@ Public Class ManageUsers
     End Function
 
 
-    Private Sub LoadAvailableCourses()
-        Dim courses As List(Of Course) = New Course().listall()
-        CoursesAvailable.Items.Clear()
-        For Each availableCourse In courses
-            Dim courseItem As New ListItem
-            courseItem.Value = availableCourse.id
-            courseItem.Text = availableCourse.name & "(" & availableCourse.id & ")"
-            CoursesAvailable.Items.Add(courseItem)
-        Next
-    End Sub
+    'Private Sub LoadAvailableCourses()
+    '    Dim courses As List(Of Course) = New Course().listall()
+    '    CoursesAvailable.Items.Clear()
+    '    For Each availableCourse In courses
+    '        Dim courseItem As New ListItem
+    '        courseItem.Value = availableCourse.id
+    '        courseItem.Text = availableCourse.name & "(" & availableCourse.id & ")"
+    '        CoursesAvailable.Items.Add(courseItem)
+    '    Next
+    'End Sub
 
 
     Protected Sub btnClose_Click(sender As Object, e As EventArgs)
@@ -354,7 +354,7 @@ Public Class ManageUsers
         With NewEnrollment
             .id = guid.ToString()
             .date_started = DateTime.Now
-            .course_id = CoursesAvailable.SelectedValue.Trim()
+            .course_id = Request.QueryString("cId")
             .userId = SelectedUserID.Value.Trim()
             .enrollment_status = "Active"
             .update()
@@ -541,7 +541,7 @@ Public Class ManageUsers
     End Function
 
     Protected Sub CoursesAvailable_SelectedIndexChanged(sender As Object, e As EventArgs)
-        Dim x = CoursesAvailable.SelectedValue
+        'Dim x = CoursesAvailable.SelectedValue
     End Sub
 
 

@@ -198,16 +198,16 @@
                 </div>--%>
             </div>
             <div class="form-group w-100 mb-0 pt-2 border-top">
-                <asp:DropDownList ID="CoursesAvailable" class="form-select w-100" runat="server">
+              <%--  <asp:DropDownList ID="CoursesAvailable" class="form-select w-100" runat="server">
 
-                </asp:DropDownList>
-                <asp:Button  ID="EnrollStudent" runat="server" OnClick="EnrollStudent_Click" class="btn mb-2 btn-primary" Text="Enroll To Course" />
+                </asp:DropDownList>--%>
+                <asp:Button  ID="EnrollStudent" runat="server" OnClick="EnrollStudent_Click" class="btn mb-2 btn-primary" Text="Enroll To Current Course" />
             </div>
 
       
         
 
-        <asp:Button ID="btnClose" runat="server" Text="Close" CssClass="btn btn-secondary" OnClientClick="hidePopup('<%= pnlEnrollment.ClientID %>'); return false;" />
+        <asp:Button ID="btnClose" runat="server" Text="Close" CssClass="btn btn-secondary" OnClick="btnClose_Click"  />
 
         <script type="text/javascript">
             function hidePopup(id) {
