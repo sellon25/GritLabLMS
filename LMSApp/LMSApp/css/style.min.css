@@ -15457,3 +15457,30 @@ html[dir=ltr] body .p-l-0 {
         margin: 0.2rem;
     }
 
+.confirmation-box {
+   /* display: none;*/
+    background-color: darkgoldenrod;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+    .confirmation-box h3 {
+        margin: 0;
+        padding: 0;
+    }
+
+    .confirmation-box button {
+        background-color: white;
+        color: darkgoldenrod;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 3px;
+        cursor: pointer;
+        margin-top: 10px;
+    }

@@ -11,59 +11,50 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class AnnouncementsPage
+Partial Public Class Acknowledgement
 
     '''<summary>
-    '''announcementTitle control.
+    '''form1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents announcementTitle As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
-    '''announcementLink control.
+    '''HiddenField1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents announcementLink As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents HiddenField1 As Global.System.Web.UI.WebControls.HiddenField
 
     '''<summary>
-    '''announcementText control.
+    '''Div2 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents announcementText As Global.System.Web.UI.HtmlControls.HtmlTextArea
+    Protected WithEvents Div2 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''announcementSentBy control.
+    '''n control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents announcementSentBy As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents n As Global.System.Web.UI.HtmlControls.HtmlAnchor
 
     '''<summary>
-    '''addAnnouncement control.
+    '''lblApplError control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents addAnnouncement As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''AnnouncementsContainer control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents AnnouncementsContainer As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    Protected WithEvents lblApplError As Global.System.Web.UI.WebControls.Label
 End Class

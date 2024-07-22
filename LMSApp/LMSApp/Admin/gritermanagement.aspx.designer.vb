@@ -128,7 +128,7 @@ Partial Public Class gritermanagement
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents pnlEnrollment As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents pnlEnrollment As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''SelectedUserID control.
@@ -147,24 +147,6 @@ Partial Public Class gritermanagement
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents EnrollmentInfo As Global.System.Web.UI.HtmlControls.HtmlGenericControl
-
-    '''<summary>
-    '''CoursesAvailable control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents CoursesAvailable As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''EnrollStudent control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents EnrollStudent As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''btnClose control.

@@ -8,6 +8,11 @@
     <button type="button" class="btn btn-primary" style="background-color:#93761E;" onclick="window.location.href='NewAssessment.aspx?courseId=<%= Request.QueryString("courseId") %>';">Add New Assessment</button>
     <div class="row" style="padding-top:10px;">
 
+        <div class="row" style="padding-top:10px;" id="TestsContainer" runat="server">
+        </div>
+
+
+        <!-- 
         <a class="col-md-12 text-black" href="AssessmentStudentList.aspx">
             <div class="white-box boxShadow d-flex justify-content-between align-items-center">
                 <h3 class="box-title">Test 1</h3>
@@ -35,6 +40,6 @@
                 <span style="color: red;">Closed</span>
             </div>
         </a>
-
+        -->
     </div>
 </asp:Content>

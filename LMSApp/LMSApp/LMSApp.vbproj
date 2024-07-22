@@ -95,12 +95,14 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Acknowledgement.aspx" />
     <Content Include="Admin\addkingsmen.aspx" />
     <Content Include="Admin\AddProject.aspx" />
     <Content Include="Admin\admin-assets\adminscripts.js" />
     <Content Include="Admin\admin-assets\style.css" />
     <Content Include="Admin\Announcements.aspx" />
     <Content Include="Admin\AnnouncementsKingsmen.aspx" />
+    <Content Include="Admin\CourseOptions.aspx" />
     <Content Include="Admin\Courses.aspx" />
     <Content Include="Admin\Dashboard.aspx" />
     <Content Include="Admin\demo.aspx" />
@@ -127,9 +129,9 @@
     <Content Include="Admin\Set_Announcements.aspx" />
     <Content Include="Admin\Set_Projects_and_Course.aspx" />
     <Content Include="Admin\SQDG.aspx" />
-    <Content Include="Admin\SQDGAnnoucements.aspx" />
-    <Content Include="Admin\SQDGOverview.aspx" />
-    <Content Include="Admin\SQDGSubmission.aspx" />
+    <Content Include="Admin\CourseAnnoucements.aspx" />
+    <Content Include="Admin\CourseOverview.aspx" />
+    <Content Include="Admin\CourseSubmissions.aspx" />
     <Content Include="Admin\table.aspx" />
     <Content Include="Admin\UploadPDF.aspx" />
     <Content Include="Admin\WebForm1.aspx" />
@@ -143,6 +145,7 @@
     <Content Include="Facilitator\CoursesAndProjects.aspx" />
     <Content Include="Facilitator\Dashboard.aspx" />
     <Content Include="Facilitator\demo.aspx" />
+    <Content Include="Facilitator\EditAssessment.aspx" />
     <Content Include="Facilitator\getAnnouncementContent.aspx" />
     <Content Include="Facilitator\MarkAssessment.aspx" />
     <Content Include="Facilitator\NewAssessment.aspx" />
@@ -2276,6 +2279,29 @@
       <DependentUpon>ContentPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Acknowledgement.aspx.designer.vb">
+      <DependentUpon>Acknowledgement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Acknowledgement.aspx.vb">
+      <DependentUpon>Acknowledgement.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CourseOptions.aspx.designer.vb">
+      <DependentUpon>CourseOptions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CourseOptions.aspx.vb">
+      <DependentUpon>CourseOptions.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Facilitator\EditAssessment.aspx.designer.vb">
+      <DependentUpon>EditAssessment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Facilitator\EditAssessment.aspx.vb">
+      <DependentUpon>EditAssessment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Models\Course_Submission.vb" />
+    <Compile Include="Models\NewUser.vb" />
     <Compile Include="Models\Question_Bank.vb" />
     <Compile Include="Models\Test.vb" />
     <Compile Include="Models\Course_Submission.vb" />
@@ -2456,7 +2482,6 @@
     <Content Include="Utility\forgot_password_message.txt" />
     <Content Include="Utility\welcome_message.txt" />
     <Content Include="Web.config" />
-    <Content Include="WebForm2.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\addkingsmen.aspx.designer.vb">
@@ -2669,25 +2694,25 @@
       <DependentUpon>SQDG.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\SQDGAnnoucements.aspx.designer.vb">
-      <DependentUpon>SQDGAnnoucements.aspx</DependentUpon>
+    <Compile Include="Admin\CourseAnnoucements.aspx.designer.vb">
+      <DependentUpon>CourseAnnoucements.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\SQDGAnnoucements.aspx.vb">
-      <DependentUpon>SQDGAnnoucements.aspx</DependentUpon>
+    <Compile Include="Admin\CourseAnnoucements.aspx.vb">
+      <DependentUpon>CourseAnnoucements.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\SQDGOverview.aspx.designer.vb">
-      <DependentUpon>SQDGOverview.aspx</DependentUpon>
+    <Compile Include="Admin\CourseOverview.aspx.designer.vb">
+      <DependentUpon>CourseOverview.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\SQDGOverview.aspx.vb">
-      <DependentUpon>SQDGOverview.aspx</DependentUpon>
+    <Compile Include="Admin\CourseOverview.aspx.vb">
+      <DependentUpon>CourseOverview.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\SQDGSubmission.aspx.designer.vb">
-      <DependentUpon>SQDGSubmission.aspx</DependentUpon>
+    <Compile Include="Admin\CourseSubmissions.aspx.designer.vb">
+      <DependentUpon>CourseSubmissions.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\SQDGSubmission.aspx.vb">
-      <DependentUpon>SQDGSubmission.aspx</DependentUpon>
+    <Compile Include="Admin\CourseSubmissions.aspx.vb">
+      <DependentUpon>CourseSubmissions.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\table.aspx.designer.vb">
@@ -2730,7 +2755,7 @@
     </Compile>
     <Compile Include="Facilitator\ContentPage.aspx.vb">
       <DependentUpon>ContentPage.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Facilitator\CourseContent.aspx.designer.vb">
       <DependentUpon>CourseContent.aspx</DependentUpon>
@@ -3130,13 +3155,6 @@
     <Compile Include="Utility\Mailing_Service.vb" />
     <Compile Include="Utility\Money_Matters.vb" />
     <Compile Include="Utility\SendEmail.vb" />
-    <Compile Include="WebForm2.aspx.designer.vb">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm2.aspx.vb">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

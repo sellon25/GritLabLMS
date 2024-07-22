@@ -11,140 +11,176 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class NewAssessment
+Partial Public Class CourseOptions
 
     '''<summary>
-    '''hfTestId control.
+    '''ActionContainer control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents hfTestId As Global.System.Web.UI.WebControls.HiddenField
+    Protected WithEvents ActionContainer As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''hfTestCreated control.
+    '''EditCourseInfo control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents hfTestCreated As Global.System.Web.UI.WebControls.HiddenField
+    Protected WithEvents EditCourseInfo As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''btnCreateTest control.
+    '''RequestDelete control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btnCreateTest As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents RequestDelete As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''questionNumber control.
+    '''CourseForm control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents questionNumber As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents CourseForm As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''questionText control.
+    '''coureName control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents questionText As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents coureName As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''newQuestionImage control.
+    '''coureID control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents newQuestionImage As Global.System.Web.UI.WebControls.FileUpload
+    Protected WithEvents coureID As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''answerA control.
+    '''FileUpload1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents answerA As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents FileUpload1 As Global.System.Web.UI.WebControls.FileUpload
 
     '''<summary>
-    '''answerB control.
+    '''coureDesription control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents answerB As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents coureDesription As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''answerC control.
+    '''coureOverview control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents answerC As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents coureOverview As Global.System.Web.UI.HtmlControls.HtmlTextArea
 
     '''<summary>
-    '''answerD control.
+    '''coureStartDate control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents answerD As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents coureStartDate As Global.System.Web.UI.HtmlControls.HtmlInputGenericControl
 
     '''<summary>
-    '''correctAnswer control.
+    '''coureEndDate control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents correctAnswer As Global.System.Web.UI.HtmlControls.HtmlSelect
+    Protected WithEvents coureEndDate As Global.System.Web.UI.HtmlControls.HtmlInputGenericControl
 
     '''<summary>
-    '''mark control.
+    '''CourseStatus control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents mark As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents CourseStatus As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''btnAddQuestion control.
+    '''Selectfactilitators control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btnAddQuestion As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents Selectfactilitators As Global.System.Web.UI.WebControls.CheckBoxList
 
     '''<summary>
-    '''Button1 control.
+    '''CreateCourse control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Button1 As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents CreateCourse As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Button2 control.
+    '''CancelBtn control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Button2 As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents CancelBtn As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''linkManageUsers control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents linkManageUsers As Global.System.Web.UI.HtmlControls.HtmlAnchor
+
+    '''<summary>
+    '''linkAnnouncements control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents linkAnnouncements As Global.System.Web.UI.HtmlControls.HtmlAnchor
+
+    '''<summary>
+    '''linkSubmission control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents linkSubmission As Global.System.Web.UI.HtmlControls.HtmlAnchor
+
+    '''<summary>
+    '''linkResults control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents linkResults As Global.System.Web.UI.HtmlControls.HtmlAnchor
 End Class

@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
+                    <%--<div class="card-header">
                         <h4 class="card-title">Student Assessments</h4>
                     </div>
                     <div class="card-body">
@@ -57,7 +57,9 @@
                                 
                             </tbody>
                         </table>
-                    </div>
+                    </div>--%>
+                    <asp:Table ID="tblStudentResults" runat="server" CssClass="table table-bordered"></asp:Table>
+                   
                 </div>
             </div>
         </div>

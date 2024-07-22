@@ -1,24 +1,19 @@
-﻿Imports System.Data.SqlClient
-Imports System.Web.Script.Serialization
-Imports System.Web.Services
+﻿Imports System.Web.Services
 
-Public Class AnnouncementsPage
+Public Class CourseAnnoucements
     Inherits System.Web.UI.Page
 
-    Private courseId As String
-    Private projectId As String
-    Private facilitatorId As String
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not IsPostBack Then
-            If Request.QueryString("courseId") IsNot Nothing Then
-                courseId = Request.QueryString("courseId").ToString()
-                facilitatorId = Session("ID").ToString()
-            ElseIf Request.QueryString("projectId") IsNot Nothing Then
-                projectId = Request.QueryString("projectId").ToString()
-                facilitatorId = Session("ID").ToString()
+            If Request.QueryString("cId") IsNot Nothing Then
+                courseId.Value = Request.QueryString("cId").ToString()
+                adminId.Value = Session("ID").ToString()
+            ElseIf Request.QueryString("pId") IsNot Nothing Then
+                projectId.Value = Request.QueryString("pId").ToString()
+                adminId.Value = Session("ID").ToString()
             Else
-                Response.Redirect("~/ErrorPage.aspx")
+                'Response.Redirect("~/ErrorPage.aspx")
             End If
             BindAnnouncements()
         End If
@@ -28,7 +23,7 @@ Public Class AnnouncementsPage
 
     Private Sub BindAnnouncements()
         Try
-            Dim filter As String = "WHERE course_id = '" & Request.QueryString("courseId") & "'"
+            Dim filter As String = "WHERE course_id = '" & courseId.Value & "'"
             Dim courseAnnouncements As List(Of Course_Announcement) = New Course_Announcement().listall(filter)
 
             If courseAnnouncements IsNot Nothing AndAlso courseAnnouncements.Count > 0 Then
@@ -60,6 +55,7 @@ Public Class AnnouncementsPage
                     textDiv.InnerHtml = $"<h5 class='font-medium'>{Server.HtmlEncode(announcement.title)}</h5>" &
                                         $"<span class='mb-3 d-block'>{Server.HtmlEncode(announcement.text)}</span>" &
                                         $"<div class='text-muted fs-2 ms-auto mt-2 mt-md-0'>{announcement.datetime:MMMM dd, yyyy h:mm tt}</div>" &
+                                        $"<div class='text-muted fs-2 ms-auto mt-2 mt-md-0'>Sent by: {announcement.sentby}</div>" &
                                         $"<div class='text-muted fs-2  mt-2 mt-md-0' style='text-align: right;'><span class='me-1'>Link:</span><a href='{Server.HtmlEncode(announcement.link)}'>{Server.HtmlEncode(announcement.link)}</a></div>"
 
                     newAnnouncementDiv.Controls.Add(textDiv)
@@ -275,7 +271,7 @@ Public Class AnnouncementsPage
 
                 courseAnnounce.id = New database_operations().GetNewPrimaryKey("id", "Announcement", HttpContext.Current.Session("conn"))
                 courseAnnounce.announcement_id = announce.id
-                courseAnnounce.course_id = Request.QueryString("courseId")
+                courseAnnounce.course_id = courseId.Value
 
                 courseAnnounce.update()
             End If

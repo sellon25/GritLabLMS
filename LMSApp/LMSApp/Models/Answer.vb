@@ -60,20 +60,24 @@ newinstance = False
 End Sub
 
 
-Sub delete()
-Dim cmd As New sqlCommand
-cmd.Connection = HttpContext.Current.Session("conn")
-If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = HttpContext.Current.Session("trans")
-cmd.CommandType = CommandType.Text
-cmd.CommandText = "delete from Answer where id=@previous_id"
-cmd.Parameters.Add("@previous_id", 8, 0, "previous_id")
-cmd.Parameters("@previous_id").Value = Me.previous_id
+    Sub delete(Optional ByVal filterstr As String = Nothing)
+        Dim cmd As New SqlCommand
+        cmd.Connection = HttpContext.Current.Session("conn")
+        If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = HttpContext.Current.Session("trans")
+        cmd.CommandType = CommandType.Text
+        If filterstr IsNot Nothing Then
+            cmd.CommandText = "delete from Answer " + filterstr
+        Else
+            cmd.CommandText = "delete from Answer where previous_id=@previous_id "
+        End If
+        cmd.Parameters.Add("@previous_id", 8, 0, "previous_id")
+        cmd.Parameters("@previous_id").Value = Me.previous_id
 
-cmd.ExecuteNonQuery()
-End Sub
+        cmd.ExecuteNonQuery()
+    End Sub
 
 
-Shared Function load(id as System.Int32) As Answer
+    Shared Function load(id as System.Int32) As Answer
 Dim cmd As New sqlCommand
 cmd.Connection = HttpContext.Current.Session("conn")
 If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = HttpContext.Current.Session("trans")

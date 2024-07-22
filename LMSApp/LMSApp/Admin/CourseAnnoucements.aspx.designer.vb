@@ -11,7 +11,34 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class AnnouncementsPage
+Partial Public Class CourseAnnoucements
+
+    '''<summary>
+    '''courseId control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents courseId As Global.System.Web.UI.WebControls.HiddenField
+
+    '''<summary>
+    '''adminId control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents adminId As Global.System.Web.UI.WebControls.HiddenField
+
+    '''<summary>
+    '''projectId control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents projectId As Global.System.Web.UI.WebControls.HiddenField
 
     '''<summary>
     '''announcementTitle control.
@@ -23,15 +50,6 @@ Partial Public Class AnnouncementsPage
     Protected WithEvents announcementTitle As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''announcementLink control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents announcementLink As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
     '''announcementText control.
     '''</summary>
     '''<remarks>
@@ -39,6 +57,15 @@ Partial Public Class AnnouncementsPage
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents announcementText As Global.System.Web.UI.HtmlControls.HtmlTextArea
+
+    '''<summary>
+    '''announcementLink control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents announcementLink As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''announcementSentBy control.

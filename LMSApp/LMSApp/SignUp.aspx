@@ -68,8 +68,9 @@
 </head>
 <body style="" >
     <form id="form1" style="width: 85%;" runat="server">
-        <h3 class="fw-bold">Sign Up</h3>
+        
        <div id="SignUpform" runat="server" class="card">
+        <h3 class="fw-bold m-2">Sign Up</h3>
         <div class="card-body">
             <div class="form-horizontal form-material">
                 <div class="form-group mb-4">
@@ -102,18 +103,52 @@
 
                 <div class="form-group mb-4">
                     <div class="col-sm-12">
-                        <asp:Button ID="Register" runat="server" Text="Submit" OnClick="Register_Click" class="btn btn-orange" />                        
-                    </div>                   
+                        <asp:Button ID="Register" runat="server" Text="Submit" OnClick="Register_Click" class="btn btn-orange" /> 
+                         
+                    </div>
+                    <div class="form-group mb-4">
+                    <div class="col-sm-12">
+                    <a href="Login.aspx" class="mt-2 mb-0 btn btn-primary" >Back to Login</a>  
+                        </div>
+                        </div>
                 </div>
-                <asp:Label ID="LblError" runat="server" Text="Label"></asp:Label>
+                <asp:Label ID="LblError" runat="server" Text="" Visible="false"></asp:Label>
 
                 
             </div>
            </div>
        </div>
+          <div id="OTPform" runat="server" class="card" style="min-width:50vh">
+            <asp:HiddenField ID="HiddenpField" runat="server" />
+            <div class="card-body">
+                <h3 class="mb-4 "></h3>
+                <div class="form-horizontal form-material">
+                    <div id="Div1"  runat="server" class="mb-4 border-bottom">
+                        <h4 class="mb-4 fw-bold ">Verify email</h4>
+                        <div class="form-group mb-4">
+                            <label class="col-md-12 p-0">Enter OTP</label>
+                            <div class="col-md-12 border-bottom p-0">
+                                <input id="userotp" runat="server" type="number" placeholder="Type here..." class="form-control text-capitalize p-0 border-0" /> </div>
+                        </div>               
+                                
+                    </div> 
+                    <asp:Label ID="lblOtpError" runat="server" CssClass=" text-center text-danger" Text="" Visible="false"></asp:Label>
+
+                </div>
+            </div>
+              <div class="form-group mb-4">
+                    <div class="col-sm-12">
+                        <asp:Button ID="SubmitOTP" runat="server" Text="Submit" OnClick="SubmitOTP_Click" class="m-2 mb-0 btn btn-orange" />                        
+                    </div> 
+                  <div class="col-sm-12">
+                        <asp:Button ID="ResendOTP" runat="server" Text="Resend OTP" OnClick="ResendOTP_Click" class="m-2 mb-0 btn btn-secondary" />                        
+                    </div>  
+                </div>
+        </div>
         <div id="ApplicationForm" runat="server" class="card" style="min-width:50vh">
             <div class="card-body">
                 <h3 class="mb-4 ">Application Form</h3>
+                <asp:HiddenField ID="hiddenuserID" runat="server" />
                 <div class="form-horizontal form-material">
                     <div id="CreatedQuestions"  runat="server" class="ApplicationQuestions mb-4 border-bottom">
                         <h4 class="mb-4 fw-bold ">Application Form</h4>
@@ -121,12 +156,36 @@
            
                     </div> 
                 </div>
-            </div>
+            
               <div class="form-group mb-4">
                     <div class="col-sm-12">
                         <asp:Button ID="SubmitApplication" runat="server" Text="Submit" OnClick="SubmitApplication_Click" class="m-2 mb-0 btn btn-orange" />                        
                     </div>                   
                 </div>
+                <asp:Label ID="LblError2" runat="server" Text="" Visible="false"></asp:Label>
+
+            </div>
+        </div>
+          <div id="AcknowledgementDiv" runat="server" class="card" style="min-width:50vh">
+            <div class="card-body">
+                
+                <asp:HiddenField ID="HiddenField1" runat="server" />
+                <div class="form-horizontal form-material">
+                    <div id="Div2"  runat="server" class="mb-4 border-bottom">
+                        <h4 class="mb-4 fw-bold ">Thank you for applying to Grits Lab Africa</h4>
+                
+                        <p>A confirmation of your application has been sent to your email.</p>
+                    </div> 
+                </div>
+            
+              <div class="form-group mb-4">
+                    <div class="col-sm-12">
+                        <a href="Login.aspx" id="n" runat="server" class="m-2 mb-0 btn btn-primary" >Back to Login</a>                        
+                    </div>                   
+                </div>
+                <asp:Label ID="lblApplError" runat="server" CssClass=" text-center text-danger" Text="" Visible="false"></asp:Label>
+
+            </div>
         </div>
     </form>
 </body>

@@ -1,33 +1,29 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/LMSBoardAdmin.Master" CodeBehind="Courses.aspx.vb" Inherits="LMSApp.Courses1" %>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/LMSBoardAdmin.Master" CodeBehind="CourseOptions.aspx.vb" Inherits="LMSApp.CourseOptions" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Type_pageTitle" runat="server">
 </asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="ContentHead" runat="server">
-   <style>
-       .add-box{
-            max-width:61vh
-        }
-       .card-ovrd{
-            background-color: #ffffff9c;
-            border-radius:1rem;
-       }
-       
-       .image-border{
-            border: 1px solid #f3f3f3;
-       }
-       .imageContontainer img{
-            width:100%;
-       }
-       .CreateCourse{
-
-       }
-   </style>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentHead" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="Change_Breadcrumb_PageTitle" runat="server">
-    Courses
+<asp:Content ID="Content3" ContentPlaceHolderID="Change_Breadcrumb_PageTitle" runat="server">
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
-   
-    <div id="AddCourseForm" runat="server" class="mt-2">
+<asp:Content ID="Content4" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
+     <div>
+       <!-- <div class="white-box boxShadow coursebox" style="background-image: url(../plugins/images/Squid-Game-1.jpg)"></div>-->
+        
+        <%--<div id="EditCourseInfo" class="col-md-12 text-black" runat="server">
+            <div class="white-box boxShadow">
+                <h3 class="box-title">Edit course details</h3>
+          </div> 
+        </div>--%>
+      <div id="ActionContainer" runat="server" class="col-md-12 white-box">
+            <h4 class="w-100 border-bottom fw-bold">Action:</h4>
+            <div class="">
+                <button id="EditCourseInfo" class="btn btn-secondary m-r-10" runat="server" onserverclick="AddNewCourse_ServerClick" >Edit course info</button>
+                <button id="RequestDelete" class="btn btn-danger" runat="server">Request to remove course</button>
+                
+                <div class="text-muted mt-2"><span>Status: </span> <span class="fw-bold text-black pl-1"> Active</span></div>
+            </div>
+        </div>
+          <div id="CourseForm" runat="server" class="mt-2">
         <div class="card" style="background-color: #dfd9c2;" >
             <div class="card-body">
                 <h4 class="mb-3 text-center text-grey fw-bold">Create a New Course</h4>
@@ -56,7 +52,7 @@
                 </div>
                 <div class="form-group">
                     <label>Overview</label>
-                    <textarea type="text" id="coureOverview"  runat="server"  style="min-height: 20vh;" class="form-control"></textarea>
+                    <textarea type="text" id="coureOverview" style="min-height: 20vh;"  runat="server" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
                     <label>Course activatation date</label>
@@ -88,40 +84,41 @@
                 </div>
             </div>
             <div class="d-flex flex-column align-items-center">
-            <asp:Button ID="CreateCourse" runat="server" CssClass="btn btn-orange" Text="Create Course" OnClick="CreateCourse_Click" />
+            <asp:Button ID="CreateCourse" runat="server" CssClass="btn btn-orange" Text="Update Course" OnClick="UpdateCourse_Click" />
             <p class="small text-muted mt-1">This will also notify all set facilitators.</p>
 
             </div>
                 <asp:Button ID="CancelBtn" OnClick="CancelBtn_Click" runat="server" CssClass="m-2 btn btn-secondary w-fit" Text="Cancel" />
         </div>        
     </div>
-
-     
-    
-    <button id="AddNewCourse" runat="server" onserverclick="AddNewCourse_ServerClick"  class="btn w-100 d-flex justify-content-center">           
-            <div class="w-100 description add-box" >
-                <i class="fa fa-plus" aria-hidden="true"></i>
-                <p class="m-1">Add a new course</p>
-            </div>            
-    </button>
-    <div id="CoursesContainer" class="row courses-container" runat="server">
+         <%--<a id="linkOverview" class="col-md-12 text-black" runat="server">
+            <div class="white-box boxShadow">
+                <h3 class="box-title">Overview</h3>
+            </div> 
+        </a>--%>
+         <a id="linkManageUsers" class="col-md-12 text-black" runat="server">
+            <div class="white-box boxShadow">
+                <h3 class="box-title">Manage Enrollments</h3>
+            </div> 
+        </a>
+         <a id="linkAnnouncements" class="col-md-12 text-black" runat="server">
+            <div class="white-box boxShadow">
+                <h3 class="box-title">Announcements</h3>
+            </div> 
+        </a>
+        <a id="linkSubmission" class="col-md-12 text-black" runat="server">
+            <div class="white-box boxShadow">
+                <h3 class="box-title">Submissions</h3>
+            </div> 
+        </a>
         
-        <a class="col-md-3" href="../Admin/SQDG.aspx">
-              <div class="white-box boxShadow coursebox" style="background-image: url(../plugins/images/Squid-Game-1.jpg)">
-               <div class="description">
-                <label class="box-title">Squidgame</label>
-                <p class="text-muted">SQDG</p>
-               </div>
-            </div>
-         </a>     
-        <a class="col-md-3" href="../Admin/MBKA.aspx">
-              <div class="white-box boxShadow coursebox" style="background-image: url(../plugins/images/miniBanking.jpg)">
-               <div class="description">
-                <label class="box-title">Mini Banking App</label>
-                <p class="text-muted">MBKA</p>
-               </div>
-            </div>
-         </a>
+        <a id="linkResults" class="col-md-12 text-black" runat="server">
+            <div class="white-box boxShadow">
+                <h3 class="box-title">Results</h3>
+            </div> 
+        </a>
        
+        
+        
     </div>
 </asp:Content>

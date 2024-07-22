@@ -122,7 +122,7 @@
             </div>
         </div>
     </div>
-        <asp:Panel ID="pnlEnrollment" runat="server" CssClass="modal">
+        <div ID="pnlEnrollment" runat="server" class="modal" Visible="false">
             <asp:HiddenField ID="SelectedUserID" runat="server" />
         <div class="modal-content p-2">
         <h3 class="border-bottom text-center text-muted">Enrollment Information</h3>
@@ -140,15 +140,15 @@
                     </div>
                 </div>--%>
             </div>
-            <div class="form-group w-100 mb-0 pt-2 border-top">
-                <asp:DropDownList ID="CoursesAvailable" class="form-select w-100" runat="server"></asp:DropDownList>
+           <%-- <div class="form-group w-100 mb-0 pt-2 border-top">
+                <asp:DropDownList ID="CoursesAvailable" class="form-select w-100" OnSelectedIndexChanged="CoursesAvailable_SelectedIndexChanged" runat="server" EnableViewState="true"  AutoPostBack="True" ></asp:DropDownList>
                 <asp:Button  ID="EnrollStudent" runat="server" OnClick="EnrollStudent_Click" class="btn mb-2 btn-primary" Text="Enroll To Course" />
-            </div>
+            </div>   --%>
 
       
         
 
-        <asp:Button ID="btnClose" runat="server" Text="Close" CssClass="btn btn-secondary" OnClientClick="hidePopup('<%= pnlEnrollment.ClientID %>'); return false;" />
+        <asp:Button ID="btnClose" runat="server" Text="Close" CssClass="btn btn-secondary" OnClick="btnClose_Click" />
 
        <script type="text/javascript">
                 const tableID = '<%= TableUsers.ClientID.ToString() %>';
@@ -167,9 +167,9 @@
             }
         </script>
     </div>
-</asp:Panel>
+</div>
 <asp:Panel ID="ApplicationFormPanel" runat="server" CssClass="modal">
-     <div id="ApplicationForm" runat="server" class="card" style="min-width:50vh">
+     <div id="ApplicationForm" runat="server" class="card">
             <div class="card-body">
                 <h3 class="mb-4 ">Application Form</h3>
                 <div class="form-horizontal form-material">
@@ -180,13 +180,14 @@
                     </div> 
                 </div>
             </div>
-              <div class="form-group mb-4">
+              
+        </div>
+    <div class="form-group mb-4">
                     <div class="col-sm-12">
                         <asp:Button ID="AcceptApplication" runat="server" Text="Accept" OnClick="AcceptApplication_Click" class="m-2 mb-0 btn btn-orange" />                        
                         <asp:Button ID="DeclineApplication" runat="server" Text="Decline" OnClick="DeclineApplication_Click" class="m-2 mb-0 btn btn-danger" />                        
                     </div>                   
                 </div>
-        </div>
     <asp:Button ID="CloseAPl" runat="server" Text="Close" CssClass="btn btn-secondary" OnClientClick="hidePopup(this.id); return false;" />
     
 </asp:Panel>
