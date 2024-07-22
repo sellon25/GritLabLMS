@@ -192,90 +192,92 @@ Public Class EditAssessment
             questionContainer.Controls.Add(questionImage)
         End If
 
+        Select Case question.QuestionType
+            Case "multipleChoice"
+                ' Option A
+                Dim answerADiv As New HtmlGenericControl("div")
+                answerADiv.Attributes("class") = "form-group"
+                Dim answerALabel As New HtmlGenericControl("label")
+                answerALabel.Attributes("for") = "answerA-" & question.id.ToString()
+                answerALabel.InnerText = "Answer A:"
+                answerADiv.Controls.Add(answerALabel)
+                Dim answerAInput As New HtmlInputText()
+                answerAInput.Attributes("runat") = "server"
+                answerAInput.ID = "answerA-" & question.id.ToString()
+                answerAInput.Value = question.Option1
+                answerAInput.Attributes("class") = "form-control"
+                answerADiv.Controls.Add(answerAInput)
+                questionContainer.Controls.Add(answerADiv)
 
+                ' Option B
+                Dim answerBDiv As New HtmlGenericControl("div")
+                answerBDiv.Attributes("class") = "form-group"
+                Dim answerBLabel As New HtmlGenericControl("label")
+                answerBLabel.Attributes("for") = "answerB-" & question.id.ToString()
+                answerBLabel.InnerText = "Answer B:"
+                answerBDiv.Controls.Add(answerBLabel)
+                Dim answerBInput As New HtmlInputText()
+                answerBInput.Attributes("runat") = "server"
+                answerBInput.ID = "answerB-" & question.id.ToString()
+                answerBInput.Value = question.Option2
+                answerBInput.Attributes("class") = "form-control"
+                answerBDiv.Controls.Add(answerBInput)
+                questionContainer.Controls.Add(answerBDiv)
 
-        ' Option A
-        Dim answerADiv As New HtmlGenericControl("div")
-        answerADiv.Attributes("class") = "form-group"
-        Dim answerALabel As New HtmlGenericControl("label")
-        answerALabel.Attributes("for") = "answerA-" & question.id.ToString()
-        answerALabel.InnerText = "Answer A:"
-        answerADiv.Controls.Add(answerALabel)
-        Dim answerAInput As New HtmlInputText()
-        answerAInput.Attributes("runat") = "server"
-        answerAInput.ID = "answerA-" & question.id.ToString()
-        answerAInput.Value = question.Option1
-        answerAInput.Attributes("class") = "form-control"
-        answerADiv.Controls.Add(answerAInput)
-        questionContainer.Controls.Add(answerADiv)
+                ' Option C
+                Dim answerCDiv As New HtmlGenericControl("div")
+                answerCDiv.Attributes("class") = "form-group"
+                Dim answerCLabel As New HtmlGenericControl("label")
+                answerCLabel.Attributes("for") = "answerC-" & question.id.ToString()
+                answerCLabel.InnerText = "Answer C:"
+                answerCDiv.Controls.Add(answerCLabel)
+                Dim answerCInput As New HtmlInputText()
+                answerCInput.Attributes("runat") = "server"
+                answerCInput.ID = "answerC-" & question.id.ToString()
+                answerCInput.Value = question.Option3
+                answerCInput.Attributes("class") = "form-control"
+                answerCDiv.Controls.Add(answerCInput)
+                questionContainer.Controls.Add(answerCDiv)
 
-        ' Option B
-        Dim answerBDiv As New HtmlGenericControl("div")
-        answerBDiv.Attributes("class") = "form-group"
-        Dim answerBLabel As New HtmlGenericControl("label")
-        answerBLabel.Attributes("for") = "answerB-" & question.id.ToString()
-        answerBLabel.InnerText = "Answer B:"
-        answerBDiv.Controls.Add(answerBLabel)
-        Dim answerBInput As New HtmlInputText()
-        answerBInput.Attributes("runat") = "server"
-        answerBInput.ID = "answerB-" & question.id.ToString()
-        answerBInput.Value = question.Option2
-        answerBInput.Attributes("class") = "form-control"
-        answerBDiv.Controls.Add(answerBInput)
-        questionContainer.Controls.Add(answerBDiv)
+                ' Option D
+                Dim answerDDiv As New HtmlGenericControl("div")
+                answerDDiv.Attributes("class") = "form-group"
+                Dim answerDLabel As New HtmlGenericControl("label")
+                answerDLabel.Attributes("for") = "answerD-" & question.id.ToString()
+                answerDLabel.InnerText = "Answer D:"
+                answerDDiv.Controls.Add(answerDLabel)
+                Dim answerDInput As New HtmlInputText()
+                answerDInput.Attributes("runat") = "server"
+                answerDInput.ID = "answerD-" & question.id.ToString()
+                answerDInput.Value = question.Option4
+                answerDInput.Attributes("class") = "form-control"
+                answerDDiv.Controls.Add(answerDInput)
+                questionContainer.Controls.Add(answerDDiv)
 
-        ' Option C
-        Dim answerCDiv As New HtmlGenericControl("div")
-        answerCDiv.Attributes("class") = "form-group"
-        Dim answerCLabel As New HtmlGenericControl("label")
-        answerCLabel.Attributes("for") = "answerC-" & question.id.ToString()
-        answerCLabel.InnerText = "Answer C:"
-        answerCDiv.Controls.Add(answerCLabel)
-        Dim answerCInput As New HtmlInputText()
-        answerCInput.Attributes("runat") = "server"
-        answerCInput.ID = "answerC-" & question.id.ToString()
-        answerCInput.Value = question.Option3
-        answerCInput.Attributes("class") = "form-control"
-        answerCDiv.Controls.Add(answerCInput)
-        questionContainer.Controls.Add(answerCDiv)
+                ' Correct answer
+                Dim correctAnswer As New Answer
+                Dim filter As String = "WHERE question_id = '" & question.id & "'"
+                Dim answerList As List(Of Answer) = Answer.listall(filter)
 
-        ' Option D
-        Dim answerDDiv As New HtmlGenericControl("div")
-        answerDDiv.Attributes("class") = "form-group"
-        Dim answerDLabel As New HtmlGenericControl("label")
-        answerDLabel.Attributes("for") = "answerD-" & question.id.ToString()
-        answerDLabel.InnerText = "Answer D:"
-        answerDDiv.Controls.Add(answerDLabel)
-        Dim answerDInput As New HtmlInputText()
-        answerDInput.Attributes("runat") = "server"
-        answerDInput.ID = "answerD-" & question.id.ToString()
-        answerDInput.Value = question.Option4
-        answerDInput.Attributes("class") = "form-control"
-        answerDDiv.Controls.Add(answerDInput)
-        questionContainer.Controls.Add(answerDDiv)
+                For Each a In answerList
+                    correctAnswer = a
+                Next
 
-        ' Correct answer
-        Dim correctAnswer As New Answer
-        Dim filter As String = "WHERE question_id = '" & question.id & "'"
-        Dim answerList As List(Of Answer) = Answer.listall(filter)
+                Dim correctAnswerDiv As New HtmlGenericControl("div")
+                correctAnswerDiv.Attributes("class") = "form-group"
+                Dim correctAnswerLabel As New HtmlGenericControl("label")
+                correctAnswerLabel.Attributes("for") = "correctAnswer-" & question.id.ToString()
+                correctAnswerLabel.InnerText = "Correct Answer:"
+                correctAnswerDiv.Controls.Add(correctAnswerLabel)
+                Dim correctAnswerInput As New HtmlInputText()
+                correctAnswerInput.Attributes("runat") = "server"
+                correctAnswerInput.ID = "correctAnswer-" & question.id.ToString()
+                correctAnswerInput.Value = correctAnswer.Answer
+                correctAnswerInput.Attributes("class") = "form-control"
+                correctAnswerDiv.Controls.Add(correctAnswerInput)
+                questionContainer.Controls.Add(correctAnswerDiv)
+        End Select
 
-        For Each a In answerList
-            correctAnswer = a
-        Next
-
-        Dim correctAnswerDiv As New HtmlGenericControl("div")
-        correctAnswerDiv.Attributes("class") = "form-group"
-        Dim correctAnswerLabel As New HtmlGenericControl("label")
-        correctAnswerLabel.Attributes("for") = "correctAnswer-" & question.id.ToString()
-        correctAnswerLabel.InnerText = "Correct Answer:"
-        correctAnswerDiv.Controls.Add(correctAnswerLabel)
-        Dim correctAnswerInput As New HtmlInputText()
-        correctAnswerInput.Attributes("runat") = "server"
-        correctAnswerInput.ID = "correctAnswer-" & question.id.ToString()
-        correctAnswerInput.Value = correctAnswer.Answer
-        correctAnswerInput.Attributes("class") = "form-control"
-        correctAnswerDiv.Controls.Add(correctAnswerInput)
-        questionContainer.Controls.Add(correctAnswerDiv)
 
         ' Mark
         Dim markDiv As New HtmlGenericControl("div")

@@ -29,11 +29,35 @@
                 <asp:Button ID="btnCreateTest" runat="server" type="button" class="btn btn-primary" OnClick="btnCreateTest_Click" Text="Create Test" />
             </div>
             <div class="mt-4">
-                <h4>Add Questions</h4>
+                <h4 runat="server">Add Questions</h4>
                 <div class="form-group">
                     <label for="questionNumber">Question Number:</label>
                     <input runat="server" type="text" class="form-control" id="questionNumber" name="questionNumber" placeholder="Enter number">
                 </div>
+
+                <div class="form-group">
+                    <label>Question Type:</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="questionType" id="multipleChoice" value="multipleChoice" checked onchange="toggleMultipleChoice()">
+                        <label class="form-check-label" for="multipleChoice">
+                            Multiple Choice
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="questionType" id="longText" value="longText" onchange="toggleMultipleChoice()">
+
+                        <label class="form-check-label" for="longText">
+                            Long Text
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="questionType" id="text" value="text" onchange="toggleMultipleChoice()">
+                        <label class="form-check-label" for="text">
+                            Text
+                        </label>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label for="questionText">Question Text:</label>
                     <input runat="server" type="text" class="form-control" id="questionText" name="questionText" placeholder="Enter question text">
@@ -42,21 +66,8 @@
                     <label for="newQuestionImage">Question Image:</label>
                     <asp:FileUpload ID="newQuestionImage" runat="server" CssClass="form-control-file" />
                 </div>
-                <div class="form-group">
-                    <label>Question Type:</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="questionType" id="multipleChoice" value="multipleChoice" checked>
-                        <label class="form-check-label" for="multipleChoice">
-                            Multiple Choice
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="questionType" id="oneWord" value="oneWord">
-                        <label class="form-check-label" for="oneWord">
-                            One Word
-                        </label>
-                    </div>
-                </div>
+                
+               
                 <div id="multipleChoiceAnswers" class="form-group">
                     <label for="answerA">Answer A:</label>
                     <input type="text" class="form-control" id="answerA" name="answerA" runat="server">
@@ -68,14 +79,17 @@
                     <input type="text" class="form-control" id="answerD" name="answerD" runat="server">
                     <label for="correctAnswer">Correct Answer:</label>
                     <select class="form-control" id="correctAnswer" name="correctAnswer" runat="server">
+                        <option value="A">--Select--</option>
                         <option value="A">Answer A</option>
                         <option value="B">Answer B</option>
                         <option value="C">Answer C</option>
                         <option value="C">Answer D</option>
                     </select>
-                    <label for="mark">Mark:</label>
-                    <input type="text" class="form-control" id="mark" name="mark" runat="server">
+                    
                 </div>
+
+                <label for="mark">Mark:</label>
+                <input type="text" class="form-control" id="mark" name="mark" runat="server">
                 <asp:Button ID="btnAddQuestion" runat="server" type="button" class="btn btn-primary" OnClick="btnAddQuestion_Click" Text="Add Another Question" />
                 
             </div>
@@ -95,4 +109,20 @@
     </script>
     <asp:Button ID="Button1" runat="server" Text="Hidden Button" style="display:none;" OnClick="btnCreateTest_Click" />
     <asp:Button ID="Button2" runat="server" Text="Hidden Button" style="display:none;" OnClick="btnAddQuestion_Click" />
+
+    <script type="text/javascript">
+        function toggleMultipleChoice() {
+            var questionType = document.querySelector('input[name="questionType"]:checked').value;
+            var multipleChoiceAnswers = document.getElementById('multipleChoiceAnswers');
+            if (questionType === 'multipleChoice') {
+                multipleChoiceAnswers.style.display = 'block';
+            } else {
+                multipleChoiceAnswers.style.display = 'none';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            toggleMultipleChoice();  // Call the function on page load to set the correct initial state
+        });
+    </script>
 </asp:Content>
