@@ -26,7 +26,7 @@
           <div id="CourseForm" runat="server" class="mt-2">
         <div class="card" style="background-color: #dfd9c2;" >
             <div class="card-body">
-                <h4 class="mb-3 text-center text-grey fw-bold">Create a New Course</h4>
+                <h4 class="mb-3 text-center text-grey fw-bold">Update Course</h4>
                 <div class="form-group">
                     <label>Course Name</label>
                     <input type="text" id="coureName" runat="server" placeholder="Development Software 1A" class="form-control text-capitalize"/>

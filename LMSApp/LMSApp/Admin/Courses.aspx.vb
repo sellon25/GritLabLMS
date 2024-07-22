@@ -67,9 +67,10 @@ Public Class Courses1
 
         ' Handle facilitators (if any additional handling is required)
         For Each item As ListItem In Selectfactilitators.Items
+            Dim emailer As New SendEmail
             If item.Selected Then
-                ' Add logic to handle selected facilitators
-                ' For example, create a CourseFacilitator record linking the course with the facilitator
+                emailer.SendNotification(item.Value, "New Course (" + newCourse.id + ") Added", "You have been assigned a facilitator for a new course " + newCourse.name + "(" + newCourse.id + ").")
+
             End If
         Next
 
