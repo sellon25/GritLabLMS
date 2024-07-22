@@ -56,6 +56,7 @@
                         <asp:ListItem Value="1">Active</asp:ListItem>                       
                         <asp:ListItem Value="2">Completed</asp:ListItem>
                         <asp:ListItem Value="3">Suspended</asp:ListItem>
+                        <asp:ListItem Value="4">Unenrolled</asp:ListItem>
                     </asp:DropDownList>
                     
                 </div>

@@ -35,21 +35,38 @@ Public Class ManageUsers
         If btn.ID = "Gobtn" Then
             id = load_studentID.Value
         Else
+            'id = btn.ID.Replace("Select_", "")
+        End If
+        Dim selecteduser As New User
+        If btn.ID.Contains("SelectUne_") Then
+            id = btn.ID.Replace("SelectUne_", "")
+            selecteduser = selecteduser.load(id)
+            SelectedEnrolID.Value = selecteduser.emailID
+            glano.Value = selecteduser.GLANumber
+            userFname.Value = selecteduser.FName
+            userLname.Value = selecteduser.LName
+            useremail.Value = selecteduser.emailID
+            userrole.Text = selecteduser.role
+            userroletxt.Value = 1
+            EnrollmentStatustxt.Value = "Not Enrolled"
+            EnrollmentStatus.SelectedValue = 3
+        ElseIf btn.ID.Contains("Select_") Then
             id = btn.ID.Replace("Select_", "")
+            Dim enrolledusr As Course_Enrollment = New Course_Enrollment().load(id)
+            selecteduser = selecteduser.load(id)
+            SelectedEnrolID.Value = enrolledusr.id
+            glano.Value = selecteduser.GLANumber
+            userFname.Value = selecteduser.FName
+            userLname.Value = selecteduser.LName
+            useremail.Value = selecteduser.emailID
+            userrole.SelectedValue = enrolledusr.role
+            userroletxt.Value = GetRoleName(selecteduser.role)
+            EnrollmentStatustxt.Value = enrolledusr.enrollment_status
+            EnrollmentStatus.SelectedValue = 3
         End If
 
-        Dim enrolledusr As Course_Enrollment = New Course_Enrollment().load(id)
-        Dim selecteduser As New User
-        selecteduser = selecteduser.load(enrolledusr.userId)
-        SelectedEnrolID.Value = enrolledusr.id
-        glano.Value = selecteduser.GLANumber
-        userFname.Value = selecteduser.FName
-        userLname.Value = selecteduser.LName
-        useremail.Value = selecteduser.emailID
-        userrole.SelectedValue = enrolledusr.role
-        userroletxt.Value = GetRoleName(selecteduser.role)
-        EnrollmentStatustxt.Value = enrolledusr.enrollment_status
-        EnrollmentStatus.SelectedValue = 3
+
+
     End Sub
 
     Protected Sub LoadUneUsers()
@@ -67,7 +84,7 @@ Public Class ManageUsers
                 ' GLA Number
                 Dim cellGlaNumber As New HtmlTableCell()
                 Dim btnSelect As New Button
-                btnSelect.ID = String.Format("Select_{0}", usr.emailID.ToString())
+                btnSelect.ID = String.Format("SelectUne_{0}", usr.emailID.ToString())
                 btnSelect.Attributes("Class") = "btn"
                 AddHandler btnSelect.Click, AddressOf SelectUser
                 btnSelect.Text = usr.GLANumber.ToString()
