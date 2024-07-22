@@ -3,6 +3,8 @@ Imports System.Reflection
 
 Public Class database_operations
 
+
+
     Public Shared Function GetNewPrimaryKey(ByVal pkColumnName As String, ByVal tableName As String, ByVal conn As SqlConnection) As Integer
         Dim newPk As Integer
 
@@ -26,6 +28,7 @@ Public Class database_operations
 
         Return newPk
     End Function
+
 
     Public Shared Sub insertIntoDB(ByVal sql As String, ByVal conn As SqlConnection)
         Try
