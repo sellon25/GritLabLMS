@@ -42,9 +42,18 @@ Public Class EditAssessment
             questionsContainer.Controls.Add(questionDiv)
         Next
 
-        ' Show the first question
+        ' Determine the question index to show
+        Dim questionIndex As Integer = 0
+        If Not String.IsNullOrEmpty(Request.QueryString("questionIndex")) Then
+            Integer.TryParse(Request.QueryString("questionIndex"), questionIndex)
+            If questionIndex < 0 OrElse questionIndex >= questions.Count Then
+                questionIndex = 0
+            End If
+        End If
+
+        ' Show the specific question
         If questionsContainer.Controls.Count > 0 Then
-            CType(questionsContainer.Controls(0), HtmlGenericControl).Style.Add("display", "block")
+            CType(questionsContainer.Controls(questionIndex), HtmlGenericControl).Style.Add("display", "block")
         End If
 
         editAssessment.Controls.Add(questionsContainer)
@@ -85,7 +94,7 @@ Public Class EditAssessment
         ' Add JavaScript for navigation
         Dim script As New LiteralControl()
         script.Text = "<script type='text/javascript'>
-                    var currentQuestionIndex = 0;
+                    var currentQuestionIndex = " & questionIndex & ";
 
                     function showQuestion(index) {
                         var questions = document.getElementsByClassName('question');
@@ -357,6 +366,8 @@ Public Class EditAssessment
         End If
 
         question.update()
+        Dim questionIndex As Integer = questions.FindIndex(Function(q) q.id = questionId)
+        Response.Redirect("EditAssessment.aspx?testId=" & Request.QueryString("testId") & "&questionIndex=" & questionIndex)
 
         ' Display success message
         Dim successMessage As New HtmlGenericControl("div")

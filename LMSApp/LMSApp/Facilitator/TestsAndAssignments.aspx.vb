@@ -22,29 +22,6 @@
         Next
     End Sub
 
-    'Private Function CreateTestHtml(test As Test) As HtmlGenericControl
-    '    Dim container As New HtmlGenericControl("a")
-    '    container.Attributes("class") = "col-md-12 text-black"
-    '    container.Attributes("href") = "AssessmentStudentList.aspx?testId=" & test.id
-
-    '    Dim box As New HtmlGenericControl("div")
-    '    box.Attributes("class") = "white-box boxShadow d-flex justify-content-between align-items-center"
-
-    '    Dim title As New HtmlGenericControl("h3")
-    '    title.Attributes("class") = "box-title"
-    '    title.InnerText = test.title
-
-    '    Dim status As New HtmlGenericControl("span")
-    '    status.Attributes("style") = If(test.end_date > DateTime.Now, "color: green;", "color: red;")
-    '    status.InnerText = If(test.end_date > DateTime.Now, "Open", "Closed")
-
-    '    box.Controls.Add(title)
-    '    box.Controls.Add(status)
-    '    container.Controls.Add(box)
-
-    '    Return container
-    'End Function
-
     Private Function CreateTestHtml(test As Test) As HtmlGenericControl
         Dim container As New HtmlGenericControl("a")
         container.Attributes("class") = "col-md-12 text-black"
