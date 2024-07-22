@@ -14,13 +14,148 @@ Option Explicit On
 Partial Public Class CourseOptions
 
     '''<summary>
-    '''linkOverview control.
+    '''ActionContainer control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents linkOverview As Global.System.Web.UI.HtmlControls.HtmlAnchor
+    Protected WithEvents ActionContainer As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''EditCourseInfo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents EditCourseInfo As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''RequestDelete control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RequestDelete As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''CourseForm control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CourseForm As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''coureName control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents coureName As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''coureID control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents coureID As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''FileUpload1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents FileUpload1 As Global.System.Web.UI.WebControls.FileUpload
+
+    '''<summary>
+    '''coureDesription control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents coureDesription As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''coureOverview control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents coureOverview As Global.System.Web.UI.HtmlControls.HtmlTextArea
+
+    '''<summary>
+    '''coureStartDate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents coureStartDate As Global.System.Web.UI.HtmlControls.HtmlInputGenericControl
+
+    '''<summary>
+    '''coureEndDate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents coureEndDate As Global.System.Web.UI.HtmlControls.HtmlInputGenericControl
+
+    '''<summary>
+    '''CourseStatus control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CourseStatus As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Selectfactilitators control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Selectfactilitators As Global.System.Web.UI.WebControls.CheckBoxList
+
+    '''<summary>
+    '''CreateCourse control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CreateCourse As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''CancelBtn control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CancelBtn As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''linkManageUsers control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents linkManageUsers As Global.System.Web.UI.HtmlControls.HtmlAnchor
 
     '''<summary>
     '''linkAnnouncements control.
@@ -41,15 +176,6 @@ Partial Public Class CourseOptions
     Protected WithEvents linkSubmission As Global.System.Web.UI.HtmlControls.HtmlAnchor
 
     '''<summary>
-    '''linkManageUsers control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents linkManageUsers As Global.System.Web.UI.HtmlControls.HtmlAnchor
-
-    '''<summary>
     '''linkResults control.
     '''</summary>
     '''<remarks>
@@ -57,13 +183,4 @@ Partial Public Class CourseOptions
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents linkResults As Global.System.Web.UI.HtmlControls.HtmlAnchor
-
-    '''<summary>
-    '''RequestDelete control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents RequestDelete As Global.System.Web.UI.HtmlControls.HtmlButton
 End Class

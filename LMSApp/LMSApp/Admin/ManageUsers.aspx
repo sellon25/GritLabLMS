@@ -60,17 +60,16 @@
                     
                 </div>
                 <!-- style="background-color:#93761E"-->
-                <button id="UpdateUser" type="button" runat="server" onserverclick="UpdateUser_ServerClick" class="btn btn-success">Submit Changes</button>
+                <button id="UpdateUser" type="button" runat="server" onserverclick="UpdateUser_ServerClick" class="btn btn-success">Enroll User</button>
                 <button id="RemoveUser" type="button" class="btn btn-danger" runat="server" onserverclick="RemoveUser_ServerClick">Remove User</button>
             </div>
         </div>
     </div>
-    <!-- Existing Announcements Section -->
-    <div class="col-md-8">
+    <div id="EnrolledUsers" class="col-md-8">
         <div class="white-box">
             <div class="card p-0">
                 <div class="card-body">
-                    <h3 class="box-title mb-0">APPLICANTS FOR GRIT LAB YEAR</h3>
+                    <h3 class="box-title mb-0">Enrolled Gritters</h3>
                 </div>
                 <div class="row">
                 <div class="col-md-12 col-lg-12 col-sm-12">
@@ -121,6 +120,65 @@
             </div>
         </div>
     </div>
+
+
+           <div id="UnenrolledUsers" class="col-md-8">
+        <div class="white-box">
+            <div class="card p-0">
+                <div class="card-body">
+                    <h3 class="box-title mb-0">Unenrolled Gritters</h3>
+                </div>
+                <div class="row">
+                <div class="col-md-12 col-lg-12 col-sm-12">
+                    <div class="white-box bg-transparent">
+            
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="txtSearch">Search:</label>
+                            <input type="text" id="txtSearch2" class="form-control" placeholder="Enter" onselect="applyFilter()">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="ddlFilter">Filter by:</label>
+                            <select id="ddlFilter2" class="form-control" onselect="applyFilter()">
+                                <option value="NAME">Name</option>
+                                <option value="SN">Student Number</option>
+                                <option value="SUR">Surname</option>
+                                <option value="FAC"> Faculty</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label>&nbsp;</label><br>
+                            <button type="button" class="btn btn-primary" onclick="applyFilter()">Apply Filter</button>
+                            <button type="button" class="btn btn-secondary" onclick="resetFilter()">Reset</button>
+                 
+                        </div>
+                    </div>
+                       <div class="table-responsive">
+                            <table class="table no-wrap">
+                                <thead>
+                                    <tr>
+                                        <th class="border-top-0" style="font-weight: bold;">GLA no.</th>
+                                        <th class="border-top-0" style="font-weight: bold;">Name and Surname</th>                                       
+                                        <th class="border-top-0" style="font-weight: bold;">Email</th>
+                                        <th class="border-top-0" style="font-weight: bold;">Role</th>
+                                        <th class="border-top-0" style="font-weight: bold;">Status</th>
+                                        <th class="border-top-0" style="font-weight: bold;">Track</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="UnerolledUsers" runat="server">
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
         <asp:Panel ID="pnlEnrollment" runat="server" CssClass="modal">
             <asp:HiddenField ID="SelectedUserID" runat="server" />
         <div class="modal-content p-2">

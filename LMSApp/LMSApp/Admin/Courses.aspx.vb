@@ -99,7 +99,7 @@ Public Class Courses1
     Protected Sub CancelBtn_Click(sender As Object, e As EventArgs)
         ClearFormFields()
         AddNewCourse.Visible = True
-        Response.Redirect("Courses.aspx")
+        Response.Redirect(Request.Url.AbsoluteUri)
 
     End Sub
 End Class

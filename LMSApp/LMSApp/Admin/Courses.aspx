@@ -56,7 +56,7 @@
                 </div>
                 <div class="form-group">
                     <label>Overview</label>
-                    <textarea type="text" id="coureOverview"  runat="server"  class="form-control"></textarea>
+                    <textarea type="text" id="coureOverview"  runat="server"  style="min-height: 20vh;" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
                     <label>Course activatation date</label>

@@ -6,10 +6,11 @@ Public Class ManageUsers
 
     Private selectedUser As String
     Dim AnswerControls As New List(Of String)()
+    Dim userIds As New List(Of String)()
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        LoadUsers()
 
+        LoadUsers()
         pnlEnrollment.Visible = False
         ApplicationFormPanel.Visible = False
         If Not IsPostBack Then
@@ -22,6 +23,10 @@ Public Class ManageUsers
                 PopulateEnrollmentInfo(userId)
             End If
         End If
+    End Sub
+    Private Sub LoadUsers()
+        LoadEnrolledUsers()
+        LoadUneUsers()
     End Sub
 
     Protected Sub SelectUser(ByVal sender As Object, ByVal e As System.EventArgs)
@@ -46,6 +51,73 @@ Public Class ManageUsers
         EnrollmentStatustxt.Value = enrolledusr.enrollment_status
         EnrollmentStatus.SelectedValue = 3
     End Sub
+
+    Protected Sub LoadUneUsers()
+        Dim listUsers As New List(Of User)
+        listUsers = New User().listall("where [role]=3 and status != 'Excludeded' ")
+
+        ' Clear existing rows if necessary
+        UnerolledUsers.Controls.Clear()
+
+        For Each usr In listUsers
+            If Not userIds.Contains(usr.emailID) Then
+                ' Create a new table row
+                Dim row As New HtmlTableRow()
+
+                ' GLA Number
+                Dim cellGlaNumber As New HtmlTableCell()
+                Dim btnSelect As New Button
+                btnSelect.ID = String.Format("Select_{0}", usr.emailID.ToString())
+                btnSelect.Attributes("Class") = "btn"
+                AddHandler btnSelect.Click, AddressOf SelectUser
+                btnSelect.Text = usr.GLANumber.ToString()
+
+                cellGlaNumber.Controls.Add(btnSelect)
+                row.Cells.Add(cellGlaNumber)
+
+                ' Name and Surname
+                Dim cellName As New HtmlTableCell()
+                cellName.InnerText = usr.FName & " " & usr.LName
+                row.Cells.Add(cellName)
+
+                ' Email
+                Dim cellEmail As New HtmlTableCell()
+                cellEmail.InnerText = usr.emailID
+                row.Cells.Add(cellEmail)
+
+                ' Role
+                Dim cellRole As New HtmlTableCell()
+                cellRole.InnerText = GetRoleName(usr.role)
+                row.Cells.Add(cellRole)
+
+                ' Status
+                Dim cellStatus As New HtmlTableCell()
+                cellStatus.InnerText = usr.status
+                row.Cells.Add(cellStatus)
+
+                ' Track button
+                Dim cellTrack As New HtmlTableCell()
+                Dim btnTrack As New Button()
+                btnTrack.ID = String.Format("ViewEnrollment_{0}", usr.emailID.ToString())
+                btnTrack.Attributes("class") = " btn btn-primary"
+                If (usr.status.Trim() = "New Applicant" Or usr.status.Trim() = "Rejected" Or usr.status.Trim() = "Pending Application") Then
+                    btnTrack.Text = "View Application"
+                    AddHandler btnTrack.Click, AddressOf ViewApplication
+                Else
+                    btnTrack.Text = "View Enrollment"
+                    AddHandler btnTrack.Click, AddressOf ViewEnrollment_Click
+                End If
+                btnTrack.EnableViewState = False
+
+                cellTrack.Controls.Add(btnTrack)
+                row.Cells.Add(cellTrack)
+
+                ' Add the row to the table
+                UnerolledUsers.Controls.Add(row)
+            End If
+        Next
+    End Sub
+
     Protected Sub UpdateUser_ServerClick(sender As Object, e As EventArgs)
         Dim userid = SelectedEnrolID.Value.Trim()
         Dim selecteduser As New Course_Enrollment
@@ -60,18 +132,25 @@ Public Class ManageUsers
 
         Response.Redirect("ManageUsers.aspx")
     End Sub
-    Protected Sub LoadUsers()
+    Protected Sub LoadEnrolledUsers()
         Dim listUsers As New List(Of Course_Enrollment)
-        listUsers = New Course_Enrollment().listall()
+        Dim courseId As String = Request.QueryString("cId")
+
+        listUsers = New Course_Enrollment().listall(String.Format(" where [course_id]='{0}' "), courseId)
+
 
         ' Clear existing rows if necessary
         TableUsers.Controls.Clear()
+        UnerolledUsers.Controls.Clear()
+
+
 
         For Each enroledusr In listUsers
             ' Create a new table row
             Dim row As New HtmlTableRow()
 
             Dim usr = New User().load(enroledusr.userId)
+            userIds.Add(usr.emailID)
             ' GLA Number
             Dim cellGlaNumber As New HtmlTableCell()
             Dim btnSelect As New Button
@@ -116,9 +195,12 @@ Public Class ManageUsers
             row.Cells.Add(cellTrack)
 
             ' Add the row to the table
+
             TableUsers.Controls.Add(row)
+
         Next
     End Sub
+
 
     Private Sub ViewApplication(sender As Object, e As EventArgs)
         Dim btn As Button = DirectCast(sender, Button)

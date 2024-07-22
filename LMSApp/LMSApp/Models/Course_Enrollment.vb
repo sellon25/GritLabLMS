@@ -156,7 +156,7 @@ Public Class Course_Enrollment
         cmd.Connection = HttpContext.Current.Session("conn")
         If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = HttpContext.Current.Session("trans")
         cmd.CommandType = CommandType.Text
-        cmd.CommandText = "select "
+        cmd.CommandText = "select DISTINCT "
         If Display_id = True Then cmd.CommandText = cmd.CommandText & "id,"
         If Display_userId = True Then cmd.CommandText = cmd.CommandText & "userId,"
         If Display_course_id = True Then cmd.CommandText = cmd.CommandText & "course_id,"

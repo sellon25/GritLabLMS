@@ -158,6 +158,15 @@ Partial Public Class ManageUsers
     Protected WithEvents TableUsers As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
+    '''UnerolledUsers control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents UnerolledUsers As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''pnlEnrollment control.
     '''</summary>
     '''<remarks>
