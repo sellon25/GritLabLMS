@@ -18,10 +18,10 @@
         </div>
 
         <div class="form-row">
-            <%--<div class="col">
+            <div class="col">
                 <label for="openDateTime">Open Date and Time:</label>
-                <input type="datetime-local" class="form-control" id="openDateTime" name="openDateTime">
-            </div>--%>
+                <input type="datetime-local" runat="server" class="form-control" id="openDateTime" name="openDateTime">
+            </div>
             <div class="col">
                 <label for="closeDateTime">Close Date and Time:</label>
                 <input type="datetime-local" runat="server" class="form-control" id="closeDateTime" name="closeDateTime">

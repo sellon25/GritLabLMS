@@ -32,6 +32,15 @@ Partial Public Class NewSubmissionLink
     Protected WithEvents submissionText As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''openDateTime control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents openDateTime As Global.System.Web.UI.HtmlControls.HtmlInputGenericControl
+
+    '''<summary>
     '''closeDateTime control.
     '''</summary>
     '''<remarks>
