@@ -55,5 +55,22 @@
             </div>
         </div>
 
+            <asp:Panel ID="confirmationBox" CssClass="confirmation-box" runat="server" Visible="false">
+                <asp:HiddenField ID="hdnQuestionId" runat="server" />
+                <asp:HiddenField ID="hdnConfirmDelete" runat="server" />
+            <h3 class="p-1">Confirm</h3>
+            <p>Are you sure you want to delete this question?</p>
+            <p style="font-size:0.7rem">
+                <span>
+                    <i class="fas fa-exclamation-triangle" style="font-size: 0.7rem;"></i>
+                </span>
+                This option will delete the question and all student answers related to the question from the records.
+            </p>
+            <asp:Button ID="btnConfirmYes" runat="server" Text="Yes" OnClick="ConfirmDelete" />
+            <asp:Button ID="btnConfirmNo" runat="server" Text="No" OnClick="CancelDelete" />
+            </asp:Panel>
+
+
+
     </div>
 </asp:Content>

@@ -6,8 +6,11 @@
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         LoadUsers()
-        LoadAvailableCourses()
-        pnlEnrollment.Visible = False
+        'LoadAvailableCourses()
+        If Not IsPostBack Then
+            pnlEnrollment.Visible = False
+        End If
+
         ApplicationFormPanel.Visible = False
     End Sub
 
@@ -174,7 +177,7 @@
             Dim removeBtn As New Button()
             removeBtn.ID = "RemoveCourse_" & enrollment.id
             removeBtn.CssClass = "btn text-danger m-0 p-0 mt-2"
-            removeBtn.Text = "Remove"
+            removeBtn.Text = "Remove from course"
             removeBtn.EnableViewState = False
             AddHandler removeBtn.Click, AddressOf RemoveCourse_Click
             enrolInfoDiv.Controls.Add(removeBtn)
@@ -196,22 +199,22 @@
     End Function
 
 
-    Private Sub LoadAvailableCourses()
-        Dim courses As List(Of Course) = New Course().listall()
-        CoursesAvailable.Items.Clear()
-        For Each availableCourse In courses
-            Dim courseItem As New ListItem
-            courseItem.Value = availableCourse.id
-            courseItem.Text = availableCourse.name & "(" & availableCourse.id & ")"
-            CoursesAvailable.Items.Add(courseItem)
-        Next
-    End Sub
+    'Private Sub LoadAvailableCourses()
+    '    Dim courses As List(Of Course) = New Course().listall()
+    '    CoursesAvailable.Items.Clear()
+    '    For Each availableCourse In courses
+    '        Dim courseItem As New ListItem
+    '        courseItem.Value = availableCourse.id
+    '        courseItem.Text = availableCourse.name & "(" & availableCourse.id & ")"
+    '        CoursesAvailable.Items.Add(courseItem)
+    '    Next
+    'End Sub
 
 
     Protected Sub btnClose_Click(sender As Object, e As EventArgs)
         ' Hide the popup
         pnlEnrollment.Visible = False
-        pnlEnrollment.Style("display") = "none"
+        'pnlEnrollment.Style("display") = "none"
     End Sub
 
 
@@ -235,25 +238,25 @@
         enrollment.delete()
     End Sub
 
-    Protected Sub EnrollStudent_Click(sender As Object, e As EventArgs)
-        Dim NewEnrollment As New Course_Enrollment
-        Dim guid As Guid = Guid.NewGuid()
-        With NewEnrollment
-            .id = guid.ToString()
-            .date_started = DateTime.Now
-            .course_id = CoursesAvailable.SelectedValue.Trim()
-            .userId = SelectedUserID.Value.Trim()
-            .enrollment_status = "Active"
-            .update()
-        End With
-        'CoursesAvailable.
-        pnlEnrollment.Visible = False
+    'Protected Sub EnrollStudent_Click(sender As Object, e As EventArgs)
+    '    Dim NewEnrollment As New Course_Enrollment
+    '    Dim guid As Guid = Guid.NewGuid()
+    '    With NewEnrollment
+    '        .id = guid.ToString()
+    '        .date_started = DateTime.Now
+    '        .course_id = CoursesAvailable.SelectedValue.Trim()
+    '        .userId = SelectedUserID.Value.Trim()
+    '        .enrollment_status = "Active"
+    '        .update()
+    '    End With
+    '    'CoursesAvailable.
+    '    pnlEnrollment.Visible = False
 
-        Dim btn As New Button
-        btn.ID = "ViewEnrollment_" + NewEnrollment.userId
+    '    Dim btn As New Button
+    '    btn.ID = "ViewEnrollment_" + NewEnrollment.userId
 
-        ViewEnrollment_Click(btn, Nothing)
-    End Sub
+    '    ViewEnrollment_Click(btn, Nothing)
+    'End Sub
 
     Protected Sub AcceptApplication_Click(sender As Object, e As EventArgs)
         Dim userid = SelectedUserID.Value.Trim()
@@ -413,8 +416,9 @@
         Return newQuestionDiv
     End Function
 
-    Protected Sub CoursesAvailable_SelectedIndexChanged(sender As Object, e As EventArgs)
-        Dim item As DropDownList = DirectCast(sender, DropDownList)
-        Dim id = item.SelectedValue
-    End Sub
+    'Protected Sub CoursesAvailable_SelectedIndexChanged(sender As Object, e As EventArgs)
+    '    Dim item As DropDownList = DirectCast(sender, DropDownList)
+    '    Dim id = item.SelectedValue
+
+    'End Sub
 End Class

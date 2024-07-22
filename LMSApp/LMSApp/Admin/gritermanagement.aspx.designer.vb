@@ -149,24 +149,6 @@ Partial Public Class gritermanagement
     Protected WithEvents EnrollmentInfo As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''CoursesAvailable control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents CoursesAvailable As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''EnrollStudent control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents EnrollStudent As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
     '''btnClose control.
     '''</summary>
     '''<remarks>

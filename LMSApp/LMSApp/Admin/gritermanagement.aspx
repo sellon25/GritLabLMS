@@ -122,7 +122,7 @@
             </div>
         </div>
     </div>
-        <div ID="pnlEnrollment" runat="server" class="modal">
+        <div ID="pnlEnrollment" runat="server" class="modal" Visible="false">
             <asp:HiddenField ID="SelectedUserID" runat="server" />
         <div class="modal-content p-2">
         <h3 class="border-bottom text-center text-muted">Enrollment Information</h3>
@@ -140,15 +140,15 @@
                     </div>
                 </div>--%>
             </div>
-            <div class="form-group w-100 mb-0 pt-2 border-top">
-                <asp:DropDownList ID="CoursesAvailable" class="form-select w-100" OnSelectedIndexChanged="CoursesAvailable_SelectedIndexChanged" runat="server"></asp:DropDownList>
+           <%-- <div class="form-group w-100 mb-0 pt-2 border-top">
+                <asp:DropDownList ID="CoursesAvailable" class="form-select w-100" OnSelectedIndexChanged="CoursesAvailable_SelectedIndexChanged" runat="server" EnableViewState="true"  AutoPostBack="True" ></asp:DropDownList>
                 <asp:Button  ID="EnrollStudent" runat="server" OnClick="EnrollStudent_Click" class="btn mb-2 btn-primary" Text="Enroll To Course" />
-            </div>   
+            </div>   --%>
 
       
         
 
-        <asp:Button ID="btnClose" runat="server" Text="Close" CssClass="btn btn-secondary" OnClientClick="hidePopup('<%= pnlEnrollment.ClientID %>'); return false;" />
+        <asp:Button ID="btnClose" runat="server" Text="Close" CssClass="btn btn-secondary" OnClick="btnClose_Click" />
 
        <script type="text/javascript">
                 const tableID = '<%= TableUsers.ClientID.ToString() %>';

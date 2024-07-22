@@ -28,6 +28,7 @@ Public Class ManageApplicationForm
             .QuestionType = questionType
             .Text = questionText.Trim()
             .Category_ID = "Application Form"
+            .TestID = "Application Form"
         End With
         Dim validnum = Double.TryParse(questionNum, 0.01)
         If validnum And questionNum IsNot Nothing And questionNum IsNot "" Then
@@ -68,6 +69,10 @@ Public Class ManageApplicationForm
         Next
     End Sub
 
+    Private Sub ShowConfirmationBox()
+
+    End Sub
+
     Protected Function AddQuestionHtml(questionId As String, questionType As String, questionText As String) As HtmlGenericControl
         ' Create a new HtmlGenericControl representing a <div> element
         Dim newQuestionDiv As New HtmlGenericControl("div")
@@ -78,6 +83,7 @@ Public Class ManageApplicationForm
         btnDelete.ID = String.Format("btnDelete_{0}", questionId)
         btnDelete.Text = "Delete"
         btnDelete.CssClass = "btn-0 border-0 text-danger bg-none float-end"
+        'btnDelete.OnClientClick = "ShowConfirmationBox(this.id)"
         AddHandler btnDelete.Click, AddressOf DeleteQuestion
         btnDelete.EnableViewState = True
 
@@ -206,19 +212,32 @@ Public Class ManageApplicationForm
     Protected Sub DeleteQuestion(sender As Object, e As EventArgs)
         Dim btn As Button = DirectCast(sender, Button)
         Dim questionId = btn.ID.Replace("btnDelete_", "")
-        Dim question As New Question_Bank()
-        question = question.load(questionId)
-
-        Dim sdtAnswers As StudentAnswer = New StudentAnswer
-        sdtAnswers.delete(String.Format(" where [question_id]='{0}'", question.id))
-
-
-        question.delete()
-
-
-
-        LoadQuestions()
+        hdnQuestionId.Value = questionId
+        confirmationBox.Visible = True
     End Sub
+
+    Protected Sub ConfirmDelete(sender As Object, e As EventArgs)
+        'hdnQuestionId.Value = ""
+        Dim questionId = hdnQuestionId.Value
+        If Not String.IsNullOrEmpty(questionId) Then
+            Dim question As New Question_Bank()
+            question = question.load(questionId)
+
+            Dim sdtAnswers As StudentAnswer = New StudentAnswer()
+            sdtAnswers.delete(String.Format(" where [question_id]='{0}'", question.id))
+
+            question.delete()
+
+            LoadQuestions()
+        End If
+        confirmationBox.Visible = False
+    End Sub
+
+    Protected Sub CancelDelete(sender As Object, e As EventArgs)
+        hdnQuestionId.Value = ""
+        confirmationBox.Visible = False
+    End Sub
+
 
     Protected Sub AddOption(sender As Object, e As EventArgs)
         Dim btn As Button = DirectCast(sender, Button)
@@ -302,8 +321,6 @@ Public Class ManageApplicationForm
         ' Re-render the options
         RenderOptions()
     End Sub
-
-
 
 
 End Class

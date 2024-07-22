@@ -61,3 +61,19 @@ function previewImage(input, containerId) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+
+//const confirmationBox = document.getElementById('confirmationBox');
+//var selectedRemovebtID;
+//function ShowConfirmationBox(id) { 
+//    selectedRemovebtID = '';    
+//    if (confirmationBox != null) {
+//        confirmationBox.style.display = 'show';
+//        selectedRemovebtID = id;
+//    }
+//}
+
+//function removeQuestion() {
+//    const rbtn = document.getElementById(selectedRemovebtID);
+//    rbtn.click();
+//    confirmationBox.style.display = 'none';
+//}
