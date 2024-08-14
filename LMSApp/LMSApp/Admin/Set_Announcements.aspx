@@ -23,8 +23,8 @@
                     
                         <select class="form-select shadow-none row border-top">
                                 <option>All</option>
-                                <option>Griters</option>
-                                <option>Kingsmen</option>
+                                <option>Students</option>
+                                <option>Employee</option>
                                 <!-- <option>Mega</option>
                                 <option>In A Year</option>
                                 <option>July 2023</option>-->

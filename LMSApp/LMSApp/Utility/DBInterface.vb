@@ -3,8 +3,7 @@ Imports System.Data.SqlClient
 Public Class DBInterface
     'Apps Connection String
 
-    Public Shared connectstring As String = "Data Source=.;Initial Catalog=GritsLabDB;Integrated Security=True;Encrypt=False"
-
+    Public Shared connectstring As String = "Data Source=learnboard-db.c7wq4is2s0qa.eu-north-1.rds.amazonaws.com;Initial Catalog=learnboard_db;User ID=admin;Password=learnboard-access;Encrypt=True;TrustServerCertificate=True;"
 
 
     Public Shared Sub SetUpConnection()

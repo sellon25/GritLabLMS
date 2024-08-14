@@ -17,7 +17,7 @@ Public Class Announcements
 
     Private Sub GenerateTable(studentId As String)
 
-        Dim filter As String = "WHERE course_id = '" & Request.QueryString("courseId") & "'"
+        Dim filter As String = "WHERE course_id = '" & Request.QueryString("cId") & "'"
         Dim annoucements_ As List(Of Course_Announcement) = Course_Announcement.listall(filter)
 
         Dim table As New HtmlGenericControl("table")
@@ -44,7 +44,7 @@ Public Class Announcements
 
         For Each _announcement As Course_Announcement In annoucements_
 
-            Dim courseannouncement As Announcement = courseannouncement.load(_announcement.id)
+            Dim courseannouncement As Announcement = courseannouncement.load(_announcement.announcement_id)
 
             Dim td2 As New HtmlGenericControl("td")
             td2.Attributes("class") = "text-muted fs-2 ms-auto mt-2 mt-md-0"

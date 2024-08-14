@@ -139,6 +139,11 @@ Public Class ManageUsers
         Dim userid = SelectedEnrolID.Value.Trim()
         Dim selecteduser As New Course_Enrollment
         selecteduser = selecteduser.load(userid)
+        If selecteduser Is Nothing Then
+            SelectedUserID.Value = userid
+            EnrollStudent_Click(Nothing, Nothing)
+            Exit Sub
+        End If
         With selecteduser
             .role = userrole.SelectedValue
             .enrollment_status = EnrollmentStatus.SelectedItem.Text.Trim()

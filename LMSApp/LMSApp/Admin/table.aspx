@@ -3,7 +3,7 @@
     
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Change_Breadcrumb_PageTitle" runat="server">
-    <h1>GRITERS</h1>
+    <h1>STUDENTS</h1>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
     <script>
@@ -17,7 +17,7 @@
         <div class="col-md-12 col-lg-12 col-sm-12">
             <div class="white-box bg-transparent">
                 <div class="d-md-flex mb-3">
-                    <h3 class="box-title mb-0">GRITER TRACKER</h3>
+                    <h3 class="box-title mb-0">STUDENT TRACKER</h3>
                 </div>
             <div class="row mb-3">
                 <div class="col-md-4">

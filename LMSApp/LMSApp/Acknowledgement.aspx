@@ -80,11 +80,12 @@
                 
                         <p>We are still reviewing your application, we will communicate with you as soon as a decision regarding your application then you will be able to access our learning system with your login details.</p>
                     </div> 
+                    <p class="small text muted">Please note that this project is still in progress. Use username: <strong> admin@g.com</strong><%="  " %> & password: <strong> 1234 </strong> to approve yourself to access the student side.</p>
                 </div>
             
               <div class="form-group mb-4">
                     <div class="col-sm-12">
-                        <a href="Login.aspx" id="n" runat="server" class="m-2 mb-0 btn btn-primary" >Back to Login</a>                        
+                        <a href="Login.aspx" id="n" runat="server" class="m-2 mb-0 btn btn-github" >Back to Login</a>                        
                     </div>                   
                 </div>
                 <asp:Label ID="lblApplError" runat="server" CssClass=" text-center text-danger" Text="" Visible="false"></asp:Label>

@@ -60,7 +60,7 @@ Public Class SignUp
             SignUpform.Visible = False
             Dim otp As New SendEmail
             userotp.Value = ""
-            HiddenpField.Value = otp.SendOTP(useremail.Value, String.Format("{0} {1}", NewUser.FName, NewUser.LName))
+            HiddenpField.Value = otp.SendOTP("sellondaba25@gmail.com", String.Format("{0} {1}", NewUser.FName, NewUser.LName))
             OTPform.Visible = True
         Else
             LblError.Text = "Passwords do not match!"
@@ -276,12 +276,12 @@ Public Class SignUp
             studentAnswer.update()
         Next
 
-        Dim message As String = "Thank you for applying for GRITS LAB , we really appreciate the time and effort you have spent to do so." + Environment.NewLine +
+        Dim message As String = "Thank you for applying for Learnboard LAB , we really appreciate the time and effort you have spent to do so." + Environment.NewLine +
              "We are dedicated to acquiring the most dedicated students. We review each application with care to ensure we progress only those candidates who are the best fit for the bootcamp." +
          Environment.NewLine + "You can expect to hear from us as soon as we review your application."
 
         Dim email As SendEmail = New SendEmail
-        email.SendNotification(hiddenuserID.Value, message)
+        email.SendNotification("Sellondaba25@gmail.com", message)
 
         AcknowledgementDiv.Visible = True
         ' Optionally, redirect or display a message after saving

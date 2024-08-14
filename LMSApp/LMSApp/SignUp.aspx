@@ -13,7 +13,7 @@
     <meta name="robots" content="noindex,nofollow">    
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/glogo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/ulogo.png">
     <!-- Custom CSS -->
     <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
     <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
@@ -108,7 +108,7 @@
                     </div>
                     <div class="form-group mb-4">
                     <div class="col-sm-12">
-                    <a href="Login.aspx" class="mt-2 mb-0 btn btn-primary" >Back to Login</a>  
+                    <a href="Login.aspx" class="mt-2 mb-0 btn btn-github" >Back to Login</a>  
                         </div>
                         </div>
                 </div>
@@ -172,7 +172,7 @@
                 <asp:HiddenField ID="HiddenField1" runat="server" />
                 <div class="form-horizontal form-material">
                     <div id="Div2"  runat="server" class="mb-4 border-bottom">
-                        <h4 class="mb-4 fw-bold ">Thank you for applying to Grits Lab Africa</h4>
+                        <h4 class="mb-4 fw-bold ">Thank you for applying to Learnboard Africa</h4>
                 
                         <p>A confirmation of your application has been sent to your email.</p>
                     </div> 

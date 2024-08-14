@@ -270,7 +270,7 @@
         ApplicationFormPanel.Visible = False
 
         Dim newEmail As New SendEmail
-        newEmail.SendNotification("sellondaba25@gmail.com", "Congratulations, Your application has been accepted! </br> Your are now officially a Student Of Grits Lab africa, we are happy To have you!")
+        newEmail.SendNotification("sellondaba25@gmail.com", "Congratulations, Your application has been accepted! </br> Your are now officially a Student Of Learnboard africa, we are happy To have you!")
 
         LoadUsers()
     End Sub
@@ -286,7 +286,7 @@
         End With
         ApplicationFormPanel.Visible = False
         Dim newEmail As New SendEmail
-        newEmail.SendNotification(du.emailID, "It was a pleasure To learn more about you through your application. However, after careful consideration, we unfortunately regret to inform you that your application to Grits Lab africa was unsuccessful! </br>")
+        newEmail.SendNotification(du.emailID, "It was a pleasure To learn more about you through your application. However, after careful consideration, we unfortunately regret to inform you that your application to Learnboard africa was unsuccessful! </br>")
 
         LoadUsers()
     End Sub

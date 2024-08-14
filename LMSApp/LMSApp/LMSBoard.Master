@@ -21,7 +21,7 @@
     </title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/glogo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/ulogo.png">
     <!-- Custom CSS -->
     <link href="../plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
@@ -62,7 +62,7 @@
                 <button id="toggle-bar" class="p-0 bg-none border-0" onclick='toggleSidebar()'>
                     <i  class="fas fa-bars"></i>
                 </button>
-                <h4 class="pageTitle fw-bold">
+                <h4 class="pageTitle fw-bold no-wrap">
                         <asp:ContentPlaceHolder ID="Change_Breadcrumb_PageTitle" runat="server">
                             Page title
                 </asp:ContentPlaceHolder>
@@ -83,7 +83,7 @@
                     <!-- ============================================================== -->
                     <!-- Right side toggle and nav items -->
                     <!-- ============================================================== -->
-                    <ul class="navbar-nav ms-auto d-flex align-items-center">
+                    <ul class="navbar-nav d-flex align-items-center w-100 justify-content-end">
 
                         <!-- ============================================================== -->
                         <!-- Search -->
@@ -102,7 +102,7 @@
                         <li>
                             <a class="profile-pic" href="#">
                                 <img src="../plugins/images/users/varun.jpg" alt="user-img" width="36"
-                                    class="img-circle"><span class="text-dark font-medium">Steave</span></a>
+                                    class="img-circle"><span class="text-dark font-medium"></span></a>
                         </li>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
@@ -119,7 +119,7 @@
         <aside id="NavSideBar" class="left-sidebar hide">
              <a class="navbar-brand" href="../Student/Dashboard.aspx">
                         <!-- Logo icon -->                
-                            <img src="../plugins/images/glogo.png" class="logo-icon" alt="homepage">
+                            <img src="../plugins/images/ulogo.png" class="logo-icon" alt="homepage">
                              <span class="text-white">Learnboard</span>
                         <!--End Logo icon -->
                     </a>

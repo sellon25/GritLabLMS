@@ -24,7 +24,7 @@
     </asp:ContentPlaceHolder>
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/glogo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/ulogo.png">
     <!-- Custom CSS -->
     <link href="../plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
@@ -132,7 +132,7 @@
         <aside id="NavSideBar" class="left-sidebar hide">
              <a class="navbar-brand" href="../Admin/Dashboard.aspx">
                         <!-- Logo icon -->                
-                            <img src="../plugins/images/glogo.png" class="logo-icon" alt="homepage">
+                            <img src="../plugins/images/ulogo.png" class="logo-icon" alt="homepage">
                              <span class="text-white">Admin Board</span>
                         <!--End Logo icon -->
                     </a>
@@ -162,7 +162,7 @@
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Admin/Manage_Griters_and_Kingsmen.aspx"
                                 aria-expanded="false">
                                 <i class="fas fa-user-circle" aria-hidden="true"></i>
-                                <p class="text-white"  style="font-size: 13.5px;">Manage Students <br/> & Kingsmen </p>
+                                <p class="text-white"  style="font-size: 13.5px;">Manage Students <br/> & Employees </p>
                             </a>
                         </li>
                         <li class="sidebar-item">

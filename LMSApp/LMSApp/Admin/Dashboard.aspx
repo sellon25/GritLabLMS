@@ -68,7 +68,7 @@
                                 <div class="comment-text ps-2 ps-md-3 w-100">
                                     <h5 class="font-medium">SET NEW PROJECT</h5>
                                     <span class="mb-3 d-block">Learn Management System</span>
-                                    <span class="mb-3 d-block">ADD AVAILABLE KINGSMEN </span> </div>
+                                    <span class="mb-3 d-block">ADD AVAILABLE EMPLOYEE </span> </div>
                                 </div>
                 
                             <!-- Comment Row -->
@@ -85,7 +85,7 @@
                             <div class="d-flex flex-row comment-row p-3 mt-0">
                                 <div class="p-2"><i class="far fa-bell" style="font-size: 26px;"></i></div>
                                 <div class="comment-text ps-2 ps-md-3 w-100">
-                                    <h5 class="font-medium">SET ANNOUCEMENT FOR KINGSMEN/SOLIDERS</h5>
+                                    <h5 class="font-medium">SET ANNOUCEMENT FOR EMPLOYEES</h5>
                                     <span class="mb-3 d-block">SMME Breif</span>
                                     <span class="mb-3 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry.It has survived not only </span>
                                     <div class="text-muted fs-2 ms-auto mt-2 mt-md-0">April 14, 2021</div>
@@ -95,7 +95,7 @@
                             <div class="d-flex flex-row comment-row p-3 mt-0">
                                  <div class="p-2"><i class="far fa-bell" style="font-size: 26px;"></i></div>
                                  <div class="comment-text ps-2 ps-md-3 w-100">
-                                     <h5 class="font-medium">SET ANNOUCEMENT FOR GRITERS</h5>
+                                     <h5 class="font-medium">SET ANNOUCEMENT FOR STUDENTS</h5>
                                      <span class="mb-3 d-block">CHAPTER ZERO Brief</span>
                                      <span class="mb-3 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry.It has survived not only </span>
                                      <div class="text-muted fs-2 ms-auto mt-2 mt-md-0">April 14, 2021</div>

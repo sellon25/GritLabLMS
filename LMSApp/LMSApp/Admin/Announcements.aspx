@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="Type_pageTitle" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Change_Breadcrumb_PageTitle" runat="server">
-    Griter Announcemnts
+    Student Announcemnts
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
   <div class="row">
@@ -21,7 +21,7 @@
                     <div class="form-group">
                         <label for="announcementType">Type</label> 
                             <select id="announcementType" name="announcementType" class="form-control" readonly>
-                                <option value="Information" selected>All Griters</option>                               
+                                <option value="Information" selected>All Students</option>                               
                             </select>
                     </div>
                     

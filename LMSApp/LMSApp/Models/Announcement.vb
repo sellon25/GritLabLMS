@@ -91,7 +91,7 @@ cmd.ExecuteNonQuery()
 End Sub
 
 
-Shared Function load(id as System.Int32) As Announcement
+Shared Function load(id as System.String) As Announcement
 Dim cmd As New sqlCommand
 cmd.Connection = HttpContext.Current.Session("conn")
 If Not IsNothing(HttpContext.Current.Session("trans")) Then cmd.Transaction = HttpContext.Current.Session("trans")

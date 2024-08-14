@@ -13,7 +13,7 @@
     <meta name="robots" content="noindex,nofollow">    
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/glogo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/ulogo.png">
     <!-- Custom CSS -->
     <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
     <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
@@ -58,9 +58,10 @@
     </style>
 </head>
 <body style="display: flex;" >
+
     <form id="form1" style="margin: 25vh auto;" runat="server">
         <div class="text-center col-md-12">
-            <img style="" src="plugins/images/glogo.png" />
+            <img style="" src="plugins/images/ulogo.png" />
         </div>
         
         <div class="login-form text-center">
@@ -75,7 +76,7 @@
             <%--<input type="password" id="txtPwd" runat="server" required="required" placeholder="Password" />--%>
 
             <asp:Button ID="loginBtn" class="login-btn" runat="server" Text="Log In" OnClick="loginBtn_Click" />
-            <a class="d-block" href="SignUp.aspx">Apply to join GritLabs</a>
+            <a class="d-block" href="SignUp.aspx">Apply to join Learnboard</a>
             
             <asp:Label ID="lblError" CssClass="mt-5 col-12 d-block" runat="server" Text="Error..."></asp:Label>
         </div>

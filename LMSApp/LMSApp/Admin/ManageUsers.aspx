@@ -9,7 +9,7 @@
     <!-- Add Announcement Section -->
     <div class="col-md-4">
         <div class="white-box">
-            <h3 class="box-title">GRITER PROFILE</h3>
+            <h3 class="box-title">Student PROFILE</h3>
             <div>
                 <div class="form-group">
                     <label for="Load_student">Enter GLA Number To Load</label> 

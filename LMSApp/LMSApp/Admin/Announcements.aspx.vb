@@ -31,14 +31,15 @@ Namespace Admin
 
         Private Sub BindAnnouncements()
             Try
-                Dim filter As String = "WHERE [type]=100 "
-                Dim allAnnouncements As List(Of Announcement) = New Announcement().listall(filter)
+                Dim filter1 As String = "WHERE [type]=100 "
+                Dim filter As String = "WHERE course_id = '" & Request.QueryString("cId") & "'"
+                Dim allAnnouncements As List(Of Course_Announcement) = New Course_Announcement().listall(filter)
 
                 If allAnnouncements IsNot Nothing AndAlso allAnnouncements.Count > 0 Then
                     Dim announcements As List(Of Announcement) = New List(Of Announcement)
                     'get announcement from announcement table
-                    For Each a As Announcement In allAnnouncements
-                        Dim ann As Announcement = Announcement.load(a.id)
+                    For Each a As Course_Announcement In allAnnouncements
+                        Dim ann As Announcement = Announcement.load(a.announcement_id)
                         announcements.Add(ann)
                     Next
 
@@ -277,9 +278,9 @@ Namespace Admin
 
                     announce.update()
 
-                    courseAnnounce.id = New database_operations().GetNewPrimaryKey("id", "Announcement", HttpContext.Current.Session("conn"))
-                    'courseAnnounce.announcement_id = announce.id
-                    ' courseAnnounce.course_id = courseId.Value
+                    courseAnnounce.id = New database_operations().GetNewPrimaryKey("id", "Course_Announcement", HttpContext.Current.Session("conn"))
+                    courseAnnounce.announcement_id = announce.id
+                    courseAnnounce.course_id = courseId.Value
 
                     courseAnnounce.update()
                 End If

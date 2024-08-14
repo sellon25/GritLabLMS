@@ -5,14 +5,14 @@
     
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Change_Breadcrumb_PageTitle" runat="server">
-    Manage Griters
+    Manage Students
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Main_ContentPlaceHolder" runat="server">
     <div class="row">
     <!-- Add Announcement Section -->
     <div class="col-md-4">
         <div class="white-box">
-            <h3 class="box-title">GRITER PROFILE</h3>
+            <h3 class="box-title">STUDENT PROFILE</h3>
             <div>
                 <div class="form-group">
                     <label for="Load_student">Enter GLA Number To Load</label> 

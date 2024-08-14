@@ -56,7 +56,7 @@
     End Sub
     Private Function CreateCourseHtml(course As Course) As HtmlAnchor
         Dim link As New HtmlAnchor()
-        link.HRef = "CoursePage.aspx?courseId=" & course.id
+        link.HRef = "CoursePage.aspx?cId=" & course.id
         link.Attributes("class") = "col-md-3"
 
         Dim courseBox As New HtmlGenericControl("div")
